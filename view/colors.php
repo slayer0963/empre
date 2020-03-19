@@ -5,16 +5,16 @@
                     <table id="tbcolor" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                              <th class="text-center">ID</th>
+
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Estado</th>
+                              
                               <th class="text-center">Acciones</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
                              <tfoot>
                             <tr>
-                              <th class="text-center">ID</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Estado</th>
                               <th class="text-center">Acciones</th>
@@ -29,10 +29,10 @@
     <div class="modal-content">
       <h4>Colores</h4>
       <div class="row">
-        <form class="col s12 center-align">
+        <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" >
+            <input type="text" name="txtcolor">
             <label for="email">Nombre</label>
             <span class="helper-text">Nombre</span>
           </div>

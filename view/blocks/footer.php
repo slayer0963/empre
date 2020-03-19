@@ -12,13 +12,13 @@ $(document).ready(function(){
 
   $('.sidenav').sidenav();
   $('#sidenav-1').sidenav({ edge: 'left' });
-  $('#tbcolor').DataTable();
+
   $('.modal').modal();
       
 
 
 });
-
-
-
   </script>
+
+
+    <script src="<?php echo SERVERURL; ?>jsproject/color.js"></script>
