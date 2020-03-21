@@ -1,22 +1,22 @@
 
 <title>Colores</title>
-<a class="waves-effect waves-light btn pulse modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
-      <div class="tb">
+
+<a class="waves-effect waves-light btn pulse  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
+
+      <div class="tb table-responsive">
                     <table id="tbcolor" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
                             <thead >
                             <tr>
-
+                              <th class="text-center">Id</th>
                               <th class="text-center">Nombre</th>
-                              <th class="text-center">Estado</th>
-                              
                               <th class="text-center">Acciones</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
                              <tfoot>
                             <tr>
+                              <th class="text-center">Id</th>
                               <th class="text-center">Nombre</th>
-                              <th class="text-center">Estado</th>
                               <th class="text-center">Acciones</th>
                             </tr>
                             </tfoot>
@@ -32,7 +32,7 @@
         <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="txtcolor">
+            <input type="text" name="txtcolor" title="nombre" id="txtcolor">
             <label for="email">Nombre</label>
             <span class="helper-text">Nombre</span>
           </div>
@@ -42,9 +42,37 @@
       </div>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+      <a id="salir" class="modal-close waves-effect waves-green btn-flat">Salir</a>
       
     </div>
   </div>
 
+      <div id="modal2" class="modal modal-fixed-footer peque">
+      <div class="modal-content">
+        <h4>Editar Colores</h4>
+        <div class="row">
+          <form class="col s12 center-align" name="formcolore" id="formcolore" method="post">
+          <div class="row">
+            <input type="hidden" name="colorid" title="nombre" id="colorid">
+            <label for="first_name">Color</label>
+            <div class="input-field">
+              
+              <input  id="colore" name="colore" type="text">
+              
+            </div>
+          
 
+          </div>
+          <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
+        </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        
+      </div>
+    </div>
+
+
+<?php require 'blocks/footer.php'; ?>
+    <script src="<?php echo SERVERURL; ?>jsproject/color.js"></script>

@@ -11,7 +11,11 @@
 
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/dataTables.bootstrap4.min.css">
 
+      <link rel="stylesheet" href="<?php echo SERVERURL; ?>/css/responsive.bootstrap4.min.css">
+
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
+
+
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -28,7 +32,7 @@
           header, footer {
             padding-left: 300px;
           }
-
+          
 
           @media only screen and (max-width : 992px) {
             header, .main, footer {
@@ -39,10 +43,7 @@
             }
             .peque { width: 75% !important ; height: 75% !important ; } 
 
-              .logolaribe{
-                animation-delay: 2s;
-               animation-duration: 1s;
-              }
+
           }
           .tb{
             margin-top: 2rem;

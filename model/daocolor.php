@@ -49,7 +49,7 @@ include_once "../cn/connection.php";
 		$name = $obj->getColorName();
 		$sql="update color set name_color='$name' where id_color=$id;";
 		if (!$c->query($sql)) {
-			print "0";
+			print "0".$sql;
 		}else{
 			    echo "1"; 
 		     }

@@ -5,6 +5,8 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>
 
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/dataTables.bootstrap4.min.js"></script>
+       <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/dataTables.responsive.js"></script>
+       <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/responsive.bootstrap4.js"></script>
 
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/materialize.js"></script>
   <script>
@@ -15,10 +17,9 @@ $(document).ready(function(){
 
   $('.modal').modal();
       
-
+$('select').formSelect();
 
 });
   </script>
 
 
-    <script src="<?php echo SERVERURL; ?>jsproject/color.js"></script>

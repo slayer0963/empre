@@ -1,41 +1,46 @@
 $(document).ready(function(){
-consultar();
+getData();
 $('#formcolor').submit(function() {
+  if(Validate()==idinput.length){
 	$.ajax({
             type: "POST",
             url: "../../controller/ccolor.php?btnsetData=setData", 
             data: $("#formcolor").serialize(),
             success: function(resp) {
-                   //alert(resp);
                    if(resp==1){
-                    consultar();
-                    swal("¡Buen trabajo!", "¡Se ha agregado el color exitosamente!", "success");
+                    getData();
+                    cleanform();
+                    
+                    M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+                    $('.modal').modal('close');
                      
                    }
                    else{
-                    swal("Upps!", "¡Algo ha ido mal, revisa la información que deseaste ingresar!", "error");
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
                    }
                      
             }		
                 
         });
+}
 	return false;
 });	
-$('#formcolor2').submit(function() {
+
+$('#formcolore').submit(function() {
     $.ajax({
             type: "POST",
-            url: "../../controlador/ccolor.php?btnModificar=modificar", 
-            data: $("#formcolor2").serialize(),
+            url: "../../controller/ccolor.php?updateData=update", 
+            data: $("#formcolore").serialize(),
             success: function(resp) {
-                   //alert(resp);
+              console.log(resp);
                    if(resp==1){
-                    swal("¡Buen trabajo!", "¡Se ha modificado el color exitosamente!", "success");
-                    $('#modal').modal('toggle');
-                    consultar();
-                    $("[data-dismiss=modal]").trigger({ type: "click" }); 
+                    M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
+                    $('.modal').modal('close');
+                    getData();
                    }
                    else{
-                    swal("¡Upps!", "¡Creemos que se han encontrado problemas, esperemos se solucione pronto!", "error");
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
                    } 
                }
                 
@@ -44,56 +49,79 @@ $('#formcolor2').submit(function() {
 }); 
 });
 
-
-
-function llenarCajas(id, nombre){
-    document.formcolor2.id2.value=id;
-    document.formcolor2.txtcolor2.value=nombre;
-    
+var idinput = ['txtcolor'];
+var idselect = ['select'];
+function cleanform() {
+    idinput.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+    idselect.forEach(names => {
+        $("#"+names).val('0');
+        
+    });
 }
 
-function estado(id,estado) {
-  swal({
-  title: "¿Ésta seguro?",
-  text: "¡Que desea cambiar el estado del registro!",
-  icon: "warning",
-  buttons: true,
-  dangerMode: true,
-})
-.then((willDelete) => {
-  if (willDelete) {
-    swal("Okay! ¡Permítenos un momento!", {
-      icon: "success",
+var Validate = () =>{
+  var validate=0;
+  var html="";
+  var validate=0, error=0;
+  var html="";
+    idinput.forEach(names => {
+       if($("#"+names).val().length > 0){
+         validate+=1;
+       }
+       else{
+        error+=1;
+        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+       }
     });
+    if(error>=1){
+      M.toast({html: html , classes: 'rounded orange lighten-2'});
+    }
+    return validate;
+}
+
+
+
+var FillBoxes =(id,name) =>{
+    $("#colorid").val(id);
+    $("#colore").val(name);
+    $("#colore").focus();    
+}
+
+
+
+
+function StateChange(id,estado) {
+
     var paren = id
-          var dataString = 'id='+paren+"&estado="+estado;
+          var dataString = 'id='+id+"&state="+estado;
            $.ajax({
             type: "POST",
-            url: "../../controlador/ccolor.php?btnModificar=modificarEstado",
+            url: "../../controller/ccolor.php?updateData=statechange",
             data: dataString,
             success: function(resp) {            
             //alert(resp);
-  if (resp=="1") {
-            swal("¡Éxito!", "¡Se modificó el estado del registro correctamente!", "success");
-  }else{
-                    swal("¡Upps!", "¡Creemos que se han encontrado problemas al deshabilitar el registro, esperemos se solucione pronto!", "error");
-                    return false;
+                    if (resp=="1") {
+                               M.toast({html: "¡Se ha modiicado el estado exitosamente!", classes: 'rounded  green'});
+                    }else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                    
                    } 
-            consultar();
+            getData();
             }
         }); 
-  } else {
-    swal("Ten cuidado.");
-    consultar();
-  }
-});   
+     return false;
 }
 
 
-function consultar() {
+var getData = ()=> {
 
     $('#tbcolor').DataTable( {
     "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
     "bDeferRender": true,
     "sPaginationType": "full_numbers",
     "bDestroy": true,
@@ -106,8 +134,8 @@ function consultar() {
           "type": "POST"
     },
     "columns": [
+      { "data": "id_color" },
       { "data": "name_color" },
-      { "data": "state" },
       { "data": "actions" }
       ],
       "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],

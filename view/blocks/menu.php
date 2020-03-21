@@ -1,16 +1,12 @@
       <!-- NAVBAR -->
 <header>
-  <nav class="yellow darken-4 animated  lightSpeedIn">
+  <nav class="blue darken-4">
     <div class="nav-wrapper">
       <div class="row">
-        <div class="col s4 center-align">
+        <div class="col s11 ">
           <a href="#" data-target="sidenav-1" class="left sidenav-trigger hide-on-medium-and-up"><i class="material-icons">menu</i></a>
-          <a href="" class="brand-logo animated  lightSpeedOut logolaribe ">LARIBE</a>
+           <a href="<?php echo SERVERURL; ?>" class="brand-logo">Empren</a>
 
-        </div>
-        
-        <div class="col s4 center-align" >
-           <a href="<?php echo SERVERURL; ?>" class="brand-logo animated  slideInUp  delay-2s ">Empren</a>
         </div>
 
       </div> 
@@ -22,7 +18,7 @@
 
 
 <!-- LEFT SIDEBAR  -->
-<ul id="sidenav-1" class="sidenav sidenav-fixed yellow lighten-5 ">
+<ul id="sidenav-1" class="sidenav sidenav-fixed blue lighten-5 ">
     <li>
       <div class="user-view">
       <div class="background">
