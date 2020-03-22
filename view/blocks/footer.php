@@ -7,7 +7,7 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/dataTables.bootstrap4.min.js"></script>
        <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/dataTables.responsive.js"></script>
        <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/responsive.bootstrap4.js"></script>
-
+      <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/select2.min.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/materialize.js"></script>
   <script>
 $(document).ready(function(){
@@ -17,7 +17,8 @@ $(document).ready(function(){
 
   $('.modal').modal();
       
-$('select').formSelect();
+  $('#tipouser').formSelect();
+$('.dropdown-trigger').dropdown();
 
 });
   </script>

@@ -15,6 +15,8 @@
 
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
 
+      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2.min.css">
+
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
 
       <!--Let browser know website is optimized for mobile-->
@@ -22,6 +24,7 @@
     </head>
     <style>
           .peque { margin-top: 2%;} 
+          .usuariomodal { width: 75% !important ; height: 100% !important ; max-height: 85%;} 
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -42,6 +45,7 @@
             margin-top: 1rem;
             }
             .peque { width: 75% !important ; height: 75% !important ; } 
+            .usuariomodal {width: 75% !important ; height: 75% !important ;} 
 
 
           }
