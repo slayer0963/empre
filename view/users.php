@@ -43,15 +43,15 @@
       <div class="row">
         <form class="col s12 center-align" id="formuser" name="formuser" method="post">
         <div class="row">
-          <div class="input-field col s12">
+          <div class=" col s12">
             <div class="input-field col s12 ">
               <input type="text" name="fullname" title="Nombre" id="fullname">
-              <label for="email">Nombre completo</label>
+              <label for="">Nombre completo</label>
               <span class="helper-text">Nombre completo</span>
             </div>
             <div class="input-field col s12">
               <input type="text" name="phone" title="Telefono" id="phone">
-              <label for="email">Telefono</label>
+              <label for="">Telefono</label>
               <span class="helper-text">Telefono</span>
             </div>
             <div class="input-fiel col s12">
@@ -64,7 +64,7 @@
             <div class="file-field input-field col s12">
               <div class="btn">
                 <span>File</span>
-                <input type="file" id="file">
+                <input type="file" id="file" name="file">
               </div>
               <div class="file-path-wrapper">
                 <input class="file-path validate" name="img" title="Telefono" id="img"  type="text">
@@ -73,18 +73,18 @@
             </div>
             <div class="input-field col s12">
               <input type="text" name="email" title="Correo electronico" id="email">
-              <label for="email">Correo electronico</label>
+              <label for="">Correo electronico</label>
               <span class="helper-text">Correo electronico</span>
             </div>
    
             <div class="input-field col s12 ">
               <input type="text" name="user" title="Usuario" id="user">
-              <label for="email">Usuario</label>
+              <label for="">Usuario</label>
               <span class="helper-text">Usuario</span>
             </div>
             <div class="input-field col s12">
               <input type="text" name="pass" title="Contraseña" id="pass">
-              <label for="email">Contraseña</label>
+              <label for="">Contraseña</label>
               <span class="helper-text">Contraseña</span>
             </div>
             <div class="input-field col s12">

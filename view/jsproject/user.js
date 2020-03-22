@@ -23,10 +23,15 @@ $("#img").change(function(event) {
 
 $('#formuser').submit(function() {
   if(Validate(1)==idinput.length){
-	$.ajax({
+    var formData = new FormData(document.getElementById("formuser"));
+      formData.append("dato", "valor");
+	         $.ajax({
             type: "POST",
             url: "../../controller/cuser.php?btnsetData=setData", 
-            data: $("#formuser").serialize(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
               alert(resp);
                    if(resp==1){
@@ -77,7 +82,7 @@ $('#formusertypee').submit(function() {
 var idinput = ['fullname','phone','img','email','user','pass'];
 var idinpute = ['usertypee'];
 
-function cleanform() {
+var cleanform = () =>{
     idinput.forEach(names => {
         $("#"+names).val("");
         
@@ -130,9 +135,13 @@ var FillBoxes =(id,name,code) =>{
 }
 
 
+var load_combo = () =>{
+
+}
 
 
-function StateChange(id,estado) {
+
+var StateChange = (id,estado) =>{
 
     var paren = id
           var dataString = 'id='+id+"&state="+estado;

@@ -56,7 +56,7 @@ $('#formusertypee').submit(function() {
 var idinput = ['usertype'];
 var idinpute = ['usertypee'];
 
-function cleanform() {
+var cleanform = () => {
     idinput.forEach(names => {
         $("#"+names).val("");
         
@@ -111,7 +111,7 @@ var FillBoxes =(id,name,code) =>{
 
 
 
-function StateChange(id,estado) {
+var StateChange = (id,estado) => {
 
     var paren = id
           var dataString = 'id='+id+"&state="+estado;

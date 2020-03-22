@@ -63,7 +63,7 @@ $('#formcolore').submit(function() {
 var idinput = ['txtcolor','txtcode'];
 var idinpute = ['colore','txtcodee'];
 
-function cleanform() {
+var cleanform = () =>{
     idinput.forEach(names => {
         $("#"+names).val("");
         
@@ -120,7 +120,7 @@ var FillBoxes =(id,name,code) =>{
 
 
 
-function StateChange(id,estado) {
+var StateChange = (id,estado) =>{
 
     var paren = id
           var dataString = 'id='+id+"&state="+estado;

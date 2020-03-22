@@ -10,6 +10,23 @@
 		$obj->setUserUser($_POST["user"]);
 		$obj->setPassUser($_POST["pass"]);
 		$obj->setIdUstp($_POST["usertp"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["file"]["name"];;
+		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		//echo $ext;
+		if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imguser/$nombreArchivo")) {
+
+			}
+			else{
+				echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 1('JPG','GIF','PNG')</h1></center>";
+			}
+		}
+		else
+		{
+			echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 2('JPG','GIF','PNG')</h1></center>";
+		}
 	    return $obj;
 	}
 
