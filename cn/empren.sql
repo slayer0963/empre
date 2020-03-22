@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-03-2020 a las 01:24:20
+-- Tiempo de generación: 22-03-2020 a las 03:31:10
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -19,21 +19,8 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `empre`
+-- Base de datos: `empren`
 --
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `assignment_bus`
---
-
-CREATE TABLE `assignment_bus` (
-  `id_assbus` int(11) NOT NULL,
-  `id_user` int(11) DEFAULT NULL,
-  `id_bus` int(11) DEFAULT NULL,
-  `state_assbus` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -75,6 +62,7 @@ CREATE TABLE `business` (
   `id_bus` int(11) NOT NULL,
   `name_bus` varchar(250) DEFAULT NULL,
   `pic_logo_bus` varchar(500) DEFAULT NULL,
+  `id_user` int(11) DEFAULT NULL,
   `state_bus` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -98,6 +86,7 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `color` (
   `id_color` int(11) NOT NULL,
+  `code_color` varchar(16) DEFAULT NULL,
   `name_color` varchar(150) DEFAULT NULL,
   `state_color` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -106,8 +95,8 @@ CREATE TABLE `color` (
 -- Volcado de datos para la tabla `color`
 --
 
-INSERT INTO `color` (`id_color`, `name_color`, `state_color`) VALUES
-(1, 'Azul', 1);
+INSERT INTO `color` (`id_color`, `code_color`, `name_color`, `state_color`) VALUES
+(1, '#191919', 'Negro', 1);
 
 -- --------------------------------------------------------
 
@@ -171,6 +160,7 @@ CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `fullname_user` varchar(500) DEFAULT NULL,
   `phone_user` varchar(8) DEFAULT NULL,
+  `imagen` varchar(500) DEFAULT NULL,
   `email_user` varchar(150) DEFAULT NULL,
   `user_user` varchar(30) DEFAULT NULL,
   `pass_user` varchar(30) DEFAULT NULL,
@@ -195,14 +185,6 @@ CREATE TABLE `user_type` (
 --
 
 --
--- Indices de la tabla `assignment_bus`
---
-ALTER TABLE `assignment_bus`
-  ADD PRIMARY KEY (`id_assbus`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_bus` (`id_bus`);
-
---
 -- Indices de la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
@@ -224,7 +206,8 @@ ALTER TABLE `assignment_probus`
 -- Indices de la tabla `business`
 --
 ALTER TABLE `business`
-  ADD PRIMARY KEY (`id_bus`);
+  ADD PRIMARY KEY (`id_bus`),
+  ADD KEY `id_user` (`id_user`);
 
 --
 -- Indices de la tabla `categories`
@@ -280,12 +263,6 @@ ALTER TABLE `user_type`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `assignment_bus`
---
-ALTER TABLE `assignment_bus`
-  MODIFY `id_assbus` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_prices_object`
@@ -358,13 +335,6 @@ ALTER TABLE `user_type`
 --
 
 --
--- Filtros para la tabla `assignment_bus`
---
-ALTER TABLE `assignment_bus`
-  ADD CONSTRAINT `assignment_bus_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
-  ADD CONSTRAINT `assignment_bus_ibfk_2` FOREIGN KEY (`id_bus`) REFERENCES `business` (`id_bus`);
-
---
 -- Filtros para la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
@@ -379,6 +349,12 @@ ALTER TABLE `assignment_prices_object`
 ALTER TABLE `assignment_probus`
   ADD CONSTRAINT `assignment_probus_ibfk_1` FOREIGN KEY (`id_bus`) REFERENCES `business` (`id_bus`),
   ADD CONSTRAINT `assignment_probus_ibfk_2` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
+
+--
+-- Filtros para la tabla `business`
+--
+ALTER TABLE `business`
+  ADD CONSTRAINT `business_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
 -- Filtros para la tabla `product`

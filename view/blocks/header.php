@@ -15,7 +15,7 @@
 
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
 
-
+      <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
