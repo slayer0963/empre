@@ -21,7 +21,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <style>
-          .peque { width: 45% !important ; height: 47% !important ; } 
+          .peque { margin-top: 2%;} 
           .container{
             margin-top: 2rem;
             padding-left: 0;

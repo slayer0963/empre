@@ -1,13 +1,14 @@
 
 <title>Colores</title>
 
-<a class="waves-effect waves-light btn pulse  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
+<a class="waves-effect waves-light btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
 
-      <div class="tb table-responsive">
-                    <table id="tbcolor" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+      <div class="tb">
+                    <table id="tbcolor" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
                             <thead >
                             <tr>
                               <th class="text-center">Id</th>
+                              <th class="text-center">Codigo</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
@@ -16,6 +17,7 @@
                              <tfoot>
                             <tr>
                               <th class="text-center">Id</th>
+                              <th class="text-center">Codigo</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
@@ -31,6 +33,10 @@
       <div class="row">
         <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
         <div class="row">
+           <div class="input-field col s12">
+           <input type="color" name="pcolor" id="pcolor"><input type="hidden" name="txtcode" title="color" id="txtcode">
+            <span class="helper-text">Selecciona un color</span>
+          </div>
           <div class="input-field col s12">
             <input type="text" name="txtcolor" title="nombre" id="txtcolor">
             <label for="email">Nombre</label>
@@ -52,12 +58,16 @@
         <h4>Editar Colores</h4>
         <div class="row">
           <form class="col s12 center-align" name="formcolore" id="formcolore" method="post">
+           <div class="input-field col s12">
+           <input type="color" name="pcolore" id="pcolore"><input type="text" name="txtcodee" title="color" id="txtcodee">
+            <span class="helper-text">Selecciona un color</span>
+          </div>
           <div class="row">
             <input type="hidden" name="colorid" title="nombre" id="colorid">
             <label for="first_name">Color</label>
             <div class="input-field">
               
-              <input  id="colore" name="colore" type="text">
+              <input  id="colore" name="colore" title="nombre" type="text">
               
             </div>
           

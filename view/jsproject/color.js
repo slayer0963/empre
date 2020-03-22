@@ -1,7 +1,16 @@
 $(document).ready(function(){
 getData();
+
+$("#pcolor").change(function(event) {
+  $("#txtcode").val($("#pcolor").val());
+});
+
+$("#pcolore").change(function(event) {
+  $("#txtcodee").val($("#pcolore").val());
+});
+
 $('#formcolor').submit(function() {
-  if(Validate()==idinput.length){
+  if(Validate(1)==idinput.length){
 	$.ajax({
             type: "POST",
             url: "../../controller/ccolor.php?btnsetData=setData", 
@@ -28,12 +37,12 @@ $('#formcolor').submit(function() {
 });	
 
 $('#formcolore').submit(function() {
+   if(Validate(0)==idinpute.length){
     $.ajax({
             type: "POST",
             url: "../../controller/ccolor.php?updateData=update", 
             data: $("#formcolore").serialize(),
             success: function(resp) {
-              console.log(resp);
                    if(resp==1){
                     M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
@@ -45,29 +54,29 @@ $('#formcolore').submit(function() {
                }
                 
         });
-    return false;
+    
+  }
+  return false;
 }); 
 });
 
-var idinput = ['txtcolor'];
-var idselect = ['select'];
+var idinput = ['txtcolor','txtcode'];
+var idinpute = ['colore','txtcodee'];
+
 function cleanform() {
     idinput.forEach(names => {
         $("#"+names).val("");
         
     });
-    idselect.forEach(names => {
-        $("#"+names).val('0');
-        
-    });
 }
 
-var Validate = () =>{
+var Validate = (type) =>{
   var validate=0;
   var html="";
   var validate=0, error=0;
   var html="";
-    idinput.forEach(names => {
+  if(type==1){
+        idinput.forEach(names => {
        if($("#"+names).val().length > 0){
          validate+=1;
        }
@@ -79,15 +88,33 @@ var Validate = () =>{
     if(error>=1){
       M.toast({html: html , classes: 'rounded orange lighten-2'});
     }
+  }
+  else{
+   idinpute.forEach(names => {
+       if($("#"+names).val().length > 0){
+         validate+=1;
+       }
+       else{
+        error+=1;
+        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+       }
+    });
+    if(error>=1){
+      M.toast({html: html , classes: 'rounded orange lighten-2'});
+    }
+  }
+
     return validate;
 }
 
 
 
-var FillBoxes =(id,name) =>{
+var FillBoxes =(id,name,code) =>{
     $("#colorid").val(id);
     $("#colore").val(name);
-    $("#colore").focus();    
+    $("#colore").focus();
+    $("#pcolore").val(code);
+    $("#txtcodee").val(code);    
 }
 
 
@@ -135,6 +162,7 @@ var getData = ()=> {
     },
     "columns": [
       { "data": "id_color" },
+      { "data": "code_color" },
       { "data": "name_color" },
       { "data": "actions" }
       ],

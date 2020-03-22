@@ -3,6 +3,7 @@
 
 	function insert(){
 	    $obj=new Color();
+	    $obj->setCodeColor($_POST["txtcode"]);
 	    $obj->setColorName($_POST["txtcolor"]);
 	    return $obj;
 	}
@@ -11,6 +12,7 @@
 	function update(){
 	    $obj=new Color();
 	    $obj->setColorId($_POST["colorid"]);
+	    $obj->setCodeColor($_POST["txtcodee"]);
 	 	$obj->setColorName($_POST["colore"]);
 	   
 	    return $obj;
@@ -56,10 +58,12 @@ if($page=='getData'){
          $table="";
          foreach($r as $c){
          $btnstate='';
+         $color ='';
          $id="'".$c["id_color"]."'";
+         $code="'".$c["code_color"]."'";
          $name="'".$c["name_color"]."'";
          $state="'".$c["state_color"]."'";
-
+         $color = '<input type=\"color\" value=\"'.$c["code_color"].'\" disabled>';
          if($c["state_color"]=="1"){ 
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
          }
@@ -67,10 +71,11 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger waves-effect waves-purple\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.');\" id=\"btnd'.$c["id_color"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger waves-effect waves-purple\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.','.$code.');\" id=\"btnd'.$c["id_color"].'\"><i class=\"material-icons\">edit</i></a>';
          
          $table.='{
                   "id_color":"'.$c["id_color"].'",
+                  "code_color":"'.$color.'",
                   "name_color":"'.$c["name_color"].'",
                   "actions":"'.$btnedit.$btnstate.'"
                 },';    

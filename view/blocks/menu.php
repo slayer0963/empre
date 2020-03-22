@@ -29,7 +29,7 @@
       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
     </div>
     </li>
-    <li><a href="<?php echo SERVERURL; ?>colors/">Colores</a></li>
+    <li><a href="<?php echo SERVERURL; ?>colors/" class="">Colores</a></li>
 </ul>
 
 

@@ -30,8 +30,9 @@ include_once "../cn/connection.php";
  	public function setData($obj)
  	{
  		$c=conectar();
+ 		$code = $obj->getCodeColor();
 		$name = $obj->getColorName();
-		$sql="insert into color value (0,'$name',1);";
+		$sql="insert into color value (0,'$code','$name',1);";
 		if (!$c->query($sql)) {
 			print "0";
 		}else{
@@ -46,8 +47,9 @@ include_once "../cn/connection.php";
  	{
  		$c=conectar();
  		$id=$obj->getColorId();
+ 		$code = $obj->getCodeColor();
 		$name = $obj->getColorName();
-		$sql="update color set name_color='$name' where id_color=$id;";
+		$sql="update color set code_color='$code', name_color='$name' where id_color=$id;";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{

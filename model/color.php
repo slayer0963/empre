@@ -3,6 +3,7 @@
 class Color
 {
 	private $_color_id;
+    private $_code_color;
 	private $_color_name;
 	private $_color_state;
 
@@ -10,6 +11,8 @@ class Color
     {
         
     }
+
+
 
     public function getColorId()
     {
@@ -20,6 +23,19 @@ class Color
     public function setColorId($_color_id)
     {
         $this->_color_id = $_color_id;
+
+        return $this;
+    }
+
+    public function getCodeColor()
+    {
+        return $this->_code_color;
+    }
+
+
+    public function setCodeColor($_code_color)
+    {
+        $this->_code_color = $_code_color;
 
         return $this;
     }
