@@ -8,7 +8,7 @@
                             <thead >
                             <tr>
                               <th class="text-center">Id</th>
-                              <th class="text-center">Codigo</th>
+                              <th class="text-center">Color</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
@@ -17,7 +17,7 @@
                              <tfoot>
                             <tr>
                               <th class="text-center">Id</th>
-                              <th class="text-center">Codigo</th>
+                              <th class="text-center">Color</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
