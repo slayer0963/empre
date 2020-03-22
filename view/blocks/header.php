@@ -24,7 +24,7 @@
     </head>
     <style>
           .peque { margin-top: 2%;} 
-          .usuariomodal { width: 75% !important ; height: 100% !important ; max-height: 85%;} 
+          .usuariomodal { padding: 0; width: 75% !important ; height: 100% !important ;  max-height: 85%;} 
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -45,7 +45,7 @@
             margin-top: 1rem;
             }
             .peque { width: 75% !important ; height: 75% !important ; } 
-            .usuariomodal {width: 75% !important ; height: 75% !important ;} 
+            .usuariomodal {padding: 0; width: 100% !important ; height: 75% !important ; max-height: 85%;} 
 
 
           }

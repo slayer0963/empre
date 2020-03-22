@@ -1,6 +1,25 @@
 $(document).ready(function(){
 getData();
 
+$("#img").change(function(event) {
+     document.getElementById("imgcontainer").removeAttribute('src');
+        //limpar vista previa
+        $("#vista-previa").html('');
+                var archivos=document.getElementById('file').files;
+        var navegador=window.URL || window.webkitURL;
+        //Recorrer los archivos
+        for (var i = 0; i < archivos.length; i++) {
+            //Validar tamaño y tipo de archivo
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class=" responsive-img">');
+       }
+});
+
 
 $('#formuser').submit(function() {
   if(Validate(1)==idinput.length){

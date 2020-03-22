@@ -24,3 +24,4 @@
 </div>
 
 
+<?php require 'blocks/footer.php'; ?>

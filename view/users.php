@@ -1,7 +1,7 @@
 
 <title>Usuarios</title>
 
-<a class="waves-effect waves-light btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar tipo usuario</a>
+<a class="waves-effect waves-light btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar usuario</a>
 
       <div class="tb">
                     <table id="tbusers" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
@@ -43,7 +43,7 @@
       <div class="row">
         <form class="col s12 center-align" id="formuser" name="formuser" method="post">
         <div class="row">
-          <div class="input-field col s6">
+          <div class="input-field col s12">
             <div class="input-field col s12 ">
               <input type="text" name="fullname" title="Nombre" id="fullname">
               <label for="email">Nombre completo</label>
@@ -55,14 +55,16 @@
               <span class="helper-text">Telefono</span>
             </div>
             <div class="input-fiel col s12">
-             <div class="col s3 align-center">
-              <img src="https://image.flaticon.com/icons/png/512/149/149071.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+             <div class="col s12 align-center">
+              <div id="vista-previa">
+                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" style="height: 150px; width: 150px;" id="imgcontainer" alt="" class=" responsive-img">
+              </div>
             </div>
             <br>
-            <div class="file-field input-field">
+            <div class="file-field input-field col s12">
               <div class="btn">
                 <span>File</span>
-                <input type="file">
+                <input type="file" id="file">
               </div>
               <div class="file-path-wrapper">
                 <input class="file-path validate" name="img" title="Telefono" id="img"  type="text">
@@ -74,8 +76,7 @@
               <label for="email">Correo electronico</label>
               <span class="helper-text">Correo electronico</span>
             </div>
-          </div>
-          <div class="input-field col s6">
+   
             <div class="input-field col s12 ">
               <input type="text" name="user" title="Usuario" id="user">
               <label for="email">Usuario</label>
