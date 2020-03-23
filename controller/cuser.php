@@ -90,6 +90,7 @@ if($page=='getData'){
          foreach($r as $c){
          $btnstate='';
          $btnedit='';
+         $imagen ='';
          $id_user="'".$c["id_user"]."'";
          $fullname_user="'".$c["fullname_user"]."'";
          $phone_user="'".$c["phone_user"]."'";
@@ -109,12 +110,14 @@ if($page=='getData'){
          }
 
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger waves-effect waves-purple\" href=\"#modal2\" onclick=\"FillBoxes('.$id_user.','.$fullname_user.','.$phone_user.','.$imagen.','.$email_user.','.$user_user.','.$pass_user.','.$id_ustp.');\" id=\"btnd'.$c["id_user"].'\"><i class=\"material-icons\">edit</i></a>';
-         
+
+        $imagen = '<img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 150px; width: 150px;\" id=\"imgcontainer\"  class=\" responsive-img\">';
+
          $table.='{
                   "id_user":"'.$c["id_user"].'",
                   "fullname_user":"'.$c["fullname_user"].'",
                   "phone_user":"'.$c["phone_user"].'",
-                  "imagen":"'.$c["imagen"].'",
+                  "imagen":"'.$imagen.'",
                   "email_user":"'.$c["email_user"].'",
                   "user_user":"'.$c["user_user"].'",
                   "pass_user":"'.$c["pass_user"].'",

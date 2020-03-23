@@ -13,7 +13,7 @@ $('#formusertype').submit(function() {
                     getData();
                     cleanform();
                     
-                    M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha agregado el tipo de usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
                    }
@@ -37,7 +37,7 @@ $('#formusertypee').submit(function() {
             data: $("#formusertypee").serialize(),
             success: function(resp) {
                    if(resp==1){
-                    M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modiicado el tipo de usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
                    }

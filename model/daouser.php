@@ -29,7 +29,7 @@ include_once "../cn/connection.php";
  	public function getData()
  	{
 		$c = conectar();
-		$sql="select * from users;";
+		$sql="select id_user, fullname_user, phone_user,imagen,email_user,user_user,pass_user, ut.name_ustp as id_ustp,state_user from users u inner join user_type ut on u.id_ustp=ut.id_ustp ;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

@@ -37,7 +37,7 @@
 
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal  usuariomodal">
+  <div id="modal1" class="modal modal-fixed-footer  usuariomodal">
     <div class="modal-content">
       <h4>Usuario</h4>
       <div class="row">
@@ -67,7 +67,7 @@
                 <input type="file" id="file" name="file">
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate" name="img" title="Telefono" id="img"  type="text">
+                <input class="file-path validate" name="img" title="Imagen" id="img"  type="text">
               </div>
             </div>
             </div>
@@ -89,8 +89,12 @@
             </div>
             <div class="input-field col s12">
               <select class="" id="tipouser" name="usertp" style="width: 100%" name="state">
-                <option value="0" disabled selected>Seleccione un tipo de usuario</option>
                 <option value="1" >Usuario</option>
+                <option value="3" >Usuario</option>
+                <option value="2" >Usuario</option>
+                <option value="4" >Usuario</option>
+                <option value="5" >Usuario</option>
+                <option value="6" >Usuario</option>
               </select>
             </div>
           </div>
@@ -101,19 +105,66 @@
     </div>
   </div>
 
-      <div id="modal2" class="modal modal-fixed-footer peque">
+      <div id="modal2" class="modal modal-fixed-footer usuariomodal">
       <div class="modal-content">
-        <h4>Editar tipo de usuario</h4>
+        <h4>Editar usuario</h4>
         <div class="row">
-          <form class="col s12 center-align" name="formusertypee" id="formusertypee" method="post">
-          <div class="row">
-            <input type="hidden" name="id" title="nombre" id="id">
-            <label for="first_name">Color</label>
-            <div class="input-field">
-              <input  id="usertypee" name="usertypee" title="Tipo de usuario" type="text"> 
+        <form class="col s12 center-align" id="formusere" name="formusere" method="post">
+        <div class="row">
+          <div class=" col s12">
+            <input type="text" name="id"  id="id">
+            <div class="input-field col s12 ">
+              <input type="text" name="fullnamee" title="Nombre" id="fullnamee">
+              <span class="helper-text">Nombre completo</span>
             </div>
+            <div class="input-field col s12">
+              <input type="text" name="phonee" title="Telefono" id="phonee">
+              <span class="helper-text">Telefono</span>
+            </div>
+            <div class="input-fiel col s12">
+             <div class="col s12 align-center">
+              <div id="vista-previa">
+                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" style="height: 150px; width: 150px;" id="imgcontainere" alt="" class=" responsive-img">
+              </div>
+            </div>
+            <br>
+            <div class="file-field input-field col s12">
+              <div class="btn">
+                <span>File</span>
+                <input type="file" id="filee" name="filee">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="text">
+              </div>
+            </div>
+            </div>
+            <div class="input-field col s12">
+              <input type="text" name="emaile" title="Correo electronico" id="emaile">
+              <span class="helper-text">Correo electronico</span>
+            </div>
+   
+            <div class="input-field col s12 ">
+              <input type="text" name="usere" title="Usuario" id="usere">
+              <span class="helper-text">Usuario</span>
+            </div>
+            <div class="input-field col s12">
+              <input type="text" name="passe" title="Contraseña" id="passe">
+              <span class="helper-text">Contraseña</span>
+            </div>
+            <div class="input-field col s12">
+              <select class="" id="tipousere" name="usertp" style="width: 100%" name="state">
+                <option value="0" disabled selected>Seleccione un tipo de usuario</option>
+                <option value="1" >Usuario</option>
+                <option value="3" >Usuario</option>
+                <option value="2" >Usuario</option>
+                <option value="4" >Usuario</option>
+                <option value="5" >Usuario</option>
+                <option value="6" >Usuario</option>
 
+              </select>
+            </div>
           </div>
+        </div>
           <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
         </form>
         </div>

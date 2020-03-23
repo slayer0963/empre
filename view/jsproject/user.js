@@ -1,6 +1,8 @@
 $(document).ready(function(){
 getData();
 
+
+
 $("#img").change(function(event) {
      document.getElementById("imgcontainer").removeAttribute('src');
         //limpar vista previa
@@ -38,7 +40,7 @@ $('#formuser').submit(function() {
                     getData();
                     cleanform();
                     
-                    M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha agregado el usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
                    }
@@ -54,16 +56,20 @@ $('#formuser').submit(function() {
 	return false;
 });	
 
-$('#formusertypee').submit(function() {
+$('#formusere').submit(function() {
    if(Validate(0)==idinpute.length){
-    $.ajax({
+    var formData = new FormData(document.getElementById("formusere"));
+            $.ajax({
             type: "POST",
-            url: "../../controller/cusertype.php?updateData=update", 
-            data: $("#formusertypee").serialize(),
+            url: "../../controller/cuser.php?updateData=update", 
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
 
                    if(resp==1){
-                    M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modiicado el usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
                    }
@@ -80,7 +86,7 @@ $('#formusertypee').submit(function() {
 });
 
 var idinput = ['fullname','phone','img','email','user','pass'];
-var idinpute = ['usertypee'];
+var idinpute = ['fullnamee','phonee','imge','emaile','usere','passe'];
 
 var cleanform = () =>{
     idinput.forEach(names => {
@@ -128,10 +134,18 @@ var Validate = (type) =>{
 
 
 
-var FillBoxes =(id,name,code) =>{
+var FillBoxes =(id,name,phone,imagen,mail,user,pass, typeuser) =>{
     $("#id").val(id);
-    $("#usertypee").val(name);
-    $("#usertypee").focus();   
+    $("#fullnamee").val(name);
+    $("#phonee").val(phone);
+    $("#imgcontainere").attr("src",'../imguser/'+imagen);
+    $("#imge").val(imagen);
+    $("#emaile").val(mail);
+    $("#usere").val(user);
+    $("#passe").val(pass);
+    $("#passe").val(pass);
+
+    
 }
 
 
