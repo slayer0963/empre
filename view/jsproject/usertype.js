@@ -2,8 +2,14 @@ $(document).ready(function(){
 getData();
 
 
+
+ 
+
+
+
 $('#formusertype').submit(function() {
-  if(Validate(1)==idinput.length){
+
+  if(Validates(1)==idinput.length){ 
 	$.ajax({
             type: "POST",
             url: "../../controller/cusertype.php?btnsetData=setData", 
@@ -30,7 +36,7 @@ $('#formusertype').submit(function() {
 });	
 
 $('#formusertypee').submit(function() {
-   if(Validate(0)==idinpute.length){
+   if(Validates(0)==idinpute.length){
     $.ajax({
             type: "POST",
             url: "../../controller/cusertype.php?updateData=update", 
@@ -63,7 +69,7 @@ var cleanform = () => {
     });
 }
 
-var Validate = (type) =>{
+var Validates = (type) =>{
   var validate=0;
   var html="";
   var validate=0, error=0;
@@ -76,6 +82,7 @@ var Validate = (type) =>{
        else{
         error+=1;
         html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        //console.log(validate.isEmpty($("#"+names).val()));
        }
     });
     if(error>=1){

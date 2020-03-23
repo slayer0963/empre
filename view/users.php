@@ -35,15 +35,21 @@
                         </table>
       </div>
 
+ 
+
+
+    
+
 
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer  usuariomodal">
     <div class="modal-content">
       <h4>Usuario</h4>
       <div class="row">
+
         <form class="col s12 center-align" id="formuser" name="formuser" method="post">
         <div class="row">
-          <div class=" col s12">
+            
             <div class="input-field col s12 ">
               <input type="text" name="fullname" title="Nombre" id="fullname">
               <label for="">Nombre completo</label>
@@ -87,17 +93,25 @@
               <label for="">Contraseña</label>
               <span class="helper-text">Contraseña</span>
             </div>
+
             <div class="input-field col s12">
-              <select class="" id="tipouser" name="usertp" style="width: 100%" name="state">
+              <select  class="select2 browser-default" id="tipouser" name="usertp">
+                <option value="0" disabled selected>Seleccione tipo de usuario</option>
                 <option value="1" >Usuario</option>
                 <option value="3" >Usuario</option>
                 <option value="2" >Usuario</option>
                 <option value="4" >Usuario</option>
                 <option value="5" >Usuario</option>
                 <option value="6" >Usuario</option>
+
               </select>
             </div>
-          </div>
+
+
+
+            
+
+          
         </div>
         <button type="submit" class="waves-effect waves-light btn">Guardar <i class="material-icons">save</i></button>
       </form>
@@ -147,13 +161,11 @@
               <input type="text" name="usere" title="Usuario" id="usere">
               <span class="helper-text">Usuario</span>
             </div>
+
+
             <div class="input-field col s12">
-              <input type="text" name="passe" title="Contraseña" id="passe">
-              <span class="helper-text">Contraseña</span>
-            </div>
-            <div class="input-field col s12">
-              <select class="" id="tipousere" name="usertp" style="width: 100%" name="state">
-                <option value="0" disabled selected>Seleccione un tipo de usuario</option>
+              <select  class="select2 browser-default" id="tipousere" name="usertp">
+                <option value="0" disabled selected>Seleccione tipo de usuario</option>
                 <option value="1" >Usuario</option>
                 <option value="3" >Usuario</option>
                 <option value="2" >Usuario</option>
@@ -163,6 +175,13 @@
 
               </select>
             </div>
+
+
+            <div class="input-field col s12">
+              <input type="text" name="passe" title="Contraseña" id="passe">
+              <span class="helper-text">Contraseña</span>
+            </div>
+            
           </div>
         </div>
           <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>

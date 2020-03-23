@@ -15,7 +15,9 @@
 
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
 
-      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2.css">
+  
+
+            <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2-materialize.css">
 
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
 
@@ -24,7 +26,7 @@
     </head>
     <style>
           .peque { margin-top: 2%;} 
-          .usuariomodal { padding: 0; width: 50% !important ; height: 100% !important ;  max-height: 85%;} 
+          .usuariomodal { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 85%;} 
           .container{
             margin-top: 2rem;
             padding-left: 0;

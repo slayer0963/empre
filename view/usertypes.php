@@ -32,8 +32,8 @@
         <form class="col s12 center-align" id="formusertype" name="formusertype" method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="usertype" title="tipo de usuario" id="usertype">
-            <label for="email">Nombre</label>
+            <input type="text" name="usertype" title="Tipo de usuario" id="usertype">
+            
             <span class="helper-text">Nombre</span>
           </div>
         </div>

@@ -17,21 +17,7 @@ $(document).ready(function(){
 
   $('.modal').modal();
       
-    $('#tipouser').select2({
-    language: {
-
-    noResults: function() {
-
-      return "No hay resultado";        
-    },
-    searching: function() {
-
-      return "Buscando..";
-    }
-  }
-});
-    $('#tipousere').select2();
-$('.dropdown-trigger').dropdown();
+    $('.dropdown-trigger').dropdown();
 
 });
   </script>

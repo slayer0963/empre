@@ -38,8 +38,8 @@
             <span class="helper-text">Selecciona un color</span>
           </div>
           <div class="input-field col s12">
-            <input type="text" name="txtcolor" title="nombre" id="txtcolor">
-            <label for="email">Nombre</label>
+            <input type="text" name="txtcolor" title="nombre" id="txtcolor" placeholder="sss">
+            
             <span class="helper-text">Nombre</span>
           </div>
         </div>
