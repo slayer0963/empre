@@ -41,6 +41,28 @@
 		$obj->setUserUser($_POST["usere"]);
 		$obj->setPassUser($_POST["passe"]);
 		$obj->setIdUstp($_POST["usertpe"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["filee"]["name"];;
+		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		//echo $ext;
+		if (file_exists("../view/imguser/$nombreArchivo")) {
+		    
+		} else {
+		    if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imguser/$nombreArchivo")) {
+
+			}
+			else{
+				echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 1('JPG','GIF','PNG')</h1></center>";
+			}
+		}
+		else
+		{
+			echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 2('JPG','GIF','PNG')</h1></center>";
+		}
+		}
+		
 	    return $obj;
 	}
 
@@ -109,9 +131,9 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_user.','.$state_user.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger waves-effect waves-purple\" href=\"#modal2\" onclick=\"FillBoxes('.$id_user.','.$fullname_user.','.$phone_user.','.$imagen.','.$email_user.','.$user_user.','.$pass_user.','.$id_ustp.');\" id=\"btnd'.$c["id_user"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_user.','.$fullname_user.','.$phone_user.','.$imagen.','.$email_user.','.$user_user.','.$pass_user.','.$id_ustp.');\" id=\"btnd'.$c["id_user"].'\"><i class=\"material-icons\">edit</i></a>';
 
-        $imagen = '<img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 150px; width: 150px;\" id=\"imgcontainer\"  class=\" responsive-img\">';
+        $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-1\" data-title=\"'.$c["fullname_user"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 100px; width: 100px;\" id=\"imgcontainer\"  class=\" responsive-img\"></a>';
 
          $table.='{
                   "id_user":"'.$c["id_user"].'",

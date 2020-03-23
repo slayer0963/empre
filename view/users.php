@@ -1,7 +1,7 @@
 
 <title>Usuarios</title>
 
-<a class="waves-effect waves-light btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar usuario</a>
+<a class="  btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar usuario</a>
 
       <div class="tb">
                     <table id="tbusers" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
@@ -52,12 +52,10 @@
             
             <div class="input-field col s12 ">
               <input type="text" name="fullname" title="Nombre" id="fullname">
-              <label for="">Nombre completo</label>
               <span class="helper-text">Nombre completo</span>
             </div>
             <div class="input-field col s12">
               <input type="text" name="phone" title="Telefono" id="phone">
-              <label for="">Telefono</label>
               <span class="helper-text">Telefono</span>
             </div>
             <div class="input-fiel col s12">
@@ -79,30 +77,23 @@
             </div>
             <div class="input-field col s12">
               <input type="text" name="email" title="Correo electronico" id="email">
-              <label for="">Correo electronico</label>
               <span class="helper-text">Correo electronico</span>
             </div>
    
             <div class="input-field col s12 ">
               <input type="text" name="user" title="Usuario" id="user">
-              <label for="">Usuario</label>
+      
               <span class="helper-text">Usuario</span>
             </div>
             <div class="input-field col s12">
               <input type="text" name="pass" title="Contraseña" id="pass">
-              <label for="">Contraseña</label>
+        
               <span class="helper-text">Contraseña</span>
             </div>
 
             <div class="input-field col s12">
-              <select  class="select2 browser-default" id="tipouser" name="usertp">
+              <select  class="select2 browser-default" id="usertp" name="usertp">
                 <option value="0" disabled selected>Seleccione tipo de usuario</option>
-                <option value="1" >Usuario</option>
-                <option value="3" >Usuario</option>
-                <option value="2" >Usuario</option>
-                <option value="4" >Usuario</option>
-                <option value="5" >Usuario</option>
-                <option value="6" >Usuario</option>
 
               </select>
             </div>
@@ -113,10 +104,14 @@
 
           
         </div>
-        <button type="submit" class="waves-effect waves-light btn">Guardar <i class="material-icons">save</i></button>
+        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
       </form>
       </div>
     </div>
+          <div class="modal-footer">
+        <a href="#!" class="modal-close  btn-flat">Salir</a>
+        
+      </div>
   </div>
 
       <div id="modal2" class="modal modal-fixed-footer usuariomodal">
@@ -164,14 +159,8 @@
 
 
             <div class="input-field col s12">
-              <select  class="select2 browser-default" id="tipousere" name="usertp">
-                <option value="0" disabled selected>Seleccione tipo de usuario</option>
-                <option value="1" >Usuario</option>
-                <option value="3" >Usuario</option>
-                <option value="2" >Usuario</option>
-                <option value="4" >Usuario</option>
-                <option value="5" >Usuario</option>
-                <option value="6" >Usuario</option>
+              <select  class="select2 browser-default" id="usertpe" name="usertpe">
+
 
               </select>
             </div>
@@ -189,7 +178,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        <a href="#!" class="modal-close  btn-flat">Salir</a>
         
       </div>
     </div>

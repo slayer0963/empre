@@ -71,7 +71,7 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger waves-effect waves-purple\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.','.$code.');\" id=\"btnd'.$c["id_color"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.','.$code.');\" id=\"btnd'.$c["id_color"].'\"><i class=\"material-icons\">edit</i></a>';
          
          $table.='{
                   "id_color":"'.$c["id_color"].'",

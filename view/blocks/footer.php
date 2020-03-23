@@ -9,6 +9,7 @@
        <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/responsive.bootstrap4.js"></script>
       <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/select2.full.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/materialize.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURL; ?>js/lightbox.js"></script>
   <script>
 $(document).ready(function(){
 

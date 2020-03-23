@@ -15,6 +15,8 @@
 
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
 
+      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/lightbox.css">
+
   
 
             <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2-materialize.css">

@@ -1,9 +1,10 @@
 $(document).ready(function(){
 
+setCombo();
 
+getData();
 
-
-$(".select2").select2({
+$("#usertp").select2({
     dropdownAutoWidth: true,
     width: '100%',
     dropdownParent: $("#modal1"),
@@ -20,32 +21,32 @@ $(".select2").select2({
   }
 });
 
+$("#usertpe").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#modal2"),
+    language: {
 
+    noResults: function() {
 
+      return "No hay resultado";        
+    },
+    searching: function() {
 
-
-    
-
-
-
-
-
-getData();
-
-
-
-
-
+      return "Buscando..";
+    }
+  }
+});
 
 $("#img").change(function(event) {
      document.getElementById("imgcontainer").removeAttribute('src');
-        //limpar vista previa
+
         $("#vista-previa").html('');
                 var archivos=document.getElementById('file').files;
         var navegador=window.URL || window.webkitURL;
-        //Recorrer los archivos
+
         for (var i = 0; i < archivos.length; i++) {
-            //Validar tamaño y tipo de archivo
+
             var size=archivos[i].size;
             var type=archivos[i].type;
             var name=archivos[i].name;
@@ -178,13 +179,46 @@ var FillBoxes =(id,name,phone,imagen,mail,user,pass, typeuser) =>{
     $("#usere").val(user);
     $("#passe").val(pass);
     $("#passe").val(pass);
+   
+     $.ajax({
+        type: "POST",
+            url: "../../controller/cuser.php?btngetData=getDataTypeUser",
+            }).done(function(resp) {
+      
+               var values = eval(resp);
+               html="";
+               html+="<option value='0' disabled selected>Seleccione tipo de usuario</option>";
+               for (var i = 0; i < values.length; i++) {
+                
+                if (typeuser==values[i][1]) {
+                  html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                }else{
+                  html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                }
 
+               }
+               $("#usertpe").html(html);
+            });
     
 }
 
 
-var load_combo = () =>{
+var setCombo = (val) =>{
+  var html="";
 
+          $.ajax({
+            type: "POST",
+            url: "../../controller/cuser.php?btngetData=getDataTypeUser",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+="<option value='0' disabled selected>Seleccione tipo de usuario</option>";
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+               }
+               $("#usertp").html(html);
+            } 
+        }); 
+      
 }
 
 
@@ -195,7 +229,7 @@ var StateChange = (id,estado) =>{
           var dataString = 'id='+id+"&state="+estado;
            $.ajax({
             type: "POST",
-            url: "../../controller/cusertype.php?updateData=statechange",
+            url: "../../controller/cuser.php?updateData=statechange",
             data: dataString,
             success: function(resp) {            
                     if (resp=="1") {

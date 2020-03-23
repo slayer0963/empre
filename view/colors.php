@@ -1,7 +1,7 @@
 
 <title>Colores</title>
 
-<a class="waves-effect waves-light btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
+<a class=" btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
 
       <div class="tb">
                     <table id="tbcolor" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
@@ -43,12 +43,12 @@
             <span class="helper-text">Nombre</span>
           </div>
         </div>
-        <button type="submit" class="waves-effect waves-light btn">Guardar <i class="material-icons">save</i></button>
+        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
       </form>
       </div>
     </div>
     <div class="modal-footer">
-      <a id="salir" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+      <a id="salir" class="modal-close  btn-flat">Salir</a>
       
     </div>
   </div>
@@ -73,12 +73,12 @@
           
 
           </div>
-          <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
+          <button type="submit" class=" btn">Editar <i class="material-icons">save</i></button>
         </form>
         </div>
       </div>
       <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        <a href="#!" class="modal-close btn-flat">Salir</a>
         
       </div>
     </div>
