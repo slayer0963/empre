@@ -36,6 +36,13 @@
           .main{
              padding-left: 175px;
           }
+
+          .errorinputs{
+            color:red;
+          }
+          .successinputs{
+            color:green;
+          }
           header, footer {
             padding-left: 300px;
           }

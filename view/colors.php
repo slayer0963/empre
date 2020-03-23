@@ -1,7 +1,7 @@
 
 <title>Colores</title>
 
-<a class=" btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
+<a class=" btn z-depth-5   modal-trigger" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
 
       <div class="tb">
                     <table id="tbcolor" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
@@ -34,13 +34,12 @@
         <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
         <div class="row">
            <div class="input-field col s12">
-           <input type="color" name="pcolor" id="pcolor"><input type="hidden" name="txtcode" title="color" id="txtcode">
-            <span class="helper-text">Selecciona un color</span>
+           <input type="color" name="pcolor" id="pcolor"><input type="text" name="txtcode" title="Selecciona un color" id="txtcode">
+            <span class="" id="txtcodeerror">Selecciona un color</span>
           </div>
           <div class="input-field col s12">
-            <input type="text" name="txtcolor" title="nombre" id="txtcolor" placeholder="sss">
-            
-            <span class="helper-text">Nombre</span>
+            <input type="text" name="txtcolor" title="Nombre" id="txtcolor" placeholder="sss">
+            <span class="" id="txtcolorerror">Nombre</span>
           </div>
         </div>
         <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
