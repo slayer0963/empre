@@ -49,6 +49,7 @@ $('#formcolore').submit(function() {
                     $('.modal').modal('close');
                     getData();
                     cleanform();
+                    cleanbox();
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
@@ -72,6 +73,7 @@ var cleanform = () =>{
         $("#"+names).val("");
         
     });
+
 }
 
 
@@ -121,6 +123,9 @@ var Validate = (type) =>{
 
 var cleanbox=()=>{
 idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+idinputerrore.forEach(names => {
   $("#"+names).removeClass('successinputs');      
 });
 }
