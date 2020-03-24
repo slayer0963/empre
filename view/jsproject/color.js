@@ -9,6 +9,7 @@ $("#pcolore").change(function(event) {
   $("#txtcodee").val($("#pcolore").val());
 });
 
+
 $('#formcolor').submit(function() {
   if(Validate(1)==idinput.length){
 	$.ajax({
@@ -22,7 +23,7 @@ $('#formcolor').submit(function() {
                     
                     M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
-                     
+                     cleanbox();
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
@@ -61,6 +62,7 @@ $('#formcolore').submit(function() {
 });
 
 var idinput = ['txtcolor','txtcode'];
+var idinputerror= ['txtcolorerror','txtcodeerror'];
 var idinpute = ['colore','txtcodee'];
 
 var cleanform = () =>{
@@ -70,7 +72,56 @@ var cleanform = () =>{
     });
 }
 
+
+
 var Validate = (type) =>{
+  var validate=0, html="",validate=0, error=0, count=0;
+  if(type==1){
+        idinput.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
+       }
+       else{
+        error+=1;
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+  else{
+   idinpute.forEach(names => {
+       if($("#"+names).val().length > 0){
+         validate+=1;
+       }
+       else{
+        error+=1;
+        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+       }
+    });
+    if(error>=1){
+      M.toast({html: html , classes: 'rounded orange lighten-2'});
+    }
+  }
+
+    return validate;
+}
+
+var cleanbox=()=>{
+idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+
+/*var Validate = (type) =>{
   var validate=0;
   var html="";
   var validate=0, error=0;
@@ -105,7 +156,7 @@ var Validate = (type) =>{
   }
 
     return validate;
-}
+}*/
 
 
 
