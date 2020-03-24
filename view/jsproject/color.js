@@ -65,8 +65,9 @@ $('#formcolore').submit(function() {
 
 var idinput = ['txtcolor','txtcode'];
 var idinputerror= ['txtcolorerror','txtcodeerror'];
-var idinputerrore= ['txtcoloreerror','txtcodeeerror'];
 var idinpute = ['colore','txtcodee'];
+var idinputerrore= ['txtcoloreerror','txtcodeeerror'];
+
 
 var cleanform = () =>{
     idinput.forEach(names => {
