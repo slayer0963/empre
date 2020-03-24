@@ -27,7 +27,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <style>
-          .peque { margin-top: 2%;} 
+          .peque { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 60%;} 
           .usuariomodal { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 85%;} 
           .container{
             margin-top: 2rem;

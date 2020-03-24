@@ -58,16 +58,16 @@
         <div class="row">
           <form class="col s12 center-align" name="formcolore" id="formcolore" method="post">
            <div class="input-field col s12">
-           <input type="color" name="pcolore" id="pcolore"><input type="text" name="txtcodee" title="color" id="txtcodee">
-            <span class="helper-text">Selecciona un color</span>
+           <input type="color" name="pcolore" id="pcolore"><input type="hidden" name="txtcodee" title="Selecciona un color" id="txtcodee">
+            <span class="" id="txtcodeeerror">Selecciona un color</span>
           </div>
           <div class="row">
             <input type="hidden" name="colorid" title="nombre" id="colorid">
-            <label for="first_name">Color</label>
+            
             <div class="input-field">
               
-              <input  id="colore" name="colore" title="nombre" type="text">
-              
+              <input  id="colore" name="colore" title="Nombre" type="text">
+              <span class="" id="txtcoloreerror">Nombre</span>
             </div>
           
 

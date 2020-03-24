@@ -48,6 +48,7 @@ $('#formcolore').submit(function() {
                     M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
+                    cleanform();
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
@@ -63,6 +64,7 @@ $('#formcolore').submit(function() {
 
 var idinput = ['txtcolor','txtcode'];
 var idinputerror= ['txtcolorerror','txtcodeerror'];
+var idinputerrore= ['txtcoloreerror','txtcodeeerror'];
 var idinpute = ['colore','txtcodee'];
 
 var cleanform = () =>{
@@ -75,7 +77,7 @@ var cleanform = () =>{
 
 
 var Validate = (type) =>{
-  var validate=0, html="",validate=0, error=0, count=0;
+  var validate=0, html="", count=0, counte=0;
   if(type==1){
         idinput.forEach(names => {
           
@@ -88,7 +90,6 @@ var Validate = (type) =>{
          
        }
        else{
-        error+=1;
         //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
         $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
         $("#"+idinputerror[count]).removeClass('successinputs');      
@@ -100,16 +101,19 @@ var Validate = (type) =>{
   else{
    idinpute.forEach(names => {
        if($("#"+names).val().length > 0){
-         validate+=1;
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('errorinputs');
+         $("#"+idinputerrore[counte]).addClass('successinputs');
        }
        else{
-        error+=1;
-        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('successinputs');
+         $("#"+idinputerrore[counte]).addClass('errorinputs');
        }
+        counte++;
     });
-    if(error>=1){
-      M.toast({html: html , classes: 'rounded orange lighten-2'});
-    }
+
   }
 
     return validate;
