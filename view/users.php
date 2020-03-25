@@ -7,29 +7,27 @@
                     <table id="tbusers" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                              <th class="text-center">Id</th>
-                              <th class="text-center">Nombre</th>
-                              <th class="text-center">Telefono</th>
-                              <th class="text-center">Imagen</th>
-                              <th class="text-center">Correo</th>
-                              <th class="text-center">Usuario</th>
-                              <th class="text-center">Contraseña</th>
-                              <th class="text-center">Tipo de usuario</th>
-                              <th class="text-center">Acciones</th>
+                              <th style="text-align: center;">Nombre</th>
+                              <th style="text-align: center;">Teléfono</th>
+                              <th style="text-align: center;">Imagen</th>
+                              <th style="text-align: center;">Correo</th>
+                              <th style="text-align: center;">Usuario</th>
+                              <th style="text-align: center;">Contraseña</th>
+                              <th style="text-align: center;">Tipo de usuario</th>
+                              <th style="text-align: center;">Acciones</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
                              <tfoot>
                             <tr>
-                              <th class="text-center">Id</th>
-                              <th class="text-center">Nombre</th>
-                              <th class="text-center">Telefono</th>
-                              <th class="text-center">Imagen</th>
-                              <th class="text-center">Correo</th>
-                              <th class="text-center">Usuario</th>
-                              <th class="text-center">Contraseña</th>
-                              <th class="text-center">Tipo de usuario</th>
-                              <th class="text-center">Acciones</th>
+                              <th style="text-align: center;">Nombre</th>
+                              <th style="text-align: center;">Teléfono</th>
+                              <th style="text-align: center;">Imagen</th>
+                              <th style="text-align: center;">Correo</th>
+                              <th style="text-align: center;">Usuario</th>
+                              <th style="text-align: center;">Contraseña</th>
+                              <th style="text-align: center;">Tipo de usuario</th>
+                              <th style="text-align: center;">Acciones</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -44,21 +42,14 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer  usuariomodal">
     <div class="modal-content">
-      <h4>Usuario</h4>
+      <h4>Usuario.</h4>
       <div class="row">
-
-        <form class="col s12 center-align" id="formuser" name="formuser" method="post">
+      <form class="col s12 center-align" id="formuser" name="formuser" method="post">
         <div class="row">
-            
-            <div class="input-field col s12 ">
-              <input type="text" name="fullname" title="Nombre" id="fullname">
-              <span class="helper-text">Nombre completo</span>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" name="phone" title="Telefono" id="phone">
-              <span class="helper-text">Telefono</span>
-            </div>
-            <div class="input-fiel col s12">
+        
+           
+
+           <div class="input-fiel col s12">
              <div class="col s12 align-center">
               <div id="vista-previa">
                  <img src="https://image.flaticon.com/icons/png/512/149/149071.png" style="height: 150px; width: 150px;" id="imgcontainer" alt="" class=" responsive-img">
@@ -67,36 +58,54 @@
             <br>
             <div class="file-field input-field col s12">
               <div class="btn">
-                <span>File</span>
+                <span>Imagen</span>
                 <input type="file" id="file" name="file">
               </div>
               <div class="file-path-wrapper">
-                <input class="file-path validate" name="img" title="Imagen" id="img"  type="text">
+                <input class="file-path validate" name="img" title="Imagen (*)" id="img"  type="text">
               </div>
             </div>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" name="email" title="Correo electronico" id="email">
-              <span class="helper-text">Correo electronico</span>
-            </div>
-   
-            <div class="input-field col s12 ">
-              <input type="text" name="user" title="Usuario" id="user">
-      
-              <span class="helper-text">Usuario</span>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" name="pass" title="Contraseña" id="pass">
-        
-              <span class="helper-text">Contraseña</span>
+            <span class="" id="txtimg"></span>
             </div>
 
-            <div class="input-field col s12">
-              <select  class="select2 browser-default" id="usertp" name="usertp">
-                <option value="0" disabled selected>Seleccione tipo de usuario</option>
 
+            <div class="input-field col s12 m12 l6">
+              <input type="text" name="fullname" title="Nombre completo (*)" id="fullname">
+              <label for="fullname">Nombre completo</label>
+              <span class="" id="txtfullname"></span>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <select  class="select2 browser-default" id="usertp" name="usertp" title="Tipo Usuario (*)">
               </select>
+              <span class="" id="txtusertp"></span>
             </div>
+
+            <div class="input-field col s12 m12 l6  ">
+              <input type="text" name="phone" title="Tel&eacute;fono (*)" id="phone">
+              <label for="phone">Tel&eacute;fono</label>
+              <span class="" id="txtphone"></span>
+            </div>
+            
+
+            <div class="input-field col s12 m12 l6">
+              <input type="email" name="email" title="Correo electr&oacute;nico (*)" id="email">
+              <label for="email">Correo electr&oacute;nico</label>
+              <span class="" id="txtemail"></span>
+            </div>
+            
+            <div class="input-field col s12 m12 l6 ">
+              <input type="text" name="user" title="Usuario (*)" id="user">
+              <label for="user">Usuario</label>
+              <span class="" id="txtuser"></span>
+            </div>
+
+            <div class="input-field col s12 m12 l6">
+              <input type="text" name="pass" title="Contraseña (*)" id="pass">
+              <label for="pass">Contraseña</label>
+              <span class="" id="txtpass"></span>
+            </div>
+
 
 
 
@@ -116,20 +125,14 @@
 
       <div id="modal2" class="modal modal-fixed-footer usuariomodal">
       <div class="modal-content">
-        <h4>Editar usuario</h4>
+        <h4>Editar usuario.</h4>
         <div class="row">
         <form class="col s12 center-align" id="formusere" name="formusere" method="post">
         <div class="row">
           <div class=" col s12">
-            <input type="text" name="id"  id="id">
-            <div class="input-field col s12 ">
-              <input type="text" name="fullnamee" title="Nombre" id="fullnamee">
-              <span class="helper-text">Nombre completo</span>
-            </div>
-            <div class="input-field col s12">
-              <input type="text" name="phonee" title="Telefono" id="phonee">
-              <span class="helper-text">Telefono</span>
-            </div>
+
+            <input type="hidden" name="id"  id="id">
+
             <div class="input-fiel col s12">
              <div class="col s12 align-center">
               <div id="vista-previa">
@@ -139,36 +142,45 @@
             <br>
             <div class="file-field input-field col s12">
               <div class="btn">
-                <span>File</span>
+                <span>Imagen</span>
                 <input type="file" id="filee" name="filee">
               </div>
               <div class="file-path-wrapper">
                 <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="text">
               </div>
             </div>
+            <span class="" id="txtimge"></span>
             </div>
-            <div class="input-field col s12">
-              <input type="text" name="emaile" title="Correo electronico" id="emaile">
-              <span class="helper-text">Correo electronico</span>
+
+            <div class="input-field col s12 m12 l6  ">
+              <input type="text" name="fullnamee" title="Nombre completo" id="fullnamee" style="text-align: center;">
+              <span class="" id="txtfullnamee">Nombre completo</span>
+            </div>
+
+            <div class="input-field col s12 m12 l6 ">
+              <select  class="select2 browser-default" id="usertpe" title="Tipo de Usuario" name="usertpe">
+              </select>
+              <span class="" id="txtusertpe">Tipo de Usuario</span>
+            </div>
+
+            <div class="input-field col s12 m12 l6 ">
+              <input type="text" name="phonee" title="Tel&eacute;fono" id="phonee" style="text-align: center;">
+              <span class="" id="txtphonee">Tel&eacute;fono</span>
+            </div>
+            
+            <div class="input-field col s12 m12 l6 col s12 m12 l6 ">
+              <input type="email" name="emaile" title="Correo electr&oacute;nico" id="emaile" style="text-align: center;">
+              <span class="" id="txtemaile">Correo electr&oacute;nico</span>
             </div>
    
-            <div class="input-field col s12 ">
-              <input type="text" name="usere" title="Usuario" id="usere">
-              <span class="helper-text">Usuario</span>
+            <div class="input-field col s12 m12 l6  ">
+              <input type="text" name="usere" title="Usuario" id="usere" style="text-align: center;">
+              <span class="" id="txtusere">Usuario</span>
             </div>
 
-
-            <div class="input-field col s12">
-              <select  class="select2 browser-default" id="usertpe" name="usertpe">
-
-
-              </select>
-            </div>
-
-
-            <div class="input-field col s12">
-              <input type="text" name="passe" title="Contraseña" id="passe">
-              <span class="helper-text">Contraseña</span>
+            <div class="input-field col s12 m12 l6 ">
+              <input type="text" name="passe" title="Contraseña" id="passe" style="text-align: center;">
+              <span class="" id="txtpasse">Contraseña</span>
             </div>
             
           </div>

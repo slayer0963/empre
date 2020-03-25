@@ -1,5 +1,10 @@
 $(document).ready(function(){
 
+
+$("#phone").mask("(503) 9999-9999");
+$("#phonee").mask("(503) 9999-9999");
+
+
 setCombo();
 
 getData();
@@ -53,7 +58,7 @@ $("#img").change(function(event) {
             
                 var objeto_url=navegador.createObjectURL(archivos[i]);
 
-         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class=" responsive-img">');
+         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
        }
 });
 
@@ -70,14 +75,17 @@ $('#formuser').submit(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-              alert(resp);
+             // alert(resp);
                    if(resp==1){
                     getData();
                     cleanform();
-                    
-                    M.toast({html: "¡Se ha agregado el usuario exitosamente!", classes: 'rounded  green'});
+                    cleanbox();
+                    M.toast({html: "¡Se ha agregado al usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
@@ -104,9 +112,14 @@ $('#formusere').submit(function() {
             success: function(resp) {
 
                    if(resp==1){
-                    M.toast({html: "¡Se ha modiicado el usuario exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modificado al usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
+                    cleanbox();
+                    cleanform();
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
@@ -117,11 +130,16 @@ $('#formusere').submit(function() {
     
   }
   return false;
-}); 
+});
+  
+
 });
 
-var idinput = ['fullname','phone','img','email','user','pass'];
-var idinpute = ['fullnamee','phonee','imge','emaile','usere','passe'];
+var idinput = ['img','fullname','usertp','phone','email','user','pass'];
+var idinputerror= ['txtimg','txtfullname','txtusertp','txtphone','txtemail','txtuser','txtpass'];
+var idinpute = ['imge','fullnamee','usertpe','phonee','emaile','usere','passe'];
+var idinputerrore= ['txtimge','txtfullnamee','txtusertpe','txtphonee','txtemaile','txtusere','txtpasse'];
+
 
 var cleanform = () =>{
     idinput.forEach(names => {
@@ -130,7 +148,63 @@ var cleanform = () =>{
     });
 }
 
+
 var Validate = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinput.forEach(names => {
+          
+       if($("#"+names).val()!=0){
+        
+         validate+=1;
+         html="Listo";
+         //alert($("#"+names).val());
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
+       }
+       else{  
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+  else{
+   idinpute.forEach(names => {
+       if($("#"+names).val()!=0){
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('errorinputs');
+         $("#"+idinputerrore[counte]).addClass('successinputs');
+       }
+       else{
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('successinputs');
+         $("#"+idinputerrore[counte]).addClass('errorinputs');
+       }
+        counte++;
+    });
+
+  }
+
+    return validate;
+}
+
+var cleanbox=()=>{
+idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+idinputerrore.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+
+
+/*var Validate = (type) =>{
   var validate=0;
   var html="";
   var validate=0, error=0;
@@ -165,7 +239,8 @@ var Validate = (type) =>{
   }
 
     return validate;
-}
+}*/
+
 
 
 
@@ -187,7 +262,7 @@ var FillBoxes =(id,name,phone,imagen,mail,user,pass, typeuser) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' disabled selected>Seleccione tipo de usuario</option>";
+               html+="<option value='0' selected>Seleccione tipo de usuario</option>";
                for (var i = 0; i < values.length; i++) {
                 
                 if (typeuser==values[i][1]) {
@@ -211,7 +286,7 @@ var setCombo = (val) =>{
             url: "../../controller/cuser.php?btngetData=getDataTypeUser",
             success: function(resp) {
             var values = eval(resp);        
-              html+="<option value='0' disabled selected>Seleccione tipo de usuario</option>";
+              html+='<option value="0" selected>Seleccione tipo de usuario</option>';
                for (var i = 0; i< values.length; i++) {
                    html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
                }
@@ -233,7 +308,7 @@ var StateChange = (id,estado) =>{
             data: dataString,
             success: function(resp) {            
                     if (resp=="1") {
-                               M.toast({html: "¡Se ha modiicado el estado exitosamente!", classes: 'rounded  green'});
+                               M.toast({html: "¡Se ha modificado el estado exitosamente!", classes: 'rounded  green'});
                     }else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
                     
@@ -265,7 +340,6 @@ var getData = ()=> {
           "type": "POST"
     },
     "columns": [
-      { "data": "id_user" },
       { "data": "fullname_user" },
       { "data": "phone_user" },
       { "data": "imagen" },
@@ -273,7 +347,10 @@ var getData = ()=> {
       { "data": "user_user" },
       { "data": "pass_user" },
       { "data": "id_ustp" },
-      { "data": "actions" }
+      { "data": "actions" },
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
       ],
       "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "oLanguage": {
@@ -283,12 +360,12 @@ var getData = ()=> {
             '<option value="5">5</option>'+
             '<option value="10">10</option>'+
             '<option value="25">25</option>'+
-            '<option value="-1">All</option>'+
+            '<option value="-1">Todos</option>'+
             '</select> registros',
         "sZeroRecords":    "No se encontraron resultados",
         "sEmptyTable":     "Ningún dato disponible en esta tabla",
-        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
-        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros.",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros.",
         "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
         "sInfoPostFix":    "",
         "sSearch":         "Filtrar:",

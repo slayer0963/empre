@@ -28,7 +28,8 @@
     </head>
     <style>
           .peque { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 60%;} 
-          .usuariomodal { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 85%;} 
+          .usuariomodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+          th.dt-center, td.dt-center { text-align: center; } 
           .container{
             margin-top: 2rem;
             padding-left: 0;

@@ -70,7 +70,6 @@ if($page=='getData'){
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.');\" id=\"btnd'.$c["id_ustp"].'\"><i class=\"material-icons\">edit</i></a>';
          
          $table.='{
-                  "id_ustp":"'.$c["id_ustp"].'",
                   "name_ustp":"'.$c["name_ustp"].'",
                   "actions":"'.$btnedit.$btnstate.'"
                 },';    

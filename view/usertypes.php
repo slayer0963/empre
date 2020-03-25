@@ -7,7 +7,6 @@
                     <table id="tbusertype" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                              <th class="text-center">Id</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
@@ -15,7 +14,6 @@
                             <tbody></tbody>
                              <tfoot>
                             <tr>
-                              <th class="text-center">Id</th>
                               <th class="text-center">Nombre</th>
                               <th class="text-center">Acciones</th>
                             </tr>
@@ -32,9 +30,9 @@
         <form class="col s12 center-align" id="formusertype" name="formusertype" method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="usertype" title="Tipo de usuario" id="usertype">
-            
-            <span class="helper-text">Nombre</span>
+            <input type="text" name="usertype" title="Tipo de usuario (*)" id="usertype">
+            <label for="usertype">Tipo Usuario</label>
+            <span class="" id="txtusertype"></span>
           </div>
         </div>
         <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
@@ -54,9 +52,9 @@
           <form class="col s12 center-align" name="formusertypee" id="formusertypee" method="post">
           <div class="row">
             <input type="hidden" name="id" title="nombre" id="id">
-            <label for="first_name">Color</label>
             <div class="input-field">
-              <input  id="usertypee" name="usertypee" title="Tipo de usuario" type="text"> 
+              <input  id="usertypee" name="usertypee" title="Tipo de usuario" type="text">
+              <span class="" id="txtusertypee"></span> 
             </div>
 
           </div>

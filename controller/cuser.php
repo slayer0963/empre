@@ -17,17 +17,19 @@
 		//echo $ext;
 		if (in_array($ext, $formatos)) {
 			if (move_uploaded_file($nombreTmpArchivo, "../view/imguser/$nombreArchivo")) {
-
+				return $obj;
 			}
 			else{
-				echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 1('JPG','GIF','PNG')</h1></center>";
+				
+				return "x";
 			}
 		}
 		else
 		{
-			echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 2('JPG','GIF','PNG')</h1></center>";
+			
+			return "x";
 		}
-	    return $obj;
+	    
 	}
 
 
@@ -47,23 +49,25 @@
 		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
 		//echo $ext;
 		if (file_exists("../view/imguser/$nombreArchivo")) {
-		    
+		    return $obj;
 		} else {
 		    if (in_array($ext, $formatos)) {
 			if (move_uploaded_file($nombreTmpArchivo, "../view/imguser/$nombreArchivo")) {
-
+				return $obj;
 			}
 			else{
-				echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 1('JPG','GIF','PNG')</h1></center>";
+				
+				return "x";
 			}
 		}
 		else
 		{
-			echo "<h1><center>Ocurrio un error al cargar la foto, ASEGURESE QUE SEA UNA IMAGEN O QUE SEA UN FORMATO RECONOCIBLE 2('JPG','GIF','PNG')</h1></center>";
+			
+			return "x";
 		}
 		}
 		
-	    return $obj;
+	    
 	}
 
 	function updateState(){
@@ -133,10 +137,9 @@ if($page=='getData'){
 
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_user.','.$fullname_user.','.$phone_user.','.$imagen.','.$email_user.','.$user_user.','.$pass_user.','.$id_ustp.');\" id=\"btnd'.$c["id_user"].'\"><i class=\"material-icons\">edit</i></a>';
 
-        $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-1\" data-title=\"'.$c["fullname_user"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 100px; width: 100px;\" id=\"imgcontainer\"  class=\" responsive-img\"></a>';
+        $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-1\" data-title=\"'.$c["fullname_user"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"imgcontainer\"  class=\" circle responsive-img\"></a>';
 
          $table.='{
-                  "id_user":"'.$c["id_user"].'",
                   "fullname_user":"'.$c["fullname_user"].'",
                   "phone_user":"'.$c["phone_user"].'",
                   "imagen":"'.$imagen.'",

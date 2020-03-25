@@ -9,7 +9,7 @@ getData();
 
 $('#formusertype').submit(function() {
 
-  if(Validates(1)==idinput.length){ 
+  if(Validate(1)==idinput.length){ 
 	$.ajax({
             type: "POST",
             url: "../../controller/cusertype.php?btnsetData=setData", 
@@ -18,7 +18,7 @@ $('#formusertype').submit(function() {
                    if(resp==1){
                     getData();
                     cleanform();
-                    
+                    cleanbox();
                     M.toast({html: "¡Se ha agregado el tipo de usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
@@ -36,16 +36,18 @@ $('#formusertype').submit(function() {
 });	
 
 $('#formusertypee').submit(function() {
-   if(Validates(0)==idinpute.length){
+   if(Validate(0)==idinpute.length){
     $.ajax({
             type: "POST",
             url: "../../controller/cusertype.php?updateData=update", 
             data: $("#formusertypee").serialize(),
             success: function(resp) {
                    if(resp==1){
-                    M.toast({html: "¡Se ha modiicado el tipo de usuario exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modificado el tipo de usuario exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
+                    cleanform();
+                    cleanbox();
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
@@ -60,7 +62,9 @@ $('#formusertypee').submit(function() {
 });
 
 var idinput = ['usertype'];
+var idinputerror= ['txtusertype'];
 var idinpute = ['usertypee'];
+var idinputerrore= ['txtusertypee'];
 
 var cleanform = () => {
     idinput.forEach(names => {
@@ -69,42 +73,56 @@ var cleanform = () => {
     });
 }
 
-var Validates = (type) =>{
-  var validate=0;
-  var html="";
-  var validate=0, error=0;
-  var html="";
+var Validate = (type) =>{
+  var validate=0, html="", count=0, counte=0;
   if(type==1){
         idinput.forEach(names => {
-       if($("#"+names).val().length > 0){
+          
+       if($("#"+names).val() != ""){
          validate+=1;
+         html="Listo";
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
        }
        else{
-        error+=1;
-        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
-        //console.log(validate.isEmpty($("#"+names).val()));
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
        }
+       count++;
     });
-    if(error>=1){
-      M.toast({html: html , classes: 'rounded orange lighten-2'});
-    }
   }
   else{
    idinpute.forEach(names => {
        if($("#"+names).val().length > 0){
-         validate+=1;
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('errorinputs');
+         $("#"+idinputerrore[counte]).addClass('successinputs');
        }
        else{
-        error+=1;
-        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('successinputs');
+         $("#"+idinputerrore[counte]).addClass('errorinputs');
        }
+        counte++;
     });
-    if(error>=1){
-      M.toast({html: html , classes: 'rounded orange lighten-2'});
-    }
+
   }
 
     return validate;
+}
+
+var cleanbox=()=>{
+idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+idinputerrore.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
 }
 
 
@@ -128,7 +146,7 @@ var StateChange = (id,estado) => {
             data: dataString,
             success: function(resp) {            
                     if (resp=="1") {
-                               M.toast({html: "¡Se ha modiicado el estado exitosamente!", classes: 'rounded  green'});
+                               M.toast({html: "¡Se ha modificado el estado exitosamente!", classes: 'rounded  green'});
                     }else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
                     
@@ -158,9 +176,11 @@ var getData = ()=> {
           "type": "POST"
     },
     "columns": [
-      { "data": "id_ustp" },
       { "data": "name_ustp" },
       { "data": "actions" }
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
       ],
       "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "oLanguage": {
@@ -170,7 +190,7 @@ var getData = ()=> {
             '<option value="5">5</option>'+
             '<option value="10">10</option>'+
             '<option value="25">25</option>'+
-            '<option value="-1">All</option>'+
+            '<option value="-1">Todos</option>'+
             '</select> registros',
         "sZeroRecords":    "No se encontraron resultados",
         "sEmptyTable":     "Ningún dato disponible en esta tabla",

@@ -42,6 +42,9 @@ include_once "../cn/connection.php";
 
  	public function setData($obj)
  	{
+ 		if($obj=="x"){
+ 			echo "x";
+ 		}else{
  		$c=conectar();
 		$_fullname_user=$obj->getFullnameUser();
 		$_phone_user=$obj->getPhoneUser();
@@ -58,11 +61,15 @@ include_once "../cn/connection.php";
 
 		     }
 		mysqli_close($c);
+		}
  	}
 
 
  	public function updateData($obj)
- 	{
+ 	{	
+ 		if($obj=="x"){
+ 			echo "x";
+ 		}else{
  		$c=conectar();
  		$_id_user=$obj->getIdUser();
 		$_fullname_user=$obj->getFullnameUser();
@@ -79,6 +86,7 @@ include_once "../cn/connection.php";
 			    echo "1"; 
 		     }
 		mysqli_close($c);
+		}
  	}
 
  	public function updateState($obj)

@@ -45,7 +45,7 @@ $('#formcolore').submit(function() {
             data: $("#formcolore").serialize(),
             success: function(resp) {
                    if(resp==1){
-                    M.toast({html: "¡Se ha modiicado el color exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modificado el color exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
                     cleanform();
@@ -87,7 +87,7 @@ var Validate = (type) =>{
        if($("#"+names).val().length > 0){
          validate+=1;
          html="Listo";
-         $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
          $("#"+idinputerror[count]).removeClass('errorinputs');
          $("#"+idinputerror[count]).addClass('successinputs');
          
@@ -192,7 +192,7 @@ var StateChange = (id,estado) =>{
             success: function(resp) {            
             //alert(resp);
                     if (resp=="1") {
-                               M.toast({html: "¡Se ha modiicado el estado exitosamente!", classes: 'rounded  green'});
+                               M.toast({html: "¡Se ha modificado el estado exitosamente!", classes: 'rounded  green'});
                     }else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
                     
@@ -222,10 +222,12 @@ var getData = ()=> {
           "type": "POST"
     },
     "columns": [
-      { "data": "id_color" },
       { "data": "code_color" },
       { "data": "name_color" },
       { "data": "actions" }
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
       ],
       "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
     "oLanguage": {
@@ -235,7 +237,7 @@ var getData = ()=> {
             '<option value="5">5</option>'+
             '<option value="10">10</option>'+
             '<option value="25">25</option>'+
-            '<option value="-1">All</option>'+
+            '<option value="-1">Todos</option>'+
             '</select> registros',
         "sZeroRecords":    "No se encontraron resultados",
         "sEmptyTable":     "Ningún dato disponible en esta tabla",

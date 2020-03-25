@@ -74,7 +74,6 @@ if($page=='getData'){
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.','.$code.');\" id=\"btnd'.$c["id_color"].'\"><i class=\"material-icons\">edit</i></a>';
          
          $table.='{
-                  "id_color":"'.$c["id_color"].'",
                   "code_color":"'.$color.'",
                   "name_color":"'.$c["name_color"].'",
                   "actions":"'.$btnedit.$btnstate.'"
