@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-03-2020 a las 03:31:10
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 26-03-2020 a las 03:20:19
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -96,7 +96,11 @@ CREATE TABLE `color` (
 --
 
 INSERT INTO `color` (`id_color`, `code_color`, `name_color`, `state_color`) VALUES
-(1, '#191919', 'Negro', 1);
+(1, '#191919', 'Negro', 1),
+(2, '#004080', 'Azul', 1),
+(3, '#ff0000', 'Rojo', 1),
+(4, '#ff0080', 'Rosado', 1),
+(5, '#ffff00', 'Amarillo', 1);
 
 -- --------------------------------------------------------
 
@@ -159,7 +163,7 @@ CREATE TABLE `sizes` (
 CREATE TABLE `users` (
   `id_user` int(11) NOT NULL,
   `fullname_user` varchar(500) DEFAULT NULL,
-  `phone_user` varchar(8) DEFAULT NULL,
+  `phone_user` varchar(15) DEFAULT NULL,
   `imagen` varchar(500) DEFAULT NULL,
   `email_user` varchar(150) DEFAULT NULL,
   `user_user` varchar(30) DEFAULT NULL,
@@ -167,6 +171,18 @@ CREATE TABLE `users` (
   `id_ustp` int(11) DEFAULT NULL,
   `state_user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users`
+--
+
+INSERT INTO `users` (`id_user`, `fullname_user`, `phone_user`, `imagen`, `email_user`, `user_user`, `pass_user`, `id_ustp`, `state_user`) VALUES
+(1, 'Juan Perez', '(503) 2257-7777', '11834734_1143605288989355_8211990350207519370_o.jpg', 'kmb124@live.com', 'pepe1236', '1232', 1, 1),
+(2, 'Juanes', '(503) 2215-4556', 'omar.jpg', 'moisesrivera2012@hotmail.com', '123', '123', 3, 1),
+(3, 'Juanes', '(503) 2215-4556', 'derecho.jpg', 'moisesrivera@hotmail.com', '123', '123', 3, 1),
+(4, 'Momo153', '(503) 1234-4312', '740314_584256098257613_1968960693_o.jpg', 'moisesrivera2010@hotmail.com', '12333', '123', 3, 1),
+(14, '11', '(503) 7777-7777', '12301738_1209656965717520_3414937646955594641_n.jpg', '11@gmail.com', '11', '11', 1, 1),
+(15, 'Pedro Jose Alvarez Prudencio', '(503) 2257-6600', '12301738_1209656965717520_3414937646955594641_n.jpg', 'pepe@gmail.com', 'pepe1', '123', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -179,6 +195,17 @@ CREATE TABLE `user_type` (
   `name_ustp` varchar(250) DEFAULT NULL,
   `state_ustp` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `user_type`
+--
+
+INSERT INTO `user_type` (`id_ustp`, `name_ustp`, `state_ustp`) VALUES
+(1, 'Supervisor', 1),
+(2, 'Asistente', 1),
+(3, 'Empleado', 1),
+(4, 'Usuario', 1),
+(5, 'Admin', 1);
 
 --
 -- Índices para tablas volcadas
@@ -252,6 +279,7 @@ ALTER TABLE `sizes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `email_user_UNIQUE` (`email_user`),
   ADD KEY `id_ustp` (`id_ustp`);
 
 --
@@ -292,7 +320,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
-  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `material`
@@ -322,13 +350,13 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
