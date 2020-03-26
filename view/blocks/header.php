@@ -30,6 +30,7 @@
           .peque { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 60%;} 
           .usuariomodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
           .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+          .product { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 80%;}
           th.dt-center, td.dt-center { text-align: center; } 
           .container{
             margin-top: 2rem;

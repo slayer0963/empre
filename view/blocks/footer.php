@@ -20,7 +20,7 @@ $(document).ready(function(){
   $('.modal').modal();
       
     $('.dropdown-trigger').dropdown();
-    
+    $('#descrip').characterCounter();
 });
   </script>
 

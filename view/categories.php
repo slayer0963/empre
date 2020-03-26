@@ -23,7 +23,7 @@
 
 </div>
   <!-- Modal Structure -->
-  <div id="modal1" class="modal  modalcolor">
+  <div id="modal1" class="modal modal-fixed-footer  peque">
     <div class="modal-content">
       <h4>Categor&iacute;as</h4>
       <div class="row">
@@ -45,7 +45,7 @@
     </div>
   </div>
 
-      <div id="modal2" class="modal  modalcolor">
+      <div id="modal2" class="modal modal-fixed-footer  peque">
       <div class="modal-content">
         <h4>Editar Categor&iacute;as</h4>
         <div class="row">
