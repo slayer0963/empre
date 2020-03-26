@@ -35,12 +35,12 @@
     <li><a class="dropdown-trigger" href="" data-target="dropdown2">Producto<i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a href=""  class="">Salir</a></li>
 </ul>
-<ul id="dropdown1" class="dropdown-content deep-orange lighten-5">
+<ul id="dropdown1" class="dropdown-content indigo lighten-5">
   <li><a href="<?php echo SERVERURL; ?>usertypes/" class="">Tipo de usuario</a></li>
   <li><a href="<?php echo SERVERURL; ?>users/" class="">Usuario</a></li>
 </ul>
 
-<ul id="dropdown2" class="dropdown-content deep-orange lighten-5">
+<ul id="dropdown2" class="dropdown-content indigo lighten-5">
     <li><a href="<?php echo SERVERURL; ?>producttype/" class="">Tipo de producto</a></li>
   <li><a href="<?php echo SERVERURL; ?>categories/" class="">Categoria</a></li>
   <li><a href="<?php echo SERVERURL; ?>product/" class="">Producto</a></li>
