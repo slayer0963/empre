@@ -1,19 +1,25 @@
 $(document).ready(function(){
 getData();
 
-$('#formcat').submit(function() {
 
-  if(Validate(1)==idinput.length){ 
+
+ 
+
+
+
+$('#formproducttype').submit(function() {
+
+  if(Validate(1)==idinput.length){
 	$.ajax({
             type: "POST",
-            url: "../../controller/ccategories.php?btnsetData=setData", 
-            data: $("#formcat").serialize(),
+            url: "../../controller/cproducttype.php?btnsetData=setData", 
+            data: $("#formproducttype").serialize(),
             success: function(resp) {
                    if(resp==1){
                     getData();
                     cleanform();
                     cleanbox();
-                    M.toast({html: "¡Se ha agregado la categoria exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha agregado el tipo de producto exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
                    }
@@ -29,15 +35,15 @@ $('#formcat').submit(function() {
 	return false;
 });	
 
-$('#formcate').submit(function() {
+$('#formproducttypee').submit(function() {
    if(Validate(0)==idinpute.length){
     $.ajax({
             type: "POST",
-            url: "../../controller/ccategories.php?updateData=update", 
-            data: $("#formcate").serialize(),
+            url: "../../controller/cproducttype.php?updateData=update", 
+            data: $("#formproducttypee").serialize(),
             success: function(resp) {
                    if(resp==1){
-                    M.toast({html: "¡Se ha modificado la categoria exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modificado el tipo de producto exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
                     cleanform();
@@ -55,10 +61,10 @@ $('#formcate').submit(function() {
 }); 
 });
 
-var idinput = ['categories'];
-var idinputerror= ['txtcategories'];
-var idinpute = ['categoriese'];
-var idinputerrore= ['txtcategoriese'];
+var idinput = ['producttype'];
+var idinputerror= ['txtproducttype'];
+var idinpute = ['producttypee'];
+var idinputerrore= ['txtproducttypee'];
 
 var cleanform = () => {
     idinput.forEach(names => {
@@ -121,10 +127,10 @@ idinputerrore.forEach(names => {
 
 
 
-var FillBoxes =(id,name) =>{
+var FillBoxes =(id,name,code) =>{
     $("#id").val(id);
-    $("#categoriese").val(name);
-    $("#categoriese").focus();   
+    $("#producttypee").val(name);
+    $("#producttypee").focus();   
 }
 
 
@@ -136,7 +142,7 @@ var StateChange = (id,estado) => {
           var dataString = 'id='+id+"&state="+estado;
            $.ajax({
             type: "POST",
-            url: "../../controller/ccategories.php?updateData=statechange",
+            url: "../../controller/cproducttype.php?updateData=statechange",
             data: dataString,
             success: function(resp) {            
                     if (resp=="1") {
@@ -154,7 +160,7 @@ var StateChange = (id,estado) => {
 
 var getData = ()=> {
 
-    $('#tbcat').DataTable( {
+    $('#tbproducttype').DataTable( {
     "responsive": true,
     "order": [[ 0, "desc" ]],
     "stateSave": true,
@@ -166,11 +172,11 @@ var getData = ()=> {
 
 
     "ajax": {
-      url: "../../controller/ccategories.php?btngetData=getData",//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
+      url: "../../controller/cproducttype.php?btngetData=getData",//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
           "type": "POST"
     },
     "columns": [
-      { "data": "name_cat" },
+      { "data": "name_tpro" },
       { "data": "actions" }
       ],
       "columnDefs": [

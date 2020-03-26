@@ -99,7 +99,7 @@ $('#formbusi').submit(function() {
                     getData();
                     cleanform();
                     cleanbox();
-                    M.toast({html: "¡Se ha agregado al usuario exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha agregado el negocio exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
                    }else if(resp=="x"){
@@ -131,7 +131,7 @@ $('#formbusie').submit(function() {
             success: function(resp) {
 
                    if(resp==1){
-                    M.toast({html: "¡Se ha modificado al usuario exitosamente!", classes: 'rounded  green'});
+                    M.toast({html: "¡Se ha modificado el negocio exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                     getData();
                     cleanbox();
