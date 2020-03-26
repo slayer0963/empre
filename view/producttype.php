@@ -53,7 +53,7 @@
           <div class="row">
             <input type="hidden" name="id" title="nombre" id="id">
             <div class="input-field">
-              <input  id="producttypee" name="producttypee" title="Tipo de usuario" type="text">
+              <input  id="producttypee" name="producttypee" title="Tipo de producto" type="text">
               <span class="" id="txtproducttypee"></span> 
             </div>
 
