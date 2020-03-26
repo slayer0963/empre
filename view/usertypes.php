@@ -54,7 +54,7 @@
             <input type="hidden" name="id" title="nombre" id="id">
             <div class="input-field">
               <input  id="usertypee" name="usertypee" title="Tipo de usuario" type="text">
-              <span class="" id="txtusertypee"></span> 
+              <span class="" id="txtusertypee">Tipo de usuario</span> 
             </div>
 
           </div>

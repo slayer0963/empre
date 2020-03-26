@@ -124,9 +124,9 @@
             </div>
 
             <div class="input-field col s12 m12 l6">
-              <select  class="select2 browser-default" id="usere" name="usere" title="Usuario (*)">
+              <select  class="select2 browser-default" id="usere" name="usere" title="Nombre del usuario (*)">
               </select>
-              <span class="" id="txtusere"></span>
+              <span class="" id="txtusere">Nombre del usuario</span>
             </div>
             
           </div>
