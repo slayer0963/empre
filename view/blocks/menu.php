@@ -33,6 +33,7 @@
     <li class="divider"></li>
     <li><a class="dropdown-trigger" href="" data-target="dropdown1">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
     <li class="divider"></li>
+    <li><a href="<?php echo SERVERURL; ?>business/"  class="">Negocio</a></li>
     <li><a href=""  class="">Salir</a></li>
 </ul>
 <ul id="dropdown1" class="dropdown-content">

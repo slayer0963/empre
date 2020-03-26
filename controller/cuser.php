@@ -137,7 +137,7 @@ if($page=='getData'){
 
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_user.','.$fullname_user.','.$phone_user.','.$imagen.','.$email_user.','.$user_user.','.$pass_user.','.$id_ustp.');\" id=\"btnd'.$c["id_user"].'\"><i class=\"material-icons\">edit</i></a>';
 
-        $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-1\" data-title=\"'.$c["fullname_user"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"imgcontainer\"  class=\" circle responsive-img\"></a>';
+        $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$id_user.'\" data-title=\"'.$c["fullname_user"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
 
          $table.='{
                   "fullname_user":"'.$c["fullname_user"].'",

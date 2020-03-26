@@ -62,6 +62,25 @@ $("#img").change(function(event) {
        }
 });
 
+$("#imge").change(function(event) {
+     document.getElementById("imgcontainere").removeAttribute('src');
+
+        $("#vista-previae").html('');
+                var archivos=document.getElementById('filee').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+});
+
 
 $('#formuser').submit(function() {
   if(Validate(1)==idinput.length){
@@ -203,43 +222,6 @@ idinputerrore.forEach(names => {
 });
 }
 
-
-/*var Validate = (type) =>{
-  var validate=0;
-  var html="";
-  var validate=0, error=0;
-  var html="";
-  if(type==1){
-        idinput.forEach(names => {
-       if($("#"+names).val().length > 0){
-         validate+=1;
-       }
-       else{
-        error+=1;
-        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
-       }
-    });
-    if(error>=1){
-      M.toast({html: html , classes: 'rounded orange lighten-2'});
-    }
-  }
-  else{
-   idinpute.forEach(names => {
-       if($("#"+names).val().length > 0){
-         validate+=1;
-       }
-       else{
-        error+=1;
-        html+="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
-       }
-    });
-    if(error>=1){
-      M.toast({html: html , classes: 'rounded orange lighten-2'});
-    }
-  }
-
-    return validate;
-}*/
 
 
 

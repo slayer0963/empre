@@ -42,7 +42,7 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer  usuariomodal">
     <div class="modal-content">
-      <h4>Usuario.</h4>
+      <h4>Usuario</h4>
       <div class="row">
       <form class="col s12 center-align" id="formuser" name="formuser" method="post">
         <div class="row">
@@ -125,7 +125,7 @@
 
       <div id="modal2" class="modal modal-fixed-footer usuariomodal">
       <div class="modal-content">
-        <h4>Editar usuario.</h4>
+        <h4>Editar usuario</h4>
         <div class="row">
         <form class="col s12 center-align" id="formusere" name="formusere" method="post">
         <div class="row">
@@ -135,8 +135,8 @@
 
             <div class="input-fiel col s12">
              <div class="col s12 align-center">
-              <div id="vista-previa">
-                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" style="height: 150px; width: 150px;" id="imgcontainere" alt="" class=" responsive-img">
+              <div id="vista-previae">
+                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" class="circle responsive-img" style="height: 150px; width: 150px;" id="imgcontainere"  >
               </div>
             </div>
             <br>
