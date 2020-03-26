@@ -1,6 +1,6 @@
 
 <title>Colores</title>
-
+<div class="animated slideInLeft">
 <a class=" btn z-depth-5   modal-trigger" id="btng" href="#modal1"><i class="material-icons right">color_lens</i>Agregar colores</a>
 
       <div class="tb">
@@ -23,7 +23,7 @@
                         </table>
       </div>
 
-
+</div>
   <!-- Modal Structure -->
   <div id="modal1" class="modal modal-fixed-footer peque">
     <div class="modal-content">

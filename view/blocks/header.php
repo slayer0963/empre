@@ -58,8 +58,8 @@
             margin-top: 1rem;
             }
             .peque { width: 75% !important ; height: 75% !important ; } 
-            .usuariomodal {padding: 0; width: 100% !important ; height: 75% !important ; max-height: 85%;} 
-            .businessmodal { padding: 0; width: 100% !important ; height: 75% !important ; max-height: 85%;}
+            .usuariomodal {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;} 
+            .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
 
           }
           .tb{
@@ -68,4 +68,4 @@
 
 
     </style>
-    <body>
+    <body >

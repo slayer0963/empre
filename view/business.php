@@ -1,8 +1,9 @@
 
 <title>Negocios</title>
 
+<div class="animated slideInLeft">
 
-<a class="  btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar negocio</a>
+<a class="  btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">work</i>Agregar negocio</a>
 
       <div class="tb">
                     <table id="tbbusi" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
@@ -28,7 +29,7 @@
 
  
 
-
+</div>
     
 
 

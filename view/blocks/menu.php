@@ -1,6 +1,6 @@
       <!-- NAVBAR -->
 <header>
-  <nav class="blue darken-4">
+  <nav class="grey darken-3">
     <div class="nav-wrapper">
       <div class="row">
         <div class="col s11 ">
@@ -18,7 +18,7 @@
 
 
 <!-- LEFT SIDEBAR  -->
-<ul id="sidenav-1" class="sidenav sidenav-fixed blue lighten-5 ">
+<ul id="sidenav-1" class="sidenav sidenav-fixed indigo lighten-5 ">
     <li>
       <div class="user-view">
       <div class="background">
@@ -30,14 +30,20 @@
     </div>
     </li>
     <li><a href="<?php echo SERVERURL; ?>colors/"  class="">Colores</a></li>
-    <li class="divider"></li>
     <li><a class="dropdown-trigger" href="" data-target="dropdown1">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
-    <li class="divider"></li>
     <li><a href="<?php echo SERVERURL; ?>business/"  class="">Negocio</a></li>
+    <li><a class="dropdown-trigger" href="" data-target="dropdown2">Producto<i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a href=""  class="">Salir</a></li>
 </ul>
-<ul id="dropdown1" class="dropdown-content">
+<ul id="dropdown1" class="dropdown-content deep-orange lighten-5">
   <li><a href="<?php echo SERVERURL; ?>usertypes/" class="">Tipo de usuario</a></li>
-  <li class="divider"></li>
   <li><a href="<?php echo SERVERURL; ?>users/" class="">Usuario</a></li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content deep-orange lighten-5">
+    <li><a href="<?php echo SERVERURL; ?>producttype/" class="">Tipo de producto</a></li>
+  <li><a href="<?php echo SERVERURL; ?>categories/" class="">Categoria</a></li>
+  <li><a href="<?php echo SERVERURL; ?>product/" class="">Producto</a></li>
+  
+
 </ul>

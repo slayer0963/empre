@@ -1,6 +1,6 @@
 
 <title>Usuarios</title>
-
+<div class="animated slideInLeft">
 <a class="  btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">people</i>Agregar usuario</a>
 
       <div class="tb">
@@ -33,7 +33,7 @@
                         </table>
       </div>
 
- 
+ </div>
 
 
     

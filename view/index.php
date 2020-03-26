@@ -2,7 +2,7 @@
 <?php require 'blocks/menu.php'; ?>
 
 
-<div class="main m-1">
+<div class="main m-1 ">
   <div class="container">
     <?php 
     if(isset($_GET['view'])){
