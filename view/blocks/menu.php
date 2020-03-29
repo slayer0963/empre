@@ -42,6 +42,8 @@
 
 <ul id="dropdown2" class="dropdown-content indigo lighten-5">
     <li><a href="<?php echo SERVERURL; ?>producttype/" class="">Tipo de producto</a></li>
+    <li><a href="<?php echo SERVERURL; ?>size/" class="">Tamaño</a></li>
+    <li><a href="<?php echo SERVERURL; ?>material/" class="">Materiales</a></li>
   <li><a href="<?php echo SERVERURL; ?>categories/" class="">Categoria</a></li>
   <li><a href="<?php echo SERVERURL; ?>product/" class="">Producto</a></li>
   
