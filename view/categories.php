@@ -30,7 +30,7 @@
         <form class="col s12 center-align" id="formcat" name="formcat" method="post">
         <div class="row">
           <div class="input-field col s12">
-            <input type="text" name="categories" title="Nombre (*)" id="categories">
+            <input type="text" name="categories" title="Categor&iacute;a (*)" id="categories">
             <label for="categories">Categor&iacute;a</label>
             <span class="" id="txtcategories"></span>
           </div>
@@ -54,8 +54,8 @@
             <input type="hidden" name="id" title="id" id="id">
             
           <div class="input-field col s12">
-            <input type="text" name="categoriese" title="Nombre (*)" id="categoriese">
-            <span class="" id="txtcategoriese"></span>
+            <input type="text" name="categoriese" title="Categor&iacute;a (*)" id="categoriese">
+            <span class="" id="txtcategoriese">Categor&iacute;a</span>
           </div>
           
 

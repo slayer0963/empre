@@ -33,26 +33,29 @@
     <div class="modal-content">
       <h4>Producto</h4>
       <div class="row">
-        <form class="col s12 center-align" id="formproducttype" name="formproducttype" method="post">
+        <form class="col s12 center-align" id="formproduct" name="formproduct" method="post">
         <div class="row">
+
           <div class="input-field col s12">
+
             <input type="text" name="name" title="Nombre (*)" id="name">
             <label for="name">Nombre</label>
-            <span class="" id="txtproducttype"></span>
+            <span class="" id="txtname"></span>
           </div>
           <div class="input-field col s12">
             <textarea id="descrip" name="descrip" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="250"></textarea>
             <label for="descrip">Descripci&oacute;n</label>
+            <span class="" id="txtdescrip"></span>
           </div>
           <div class="input-field col s12">
-              <select  class="select2 browser-default" id="cat" name="cat" title="Categoria (*)">
+              <select  class="select2 browser-default" id="cat" name="cat" title="Categor&iacute;a (*)">
               </select>
-              <span class="" id="cat"></span>
+              <span class="" id="txtcat"></span>
           </div>
           <div class="input-field col s12">
               <select  class="select2 browser-default" id="tp" name="tp" title="Tipo de producto (*)">
               </select>
-              <span class="" id="tp"></span>
+              <span class="" id="txttp"></span>
           </div>
         </div>
         <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
@@ -65,30 +68,31 @@
     </div>
   </div>
 
-      <div id="modal2" class="modal modal-fixed-footer peque">
+      <div id="modal2" class="modal modal-fixed-footer product">
       <div class="modal-content">
-        <h4>Editar tipo de usuario</h4>
+        <h4>Editar producto</h4>
         <div class="row">
-          <form class="col s12 center-align" name="formproducttypee" id="formproducttypee" method="post">
+          <form class="col s12 center-align" name="formproducte" id="formproducte" method="post">
           <div class="row">
             <div class="input-field col s12">
+              <input type="hidden" name="id" title="Nombre (*)" id="id">
               <input type="text" name="namee" title="Nombre (*)" id="namee">
-              <label for="name">Nombre</label>
-              <span class="" id="txtproducttypee"></span>
+              
+              <span class="" id="txtnamee">Nombre</span>
             </div>
             <div class="input-field col s12">
               <textarea id="descripe" name="descripe" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="250"></textarea>
-              <label for="descripe">Descripci&oacute;n</label>
+             <span class="" id="txtdescripe">Descripci&oacute;n</span>
             </div>
             <div class="input-field col s12">
-                <select  class="select2 browser-default" id="cate" name="cate" title="Categoria (*)">
+                <select  class="select2 browser-default" id="cate" name="cate" title="Categor&iacute;a (*)">
                 </select>
-                <span class="" id="cate"></span>
+                <span class="" id="txtcate">Categor&iacute;a</span>
             </div>
             <div class="input-field col s12">
                 <select  class="select2 browser-default" id="tpe" name="tpe" title="Tipo de producto (*)">
                 </select>
-                <span class="" id="tpe"></span>
+                <span class="" id="txttpe">Tipo producto</span>
             </div>
           </div>
           <button type="submit" class=" btn">Editar <i class="material-icons">save</i></button>
