@@ -46,6 +46,6 @@
     <li><a href="<?php echo SERVERURL; ?>material/" class="">Materiales</a></li>
   <li><a href="<?php echo SERVERURL; ?>categories/" class="">Categoria</a></li>
   <li><a href="<?php echo SERVERURL; ?>product/" class="">Producto</a></li>
-  
+  <li><a href="<?php echo SERVERURL; ?>productassigment/" class="">Asiganci&oacute;n de producto</a></li>  
 
 </ul>

@@ -43,7 +43,7 @@ include_once "../cn/connection.php";
  	public function getData()
  	{
 		$c = conectar();
-		$sql="select id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro;";
+		$sql="select id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro ;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

@@ -3,6 +3,8 @@
 <div class="animated slideInLeft">
 <a class=" btn z-depth-5  modal-trigger" href="#modal1"><i class="material-icons right">person_pin</i>Agregar producto</a>
 
+
+
       <div class="tb">
                     <table id="tbproduct" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
                             <thead >
