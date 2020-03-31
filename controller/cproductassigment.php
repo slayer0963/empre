@@ -8,11 +8,25 @@
 	    return $obj;
 	}
 
+    function update(){
+        $obj=new ProductAssigment();
+        $obj->setIdAssprob($_POST["asign"]);
+        $obj->setIdPro($_POST["productide"]);
+        $obj->setIdBus($_POST["buse"]);
+        return $obj;
+    }
+
 	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
 	if($page=='setData'){
 	    $dat=new DAOProductAssigment();
 	    $dat->setData(insert());
 	}
+
+    $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='updateData'){
+        $dat=new DAOProductAssigment();
+        $dat->updateData(update());
+    }
 
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
@@ -36,6 +50,7 @@ if($page=='getData'){
          foreach($r as $c){
          $btnstate='';
          $color ='';
+
          $id="'".$c["id_pro"]."'";
          $name="'".$c["name_pro"]."'";
          $descrip="'".$c["descr_pro"]."'";
@@ -60,6 +75,7 @@ if($page=='getDataPro'){
          $table="";
          foreach($r as $c){
          $btnstate='';
+         $ida="'".$c["id_assprob"]."'";
          $id="'".$c["id_pro"]."'";
          $name="'".$c["name_pro"]."'";
          $descrip="'".$c["descr_pro"]."'";
@@ -67,7 +83,7 @@ if($page=='getDataPro'){
          $nameuser="'".$c["fullname_user"]."'";
 
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\"  onclick=\"ADDPROD('.$id.','.$name.','.$descrip.','.$namebus.','.$nameuser.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\"  onclick=\"FillBoxese('.$ida.','.$id.','.$name.','.$descrip.','.$namebus.','.$nameuser.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">edit</i></a>';
          
          $table.='{
                   "name_pro":"'.$c["name_pro"].'",

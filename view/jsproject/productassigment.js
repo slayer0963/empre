@@ -35,8 +35,47 @@ $("#bus").select2({
     }
   }
 });
+
+$("#usere").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#modal2"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+$("#buse").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#modal2"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
 $("#user").change(function(argument) {
   setComboBusi($(this).val());
+});
+
+$("#usere").change(function(event) {
+  setComboBuseu($(this).val());
 });
 
 
@@ -66,14 +105,42 @@ $('#formassig').submit(function() {
         });
 }
   return false;
+});
+
+$('#formassige').submit(function() {
+  if(Validate(0)==idinput.length){
+  $.ajax({
+            type: "POST",
+            url: "../../controller/cproductassigment.php?btnsetData=updateData", 
+            data: $("#formassige").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                   getData();
+                    getDataA();
+                    
+                    M.toast({html: "¡Se ha modificado exitosamente!", classes: 'rounded  green'});
+                    $('.modal').modal('close');
+                     
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información a modificar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+}
+  return false;
 }); 
+
 
 });
 
 var idinput = ['user','bus'];
 var idinputerror= ['txtuser','txtbus'];
-var idinpute = ['imge','fullnamee','usertpe','phonee','emaile','usere','passe'];
-var idinputerrore= ['txtimge','txtfullnamee','txtusertpe','txtphonee','txtemaile','txtusere','txtpasse'];
+var idinpute = ['usere','buse'];
+var idinputerrore= ['txtusere','txtbuse'];
 
 
 var Validate = (type) =>{
@@ -158,11 +225,84 @@ var setComboBusi = (val) =>{
       
 }
 
+var setComboBuseu = (val) =>{
+          var html="";
+          var dataString = 'id='+val;
+          $.ajax({
+            type: "POST",
+            url: "../../controller/cproductassigment.php?btngetData=getDataBusi",
+            data: dataString,
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='<option value="0" selected>Seleccione un negocio</option>';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+               }
+               $("#buse").html(html);
+            } 
+        }); 
+      
+}
+
+var setComboBusie = (id,name) =>{
+          var html="";
+          var dataString = 'id='+id;
+          $.ajax({
+            type: "POST",
+            url: "../../controller/cproductassigment.php?btngetData=getDataBusi",
+            data: dataString,
+            success: function(resp) {
+            var values = eval(resp);        
+               html+="<option value='0' selected>Seleccione un negocio</option>";
+                for (var i = 0; i < values.length; i++) {
+                 if (name==values[i][1]) {
+                    html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                  }else{
+                    html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                  }
+                }
+               $("#buse").html(html);
+            } 
+        }); 
+      
+}
+
 
 var FillBoxes =(id,name,des) =>{
     $("#productid").val(id);
     $("#name").html(name);
     $("#des").html(des);       
+}
+    var iduser=0;
+var FillBoxese =(id,idp,name,des,namebus,nameus) =>{
+  $("#asign").val(id);
+    $("#productide").val(idp);
+    $("#namee").html(name);
+    $("#dese").html(des);
+
+    $.ajax({
+        type: "POST",
+            url: "../../controller/cproductassigment.php?btngetData=getDataUsers",
+            }).done(function(resp) {
+      
+               var values = eval(resp);
+               html="";
+               html+="<option value='0' selected>Seleccione un usuario</option>";
+               for (var i = 0; i < values.length; i++) {
+                
+                if (nameus==values[i][1]) {
+                  setComboBusie(values[i][0],namebus);
+                  html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                }else{
+                  html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                }
+
+               }
+               $("#usere").html(html);
+    });
+
+
+      
 }
 
 var getData = ()=> {

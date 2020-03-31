@@ -28,6 +28,22 @@ include_once "../cn/connection.php";
 		mysqli_close($c);
  	}
 
+ 	public function updateData($obj)
+ 	{
+ 		$c=conectar();
+ 		$id = $obj->getIdAssprob();
+ 		$bus = $obj->getIdBus();
+		$pro = $obj->getIdPro();
+		$sql="update assignment_probus set id_bus=$bus, id_pro=$pro where id_assprob=$id";
+		if (!$c->query($sql)) {
+			print "0";
+		}else{
+			    echo "1"; 
+
+		     }
+		mysqli_close($c);
+ 	}
+
  	public function getDataUsers()
  	{
 		$c = conectar();
@@ -67,10 +83,11 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
+
 	public function getDataProduct()
  	{
 		$c = conectar();
-		$sql="select pro.id_pro, pro.name_pro, pro.descr_pro, bus.name_bus, us.fullname_user from assignment_probus asi inner join product pro on asi.id_pro=pro.id_pro inner join business bus on asi.id_bus=bus.id_bus inner join users us on bus.id_user=us.id_user;";
+		$sql="select asi.id_assprob, pro.id_pro, pro.name_pro, pro.descr_pro, bus.name_bus, us.fullname_user from assignment_probus asi inner join product pro on asi.id_pro=pro.id_pro inner join business bus on asi.id_bus=bus.id_bus inner join users us on bus.id_user=us.id_user;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

@@ -98,37 +98,38 @@
 
       <div id="modal2" class="modal modal-fixed-footer asign">
       <div class="modal-content">
-        <h4>Editar Asignaci&oacute;n de producto</h4>
+        <h4>Editar asignaci&oacute;n de producto</h4>
         <div class="row">
-        <form class="col s12 center-align" id="formassig" name="formassig" method="post">
+        <form class="col s12 center-align" id="formassige" name="formassige" method="post">
         <div class="row">
-          <input type="hidden" id="productid" name="productid">
+          <input type="hidden" id="asign" name="asign">
+          <input type="hidden" id="productide" name="productide">
           <ul class="collapsible popout left-align">
                   <li class="active">
                     <div class="collapsible-header"><i class="material-icons">menu_book</i>Nombre:</div>
-                    <div class="collapsible-body"><span id="name"></span></div>
+                    <div class="collapsible-body"><span id="namee"></span></div>
                   </li>
                   <li>
                     <div class="collapsible-header"><i class="material-icons">reorder</i>Descripci&oacute;n:</div>
-                    <div class="collapsible-body"><span id="des"></span></div>
+                    <div class="collapsible-body"><span id="dese"></span></div>
                   </li>
           </ul>
           <label for="tp">Usuario</label>
               <div class="input-field">
 
-              <select  class="select2 browser-default" id="user" name="user" title="Usuario (*)">
+              <select  class="select2 browser-default" id="usere" name="usere" title="Usuario (*)">
               </select>
-              <span class="" id="txtuser"></span>
+              <span class="" id="txtusere"></span>
           </div>
               <label for="tp">Negocio</label>
               <div class="input-field">
               
-              <select  class="select2 browser-default" id="bus" name="bus" title="Negocio (*)">
+              <select  class="select2 browser-default" id="buse" name="buse" title="Negocio (*)">
               </select>
-              <span class="" id="txtbus"></span>
+              <span class="" id="txtbuse"></span>
           </div>
         </div>
-        <button type="submit" class=" btn">Agregar <i class="material-icons">add</i></button>
+        <button type="submit" class=" btn">Modificar <i class="material-icons">edit</i></button>
       </form>
         </div>
       </div>
