@@ -115,7 +115,7 @@ $('#formassige').submit(function() {
             data: $("#formassige").serialize(),
             success: function(resp) {
                    if(resp==1){
-                   getData();
+                   // getData();
                     getDataA();
                     
                     M.toast({html: "¡Se ha modificado exitosamente!", classes: 'rounded  green'});

@@ -33,6 +33,7 @@
           .product { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 89%;}
           .asign { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
           th.dt-center, td.dt-center { text-align: center; } 
+          .aproduct { padding: 0; width: 50% !important ; height: 100% !important ;  max-height: 85%;}
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -64,6 +65,7 @@
             .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
             .product {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
             .asign { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
+            .aproduct { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
           }
           .tb{
             margin-top: 2rem;

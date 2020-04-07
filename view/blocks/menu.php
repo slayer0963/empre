@@ -29,7 +29,7 @@
       <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
     </div>
     </li>
-    <li><a href="<?php echo SERVERURL; ?>colors/"  class="">Colores</a></li>
+    
     <li><a class="dropdown-trigger" href="" data-target="dropdown1">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a href="<?php echo SERVERURL; ?>business/"  class="">Negocio</a></li>
     <li><a class="dropdown-trigger" href="" data-target="dropdown2">Producto<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -42,6 +42,7 @@
 
 <ul id="dropdown2" class="dropdown-content indigo lighten-5">
     <li><a href="<?php echo SERVERURL; ?>producttype/" class="">Tipo de producto</a></li>
+    <li><a href="<?php echo SERVERURL; ?>colors/"  class="">Colores</a></li>
     <li><a href="<?php echo SERVERURL; ?>size/" class="">Tamaño</a></li>
     <li><a href="<?php echo SERVERURL; ?>material/" class="">Materiales</a></li>
   <li><a href="<?php echo SERVERURL; ?>categories/" class="">Categoria</a></li>
