@@ -11,6 +11,8 @@ class User
 	private $_pass_user;
 	private $_id_ustp;
 	private $_state_user;
+    private $_id_service;
+    private $_service;
 
 	function __construct()
     {
@@ -138,6 +140,46 @@ class User
     public function setStateUser($_state_user)
     {
         $this->_state_user = $_state_user;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIdService()
+    {
+        return $this->_id_service;
+    }
+
+    /**
+     * @param mixed $_id_service
+     *
+     * @return self
+     */
+    public function setIdService($_id_service)
+    {
+        $this->_id_service = $_id_service;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getService()
+    {
+        return $this->_service;
+    }
+
+    /**
+     * @param mixed $_service
+     *
+     * @return self
+     */
+    public function setService($_service)
+    {
+        $this->_service = $_service;
 
         return $this;
     }

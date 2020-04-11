@@ -1,3 +1,7 @@
+
+
+
+
 <?php require 'blocks/header.php'; ?>
 <?php require 'blocks/menu.php'; ?>
 

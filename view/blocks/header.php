@@ -45,6 +45,10 @@
           .errorinputs{
             color:red;
           }
+          .full{
+            padding-top: 0;
+            margin-top: 0;
+          }
           .successinputs{
             color:green;
           }

@@ -13,6 +13,60 @@ include_once "../cn/connection.php";
 
  	}
 
+
+ 	public function loginService($obj)
+ 	{
+ 		
+ 		$c = conectar();
+		$fullname_user=$obj->getFullnameUser();
+		$imagen=$obj->getImagen();
+		$email_user=$obj->getEmailUser();
+		$id_ustp=$obj->getIdUstp();
+		$id_service=$obj->getIdService();
+		$service=$obj->getService();
+ 		$result = 0;
+		$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service'");
+		$sentencia->execute();
+		$resultado = $sentencia->get_result();
+		$res = $resultado->fetch_assoc();
+		$serviciocont=$res["idservices"];
+		if($serviciocont<=0)
+		{
+				$sql="insert into users value (0,'$fullname_user','','$imagen','$email_user','','',$id_ustp,1,'$id_service','$service');";
+				if (!$c->query($sql))
+				{
+					$result=0;
+				}
+				else
+				{
+					$result+=1;
+				}
+				if($result>0){
+					$sentencia = $c->prepare("SELECT fullname_user FROM users WHERE idservices = '$id_service'");
+					$sentencia->execute();
+					$resultado = $sentencia->get_result();
+					$res = $resultado->fetch_assoc();
+					$nombre=$res["fullname_user"];
+					$_SESSION['name']=$nombre;
+					$result+=1;
+					return $result;
+				}
+			return $result;
+		}
+		else
+		{
+			$sentencia = $c->prepare("SELECT fullname_user FROM users WHERE idservices = '$id_service'");
+			$sentencia->execute();
+			$resultado = $sentencia->get_result();
+			$res = $resultado->fetch_assoc();
+			$nombre=$res["fullname_user"];
+			$_SESSION['name']=$nombre;
+			$result+=1;
+			return $result;
+		}
+		
+	}
+
  	public function getDataUserType()
  	{
 		$c = conectar();
@@ -53,7 +107,7 @@ include_once "../cn/connection.php";
 		$_user_user=$obj->getUserUser();
 		$_pass_user=$obj->getPassUser();
 		$_id_ustp=$obj->getIdUstp();
-		$sql="insert into users value (0,'$_fullname_user','$_phone_user','$_imagen','$_email_user','$_user_user','$_pass_user',$_id_ustp,1);";
+		$sql="insert into users value (0,'$_fullname_user','$_phone_user','$_imagen','$_email_user','$_user_user','$_pass_user',$_id_ustp,1,'','');";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{

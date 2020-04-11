@@ -108,6 +108,30 @@
 	    echo json_encode($dat->getDataUserType());
 	}
 
+
+	function DataUser($service){
+	    $obj=new User();
+	    $obj->setFullnameUser($_POST["nombre"]);
+		$obj->setImagen($_POST["foto"]);
+		$obj->setEmailUser($_POST["correo"]);
+		$obj->setIdUstp("4");
+		$obj->setIdService($_POST["id"]);
+		$obj->setService($service);
+		return $obj;
+	}
+
+	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
+	if($page=='FB'){
+	    $dat=new DAOUser();
+		echo $dat->loginService(DataUser("Facebook"));
+	}
+
+	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
+	if($page=='GG'){
+	    $dat=new DAOUser();
+		echo $dat->loginService(DataUser("Google"));
+	}
+
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getData'){
     $dat = new DAOUser();

@@ -22,6 +22,7 @@ $(document).ready(function(){
     $('.dropdown-trigger').dropdown();
     $('#descrip').characterCounter();
     $('.collapsible').collapsible();
+    $('.tabs').tabs();
 });
   </script>
 
