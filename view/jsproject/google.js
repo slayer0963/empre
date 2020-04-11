@@ -12,7 +12,10 @@ function onSignIn(googleUser) {
                 data:"id="+id+"&nombre="+nombre+"&correo="+email+"&foto="+foto,
                 success: function(resp) 
                 {
-                  location.href="http://localhost/empre/view";                }
+                 if(resp >= 1){
+                   location.href="http://localhost/empre/view";
+                 }              
+                }
               });
 
   }

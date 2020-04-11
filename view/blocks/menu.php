@@ -24,9 +24,9 @@
       <div class="background">
         <img src="https://www.pintoresmadridprofesionales.com/wp-content/uploads/2016/02/Pintores-Madrid-profesionales-20.jpg">
       </div>
-      <a href="#user"><img class="circle" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"></a>
-      <a href="#name"><span class="white-text name">John Doe</span></a>
-      <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#user"><img class="circle" src="<?php echo $_SESSION["img"]; ?>"></a>
+      <a href="#name"><span class="white-text name"><?php echo $_SESSION["name"]; ?></span></a>
+      <a href="#email"><span class="white-text email"><?php echo $_SESSION["email"]; ?></span></a>
     </div>
     </li>
     

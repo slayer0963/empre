@@ -1,84 +1,6 @@
 
-  <html>
-
-  <?php 
-    include 'php/config.php';
-   ?>
-    <head>
-      <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="<?php echo SERVERURL; ?>css/materialize.min.css"  media="screen,projection"/>
-
-      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/dataTables.bootstrap4.min.css">
-
-      <link rel="stylesheet" href="<?php echo SERVERURL; ?>/css/responsive.bootstrap4.min.css">
-
-      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/animate.css">
-
-      <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/lightbox.css">
-
-  
-
-            <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2-materialize.css">
-
-      <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
-
-      <!--Let browser know website is optimized for mobile-->
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <title>Inicio de sesion</title>
     </head>
-    <style>
-          .peque { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 60%;} 
-          .usuariomodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
-          .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
-          .product { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 89%;}
-          .asign { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
-          th.dt-center, td.dt-center { text-align: center; } 
-          .aproduct { padding: 0; width: 50% !important ; height: 100% !important ;  max-height: 85%;}
-          .container{
-            margin-top: 2rem;
-            padding-left: 0;
-          }
-          .main{
-             padding-left: 175px;
-          }
-
-          .errorinputs{
-            color:red;
-          }
-          .full{
-            padding-top: 0;
-            margin-top: 0;
-          }
-          .successinputs{
-            color:green;
-          }
-          header, footer {
-            padding-left: 300px;
-          }
-          
-
-          @media only screen and (max-width : 992px) {
-            header, .main, footer {
-              padding-left: 0;
-            }
-            .tb{
-            margin-top: 1rem;
-            }
-            .peque { width: 75% !important ; height: 75% !important ; } 
-            .usuariomodal {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;} 
-            .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
-            .product {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
-            .asign { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
-            .aproduct { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
-          }
-          .tb{
-            margin-top: 2rem;
-          }
-
-
-    </style>
 
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <style>
@@ -156,14 +78,18 @@ h5
 																<button class="btn waves-effect waves-light teal" style="width: 250px; margin-bottom: 1rem;" type="submit" name="action">Inicia con nosotros</button>
 																<br>
 																
-													<a class="btn  btn-social btn-facebook blue darken-3" onclick="logInWithFacebook();" style="width: 250px; margin-bottom: 1rem;">
+											<div>
+														<a class="btn  btn-social btn-facebook blue darken-3" onclick="logInWithFacebook();" style="width: 250px; margin-bottom: 1rem;">
 												            <span class="fa fa-facebook"></span><span class="buttonText">Inicia con Facebook</span>
 													</a>
+											</div>
 													
 
-												<div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
+												<div>
+													<div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
 
 												<script src="https://apis.google.com/js/platform.js" async defer></script>
+												</div>
 																
 															</center>
 														</div>
@@ -182,30 +108,6 @@ h5
      </body>
   </html>
   		
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.js"></script>
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>
-
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>js/dataTables.bootstrap4.min.js"></script>
-       <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/dataTables.responsive.js"></script>
-       <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/responsive.bootstrap4.js"></script>
-      <script  type="text/javascript" src="<?php echo SERVERURL; ?>/js/select2.full.js"></script>
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/materialize.js"></script>
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/lightbox.js"></script>
-      <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/jquery.maskedinput.js"></script>
-  <script>
-$(document).ready(function(){
-
-  $('.sidenav').sidenav();
-  $('#sidenav-1').sidenav({ edge: 'left' });
-
-  $('.modal').modal();
-      
-    $('.dropdown-trigger').dropdown();
-    $('#descrip').characterCounter();
-    $('.collapsible').collapsible();
-    $('.tabs').tabs();
-});
-  </script>
 
 
 

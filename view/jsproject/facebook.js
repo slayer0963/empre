@@ -8,7 +8,7 @@ var ud
           'GET',
           {"fields":"id,name,email,picture"},
           function(response) {         
-            iniciar(response.id,response.name,response.email,response.picture.data.url);
+            iniciarfb(response.id,response.name,response.email,response.picture.data.url);
           }
         );
       } else {
@@ -35,17 +35,17 @@ var ud
   }(document, 'script', 'facebook-jssdk'));
 
 
-  function iniciar(id,nombre,email,foto) {
-              //    $.ajax({
-              //   type: "POST",
-              //   url: "../controller/login.php?btnlogin=FB", 
-              //   data:"id="+id+"&nombre="+nombre+"&correo="+email+"&foto="+foto,
-              //   success: function(resp) 
-              //   {
-              //     if(resp>=1){
-              //     location.href="http://localhost/SYSVT/view/Home";
-              //     }
-              //   }
-              // });
-              alert(nombre);
+  function iniciarfb(id,nombre,email,foto) {
+                 $.ajax({
+                type: "POST",
+                url: "controller/cuser.php?btnlogin=FB", 
+                data:"id="+id+"&nombre="+nombre+"&correo="+email+"&foto="+foto,
+                success: function(resp) 
+                {
+                  alert(resp);
+                 if(resp > 0){
+                   location.href="http://localhost/empre/view";
+                 }
+                }
+              });
   }

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "user.php";
 include_once "../cn/connection.php";
  /**
@@ -25,7 +25,7 @@ include_once "../cn/connection.php";
 		$id_service=$obj->getIdService();
 		$service=$obj->getService();
  		$result = 0;
-		$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service'");
+		$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
 		$sentencia->execute();
 		$resultado = $sentencia->get_result();
 		$res = $resultado->fetch_assoc();
@@ -42,12 +42,16 @@ include_once "../cn/connection.php";
 					$result+=1;
 				}
 				if($result>0){
-					$sentencia = $c->prepare("SELECT fullname_user FROM users WHERE idservices = '$id_service'");
+					$sentencia = $c->prepare("SELECT fullname_user, imagen, email_user FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
 					$sentencia->execute();
 					$resultado = $sentencia->get_result();
 					$res = $resultado->fetch_assoc();
 					$nombre=$res["fullname_user"];
-					$_SESSION['name']=$nombre;
+					$img=$res["imagen"];
+					$email=$res["email_user"];
+					$_SESSION["name"]=$nombre;
+					$_SESSION["img"]=$img;
+					$_SESSION["email"]=$email;
 					$result+=1;
 					return $result;
 				}
@@ -55,12 +59,16 @@ include_once "../cn/connection.php";
 		}
 		else
 		{
-			$sentencia = $c->prepare("SELECT fullname_user FROM users WHERE idservices = '$id_service'");
+			$sentencia = $c->prepare("SELECT fullname_user, imagen, email_user FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
 			$nombre=$res["fullname_user"];
-			$_SESSION['name']=$nombre;
+			$img=$res["imagen"];
+			$email=$res["email_user"];
+			$_SESSION["name"]=$nombre;
+			$_SESSION["img"]=$img;
+			$_SESSION["email"]=$email;
 			$result+=1;
 			return $result;
 		}
