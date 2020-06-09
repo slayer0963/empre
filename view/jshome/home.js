@@ -14,6 +14,7 @@ var business = (val) =>{
             var values = eval(resp);        
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
+                for (var l = 0; l < 20; l++) {
              	 html+='<div class="col-md-3" data-toggle="animation-appear" data-animation-class="animation-fadeInQuick" data-element-offset="-100">';
                            html+=' <div class="store-item">';
                                 html+='<div class="store-item-image">';
@@ -28,6 +29,7 @@ var business = (val) =>{
                                 html+='</div>';
                             html+='</div>';
                         html+='</div>';
+                    }
              }
             
 

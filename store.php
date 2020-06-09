@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!--[if IE 9]>         <html class="no-js lt-ie10" lang="en"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
@@ -54,11 +55,14 @@
                     <!-- Site Logo -->
 
                     <!-- Site Navigation -->
-                    <nav>
-                        <!-- Menu Toggle -->
-                        <!-- Toggles menu on small screens -->
+ 
+                    <nav class="inline">
+                        
                         <a href="javascript:void(0)" class="btn btn-default site-menu-toggle visible-xs visible-sm">
                             <i class="fa fa-bars"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="btn btn-default visible-xs visible-sm">
+                            <i class="fa fa-shopping-cart"><label id="npro">0</label></i>
                         </a>
                         <!-- END Menu Toggle -->
 
@@ -71,16 +75,40 @@
                                 </a>
                             </li>
                             <!-- END Menu Toggle -->
-                            <li>
-                                <a href="javascript:void(0)" class="site-nav-sub">Home</a>
-                            </li>
+                            
                            
-                            <li>
-                                <a data-toggle="modal" data-target="#login" class="btn btn-primary">Log In</a>
-                            </li>
-                            <li>
-                                <a href="signup.html" class="btn btn-success">Sign Up</a>
-                            </li>
+                           
+                            <div class="loginon hidden">
+                                <li>
+                                <a href="javascript:void(0)" class="site-nav-sub">Home</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#perfil" class="site-nav-sub">Perfil</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="site-nav-sub fa fa-shopping-cart hidden-xs hidden-sm">&nbsp;<sup id="npro">0</sup></a>
+                                </li>
+                                <li>
+                                    <a  href="javascript:void(0)" class="site-nav-sub ">Salir</a>
+                                </li>
+                            </div>
+               
+
+                             <div class="loginoff">
+                                <li>
+                                <a href="javascript:void(0)" class="site-nav-sub">Home</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" data-toggle="modal" data-target="#login" class="btn btn-primary">Log In</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="btn btn-success">Sign Up</a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="site-nav-sub fa fa-shopping-cart hidden-xs hidden-sm">&nbsp;<sup id="npro">0</sup></a>
+                                </li>
+                            </div>
+                  
                         </ul>
                         <!-- END Main Menu -->
                     </nav>
@@ -121,7 +149,7 @@
                     <!-- END Seach Form -->
 
                     <!-- New Arrivals -->
-                    <h2 class="site-heading" style="margin-top: 5rem;"><strong>Negocios</strong></h2>
+                    <h3 class="site-heading" style="margin-top: 5rem;"><strong>Negocios</strong></h3>
                     <hr>
                     <div class="row store-items">
 					

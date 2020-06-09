@@ -36,9 +36,13 @@ include_once "../cn/connection.php";
 			$email=$res["email_user"];
 			$tipo=$res["id_ustp"];
 			$_SESSION["name"]=$nombre;
+			$_SESSION["type"]=$tipo;
 			$_SESSION["img"]=$img;
 			$_SESSION["email"]=$email;
-			return $tipo;
+
+			$arreglo = array();
+			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+			return $arreglo;
  		}
  		else{
  			$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
@@ -55,9 +59,12 @@ include_once "../cn/connection.php";
 			$email=$res["email_user"];
 			$tipo=$res["id_ustp"];
 			$_SESSION["name"]=$nombre;
+			$_SESSION["type"]=$tipo;
 			$_SESSION["img"]=$img;
 			$_SESSION["email"]=$email;
-			return $tipo;
+			$arreglo = array();
+			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+			return $arreglo;
  		}
 		
 		

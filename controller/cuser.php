@@ -130,7 +130,7 @@
 	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
 	if($page=='LC'){
 	    $dat=new DAOUser();
-		echo $dat->loginService(DataUserLC());
+		echo json_encode($dat->loginService(DataUserLC()));
 	}
 
 	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
