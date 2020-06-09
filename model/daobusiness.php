@@ -26,6 +26,20 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
+	public function getDataHome()
+ 	{
+		$c = conectar();
+		$sql="select * from business;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+
  	public function getData()
  	{
 		$c = conectar();

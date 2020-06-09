@@ -24,54 +24,44 @@ include_once "../cn/connection.php";
 		$id_ustp=$obj->getIdUstp();
 		$id_service=$obj->getIdService();
 		$service=$obj->getService();
+		$pass_user = $obj->getPassUser();
  		$result = 0;
-		$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
-		$sentencia->execute();
-		$resultado = $sentencia->get_result();
-		$res = $resultado->fetch_assoc();
-		$serviciocont=$res["idservices"];
-		if($serviciocont<=0)
-		{
-				$sql="insert into users value (0,'$fullname_user','','$imagen','$email_user','','',$id_ustp,1,'$id_service','$service');";
-				if (!$c->query($sql))
-				{
-					$result=0;
-				}
-				else
-				{
-					$result+=1;
-				}
-				if($result>0){
-					$sentencia = $c->prepare("SELECT fullname_user, imagen, email_user FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
-					$sentencia->execute();
-					$resultado = $sentencia->get_result();
-					$res = $resultado->fetch_assoc();
-					$nombre=$res["fullname_user"];
-					$img=$res["imagen"];
-					$email=$res["email_user"];
-					$_SESSION["name"]=$nombre;
-					$_SESSION["img"]=$img;
-					$_SESSION["email"]=$email;
-					$result+=1;
-					return $result;
-				}
-			return $result;
-		}
-		else
-		{
-			$sentencia = $c->prepare("SELECT fullname_user, imagen, email_user FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
+ 		if($id_service==null){
+			$sentencia = $c->prepare("SELECT fullname_user,id_ustp, imagen, email_user FROM users WHERE email_user ='$email_user' and pass_user='$pass_user' or user_user ='$email_user' and pass_user='$pass_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
 			$nombre=$res["fullname_user"];
 			$img=$res["imagen"];
 			$email=$res["email_user"];
+			$tipo=$res["id_ustp"];
 			$_SESSION["name"]=$nombre;
 			$_SESSION["img"]=$img;
 			$_SESSION["email"]=$email;
-			$result+=1;
-			return $result;
-		}
+			return $tipo;
+ 		}
+ 		else{
+ 			$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
+			$sentencia->execute();
+			$resultado = $sentencia->get_result();
+			$res = $resultado->fetch_assoc();
+			$serviciocont=$res["idservices"];
+			$sentencia = $c->prepare("SELECT fullname_user,id_ustp, imagen, email_user FROM users WHERE idservices = '$id_service' and email_user ='$email_user'");
+			$sentencia->execute();
+			$resultado = $sentencia->get_result();
+			$res = $resultado->fetch_assoc();
+			$nombre=$res["fullname_user"];
+			$img=$res["imagen"];
+			$email=$res["email_user"];
+			$tipo=$res["id_ustp"];
+			$_SESSION["name"]=$nombre;
+			$_SESSION["img"]=$img;
+			$_SESSION["email"]=$email;
+			return $tipo;
+ 		}
+		
+		
+					
 		
 	}
 

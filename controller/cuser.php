@@ -114,10 +114,23 @@
 	    $obj->setFullnameUser($_POST["nombre"]);
 		$obj->setImagen($_POST["foto"]);
 		$obj->setEmailUser($_POST["correo"]);
-		$obj->setIdUstp("4");
+		$obj->setIdUstp("1");
 		$obj->setIdService($_POST["id"]);
 		$obj->setService($service);
 		return $obj;
+	}
+
+	function DataUserLC(){
+	    $obj=new User();
+		$obj->setEmailUser($_POST["email"]);
+		$obj->setPassUser($_POST["password"]);
+		return $obj;
+	}
+
+	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
+	if($page=='LC'){
+	    $dat=new DAOUser();
+		echo $dat->loginService(DataUserLC());
 	}
 
 	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';

@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^([a-z]+)\/?$ $1.php 
+RewriteRule ^([0-9]+)\/?$ stores.php?store=$1

@@ -36,7 +36,7 @@
 <?php require 'blocks/footer.php'; 
     }
     else{
-      header('location: ../login');
+      header('location: ../');
     }
 
 ?>

@@ -101,6 +101,12 @@
 	}
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getHome'){
+	    $dat=new DAOBusiness();
+	    echo json_encode($dat->getDataHome());
+	}
+
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getData'){
     $dat = new DAOBusiness();
          $r=$dat->getData();

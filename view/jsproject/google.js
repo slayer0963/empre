@@ -5,7 +5,8 @@ function onSignIn(googleUser) {
   iniciar(profile.getId(),profile.getName(),profile.getEmail(),profile.getImageUrl());
 }
 
-  function iniciar(id,nombre,email,foto) {
+function iniciar(id,nombre,email,foto) {
+
                  $.ajax({
                 type: "POST",
                 url: "controller/cuser.php?btnlogin=GG", 

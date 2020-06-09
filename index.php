@@ -1,14 +1,11 @@
 
 
 
-<?php session_start() ?>
-
     <?php
-    require 'view/blocks/headerlogin.php';?>
+  require 'headerlogin.php';?>
 
 
-<div class="main m-2 ">
-  <div class="container">
+
     <?php
           if(isset($_GET['empre'])){
       $views = explode("/", $_GET['empre']);
@@ -16,20 +13,18 @@
         include $views[0].'.php';
       }
       else{
-        include 'login.php';
+        include 'store.php';
       }
       
     }
     else{
-      include 'login.php';
+      include 'store.php';
     }
          ?>
-  </div>
-
-</div>
 
 
-<?php require 'view/blocks/footer.php'; 
+<?php
+ // require 'view/blocks/footer.php'; 
 
 
 ?>
