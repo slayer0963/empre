@@ -24,7 +24,7 @@
       <div class="background">
         <img src="https://www.pintoresmadridprofesionales.com/wp-content/uploads/2016/02/Pintores-Madrid-profesionales-20.jpg">
       </div>
-      <a href="#user"><img class="circle" src="imguser/<?php echo $_SESSION["img"]; ?>"></a>
+      <a href="#user"><img class="circle" src="<?php echo SERVERURL.'imguser/'.$_SESSION["img"]; ?>"></a>
       <a href="#name"><span class="white-text name"><?php echo $_SESSION["name"]; ?></span></a>
       <a href="#email"><span class="white-text email"><?php echo $_SESSION["email"]; ?></span></a>
     </div>
