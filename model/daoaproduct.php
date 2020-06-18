@@ -1,6 +1,6 @@
 <?php
 
-// require_once "business.php";
+require_once "apobject.php";
 include_once "../cn/connection.php";
  /**
  *
@@ -13,6 +13,18 @@ include_once "../cn/connection.php";
 
  	}
 
+	public function getDataAP($busi)
+ 	{
+		$c = conectar();
+		$sql="select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus where busi.id_bus=$busi";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
 
  	public function getDataB($id_usu)
  	{
@@ -25,6 +37,58 @@ include_once "../cn/connection.php";
 			$arreglo[]=$re;
 		}
 		return $arreglo;
+	}
+
+	public function getDataColor()
+ 	{
+		$c = conectar();
+		$sql="SELECT * FROM color;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+	public function getDataMaterial()
+ 	{
+		$c = conectar();
+		$sql="SELECT * FROM material;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+	public function getDataSize()
+ 	{
+		$c = conectar();
+		$sql="SELECT * FROM sizes;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+
+	public function Verifi($id)
+	{
+		$c = conectar();
+		$sql="select count(*) as pro from assignment_prices_object where id_pro=$id;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);
+		while($re = $res->fetch_array()){
+			return $re['pro'];
+		}
+		
 	}
 
 	public function getDataU()
@@ -40,57 +104,24 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
-	public function getDataP($id_bus)
+	public function setData($obj)
  	{
-		$c = conectar();
-		$sql="select pro.id_pro, pro.name_pro from assignment_probus apb inner join product pro on apb.id_pro=pro.id_pro where id_bus=$id_bus;";
-		$c->set_charset('utf8');
-		$res = $c->query($sql);	
-		$arreglo = array();
-		while($re = $res->fetch_array()){
-			$arreglo[]=$re;
-		}
-		return $arreglo;
-	}
+ 		$c=conectar();
+ 		$idpro = $obj->getIdPro();
+		$purprice = $obj->getPurPrice();
+		$salprice = $obj->getSalPrice();
+		$quantity = $obj->getQuantity();
+		$sql="insert into assignment_prices_object value (0,$idpro,'$purprice','$salprice',$quantity,1);";
+		if (!$c->query($sql)) {
+			print "0";
+		}else{
+			    echo "1"; 
 
-	public function getDataC()
- 	{
-		$c = conectar();
-		$sql="select id_color, name_color, code_color from color;";
-		$c->set_charset('utf8');
-		$res = $c->query($sql);	
-		$arreglo = array();
-		while($re = $res->fetch_array()){
-			$arreglo[]=$re;
-		}
-		return $arreglo;
-	}
+		     }
+		mysqli_close($c);
+ 	}
 
-	public function getDataM()
- 	{
-		$c = conectar();
-		$sql="select * from material;";
-		$c->set_charset('utf8');
-		$res = $c->query($sql);	
-		$arreglo = array();
-		while($re = $res->fetch_array()){
-			$arreglo[]=$re;
-		}
-		return $arreglo;
-	}
 
-	public function getDataS()
- 	{
-		$c = conectar();
-		$sql="select * from sizes;";
-		$c->set_charset('utf8');
-		$res = $c->query($sql);	
-		$arreglo = array();
-		while($re = $res->fetch_array()){
-			$arreglo[]=$re;
-		}
-		return $arreglo;
-	}
 
 
  }

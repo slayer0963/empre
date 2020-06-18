@@ -54,6 +54,7 @@ include_once "../cn/connection.php";
 	}
 
 
+
  	public function setData($obj)
  	{
  		$c=conectar();

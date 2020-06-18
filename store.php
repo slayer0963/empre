@@ -33,6 +33,11 @@
 
         <!-- Modernizr (browser feature detection library) -->
         <script src="resources/js/vendor/modernizr.min.js"></script>
+        <style>
+            #nombrepro {
+                font-size: 9px;
+            }
+        </style>
     </head>
     <body>
         <!-- Page Container -->

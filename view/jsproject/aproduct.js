@@ -1,9 +1,50 @@
 $(document).ready(function(){
 
-$("#tbaprice").DataTable({"responsive": true});
 
 
-$("#tbapricelist").DataTable({"responsive": true});
+
+$("#tbproduct").DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+   
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
 setComboBusi();
 $("#bus").select2({
     dropdownAutoWidth: true,
@@ -48,33 +89,10 @@ $("#user").select2({
     templateSelection: formatStateU
 });
 
-$("#user").change(function(argument) {
-  setComboBusi($(this).val());
-});
-
-$("#pro").select2({
-    dropdownAutoWidth: true,
-    width: '100%',
-    dropdownParent: $("#modaladd"),
-    language: {
-
-    noResults: function() {
-
-      return "No hay resultado";        
-    },
-    searching: function() {
-
-      return "Buscando..";
-    }
-  }
-});
-
 setComboColor();
-
 $("#color").select2({
     dropdownAutoWidth: true,
     width: '100%',
-    dropdownParent: $("#modaladd"),
     language: {
 
     noResults: function() {
@@ -89,16 +107,14 @@ $("#color").select2({
 });
 
 $("#color").select2({
-  	templateResult: formatStateC,
+    templateResult: formatStateC,
     templateSelection: formatStateC
 });
 
 setComboMaterial();
-
-$("#material").select2({
+$("#mater").select2({
     dropdownAutoWidth: true,
     width: '100%',
-    dropdownParent: $("#modaladd"),
     language: {
 
     noResults: function() {
@@ -113,11 +129,9 @@ $("#material").select2({
 });
 
 setComboSize();
-
 $("#size").select2({
     dropdownAutoWidth: true,
     width: '100%',
-    dropdownParent: $("#modaladd"),
     language: {
 
     noResults: function() {
@@ -131,16 +145,41 @@ $("#size").select2({
   }
 });
 
-$("#bus").change(function(argument) {
-  setComboProduct($(this).val());
+$("#user").change(function(argument) {
+  setComboBusi($(this).val());
 });
 
-
+$("#bus").change(function(argument) {
+  //setComboProduct($(this).val());
+  getData($(this).val());
+});
 
 	$("#addprice").click(function(event) {
 		Validatebtn();
 	});
 
+
+  $("#atras").click(function(event) {
+      $("#inicial").removeClass('hide');
+      $("#addproduct").addClass('hide');
+  });
+
+
+    $("#addpricepro").click(function(event) {
+      Validatebtnprice();
+    });
+
+
+
+$("#backtb").click(function(event) {
+     $("#datospro").addClass('hide');
+      $("#tabla").removeClass('hide');
+      $("#inicial").removeClass('hide');
+  });
+
+
+
+  
 
 });
 
@@ -165,9 +204,60 @@ var Validatebtn=()=>{
    	});
 
    	if(validate==idinputi.length){
-   		$("#modaladd").modal();
-   		$("#modaladd").modal('open');
+   		// $("#modaladd").modal();
+   		// $("#modaladd").modal('open');
+      $("#inicial").addClass('hide');
+      $("#addproduct").removeClass('hide');
+      
    	}
+}
+
+
+
+var idinputie = ['pcompra','pventa','cantidad'];
+var idinputerrorie= ['txtpcompra','txtpventa','txtcantidad'];
+
+var cleanform = () =>{
+    idinpute.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+var Validatebtnprice=()=>{
+  var count=0,validate=0;
+    idinputie.forEach(names => {
+      if($("#"+names).val()> 0){
+      validate+=1;
+         $("#"+idinputerrorie[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorie[count]).removeClass('errorinputs');
+         $("#"+idinputerrorie[count]).addClass('successinputs');
+         
+       }
+       else{
+        $("#"+idinputerrorie[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorie[count]).removeClass('successinputs');      
+         $("#"+idinputerrorie[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+
+    if(validate==idinputie.length){
+      
+      //$("#modaladd").modal('close');
+      $.ajax({
+            type: "POST",
+            url: "../../controller/caproduct.php?btnsetData=setData",
+            data: $("#frmprice").serialize(),
+            success: function(resp) {
+              M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+              $('.modal').modal('close');
+              cleanform();
+              
+            }
+          });
+    }
 }
 
 
@@ -209,35 +299,16 @@ var setComboBusi = (val) =>{
 }
 
 
-
-var setComboProduct = (val) =>{
- 			var html="";
-          var dataString = 'id='+val;
-          $.ajax({
-            type: "POST",
-            url: "../../controller/caproduct.php?btngetData=getDataP",
-            data: dataString,
-            success: function(resp) {
-            var values = eval(resp);        
-              html+='<option value="0" selected>Seleccione un producto</option>';
-               for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][0]+"'><span>"+values[i][1]+"</span></option>";
-               }
-               $("#pro").html(html);
-            } 
-        }); 
-      
-}
-
 var setComboColor = () =>{
 var html="";
           $.ajax({
             type: "POST",
-            url: "../../controller/caproduct.php?btngetData=getDataC",
+            url: "../../controller/caproduct.php?btngetData=getDataColor",
             success: function(resp) {
-            var values = eval(resp);       
+            var values = eval(resp);        
+              html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][0]+"' data-color='"+values[i][2]+"'><span>"+values[i][1]+"</span></option>";
+                   html+="<option value='"+values[i][0]+"' data-color='"+values[i][1]+"'><span>"+values[i][2]+"</span></option>";
                }
                $("#color").html(html);
             } 
@@ -245,29 +316,33 @@ var html="";
       
 }
 
-var setComboMaterial= () =>{
+
+var setComboMaterial = () =>{
 var html="";
           $.ajax({
             type: "POST",
-            url: "../../controller/caproduct.php?btngetData=getDataM",
+            url: "../../controller/caproduct.php?btngetData=getDataMaterial",
             success: function(resp) {
-            var values = eval(resp);       
+            var values = eval(resp);        
+              html+='';
                for (var i = 0; i< values.length; i++) {
                    html+="<option value='"+values[i][0]+"'><span>"+values[i][1]+"</span></option>";
                }
-               $("#material").html(html);
+               $("#mater").html(html);
             } 
         }); 
       
 }
 
-var setComboSize= () =>{
+
+var setComboSize = () =>{
 var html="";
           $.ajax({
             type: "POST",
-            url: "../../controller/caproduct.php?btngetData=getDataS",
+            url: "../../controller/caproduct.php?btngetData=getDataSize",
             success: function(resp) {
-            var values = eval(resp);       
+            var values = eval(resp);        
+              html+='';
                for (var i = 0; i< values.length; i++) {
                    html+="<option value='"+values[i][0]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
                }
@@ -276,6 +351,10 @@ var html="";
         }); 
       
 }
+
+
+
+
 
 function formatStateB (opt) {
     if (!opt.id) {
@@ -329,5 +408,81 @@ function formatStateC (opt) {
     }
 };
 
+ var FillBoxes = (id,nombre) =>{
+  $("#namepro").html(nombre);
+  $("#idpro").val(id);
+
+ }
+
+ var FillDiv = (id,nombre) =>{
+  
+      $("#nombredtp").html("Producto: "+nombre);
+      $("#inicial").addClass('hide');
+      $("#tabla").addClass('hide');
+      $("#datospro").removeClass('hide');
+
+ }
+
+var getData = (bussi)=> {
+    var dataString = "bussi="+bussi;
+
+    $('#tbproduct').DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+   
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
 
 
+    "ajax": {
+          url:"../../controller/caproduct.php?btngetData=getDataAp&bussi="+bussi,//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "name_pro" },
+      { "data": "descr_pro" },
+      { "data": "id_cat" },
+      { "data": "id_tpro" },
+      { "data": "actions" }
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+
+}

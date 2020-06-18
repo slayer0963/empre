@@ -1,6 +1,6 @@
 
 <title>Asignacion de precio</title>
-<div class="animated slideInLeft">
+<div class="animated slideInLeft " id="inicial">
   <div class="row">
         <div class="input-field col s12 m12 l6">
       <select  class="select2 browser-default" id="user" name="user" title="Usuario (*)">
@@ -18,77 +18,109 @@
     </div>
   </div>
 
-
-  <a class=" btn z-depth-5" id="addprice" href="#"><i class="material-icons right">add</i>Agregar Precios</a>
-
-  <div class="tb">
-    <table id="tbaprice" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+  <div class="row l12 m12 s12" id="tabla">
+        <table id="tbproduct" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
       <thead >
         <tr>
-          <th class="text-center">Color</th>
-          <th class="text-center">Imagenes</th>
-          <th class="text-center">Materiales</th>
-          <th class="text-center">Tallas/Tama&ntilde;os</th>
-          <th class="text-center">Acciones</th>
+          <th class="text-center"  data-priority="1">Nombre</th>
+          <th class="text-center">Descripci&oacute;n</th>
+          <th class="text-center">Categor&iacute;a</th>
+          <th class="text-center">Tipo de producto</th>
+          <th class="text-center"  data-priority="2">Acciones</th>
         </tr>
       </thead>
-      <tbody ></tbody>
+      <tbody></tbody>
       <tfoot>
         <tr>
-          <th class="text-center">Color</th>
-          <th class="text-center">Imagenes</th>
-          <th class="text-center">Materiales</th>
-          <th class="text-center">Tallas/Tama&ntilde;os</th>
-          <th class="text-center">Acciones</th>
+          <th class="text-center"  data-priority="1">Nombre</th>
+          <th class="text-center">Descripci&oacute;n</th>
+          <th class="text-center">Categor&iacute;a</th>
+          <th class="text-center">Tipo de producto</th>
+          <th class="text-center"  data-priority="2">Acciones</th>
         </tr>
       </tfoot>
     </table>
+
+
   </div>
 </div>
 
+<div class="row" id="precios"></div>
+
 <!-- Modal Structure -->
 <div id="modaladd" class="modal modal-fixed-footer aproduct ">
-  <div class="modal-content">
-    <h4>Asignacion de precios</h4>
-    <div class="row">
-      <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
+  <div class="modal-content align-center">
+    <h4>Agregar precio de <h4 for="name" id="namepro"></h4></h4>
+
+      <form class="col s12 center-align" id="frmprice" name="frmprice" method="post">
         <div class="row">
+            <input type="hidden" id="idpro" name="idpro">
             <div class="input-field col s12 m12 l12">
-              <select  class="select2 browser-default" id="pro" name="pro" title="Producto (*)">
-              </select>
-              <span class="" id="">Seleccionar Producto</span>
+              <input id="pcompra" name="pcompra" title="Precio Compra (*)" type="text" >
+              <label for="pcompra">Precio de compra</label>
+              <span class="" id="txtpcompra"></span>
             </div>
-          <div class="col l12 m12 s12">
-
-            <div class="input-field col l12 m12 s12 center-align">
-
-              <select  class="select2 browser-default" id="color" name="color[]" multiple="multiple" title="Color (*)">
-              </select>
-              <span class="" id="">Selecciona un color</span>
+            <div class="input-field col s12 m12 l12">
+              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
+              <label for="pventa" id="">Precio de venta</label>
+              <span class="" id="txtpventa"></span>
             </div>
-            <div class="input-field col l12 m12 s12 center-align">
-              <select  class="select2 browser-default" id="material" name="material[]"  multiple="multiple" title="Material (*)">
-              </select>
-              <span class="" id="">Seleccionar materiales</span>
-
+            <div class="input-field col s12 m12 l12">
+              <input id="cantidad" name="cantidad" title="Cantidad (*)" type="text">
+              <label for="cantidad" id="">Cantidad</label>
+              <span class="" id="txtcantidad"></span>
             </div>
-            <div class="input-field col l12 m12 s12 center-align">
-              <select  class="select2 browser-default" id="size" name="size[]" multiple="multiple" title="Tallas (*)">
-              </select>
-              <span class="" id="">Seleccionar tallas</span>
-            </div>
-          </div>
          </div>
         
       </form>
-      <button  id="addlist" class=" btn">Agregar<i class="material-icons">add</i></button>
-    </div>
+      <button  id="addpricepro" class=" btn">Agregar<i class="material-icons">add</i></button>
+    
   </div>
   <div class="modal-footer">
     <a id="salir" class="modal-close  btn-flat">Salir</a>
 
   </div>
 </div>
+
+
+<div class="row hide left-align animated slideInLeft" id="datospro">
+  <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
+  <div class="col s12 m12 l8 offset-l2 center-align">
+    <div class="card-panel">
+       <h6 id="nombredtp"></h6>
+        <select  class="select2 browser-default" id="color" multiple name="color" title="Seleccionar Colores (*)">
+
+        </select>
+        <span class="" id="txtuser">Seleccionar Colores</span>
+
+        <select  class="select2 browser-default" id="mater" multiple name="mater" title="Seleccionar Material (*)">
+
+        </select>
+        <span class="" id="txtuser">Seleccionar Material</span>
+
+        <select  class="select2 browser-default" id="size" multiple name="size" title="Seleccionar Material (*)">
+
+        </select>
+        <span class="" id="txtuser">Seleccionar Tallas</span>
+        <br>
+        <br>
+        <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
+      </div>
+  </div>
+  <div class="col s12 m12 l12">
+    <div class="card-panel">
+      Datos
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
 
 
 

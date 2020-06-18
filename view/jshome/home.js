@@ -14,7 +14,7 @@ var business = (val) =>{
             var values = eval(resp);        
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
-                for (var l = 0; l < 20; l++) {
+                
              	 html+='<div class="col-md-3" data-toggle="animation-appear" data-animation-class="animation-fadeInQuick" data-element-offset="-100">';
                            html+=' <div class="store-item">';
                                 html+='<div class="store-item-image">';
@@ -23,13 +23,13 @@ var business = (val) =>{
                                     html+='</a>';
                                 html+='</div>';
                                 html+='<div class="store-item-info clearfix">';
-                                    html+='<span class="store-item-price themed-color-dark pull-right">'+values[i].name_bus+'</span>';
+                                    html+='<b class=" themed-color-dark pull-right">'+values[i].name_bus+'</b>';
                                     html+='<a href="store/'+values[i].id_bus+'"><strong>Ver</strong></a><br>';
                                     // html+='<small><i class="fa fa-shopping-cart text-muted"></i> <a href="javascript:void(0)" class="text-muted">Add to cart</a></small>';
                                 html+='</div>';
                             html+='</div>';
                         html+='</div>';
-                    }
+                    
              }
             
 

@@ -101,4 +101,6 @@ if($page=='getData'){
         $table = substr($table,0, strlen($table) - 1);
         echo '{"data":['.$table.']}';   
 }
+
+
 ?>
