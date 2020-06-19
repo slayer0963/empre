@@ -83,10 +83,11 @@
 </div>
 
 
-<div class="row hide left-align animated slideInLeft" id="datospro">
+<div class="row hide left-align animated bounceInDown" id="datospro">
   <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
   <div class="col s12 m12 l8 offset-l2 center-align">
-    <div class="card-panel">
+    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
+    <div class="card-panel animated" id="llenado">
        <h6 id="nombredtp"></h6>
         <select  class="select2 browser-default" id="color" multiple name="color" title="Seleccionar Colores (*)">
 
@@ -108,7 +109,7 @@
       </div>
   </div>
   <div class="col s12 m12 l12">
-    <div class="card-panel">
+    <div class="card-panel animated hide" id="tablage">
       Datos
     </div>
   </div>

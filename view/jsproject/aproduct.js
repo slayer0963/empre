@@ -177,6 +177,32 @@ $("#backtb").click(function(event) {
       $("#inicial").removeClass('hide');
   });
 
+$("#generar").click(function(event) {
+      
+      $("#llenado").addClass('slideOutUp');
+    setTimeout(function(){ 
+      $("#llenado").addClass('hide');
+      $("#tablage").removeClass('hide');
+      $("#tablage").removeClass('slideOutUp');
+      $("#tablage").addClass('slideInUp');
+      $("#backfrm").removeClass('hide');
+    }, 1000);
+      
+
+  });
+
+$("#backfrm").click(function(event) {
+  $("#backfrm").addClass('hide');
+      $("#llenado").removeClass('slideOutUp');
+      $("#llenado").addClass('slideInUp');
+      $("#tablage").addClass('slideOutUp');
+    setTimeout(function(){ 
+      $("#llenado").removeClass('hide');
+      $("#tablage").addClass('hide'); 
+    }, 1000);
+      
+  });
+
 
 
   
