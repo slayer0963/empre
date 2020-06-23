@@ -40,7 +40,7 @@
 	    $obj->setIdPro($_POST["idpro"]);
 	    $obj->setPurPrice($_POST["pcompra"]);
 	    $obj->setSalPrice($_POST["pventa"]);
-	    $obj->setQuantity($_POST["cantidad"]);
+	    
 	    return $obj;
 	}
 	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
@@ -55,6 +55,7 @@
 	//     $dat=new DAOAproduct();
 	//     $dat->Verifi($_GET['id']);
 	// }
+
 
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
@@ -91,5 +92,8 @@ if($page=='getDataAp'){
         $table = substr($table,0, strlen($table) - 1);
         echo '{"data":['.$table.']}';   
 }
+
+
+
 
 ?>

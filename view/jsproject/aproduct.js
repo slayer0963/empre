@@ -1,5 +1,43 @@
+var colores =  new Array();
+var materiales =  new Array();
+var tallas =  new Array();
+
+
+
+
+function changeSelect1(event){
+     var select2Value = $(event.target).val();
+     
+     var str1 =  select2Value;
+     colores = str1.toString().split(",");
+    
+}
+function changeSelect2(event){
+     var select2Value = $(event.target).val();
+     
+     var str2 =  select2Value;
+     materiales = str2.toString().split(",");
+    
+}
+function changeSelect3(event){
+     var select2Value = $(event.target).val();
+     
+     var str3 =  select2Value;
+     tallas = str3.toString().split(",");
+    
+}
+
+
+
+
+/*var dataSet = [
+    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
+    [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ]];*/
+
+
 $(document).ready(function(){
 
+  
 
 
 
@@ -177,19 +215,107 @@ $("#backtb").click(function(event) {
       $("#inicial").removeClass('hide');
   });
 
+
+/*$('#color').on("select2:select", function (e) {
+      console.log("ID seleccionado: " + e.params.data.text);
+    });
+*/
+
+
+
 $("#generar").click(function(event) {
-      
-      $("#llenado").addClass('slideOutUp');
-    setTimeout(function(){ 
-      $("#llenado").addClass('hide');
-      $("#tablage").removeClass('hide');
-      $("#tablage").removeClass('slideOutUp');
-      $("#tablage").addClass('slideInUp');
-      $("#backfrm").removeClass('hide');
-    }, 1000);
-      
+      var dataSet="";
+      var dataa="";
+      var btn="";
+      var table = $('#tbgen').DataTable({
+        "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+    "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros.",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros.",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+      }
+        });
+     // alert(colores[0]);
+     table.clear().draw();
+      for (var i = 0; i < colores.length; i++) {
+        for (var j = 0; j < materiales.length; j++) {
+          for (var k = 0; k < tallas.length; k++) {
+               
+     
+                 
+               
+                 
+                  
+                  //add some rows
+                  
+                  btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+colores[i]+"'")+','+String("'"+materiales[j]+"'")+','+String("'"+tallas[k]+"'")+');" ><i class="material-icons">playlist_add</i></a>';
+                  table.row.add([colores[i], materiales[j],tallas[k],btn]).draw(false);
+                 //dataa+='['+ colores[i]+','+ materiales[j]+','+tallas[k] +'],';
+                    
+          }
+        }
+      }
+
+        //dataSet=JSON.stringify("["+dataa.toString().slice(0, -1)+"]");
+        /*var dataSet = [
+    [ "Tiger Nixon", "System Architect", "Edinburgh"  ],
+    [ "Garrett Winters", "Accountant", "Tokyo" ]];*/
+        //alert(dataSet);
+        
+
+          
+
+        $("#llenado").addClass('slideOutUp');
+      setTimeout(function(){ 
+        $("#llenado").addClass('hide');
+        $("#tablage").removeClass('hide');
+        $("#tablage").removeClass('slideOutUp');
+        $("#tablage").addClass('slideInUp');
+        $("#backfrm").removeClass('hide');
+      }, 1000);
+
+            
 
   });
+
+
+
+
+
+
 
 $("#backfrm").click(function(event) {
   $("#backfrm").addClass('hide');
@@ -208,6 +334,12 @@ $("#backfrm").click(function(event) {
   
 
 });
+
+
+
+
+
+
 
 var idinputi = ['user','bus'];
 var idinputerrori= ['txtuser','txtbus'];
@@ -334,7 +466,7 @@ var html="";
             var values = eval(resp);        
               html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][0]+"' data-color='"+values[i][1]+"'><span>"+values[i][2]+"</span></option>";
+                   html+="<option value='"+values[i][2]+"' data-color='"+values[i][1]+"'><span>"+values[i][2]+"</span></option>";
                }
                $("#color").html(html);
             } 
@@ -352,7 +484,7 @@ var html="";
             var values = eval(resp);        
               html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][0]+"'><span>"+values[i][1]+"</span></option>";
+                   html+="<option value='"+values[i][1]+"'><span>"+values[i][1]+"</span></option>";
                }
                $("#mater").html(html);
             } 
@@ -370,7 +502,7 @@ var html="";
             var values = eval(resp);        
               html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][0]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
+                   html+="<option value='"+values[i][2]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
                }
                $("#size").html(html);
             } 

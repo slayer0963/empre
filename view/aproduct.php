@@ -85,21 +85,22 @@
 
 <div class="row hide left-align animated bounceInDown" id="datospro">
   <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
+  
   <div class="col s12 m12 l8 offset-l2 center-align">
     <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
     <div class="card-panel animated" id="llenado">
        <h6 id="nombredtp"></h6>
-        <select  class="select2 browser-default" id="color" multiple name="color" title="Seleccionar Colores (*)">
+        <select  class="select2 browser-default" id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="changeSelect1(event)">
 
         </select>
         <span class="" id="txtuser">Seleccionar Colores</span>
 
-        <select  class="select2 browser-default" id="mater" multiple name="mater" title="Seleccionar Material (*)">
+        <select  class="select2 browser-default" id="mater" multiple name="mater[]" title="Seleccionar Material (*)" onchange="changeSelect2(event)">
 
         </select>
         <span class="" id="txtuser">Seleccionar Material</span>
 
-        <select  class="select2 browser-default" id="size" multiple name="size" title="Seleccionar Material (*)">
+        <select  class="select2 browser-default" id="size" multiple name="size[]" title="Seleccionar Talla (*)" onchange="changeSelect3(event)">
 
         </select>
         <span class="" id="txtuser">Seleccionar Tallas</span>
@@ -108,9 +109,33 @@
         <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
       </div>
   </div>
+  
+
+
+
   <div class="col s12 m12 l12">
     <div class="card-panel animated hide" id="tablage">
       Datos
+      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Talla</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Talla</th>
+                <th>Acción</th>
+            </tr>
+        </tfoot>
+      </table>
+      <!-- tabla de DAT -->
+      
     </div>
   </div>
 </div>

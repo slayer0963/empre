@@ -110,8 +110,7 @@ include_once "../cn/connection.php";
  		$idpro = $obj->getIdPro();
 		$purprice = $obj->getPurPrice();
 		$salprice = $obj->getSalPrice();
-		$quantity = $obj->getQuantity();
-		$sql="insert into assignment_prices_object value (0,$idpro,'$purprice','$salprice',$quantity,1);";
+		$sql="insert into assignment_prices_object value (0,$idpro,'$purprice','$salprice',1);";
 		if (!$c->query($sql)) {
 			print "0";
 		}else{
