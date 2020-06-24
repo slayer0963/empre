@@ -85,7 +85,7 @@
 
 <div class="row hide left-align animated bounceInDown" id="datospro">
   <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
-  
+  <br>
   <div class="col s12 m12 l8 offset-l2 center-align">
     <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
     <div class="card-panel animated" id="llenado">
@@ -149,7 +149,7 @@
   <div class="modal-content align-center">
     <h4 for="name" id="namepres"></h4>
 
-      <form class="col s12 center-align" id="frmpricesa" name="frmpricesa" method="post">
+      <form class="col s12 m12 l12 center-align" id="frmpricesa" name="frmpricesa" method="post">
         <div class="row">
             <input type="hidden" id="idpres" name="idpres">
             <input type="hidden" id="colorpre" name="colorpre">
@@ -197,6 +197,20 @@
 
   </div>
 </div>
+
+<!-- <div id="modaladdproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
+  <div class="modal-content align-center row">
+    
+
+
+      
+    
+  </div>
+  <div class="modal-footer">
+    <a id="salir" class="modal-close  btn-flat">Salir</a>
+
+  </div>
+</div> -->
 
 
 

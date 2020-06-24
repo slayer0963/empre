@@ -35,7 +35,8 @@
           th.dt-center, td.dt-center { text-align: center; } 
           .aproduct { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 85%;}
           .addpri { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 55%;}
-          .aprices { padding: 0; width: 70% !important ; height: 100% !important ;  max-height: 72%;}
+          .aprices { padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 72%;}
+
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -72,6 +73,7 @@
             .product {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
             .asign { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
             .aproduct { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
+            .aprices { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 72%;}
           }
           .tb{
             margin-top: 2rem;
