@@ -113,9 +113,11 @@
 
 
 
-  <div class="col s12 m12 l12">
+  
     <div class="card-panel animated hide" id="tablage">
       Datos
+      <div class="row">
+      <div class="col s12 m12 l12">
       <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
         <thead>
             <tr>
@@ -136,6 +138,7 @@
       </table>
       <!-- tabla de DAT -->
       
+    </div>
     </div>
   </div>
 </div>
