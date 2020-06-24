@@ -30,14 +30,26 @@ function changeSelect3(event){
 
 
 
-/*var dataSet = [
-    [ "Tiger Nixon", "System Architect", "Edinburgh", "5421", "2011/04/25", "$320,800" ],
-    [ "Garrett Winters", "Accountant", "Tokyo", "8422", "2011/07/25", "$170,750" ]];*/
-
 
 $(document).ready(function(){
 
-  
+   
+    $('#fileprice').change(function(){
+        document.getElementById("img").removeAttribute('src');
+        $("#viewpic").html('');
+        var archivos=document.getElementById('fileprice').files;
+        var navegador=window.URL || window.webkitURL;
+        for (var i = 0; i < archivos.length; i++) {
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            var objeto_url=navegador.createObjectURL(archivos[i]);
+            $("#viewpic").append("<center><img id='img' name='img' class='circle responsive-img' src="+objeto_url+" style='height: 160px; width: 160px;' ></center>");
+            
+        };
+    });
+
+
 
 
 
@@ -331,10 +343,12 @@ $("#backfrm").click(function(event) {
 
 
 
+$("#addpricesa").click(function(event) {
+  alert($("#frmpricesa").serialize());
+});
   
 
 });
-
 
 
 
@@ -578,8 +592,18 @@ function formatStateC (opt) {
       $("#inicial").addClass('hide');
       $("#tabla").addClass('hide');
       $("#datospro").removeClass('hide');
-
+      $("#idpres").val(id);
+      $("#namepres").html("Agregar detalles de "+nombre);
  }
+
+ var modalGen = (c,m,z) =>{
+  $('#modaladdproduct').modal('open');
+  $("#colorpre").val(c);
+  $("#matpre").val(m);
+  $("#sizepre").val(z);
+
+}
+
 
 var getData = (bussi)=> {
     var dataString = "bussi="+bussi;

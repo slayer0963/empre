@@ -142,7 +142,58 @@
 
 
 
+<div id="modaladdproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
+  <div class="modal-content align-center">
+    <h4 for="name" id="namepres"></h4>
 
+      <form class="col s12 center-align" id="frmpricesa" name="frmpricesa" method="post">
+        <div class="row">
+            <input type="hidden" id="idpres" name="idpres">
+            <input type="hidden" id="colorpre" name="colorpre">
+            <input type="hidden" id="matpre" name="matpre">
+            <input type="hidden" id="sizepre" name="sizepre">
+            <div class="col s12 m6 l6">
+              <div id="viewpic">
+                <img src="https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png" style="height: 160px; width: 160px;" class="circle responsive-img" id="img" name="img">
+              </div>
+            <div class="file-field input-field">
+            <div class="btn">
+                <span>File</span>
+                <input type="file" id="fileprice" name="fileprice">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" id="fname" name="fname" type="text">
+            </div>
+            </div>
+            </div>
+            <div class="col s12 m6 l6">
+            <div class="input-field col s12 m12 l12">
+              <input id="quantity" name="quantity" title="Cantidad (*)" type="text">
+              <label for="quantity" id="">Cantidad</label>
+              <span class="" id="txtquantity"></span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="pextra" name="pextra" title="Precio Extra (*)" type="text" >
+              <label for="pextra" id="">Precio de extra</label>
+              <span class="" id="txtpextra"></span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="discount" name="discount" title="Descuento (*)" type="text" >
+              <label for="discount" id="">Descuento</label>
+              <span class="" id="txtdiscount"></span>
+            </div>
+            </div>
+         </div>
+        <button  id="addpricesa" class=" btn">Agregar<i class="material-icons">add</i></button>
+      </form>
+      
+    
+  </div>
+  <div class="modal-footer">
+    <a id="salir" class="modal-close  btn-flat">Salir</a>
+
+  </div>
+</div>
 
 
 

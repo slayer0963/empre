@@ -35,6 +35,7 @@
           th.dt-center, td.dt-center { text-align: center; } 
           .aproduct { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 85%;}
           .addpri { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 55%;}
+          .aprices { padding: 0; width: 70% !important ; height: 100% !important ;  max-height: 72%;}
           .container{
             margin-top: 2rem;
             padding-left: 0;
