@@ -67,6 +67,8 @@
 	}
 
 
+
+
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getData'){
     $dat = new DAOProduct();

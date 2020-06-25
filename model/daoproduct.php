@@ -13,6 +13,8 @@ include_once "../cn/connection.php";
 
  	}
 
+
+
  	public function getDataProductType()
  	{
 		$c = conectar();
