@@ -31,7 +31,7 @@ $(document).ready(function($) {
                    location.href="http://localhost/empre/view";
                   }
                   else if(datos[0].tipo == 2){
-                   location.href="http://localhost/empre/view";
+                   location.href="http://localhost/empre/mystore/";
                   }
                   else if(datos[0].tipo == 3){
                     $(".loginoff").addClass('hidden');
