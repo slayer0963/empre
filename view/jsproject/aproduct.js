@@ -49,7 +49,39 @@ $(document).ready(function(){
         };
     });
 
+/*$("#addpricesa").click(function(event) {
+  alert($("#frmpricesa").serialize());
+});*/
+  
 
+$('#frmpricesa').submit(function() {
+
+    var formData = new FormData(document.getElementById("frmpricesa"));
+      formData.append("dato", "valor");
+           $.ajax({
+            type: "POST",
+            url: "../../controller/cadetailsgeneral.php?btnsetData=setData", 
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+             alert(resp);
+                   if(resp==1){
+                    M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
+                    
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+
+  return false;
+}); 
 
 
 
@@ -343,10 +375,7 @@ $("#backfrm").click(function(event) {
 
 
 
-$("#addpricesa").click(function(event) {
-  alert($("#frmpricesa").serialize());
-});
-  
+
 
 });
 
