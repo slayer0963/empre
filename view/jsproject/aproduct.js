@@ -66,9 +66,12 @@ $('#frmpricesa').submit(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-             alert(resp);
+             //alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
+                    
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
                     
                    }
                    else{

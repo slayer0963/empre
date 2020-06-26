@@ -29,6 +29,10 @@ include_once "../cn/connection.php";
 
  	public function setData($obj)
  	{
+ 		if($obj=="x"){
+ 			echo "x";
+ 		}else{
+
  		$c=conectar();
 		$id_pro = $obj->getIdPrices();
 		$color = $obj->getIdColor();
@@ -73,6 +77,7 @@ include_once "../cn/connection.php";
 
 		     }
 		mysqli_close($c);
+	}
  	}
 
 

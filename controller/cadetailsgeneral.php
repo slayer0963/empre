@@ -14,7 +14,26 @@
 	    $obj->setQuantity($_POST["quantity"]);
 	    $obj->setExtraprice($_POST["pextra"]);
 	    $obj->setDiscount($_POST["discount"]);
-	    return $obj;
+
+	    $formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["fileprice"]["name"];
+		$nombreTmpArchivo=$_FILES["fileprice"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imgdetails/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+
 	}
 
 

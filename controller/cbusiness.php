@@ -7,7 +7,7 @@
 		$obj->setPicLogoBus($_POST["img"]);
 		$obj->setIdUser($_POST["user"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
-  		$nombreArchivo=$_FILES["file"]["name"];;
+  		$nombreArchivo=$_FILES["file"]["name"];
 		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
 		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
 		//echo $ext;
@@ -36,7 +36,7 @@
 		$obj->setPicLogoBus($_POST["imge"]);
 		$obj->setIdUser($_POST["usere"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
-  		$nombreArchivo=$_FILES["filee"]["name"];;
+  		$nombreArchivo=$_FILES["filee"]["name"];
 		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];
 		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
 		//echo $ext;
