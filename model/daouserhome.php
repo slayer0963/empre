@@ -18,7 +18,7 @@ include_once "../cn/connection.php";
     {
         $c = conectar();
         $id=$obj->getIdBus();
-        $sql="select pro.id_pro, pro.name_pro, asdg.img, asdg.quantity, aspo.sal_price, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro where aspro.id_bus=$id;";
+        $sql="select * from assignment_probus aspro inner join product pro on aspro.id_pro = pro.id_pro where aspro.id_bus=$id;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
