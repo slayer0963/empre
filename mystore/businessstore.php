@@ -117,20 +117,7 @@
 			<div class="col s12 m12 l12">
 				<div class="container ">
 					<div class="row" id="contentpro">
-						 <div class="row">
-						    <div class="col s12 m4 l3 ">
-						      <div class="card ">
-						        <div class="card-image">
-						          <img src="https://depor.com/resizer/mTP6b2Eamu7HEBdEhWApsU5O7pk=/980x528/smart/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/WMAQNLC52BBTJILOUBB6LMD24E.jpg">
-						      
-						          <a class="btn-floating halfway-fab waves-effect waves-light red" onclick="details(1);"><i class="material-icons">edit</i></a>
-						        </div>
-						        <div class="card-content">
-						          <p>Name</p>
-						        </div>
-						      </div>
-						    </div>
-						  </div>
+
 					</div>
 				</div>
 			</div>
