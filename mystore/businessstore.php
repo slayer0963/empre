@@ -41,6 +41,12 @@
 		.men{
 			margin-top: 2rem;
 		}
+
+		 .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+ 			@media only screen and (max-width : 992px) {
+            .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
+            
+          }
 	  </style>
 
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
@@ -111,7 +117,7 @@
 								}
 								?>
 								<div class="col s12 m6 l4 center-align animated slideInDown ">
-									<a class="btn-floating  btn-large waves-effect waves-light black" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>
+									<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>
 								</div>
 								
 							<?php 
@@ -121,6 +127,61 @@
 				</div>
 			</div>
 		</div>
+
+
+<!-- modal add busi -->
+
+ <div id="addbusi" class="modal animated slideInRight grey darken-4 businessmodal" style="color:white;">
+        <div class="modal-content">
+      <h4>Negocio</h4>
+      <div class="row">
+      <form class="col s12 center-align" id="formbusi" name="formbusi" method="post">
+        <div class="row">
+           <div class="input-fiel col s12">
+
+             <div class="col s12 align-center">
+              <div id="vista-previa">
+                 <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-camera-icon-png-image_696326.jpg" style="height: 150px; width: 150px;" id="imgcontainer" alt="" class=" responsive-img">
+              </div>
+            </div>
+            <br>
+
+            <div class="file-field input-field col s12">
+              <div class="btn green">
+                <span>Logo de empresa</span>
+                <input type="file" id="file" name="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" name="img" title="Imagen (*)" id="img"  type="text">
+              </div>
+            </div>
+            <span class="" id="txtimg"></span>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input type="text" name="name" title="Nombre (*)" id="name">
+              <label for="name">Nombre del negocio</label>
+              <span class="" id="txtname"></span>
+            </div>
+
+            <div class="input-field hide col s12 m12 l12">
+              <input type="hidden" name="user" id="user" value="<?php  echo $_SESSION["idus"];?>">
+            </div>
+      
+        </div>
+        <button type="submit" class=" btn green">Guardar <i class="material-icons">save</i></button>
+      </form>
+      </div>
+    </div>
+          <div class="modal-footer grey darken-4">
+        <a href="#!" class="modal-close  btn-flat">Salir</a>
+        
+      </div>
+  </div>
+
+
+<!--  -->
+
 		<div class="row animated hide" id="products">
 
 		 
@@ -205,7 +266,7 @@
       	$(document).ready(function(){
 		    $('.sidenav').sidenav();
 		    $(".dropdown-trigger").dropdown();
-
+			$('.modal').modal();
 		  });
       </script>
   <script>

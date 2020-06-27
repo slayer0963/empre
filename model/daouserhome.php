@@ -1,6 +1,7 @@
 <?php
 
 require_once "userhome.php";
+require_once "business.php";
 include_once "../cn/connection.php";
  /**
  *
@@ -12,6 +13,35 @@ include_once "../cn/connection.php";
     {
 
     }
+
+    /*INSERT BUSI*/
+    public function setDataBusi($obj)
+    {
+        if($obj=="x"){
+            echo "x";
+        }else{
+        $c=conectar();
+        $_name_bus=$obj->getNameBus();
+        $_pic_logo_bus=$obj->getPicLogoBus();
+        $_id_user=$obj->getIdUser();
+        $sql="insert into business value (0,'$_name_bus','$_pic_logo_bus',$_id_user,1);";
+        if (!$c->query($sql)) {
+            print "0".$sql;
+        }else{
+                echo "1"; 
+
+             }
+        mysqli_close($c);
+        }
+    }
+
+
+
+    /**/
+
+
+
+
 
         /*USER CONTROL*/
     public function getProductUser($obj)

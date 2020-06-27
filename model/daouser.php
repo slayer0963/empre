@@ -27,7 +27,7 @@ include_once "../cn/connection.php";
 		$pass_user = $obj->getPassUser();
  		$result = 0;
  		if($id_service==null){
-			$sentencia = $c->prepare("SELECT fullname_user,id_ustp, imagen, email_user FROM users WHERE email_user ='$email_user' and pass_user='$pass_user' or user_user ='$email_user' and pass_user='$pass_user'");
+			$sentencia = $c->prepare("SELECT id_user, fullname_user,id_ustp, imagen, email_user FROM users WHERE email_user ='$email_user' and pass_user='$pass_user' or user_user ='$email_user' and pass_user='$pass_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
@@ -35,11 +35,12 @@ include_once "../cn/connection.php";
 			$img=$res["imagen"];
 			$email=$res["email_user"];
 			$tipo=$res["id_ustp"];
+			$id=$res["id_user"];
 			$_SESSION["name"]=$nombre;
 			$_SESSION["type"]=$tipo;
 			$_SESSION["img"]=$img;
 			$_SESSION["email"]=$email;
-
+			$_SESSION["idus"]=$id;
 			$arreglo = array();
 			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
 			return $arreglo;

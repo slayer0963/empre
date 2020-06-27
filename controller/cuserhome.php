@@ -26,6 +26,39 @@
 	    echo json_encode($dat->getProductUserid(getidpro()));
 	}
 
+	function insert(){
+	    $obj=new Business();
+	    $obj->setNameBus($_POST["name"]);
+		$obj->setPicLogoBus($_POST["img"]);
+		$obj->setIdUser($_POST["user"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["file"]["name"];
+		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		//echo $ext;
+		if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imgbusiness/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+	    
+	}
+
+	$page = isset($_GET['btnsetDataBusi'])?$_GET['btnsetDataBusi']:'';
+	if($page=='setData'){
+	    $dat=new DAOUserhome();
+	    $dat->setDataBusi(insert());
+	}
+
 
 
 ?>

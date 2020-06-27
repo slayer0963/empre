@@ -1,5 +1,26 @@
 	
 	$(document).ready(function() {
+
+
+	$("#img").change(function(event) {
+	     document.getElementById("imgcontainer").removeAttribute('src');
+
+	        $("#vista-previa").html('');
+	                var archivos=document.getElementById('file').files;
+	        var navegador=window.URL || window.webkitURL;
+
+	        for (var i = 0; i < archivos.length; i++) {
+
+	            var size=archivos[i].size;
+	            var type=archivos[i].type;
+	            var name=archivos[i].name;
+	            
+	                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+	         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+	       }
+	});
+
 		$("#back").click(function(event) {
 			$("#menu").addClass('zoomOut');
 
@@ -68,6 +89,112 @@
 				}, 500);
 				return false;
 		});
+
+
+
+		/*save busi*/
+		$('#formbusi').submit(function() {
+		  if(Validate(1)==idinput.length){
+		    var formData = new FormData(document.getElementById("formbusi"));
+		      formData.append("dato", "valor");
+			         $.ajax({
+		            type: "POST",
+		            url: "../controller/cuserhome.php?btnsetDataBusi=setData", 
+		            data: formData,
+		            cache: false,
+		            contentType: false,
+		            processData: false,
+		            success: function(resp) {
+		             alert(resp);
+		                   if(resp==1){
+		                    // getData();
+		                    cleanform();
+		                    cleanbox();
+		                    $('.modal').modal('close');
+		                    M.toast({html: "¡Se ha agregado el negocio exitosamente!", classes: 'rounded  green'});
+		                    
+		                     
+		                   }else if(resp=="x"){
+		                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+		                    
+		                   }
+		                   else{
+		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+		                    
+		                   }
+		                     
+		            }		
+		                
+		        });
+		}
+			return false;
+		});	
+
+
+		var idinput = ['img','name'];
+		var idinputerror= ['txtimg','txtname'];
+
+
+var cleanform = () =>{
+    idinput.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+}
+
+
+var cleanbox=()=>{
+idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+
+var Validate = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinput.forEach(names => {
+          
+       if($("#"+names).val()!=0){
+        
+         validate+=1;
+         html="Listo";
+        
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
+       }
+       else{  
+        
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+  // else{
+  //  idinpute.forEach(names => {
+  //      if($("#"+names).val()!=0){
+  //       validate+=1;
+  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+  //        $("#"+idinputerrore[counte]).removeClass('errorinputs');
+  //        $("#"+idinputerrore[counte]).addClass('successinputs');
+  //      }
+  //      else{
+  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+  //        $("#"+idinputerrore[counte]).removeClass('successinputs');
+  //        $("#"+idinputerrore[counte]).addClass('errorinputs');
+  //      }
+  //       counte++;
+  //   });
+
+  // }
+
+    return validate;
+}
+
+		/**/
 
 
 	});
