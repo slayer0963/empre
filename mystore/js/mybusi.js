@@ -105,9 +105,9 @@
 		            contentType: false,
 		            processData: false,
 		            success: function(resp) {
-		             alert(resp);
+		             
 		                   if(resp==1){
-		                    // getData();
+		                    getdata($("#user").val());
 		                    cleanform();
 		                    cleanbox();
 		                    $('.modal').modal('close');
@@ -281,4 +281,33 @@ function mybusii(id) {
             });
 }
 
+function getdata(id) {
+	var dataString = 'id='+id;
+		
+	      		$.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetbusines=getDatab", 
+            data: dataString,
+            success: function(resp) {
+            	var html='';
 
+            	var respu = eval(resp);
+
+            	for (var i = 0; i < respu.length; i++) {
+            		html+='<a onclick="mybusii('+respu[i].id_bus+');" class="col s12 m6 l4 center-align animated slideInDown ">';
+				html+='<div class="cardss ">';
+				html+='<div class=" transparent">';
+				html+='<img class="activator responsive-img" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
+				html+='</div>';
+				html+='<h6 id="namesbusi" class="card-title activator white-text text-darken-4">'+respu[i].name_bus+'</h6>';
+				html+='</div>';
+				html+='</a>';
+            	}
+            	html+='<div class="col s12 m6 l4 center-align animated slideInDown ">';
+				html+='<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>';
+				html+='</div>';
+
+            	$("#containerbusi").html(html);
+            }
+        });
+}

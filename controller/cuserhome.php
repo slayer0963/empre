@@ -4,7 +4,7 @@
 
 	function getidbuss(){
 	    $obj=new Userhome();
-	    $obj->setIdBus($_POST["id"]);;
+	    $obj->setIdBus($_POST["id"]);
 	    return $obj;
 	}
 
@@ -24,6 +24,18 @@
 	if($page=='getData'){
 	    $dat=new DAOUserhome();
 	    echo json_encode($dat->getProductUserid(getidpro()));
+	}
+
+
+	function getidus(){
+	    $obj=new Userhome();
+	    $obj->setIdUser($_POST["id"]);
+	    return $obj;
+	}
+	$page = isset($_GET['btngetbusines'])?$_GET['btngetbusines']:'';
+	if($page=='getDatab'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getBusiness(getidus()));
 	}
 
 	function insert(){

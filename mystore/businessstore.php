@@ -24,7 +24,7 @@
 
 	  <style>
 	  	#business{
-	  		margin-top: 13rem;
+	  		margin-top: 4rem;
 	  	}
 		#details{
 			/*margin-top: 3rem;*/
@@ -56,7 +56,7 @@
   </head>
 	<body class="grey darken-4">
 
-		 <div class="container hide" id="contenidomenu">
+		 <div class=" hide" id="contenidomenu">
 		  	<nav class="transparent "  >
 		    <div class="nav-wrapper">
 		    	<a class="dropdown-trigger brand-logo right valign-wrapper " href="#!" data-target="dropdown1">
@@ -82,11 +82,11 @@
 		  <br>
 		<div class="row animated" id="business">
 			<div class="col s12 m12 l12">
-				<div class="container">
-					<div class="row center-align">
+				<div class="">
+					<div class="row center-align" id="containerbusi">
 						<?php 
 							$c = conectar();
-							$sentencia = $c->prepare("select count(*) nbus from business b inner join users u on b.id_user=u.id_user where u.email_user='".$_SESSION["email"]."';");
+							$sentencia = $c->prepare("select count(*) nbus from business b inner join users u on b.id_user=u.id_user where u.id_user=".$_SESSION["idus"].";");
 								$sentencia->execute();
 								$resultado = $sentencia->get_result();
 								$resp = $resultado->fetch_assoc();
@@ -97,7 +97,7 @@
 									<?php
 								}
 								else{
-									$sql="select * from business b inner join users u on b.id_user=u.id_user where u.email_user='".$_SESSION["email"]."';";
+									$sql="select * from business b inner join users u on b.id_user=u.id_user where u.id_user=".$_SESSION["idus"].";";
 							$c->set_charset('utf8');
 							$res = $c->query($sql);	
 							$arreglo = array();

@@ -14,6 +14,25 @@ include_once "../cn/connection.php";
 
     }
 
+
+    public function getBusiness($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdUser();
+        $sql="select * from business b inner join users u on b.id_user=u.id_user where u.id_user=$id";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+
+
+
+
     /*INSERT BUSI*/
     public function setDataBusi($obj)
     {
