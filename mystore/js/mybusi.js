@@ -1,6 +1,20 @@
 	
 	$(document).ready(function() {
-
+	var contclick=0;
+	$("#btnmedit").click(function(event) {
+		
+		if(contclick==0){
+			$(".editbusi").removeClass('hide');
+			M.toast({html: "¡Modo Edicion activado!", classes: 'rounded  green'});
+			contclick+=1;
+		}
+		else{
+			$(".editbusi").addClass('hide');
+			M.toast({html: "¡Modo Edicion desactivado!", classes: 'rounded  black'});
+			contclick=0;
+		}
+		
+	});
 
 	$("#img").change(function(event) {
 	     document.getElementById("imgcontainer").removeAttribute('src');
@@ -262,6 +276,9 @@ function mybusii(id) {
 						      html+='</div>';
 						    html+='</div>';
 
+
+						    
+
             	}
             	
             	
@@ -294,19 +311,37 @@ function getdata(id) {
             	var respu = eval(resp);
 
             	for (var i = 0; i < respu.length; i++) {
-            		html+='<a onclick="mybusii('+respu[i].id_bus+');" class="col s12 m6 l4 center-align animated slideInDown ">';
-				html+='<div class="cardss ">';
-				html+='<div class=" transparent">';
-				html+='<img class="activator responsive-img" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
-				html+='</div>';
-				html+='<h6 id="namesbusi" class="card-title activator white-text text-darken-4">'+respu[i].name_bus+'</h6>';
-				html+='</div>';
-				html+='</a>';
-            	}
-            	html+='<div class="col s12 m6 l4 center-align animated slideInDown ">';
-				html+='<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>';
-				html+='</div>';
+    //         		html+='<a onclick="mybusii('+respu[i].id_bus+');" class="col s12 m6 l4 center-align animated slideInDown ">';
+				// html+='<div class="cardss ">';
+				// html+='<div class=" transparent">';
+				// html+='<img class="activator responsive-img" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
+				// html+='</div>';
+				// html+='<h6 id="namesbusi" class="card-title activator white-text text-darken-4">'+respu[i].name_bus+'</h6>';
+				// html+='</div>';
+				// html+='</a>';
+    //         	}
+    //         	html+='<div class="col s12 m6 l4 center-align animated slideInDown ">';
+				// html+='<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>';
+				// html+='</div>';
 
+				html+='<div  class="col s12 m6 l3 center-align animated slideInDown ">';
+									html+='<div class="card">';
+	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
+	   									   html+='<img class="activator" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
+	   									 html+='</div>';
+	   									 html+='<div class="card-content">';
+	   									   html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">more_vert</i></span>';
+	   									   html+='<p><a href="#" class="btn" onclick="mybusii('+respu[i].id_bus+');">Ver negocio</a>&nbsp;<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" ><i class="material-icons ">edit</i></a></p>';
+	    									html+='</div>';
+	   									 html+='<div class="card-reveal">';
+	      									html+='<span class="card-title grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">close</i></span>';
+	      									html+='<div class="collection">';
+	      									html+='<p><a href="#!" class="collection-item"><span class="new badge blue">4</span>Pedidos</a></p>';
+	      									html+='</div>';
+	    									html+='</div>';
+	  									html+='</div>';
+								html+='</div>';
+							}
             	$("#containerbusi").html(html);
             }
         });

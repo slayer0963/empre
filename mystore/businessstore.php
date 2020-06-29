@@ -59,6 +59,7 @@
 		 <div class=" hide" id="contenidomenu">
 		  	<nav class="transparent "  >
 		    <div class="nav-wrapper">
+		    	<a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a>
 		    	<a class="dropdown-trigger brand-logo right valign-wrapper " href="#!" data-target="dropdown1">
 				
 		      	<div class="chip transparent" id="profile" style="color:white;">
@@ -104,22 +105,52 @@
 							while($re = $res->fetch_array()){
 
 								?>
-								<a onclick="mybusii(<?php echo $re['id_bus']; ?>);" class="col s12 m6 l4 center-align animated slideInDown ">
-									<div class="cardss ">
-									<div class=" transparent">
-										 <img class="activator responsive-img" src="<?php echo SERVERURL.'imgbusiness/'.$re['pic_logo_bus'] ?>" style="height: 150px; width: 100%;">
-							    	</div>
-							    
-								    <h6 id="namesbusi" class="card-title activator white-text text-darken-4"><?php echo $re['name_bus']; ?></h6>
-									</div>
-								</a>
+								<div  class="col s12 m6 l3 center-align animated slideInDown ">
+									<div class="card">
+	   									 <div class="card-image waves-effect waves-block waves-light">
+	   									   <img class="activator" src="<?php echo SERVERURL.'imgbusiness/'.$re['pic_logo_bus'] ?>" style="height: 150px; width: 100%;">
+	   									 </div>
+	   									 <div class="card-content">
+	   									   <span class="card-title activator grey-text text-darken-4"><?php echo $re['name_bus']; ?><i class="material-icons right">more_vert</i></span>
+	   									   <p><a href="#" class="btn" onclick="mybusii(<?php echo $re['id_bus']; ?>);">Ver negocio</a>&nbsp;<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" ><i class="material-icons ">edit</i></a></p>
+
+
+	    									</div>
+	   									 <div class="card-reveal">
+	      									<span class="card-title grey-text text-darken-4"><?php echo $re['name_bus']; ?><i class="material-icons right">close</i></span>
+	      									<div class="collection">
+	      									<p><a href="#!" class="collection-item"><span class="new badge blue">4</span>Pedidos</a></p>
+	      									</div>
+	    									</div>
+	  									</div>
+								</div>
 								<?php 
 								}
 								?>
 								<div class="col s12 m6 l4 center-align animated slideInDown ">
+									<!-- <div class="fixed-action-btn">
 									<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>
+								</div> -->
 								</div>
-								
+								<div class="fixed-action-btn">
+								  <a class="btn-floating btn red" href="#">
+								    <i class="large material-icons">format_quote</i>
+								  </a>
+								  <ul>
+								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
+								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
+								  </ul>
+								</div>
+
+								<!-- <div class="fixed-action-btn toolbar direction-top" style="transition: transform 0.2s ease 0s; transform: translate3d(0px, 0px, 0px);">
+							      <a class="btn-floating btn-large blue" style="transition: transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s; transform: translate3d(0px, 0px, 0px);">
+							        <i class="large material-icons">format_quote</i>
+							      </a>
+							      <ul>
+							        <li class="waves-effect waves-light"><a href="#!" style=""><i class="material-icons">mode_edit</i></a></li>
+							        <li class="waves-effect waves-light"><a  class=" modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
+							      </ul>
+							    </div> -->
 							<?php 
 							}
 					?>	
@@ -265,8 +296,19 @@
       <script>
       	$(document).ready(function(){
 		    $('.sidenav').sidenav();
-		    $(".dropdown-trigger").dropdown();
+		    
 			$('.modal').modal();
+			 
+			 
+			 $('.fixed-action-btn').floatingActionButton({
+			    direction: 'top',
+      			hoverEnabled: false
+			  });
+
+			 $(".dropdown-trigger").dropdown();
+
+
+
 		  });
       </script>
   <script>
