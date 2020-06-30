@@ -72,5 +72,44 @@
 	}
 
 
+	function update(){
+	    $obj=new Business();
+	     $obj->setIdBus($_POST["idbue"]);
+	    $obj->setNameBus($_POST["namee"]);
+		$obj->setPicLogoBus($_POST["imge"]);
+		$obj->setIdUser($_POST["usere"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["filee"]["name"];
+		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		//echo $ext;
+		if (file_exists("../view/imgbusiness/$nombreArchivo")) {
+		    return $obj;
+		} else {
+		    if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imgbusiness/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+		}
+	    
+	}
+
+	$page = isset($_GET['btnsetDataBusie'])?$_GET['btnsetDataBusie']:'';
+	if($page=='setData'){
+	    $dat=new DAOUserhome();
+	    $dat->setDataBusiEdit(update());
+	}
+
+
 
 ?>

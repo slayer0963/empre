@@ -1,6 +1,6 @@
-	
-	$(document).ready(function() {
 	var contclick=0;
+	$(document).ready(function() {
+	
 	$("#btnmedit").click(function(event) {
 		
 		if(contclick==0){
@@ -144,9 +144,46 @@
 			return false;
 		});	
 
-
+		$('#formbusie').submit(function() {
+		  if(Validate(0)==idinpute.length){
+		    var formData = new FormData(document.getElementById("formbusie"));
+		      formData.append("dato", "valor");
+			         $.ajax({
+		            type: "POST",
+		            url: "../controller/cuserhome.php?btnsetDataBusie=setData", 
+		            data: formData,
+		            cache: false,
+		            contentType: false,
+		            processData: false,
+		            success: function(resp) {
+		             
+		                   if(resp==1){
+		                    getdata($("#usere").val());
+		                    //cleanform();
+		                    cleanbox();
+		                    $('.modal').modal('close');
+		                    M.toast({html: "¡Se ha modificado el negocio exitosamente!", classes: 'rounded  green'});
+		                    
+		                     
+		                   }else if(resp=="x"){
+		                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+		                    
+		                   }
+		                   else{
+		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+		                    
+		                   }
+		                     
+		            }		
+		                
+		        });
+		}
+			return false;
+		});	
 		var idinput = ['img','name'];
 		var idinputerror= ['txtimg','txtname'];
+		var idinpute = ['imge','namee'];
+		var idinputerrore= ['txtimge','txtnamee'];
 
 
 var cleanform = () =>{
@@ -154,11 +191,15 @@ var cleanform = () =>{
         $("#"+names).val("");
         
     });
+
 }
 
 
 var cleanbox=()=>{
 idinputerror.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+idinputerrore.forEach(names => {
   $("#"+names).removeClass('successinputs');      
 });
 }
@@ -187,23 +228,23 @@ var Validate = (type) =>{
        count++;
     });
   }
-  // else{
-  //  idinpute.forEach(names => {
-  //      if($("#"+names).val()!=0){
-  //       validate+=1;
-  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
-  //        $("#"+idinputerrore[counte]).removeClass('errorinputs');
-  //        $("#"+idinputerrore[counte]).addClass('successinputs');
-  //      }
-  //      else{
-  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
-  //        $("#"+idinputerrore[counte]).removeClass('successinputs');
-  //        $("#"+idinputerrore[counte]).addClass('errorinputs');
-  //      }
-  //       counte++;
-  //   });
+  else{
+   idinpute.forEach(names => {
+       if($("#"+names).val()!=0){
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('errorinputs');
+         $("#"+idinputerrore[counte]).addClass('successinputs');
+       }
+       else{
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('successinputs');
+         $("#"+idinputerrore[counte]).addClass('errorinputs');
+       }
+        counte++;
+    });
 
-  // }
+  }
 
     return validate;
 }
@@ -252,7 +293,7 @@ function details(id) {
 
 
 
-function mybusii(id) {
+function mybusii(id,name) {
 		var dataString = 'id='+id;
 		
 	      		$.ajax({
@@ -281,6 +322,7 @@ function mybusii(id) {
 
             	}
             	
+            	$("#namebusi").html(name);
             	
             	$("#contentpro").html(html);
             	$("#business").addClass('zoomOut');
@@ -311,18 +353,7 @@ function getdata(id) {
             	var respu = eval(resp);
 
             	for (var i = 0; i < respu.length; i++) {
-    //         		html+='<a onclick="mybusii('+respu[i].id_bus+');" class="col s12 m6 l4 center-align animated slideInDown ">';
-				// html+='<div class="cardss ">';
-				// html+='<div class=" transparent">';
-				// html+='<img class="activator responsive-img" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
-				// html+='</div>';
-				// html+='<h6 id="namesbusi" class="card-title activator white-text text-darken-4">'+respu[i].name_bus+'</h6>';
-				// html+='</div>';
-				// html+='</a>';
-    //         	}
-    //         	html+='<div class="col s12 m6 l4 center-align animated slideInDown ">';
-				// html+='<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>';
-				// html+='</div>';
+  
 
 				html+='<div  class="col s12 m6 l3 center-align animated slideInDown ">';
 									html+='<div class="card">';
@@ -331,7 +362,13 @@ function getdata(id) {
 	   									 html+='</div>';
 	   									 html+='<div class="card-content">';
 	   									   html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">more_vert</i></span>';
-	   									   html+='<p><a href="#" class="btn" onclick="mybusii('+respu[i].id_bus+');">Ver negocio</a>&nbsp;<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" ><i class="material-icons ">edit</i></a></p>';
+	   									   html+='<p><a href="#" class="btn" onclick="mybusii('+respu[i].id_bus+','+String("'"+respu[i].name_bus+"'")+');">Ver negocio</a>&nbsp;';
+	   									   if(contclick==1){
+	   									   	html+='<a class="btn yellow modal-trigger  editbusi" href="#editbusi" onclick="fillboxbusi('+respu[i].id_bus+','+String("'"+respu[i].name_bus+"'")+','+String("'"+respu[i].pic_logo_bus+"'")+')" ><i class="material-icons ">edit</i></a></p>';
+	   									   }
+	   									   else{
+	   									   	html+='<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" onclick="fillboxbusi('+respu[i].id_bus+','+String("'"+respu[i].name_bus+"'")+','+String("'"+respu[i].pic_logo_bus+"'")+')" ><i class="material-icons ">edit</i></a></p>';
+	   									   }
 	    									html+='</div>';
 	   									 html+='<div class="card-reveal">';
 	      									html+='<span class="card-title grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">close</i></span>';
@@ -345,4 +382,14 @@ function getdata(id) {
             	$("#containerbusi").html(html);
             }
         });
+}
+
+
+function fillboxbusi(id,name,pic){
+	//alert(id+"----"+name+"----"+pic+"------"+contclick);
+
+	$("#imge").val(pic);
+	$("#imgcontainere").attr("src","../view/imgbusiness/"+pic);
+	$("#namee").val(name);
+	$("#idbue").val(id);
 }

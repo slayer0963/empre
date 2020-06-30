@@ -56,9 +56,27 @@ include_once "../cn/connection.php";
 
 
 
-    /**/
+    /*UPDATE BUSI*/
 
-
+    public function setDataBusiEdit($obj)
+    {
+        if($obj=="x"){
+            echo "x";
+        }else{
+        $c=conectar();
+        $_id_bus=$obj->getIdBus();
+        $_name_bus=$obj->getNameBus();
+        $_pic_logo_bus=$obj->getPicLogoBus();
+        $_id_user=$obj->getIdUser();
+        $sql="update business set name_bus='$_name_bus',pic_logo_bus='$_pic_logo_bus',id_user=$_id_user where id_bus=$_id_bus;";
+        if (!$c->query($sql)) {
+            print "0".$sql;
+        }else{
+                echo "1"; 
+             }
+        mysqli_close($c);
+        }
+    }
 
 
 

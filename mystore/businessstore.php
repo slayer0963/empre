@@ -24,7 +24,7 @@
 
 	  <style>
 	  	#business{
-	  		margin-top: 4rem;
+	  		margin-top: 1rem;
 	  	}
 		#details{
 			/*margin-top: 3rem;*/
@@ -39,18 +39,24 @@
 		margin-top: 1rem;
 	  	}
 		.men{
-			margin-top: 2rem;
+			margin-top: 1rem;
+		}
+		.card{
+			/*-webkit-box-shadow: -7px -7px 5px 0px rgba(43,99,45,0.49);
+			-moz-box-shadow: -7px -7px 5px 0px rgba(43,99,45,0.49);
+			box-shadow: -7px -7px 5px 0px rgba(43,99,45,0.49);*/
+
 		}
 
 		 .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
  			@media only screen and (max-width : 992px) {
-            .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
+            .businessmodal { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 85%;}
             
           }
 	  </style>
 
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
-
+		<link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
@@ -59,7 +65,8 @@
 		 <div class=" hide" id="contenidomenu">
 		  	<nav class="transparent "  >
 		    <div class="nav-wrapper">
-		    	<a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a>
+		    	<a class="dropdown-trigger brand-logo left valign-wrapper" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem;" id="namebusi">LARIBE</a>
+		    	<!-- <a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a> -->
 		    	<a class="dropdown-trigger brand-logo right valign-wrapper " href="#!" data-target="dropdown1">
 				
 		      	<div class="chip transparent" id="profile" style="color:white;">
@@ -81,7 +88,8 @@
 		  </nav>
 		  </div>
 		  <br>
-		<div class="row animated" id="business">
+		<div class="row animated center-align" id="business">
+			<h2 class=" green-text darken-4"  style="font-family: 'Shadows Into Light', cursive;">LARIBE</h2>
 			<div class="col s12 m12 l12">
 				<div class="">
 					<div class="row center-align" id="containerbusi">
@@ -112,7 +120,7 @@
 	   									 </div>
 	   									 <div class="card-content">
 	   									   <span class="card-title activator grey-text text-darken-4"><?php echo $re['name_bus']; ?><i class="material-icons right">more_vert</i></span>
-	   									   <p><a href="#" class="btn" onclick="mybusii(<?php echo $re['id_bus']; ?>);">Ver negocio</a>&nbsp;<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" ><i class="material-icons ">edit</i></a></p>
+	   									   <p><a href="#" class="btn" onclick="mybusii(<?php echo $re['id_bus'].',\''.$re['name_bus'].'\''; ?>);">Ver negocio</a>&nbsp;<a class="btn yellow modal-trigger hide editbusi" href="#editbusi" onclick="fillboxbusi(<?php echo $re['id_bus'].',\''.$re['name_bus'].'\',\''.$re['pic_logo_bus'].'\''; ?>)" ><i class="material-icons ">edit</i></a></p>
 
 
 	    									</div>
@@ -128,29 +136,10 @@
 								}
 								?>
 								<div class="col s12 m6 l4 center-align animated slideInDown ">
-									<!-- <div class="fixed-action-btn">
-									<a class="btn-floating  btn-large waves-effect waves-light black modal-trigger" href="#addbusi" style="margin-top: 3rem;"><i class="material-icons green">add</i></a>
-								</div> -->
+									
 								</div>
-								<div class="fixed-action-btn">
-								  <a class="btn-floating btn red" href="#">
-								    <i class="large material-icons">format_quote</i>
-								  </a>
-								  <ul>
-								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
-								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
-								  </ul>
-								</div>
+								
 
-								<!-- <div class="fixed-action-btn toolbar direction-top" style="transition: transform 0.2s ease 0s; transform: translate3d(0px, 0px, 0px);">
-							      <a class="btn-floating btn-large blue" style="transition: transform 0.2s cubic-bezier(0.55, 0.055, 0.675, 0.19) 0s; transform: translate3d(0px, 0px, 0px);">
-							        <i class="large material-icons">format_quote</i>
-							      </a>
-							      <ul>
-							        <li class="waves-effect waves-light"><a href="#!" style=""><i class="material-icons">mode_edit</i></a></li>
-							        <li class="waves-effect waves-light"><a  class=" modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
-							      </ul>
-							    </div> -->
 							<?php 
 							}
 					?>	
@@ -211,6 +200,55 @@
   </div>
 
 
+
+ <div id="editbusi" class="modal animated slideInLeft grey darken-4 businessmodal" style="color:white;">
+        <div class="modal-content">
+      <h4>Negocio</h4>
+      <div class="row">
+      <form class="col s12 center-align" id="formbusie" name="formbusie" method="post">
+        <div class="row">
+           <div class="input-fiel col s12">
+			
+             <div class="col s12 align-center">
+              <div id="vista-previae">
+                 <img src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-camera-icon-png-image_696326.jpg" style="height: 150px; width: 150px;" id="imgcontainere" alt="" class="responsive-img">
+              </div>
+            </div>
+            <br>
+
+            <div class="file-field input-field col s12">
+              <div class="btn green">
+                <span>Logo de empresa</span>
+                <input type="file" id="filee" name="filee">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" name="imge" title="Imagen (*)" id="imge"  type="text">
+              </div>
+            </div>
+            <span class="" id="txtimge"></span>
+            </div>
+
+            <div class="input-field col s12 m12 l12">
+              <input type="text" name="namee" title="Nombre (*)" id="namee">
+              
+              <span class="" id="txtnamee">Nombre del negocio</span>
+            </div>
+
+            <div class="input-field hide col s12 m12 l12">
+            	<input type="hidden" name="idbue" id="idbue">
+              <input type="hidden" name="usere" id="usere" value="<?php  echo $_SESSION["idus"];?>">
+            </div>
+      
+        </div>
+        <button type="submit" class=" btn yellow darken-3">Modificar <i class="material-icons">save</i></button>
+      </form>
+      </div>
+    </div>
+          <div class="modal-footer grey darken-4">
+        <a href="#!" class="modal-close  btn-flat">Salir</a>
+        
+      </div>
+  </div>
 <!--  -->
 
 		<div class="row animated hide" id="products">
@@ -219,7 +257,7 @@
 			<div class="col s12 m12 l12">
 				<div class="container ">
 					<a id="backe" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
-					<div class="row" id="contentpro">
+					<div class="row center-align" id="contentpro">
 						
 					</div>
 				</div>
@@ -230,7 +268,8 @@
 			<div class="col s12 m12 l12">
 				<div class="container ">
 					<a id="back" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br><br>
-					<div class="row" id="contentmenu">
+					<div class="row align-center" id="contentmenu">
+						
 						<div class="col s12 m4 l4 center-align men"><button class="btn" id="viewsta">Estadisticas</button></div>
 						<div class="col s12 m4 l4 center-align men"><button class="btn" id="viewpro">Productos</button></div>
 						<div class="col s12 m4 l4 center-align men"><button class="btn">Pedidos</button></div>
@@ -276,6 +315,15 @@
 			</div>
 			
 		</div>
+		<div class="fixed-action-btn">
+								  <a class="btn-floating btn red" href="#">
+								    <i class="large material-icons">format_quote</i>
+								  </a>
+								  <ul>
+								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
+								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
+								  </ul>
+								</div>
     </body>
   </html>
 
