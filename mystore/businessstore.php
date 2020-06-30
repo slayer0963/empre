@@ -65,7 +65,7 @@
 		 <div class=" hide" id="contenidomenu">
 		  	<nav class="transparent "  >
 		    <div class="nav-wrapper">
-		    	<a class="dropdown-trigger brand-logo left valign-wrapper" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem;" id="namebusi">LARIBE</a>
+		    	<a class="dropdown-trigger brand-logo left valign-wrapper animated  heartBeat slower" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem;" id="namebusi">LARIBE</a>
 		    	<!-- <a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a> -->
 		    	<a class="dropdown-trigger brand-logo right valign-wrapper " href="#!" data-target="dropdown1">
 				
@@ -89,7 +89,7 @@
 		  </div>
 		  <br>
 		<div class="row animated center-align" id="business">
-			<h2 class=" green-text darken-4"  style="font-family: 'Shadows Into Light', cursive;">LARIBE</h2>
+			<h2 class=" green-text darken-4 animated "  style="font-family: 'Shadows Into Light', cursive;">LARIBE</h2>
 			<div class="col s12 m12 l12">
 				<div class="">
 					<div class="row center-align" id="containerbusi">
@@ -146,6 +146,15 @@
 					</div>
 				</div>
 			</div>
+			<div class="fixed-action-btn">
+								  <a class="btn-floating btn red" href="#">
+								    <i class="large material-icons">format_quote</i>
+								  </a>
+								  <ul>
+								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
+								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
+								  </ul>
+								</div>
 		</div>
 
 
@@ -315,15 +324,7 @@
 			</div>
 			
 		</div>
-		<div class="fixed-action-btn">
-								  <a class="btn-floating btn red" href="#">
-								    <i class="large material-icons">format_quote</i>
-								  </a>
-								  <ul>
-								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
-								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
-								  </ul>
-								</div>
+
     </body>
   </html>
 
