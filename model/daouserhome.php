@@ -109,5 +109,72 @@ include_once "../cn/connection.php";
         return $arreglo;
     }
 
+
+
+
+    /*GET COLORS*/
+    public function getColorsp($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdPro();
+        $sql="select asdg.id_color, c.name_color, c.code_color from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color where pro.id_pro=$id group by asdg.id_color;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+
+    public function getmaterialsp($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdPro();
+        $id_color=$obj->getIdColor();
+        $sql="select asdg.id_material, mat.name_mat from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material where pro.id_pro=$id and c.id_color=$id_color group by asdg.id_material;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    public function getsizesp($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdPro();
+        $id_color=$obj->getIdColor();
+        $id_material=$obj->getIdMat();
+        $sql="select asdg.id_size, si.number_size, si.name_size from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material group by asdg.id_size;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    public function getDataProc($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdPro();
+        $id_color=$obj->getIdColor();
+        $id_material=$obj->getIdMat();
+        $id_size=$obj->getIdSize();
+        $sql="select asdg.img, asdg.quantity, (aspo.sal_price+asdg.extraprice) as price, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material and si.id_size=$id_size;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
  }
  ?>

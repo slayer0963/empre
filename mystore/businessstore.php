@@ -40,6 +40,7 @@
 	  	}
 		.men{
 			margin-top: 1rem;
+
 		}
 		.card{
 			/*-webkit-box-shadow: -7px -7px 5px 0px rgba(43,99,45,0.49);
@@ -304,22 +305,36 @@
 		</div>
 
 
-		<div class="container animated hide" id="details">
-			<a id="backd" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br><br>
+		<div class=" animated hide" id="details">
+			<a id="backd" class="btn-floating blu" style="margin-left: 2rem;"><i class="material-icons">keyboard_backspace</i></a><br><br>
 			<div class="row">
-					<div class="col s12 m4 l3 center-align">
-						COLORES <br>
-						MATERIALES <br>
-						TALLAS
+					<div class="col s12 m4 l4 center-align">
+						<ul class="collapsible ">
+					    <li class="active">
+					      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Color</div>
+					      <div class="collapsible-header" id="ccolorsp"></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="material-icons">place</i>Material</div>
+					      <div class="collapsible-header" id="cmaterialsp"></div>
+					    </li>
+					    <li>
+					      <div class="collapsible-header"><i class="material-icons">whatshot</i>Talla</div>
+					      <div class="collapsible-header" id="csizesp"></div>
+					    </li>
+					  </ul>
+						
 					</div>
-					<div class="col s12 m4 l6 center-align" id="imgpro">
+					<div class="col s12 m4 l5 center-align" id="imgpro">
 
 						
 					</div>
 					<div class="col s12 m4 l3 center-align">
-						Precio <br>
-						Cantidad
-
+						<div class="collection">
+					    <a href="#!" class="collection-item"><span class="badge" id="quantitydeta">1</span>Cantidad</a>
+					    <a href="#!" class="collection-item"><span class="badge" id="pricedeta">1</span>Precio</a>
+					    <a href="#!" class="collection-item"><span class="badge" id="discodeta">1</span>Descuento</a>
+					    </div>
 					</div>
 			</div>
 			
@@ -353,6 +368,7 @@
 			    direction: 'top',
       			hoverEnabled: false
 			  });
+			 $('.collapsible').collapsible();
 
 			 $(".dropdown-trigger").dropdown();
 

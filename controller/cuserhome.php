@@ -111,5 +111,59 @@
 	}
 
 
+	/*GET COLORS*/
+
+	$page = isset($_GET['btngetcolors'])?$_GET['btngetcolors']:'';
+	if($page=='getDatapc'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getColorsp(getidpro()));
+	}
+
+	/*GET MATERIALS*/
+
+	function getIdbyMaterial()
+	{
+		$obj=new Userhome();
+	    $obj->setIdPro($_POST["id"]);
+	    $obj->setIdColor($_POST["idcolor"]);
+	    return $obj;
+	}
+
+	$page = isset($_GET['btngetmaterials'])?$_GET['btngetmaterials']:'';
+	if($page=='getDatamc'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getmaterialsp(getIdbyMaterial()));
+	}
+
+	function getIdbySizes()
+	{
+		$obj=new Userhome();
+	    $obj->setIdPro($_POST["id"]);
+	    $obj->setIdColor($_POST["idcolor"]);
+	    $obj->setIdMat($_POST["idmat"]);
+	    return $obj;
+	}
+
+	$page = isset($_GET['btngetsizes'])?$_GET['btngetsizes']:'';
+	if($page=='getDatazc'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getsizesp(getIdbySizes()));
+	}
+
+	function getIdbyProduct()
+	{
+		$obj=new Userhome();
+	    $obj->setIdPro($_POST["id"]);
+	    $obj->setIdColor($_POST["idcolor"]);
+	    $obj->setIdMat($_POST["idmat"]);
+	    $obj->setIdSize($_POST["idsiz"]);
+	    return $obj;
+	}
+
+	$page = isset($_GET['btngetProdsc'])?$_GET['btngetProdsc']:'';
+	if($page=='getDataProc'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getDataProc(getIdbyProduct()));
+	}
 
 ?>
