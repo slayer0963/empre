@@ -348,7 +348,7 @@ $("#backfrm").click(function(event) {
 
 
 
-function consultar(dato) {
+function consultar() {
 
     $("#tbproduct").DataTable( {
     "responsive": true,

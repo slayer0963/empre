@@ -219,7 +219,7 @@ include_once "../cn/connection.php";
     {
         $c = conectar();
         $id=$obj->getIdBus();
-        $sql=" select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus where busi.id_bus=$id and EXISTS(select apo.id_prices from assignment_prices_object apo where apo.id_pro<>p.id_pro and EXISTS(select apog.id_prices from assignment_details_general apog where apog.id_prices<>apo.id_prices)); ";
+        $sql=" select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro, apob.id_prices from product p inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus  where busi.id_bus=$id and not exists(select * from assignment_details_general adg where adg.id_prices=apob.id_prices); ";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -228,6 +228,8 @@ include_once "../cn/connection.php";
         }
         return $arreglo;
     }
+
+       
 
  }
  ?>
