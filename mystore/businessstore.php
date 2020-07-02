@@ -50,8 +50,10 @@
 		}
 
 		 .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+		 .addpro { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
  			@media only screen and (max-width : 992px) {
             .businessmodal { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 85%;}
+            .addpro { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 85%;}
             
           }
 	  </style>
@@ -261,6 +263,59 @@
   </div>
 <!--  -->
 
+<!-- modal add product -->
+  <div id="addpro" class="modal modal-fixed-footer addpro">
+    <div class="modal-content">
+      <h4>Producto</h4>
+      <div class="row">
+        <form class="col s12 center-align" id="formproduct" name="formproduct" method="post">
+        <div class="row">
+			<input type="hidden" id="idbusinp" name="idbusinp">
+          <div class="input-field col s12">
+			
+            <input type="text" name="namep" title="Nombre (*)" id="namep">
+            <label for="name">Nombre</label>
+            <span class="" id="txtnamep"></span>
+          </div>
+          <div class="input-field col s12">
+            <textarea id="descrip" name="descrip" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="250"></textarea>
+            <label for="descrip">Descripci&oacute;n</label>
+            <span class="" id="txtdescrip"></span>
+          </div>
+          <div class="input-field col s12 m12 l12">
+              <input id="pcompra" name="pcompra" title="Precio Compra (*)" type="text" >
+              <label for="pcompra">Precio de compra</label>
+              <span class="" id="txtpcompra"></span>
+            </div>
+          <div class="input-field col s12 m12 l12">
+              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
+              <label for="pventa" id="">Precio de venta</label>
+              <span class="" id="txtpventa"></span>
+          </div>
+          <div class="input-field col s12">
+              <select  class="select2 browser-default" id="cat" name="cat" title="Categor&iacute;a (*)">
+              </select>
+              <span class="" id="txtcat"></span>
+          </div>
+          <div class="input-field col s12">
+              <select  class="select2 browser-default" id="tp" name="tp" title="Tipo de producto (*)">
+              </select>
+              <span class="" id="txttp"></span>
+          </div>
+        </div>
+        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+      </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a id="salir" class="modal-close  btn-flat">Salir</a>
+      
+    </div>
+  </div>
+
+
+<!-- ] -->
+
 		<div class="row animated hide" id="products">
 
 		 
@@ -270,8 +325,77 @@
 					<div class="row center-align" id="contentpro">
 						
 					</div>
+					<div class="row hide left-align animated bounceInDown" id="datospro">
+					  <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
+					  <br>
+					  <div class="col s12 m12 l8 offset-l2 center-align">
+					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
+					    <div class="card-panel animated" id="llenado">
+					       <h6 id="nombredtp"></h6>
+					        <select  class="select2 browser-default" id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)">
+
+					        </select>
+					        <span class="" id="txtuser">Seleccionar Colores</span>
+
+					        <select  class="select2 browser-default" id="mater" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
+
+					        </select>
+					        <span class="" id="txtuser">Seleccionar Material</span>
+
+					        <select  class="select2 browser-default" id="size" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
+
+					        </select>
+					        <span class="" id="txtuser">Seleccionar Tallas</span>
+					        <br>
+					        <br>
+					        <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
+					      </div>
+					  </div>
+					  
+
+
+
+					  
+					    <div class="card-panel animated hide" id="tablage">
+					      Datos
+					      <div class="row">
+					      <div class="col s12 m12 l12">
+					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+					        <thead>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </thead>
+					        <tfoot>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </tfoot>
+					      </table>
+					      <!-- tabla de DAT -->
+					      
+					    </div>
+					    </div>
+					  </div>
+					</div>
+					
 				</div>
 			</div>
+			<div class="fixed-action-btn">
+								  <a class="btn-floating btn red" href="#">
+								    <i class="large material-icons">format_quote</i>
+								  </a>
+								  <ul>
+								    <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li>
+								    <li><a class="btn-floating blue modal-trigger" href="#addpro"><i class="material-icons">add</i></a></li>
+								  </ul>
+								</div>
 		</div>
 
 		<div class="row animated hide" id="menu">
@@ -306,8 +430,12 @@
 
 
 		<div class=" animated hide" id="details">
-			<a id="backd" class="btn-floating blu" style="margin-left: 2rem;"><i class="material-icons">keyboard_backspace</i></a><br><br>
+			<a id="backd" class="btn-floating blu" style="margin-left: 2rem;"><i class="material-icons">keyboard_backspace</i></a>
+			<div class="col s12 m12 l12 center-align" style="margin-top: 0px;">
+					<h3 class="green-text darken-4" style="font-family: 'Shadows Into Light', cursive;" id="nameprode"></h3>
+			</div>
 			<div class="row">
+				
 					<div class="col s12 m4 l4 center-align">
 						<ul class="collapsible ">
 					    <li class="active">
@@ -356,6 +484,7 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/materialize.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/lightbox.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.maskedinput.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script src="<?php echo SERVERURLB; ?>mystore/js/mybusi.js">></script>
       <script>
       	$(document).ready(function(){
@@ -369,7 +498,7 @@
       			hoverEnabled: false
 			  });
 			 $('.collapsible').collapsible();
-
+			 $('#descrip').characterCounter();
 			 $(".dropdown-trigger").dropdown();
 
 

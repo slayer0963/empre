@@ -166,4 +166,35 @@
 	    echo json_encode($dat->getDataProc(getIdbyProduct()));
 	}
 
+
+
+
+	/*VALIDA PRODUCT*/
+
+	$page = isset($_GET['btnvalidatepro'])?$_GET['btnvalidatepro']:'';
+	if($page=='getvaData'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getvaData(getidbuss()));
+	}
+
+
+
+	/*insert product*/
+	function insertproduct(){
+	    $obj=new Userhome();
+	    $obj->setIdBus($_POST["idbusinp"]);
+	    $obj->setNamePro($_POST["namep"]);
+		$obj->setDescrPro($_POST["descrip"]);
+		$obj->setPurPrice($_POST["pcompra"]);
+	    $obj->setSalPrice($_POST["pventa"]);
+		$obj->setIdCat($_POST["cat"]);
+		$obj->setIdTpro($_POST["tp"]);
+	    return $obj;
+	}
+
+	$page = isset($_GET['btnsetDataproduct'])?$_GET['btnsetDataproduct']:'';
+	if($page=='setDataproduct'){
+	    $dat=new DAOUserhome();
+	    $dat->setDataproduct(insertproduct());
+	}
 ?>

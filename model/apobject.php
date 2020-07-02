@@ -8,6 +8,7 @@ class Apobject
 	private $_sal_price;
 	private $_quantity ;
 	private $_state_prices_pro;
+   
 	
 	function __construct()
     {
@@ -98,6 +99,7 @@ class Apobject
 
         return $this;
     }
+
 }
 
 

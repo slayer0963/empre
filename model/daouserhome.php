@@ -166,7 +166,60 @@ include_once "../cn/connection.php";
         $id_color=$obj->getIdColor();
         $id_material=$obj->getIdMat();
         $id_size=$obj->getIdSize();
-        $sql="select asdg.img, asdg.quantity, (aspo.sal_price+asdg.extraprice) as price, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material and si.id_size=$id_size;";
+        $sql="select pro.name_pro, asdg.img, asdg.quantity, (aspo.sal_price+asdg.extraprice) as price, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material and si.id_size=$id_size;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    /*insert product*/
+
+    public function setDataproduct($obj)
+    {
+        $c=conectar();
+        $_idbus = $obj->getIdBus();
+        $_name_pro = $obj->getNamePro();
+        $_descr_pro = $obj->getDescrPro();
+        $_id_cat = $obj->getIdCat();
+        $_id_tpro = $obj->getIdTpro();
+        $purprice = $obj->getPurPrice();
+        $salprice = $obj->getSalPrice();
+        $sql="insert into product value (0,'$_name_pro','$_descr_pro',$_id_cat,$_id_tpro,1);";
+        if (!$c->query($sql)) {
+            print "0";
+        }else{
+                $query= "select id_pro from product where name_pro='$_name_pro' and id_cat=$_id_cat and id_tpro=$_id_tpro;";
+                $c->set_charset('utf8');
+                $result = $c->query($query);
+                $re = $result->fetch_array();
+                $id_pro=$re["id_pro"]; 
+                $sqls="insert into assignment_probus value (0,$_idbus,$id_pro);";
+                if (!$c->query($sqls)) {
+                    print "0";
+                }else{
+                    $sqlprice="insert into assignment_prices_object value (0,$id_pro,'$purprice','$salprice',1);";
+                    if (!$c->query($sqlprice)) {
+                        print "0";
+                    }else{
+                        echo "1";
+                    }
+                }
+
+             }
+        mysqli_close($c);
+    }
+
+
+
+    public function getvaData($obj)
+    {
+        $c = conectar();
+        $id=$obj->getIdBus();
+        $sql=" select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro as id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus where busi.id_bus=$id and EXISTS(select apo.id_prices from assignment_prices_object apo where apo.id_pro<>p.id_pro and EXISTS(select apog.id_prices from assignment_details_general apog where apog.id_prices<>apo.id_prices)); ";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();

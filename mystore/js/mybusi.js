@@ -1,6 +1,7 @@
 	var contclick=0;
 	$(document).ready(function() {
-	
+	setComboCat();
+	setComboTp();
 	$("#btnmedit").click(function(event) {
 		
 		if(contclick==0){
@@ -105,6 +106,39 @@
 		});
 
 
+$("#cat").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#addpro"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+$("#tp").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#addpro"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
 
 		/*save busi*/
 		$('#formbusi').submit(function() {
@@ -142,7 +176,20 @@
 		        });
 		}
 			return false;
-		});	
+		});
+
+
+$("#backfrm").click(function(event) {
+  $("#backfrm").addClass('hide');
+      $("#llenado").removeClass('slideOutUp');
+      $("#llenado").addClass('slideInUp');
+      $("#tablage").addClass('slideOutUp');
+    setTimeout(function(){ 
+      $("#llenado").removeClass('hide');
+      $("#tablage").addClass('hide'); 
+    }, 1000);
+      
+  });
 
 		$('#formbusie').submit(function() {
 		  if(Validate(0)==idinpute.length){
@@ -168,6 +215,35 @@
 		                   }else if(resp=="x"){
 		                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
 		                    
+		                   }
+		                   else{
+		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+		                    
+		                   }
+		                     
+		            }		
+		                
+		        });
+		}
+			return false;
+		});
+
+		$('#formproduct').submit(function() {
+
+		  if(Validatep(1)==idinputp.length){ 
+			$.ajax({
+		            type: "POST",
+		            url: "../controller/cuserhome.php?btnsetDataproduct=setDataproduct", 
+		            data: $("#formproduct").serialize(),
+		            success: function(resp) {
+
+		                   if(resp==1){
+		                    //getData();
+		                    cleanformp();
+		                    cleanboxp();
+		                    M.toast({html: "¡Se ha agregado el tipo de usuario exitosamente!", classes: 'rounded  green'});
+		                    $('.modal').modal('close');
+		                     
 		                   }
 		                   else{
 		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
@@ -249,6 +325,72 @@ var Validate = (type) =>{
     return validate;
 }
 
+var idinputp = ['namep','descrip','pcompra','pventa','cat','tp'];
+var idinputerrorp= ['txtnamep','txtdescrip','txtpcompra','txtpventa','txtcat','txttp'];
+// var idinpute = ['namee','descripe','cate','tpe'];
+// var idinputerrore= ['txtnamee','txtdescripe','txtcate','txttpe'];
+
+var cleanformp = () => {
+    idinput.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+}
+
+var cleanboxp=()=>{
+idinputerrorp.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+// idinputerrore.forEach(names => {
+//   $("#"+names).removeClass('successinputs');      
+// });
+}
+
+var Validatep = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputp.forEach(names => {
+          
+       if($("#"+names).val() !=0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrorp[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorp[count]).removeClass('errorinputs');
+         $("#"+idinputerrorp[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrorp[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorp[count]).removeClass('successinputs');      
+         $("#"+idinputerrorp[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+  // else{
+  //  idinpute.forEach(names => {
+  //      if($("#"+names).val().length > 0){
+  //       validate+=1;
+  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+  //        $("#"+idinputerrore[counte]).removeClass('errorinputs');
+  //        $("#"+idinputerrore[counte]).addClass('successinputs');
+  //      }
+  //      else{
+  //        $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+  //        $("#"+idinputerrore[counte]).removeClass('successinputs');
+  //        $("#"+idinputerrore[counte]).addClass('errorinputs');
+  //      }
+  //       counte++;
+  //   });
+
+  // }
+
+    return validate;
+}
+
+
+
 		/**/
 
 
@@ -272,8 +414,8 @@ function details(id) {
             	for (var i = 0; i < respu.length; i++) {
             		
 					html+='<img src="../view/imgdetails/'+respu[i].img+'" class="responsive-img" style="height: 250px; width: 100%;">';
-						     
-
+						    $("#nameprode").html(respu[i].name_pro); 
+					getDataProductD(respu[i].id_pro,respu[i].id_color,respu[i].id_material,respu[i].id_size);
             	}
             	
             	
@@ -293,6 +435,9 @@ function details(id) {
 
 
 
+
+
+
 function mybusii(id,name) {
 		var dataString = 'id='+id;
 		
@@ -303,7 +448,7 @@ function mybusii(id,name) {
             success: function(resp) {
             	var respu = eval(resp);
             	var html='';
-            	
+            	validateproduct(id);
             	for (var i = 0; i < respu.length; i++) {
             		html+='<div class="col s12 m4 l3 " >';
 						      html+='<div class="card ">';
@@ -315,15 +460,11 @@ function mybusii(id,name) {
 						          html+='<p>'+respu[i].name_pro+'</p>';
 						        html+='</div>';
 						      html+='</div>';
-						    html+='</div>';
-
-
-						    
-
+						    html+='</div>';	   
             	}
             	
             	$("#namebusi").html(name);
-            	
+            	$("#idbusinp").val(id);
             	$("#contentpro").html(html);
             	$("#business").addClass('zoomOut');
             	$("#contenidomenu").removeClass('hide');
@@ -338,6 +479,81 @@ function mybusii(id,name) {
             	
             }
             });
+}
+
+function validateproduct(id) {
+	var dataString = 'id='+id;
+	$.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btnvalidatepro=getvaData", 
+            data: dataString,
+            success: function(resp) {
+            	var res = eval(resp);
+            	if(res.length>0){
+            		
+            		swal("Tiene algunos productos pendientes de ingreso por lo tanto no apareceran en la tienda", {
+					  buttons: {
+					    cancel: "No en este momento",
+					    catch: {
+					      text: "Ver productos!",
+					      value: "catch",
+					    },
+					    
+					  },
+					})
+					.then((value) => {
+					  switch (value) {
+					 
+					    case "defeat":
+					      swal("Pikachu fainted! You gained 500 XP!");
+					      break;
+					 
+					    case "catch":
+					      swal("Gotcha!", "Pikachu was caught!", "success");
+					      break;
+					 
+					   
+					  }
+					});
+            	}
+            }
+        });
+}
+
+var setComboCat = () =>{
+  var html="";
+
+          $.ajax({
+            type: "POST",
+            url: "../controller/cproduct.php?btngetData=getDataCategories",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='<option value="0" selected>Seleccione una categoria</option>';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+               }
+               $("#cat").html(html);
+            } 
+        }); 
+      
+}
+
+var setComboTp = () =>{
+  var html="";
+
+          $.ajax({
+            type: "POST",
+            url: "../controller/cproduct.php?btngetData=getDataProductType",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='<option value="0" selected>Seleccione un tipo de producto</option>';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+               }
+               $("#tp").html(html);
+            } 
+        }); 
+      
 }
 
 function getdata(id) {
@@ -462,8 +678,9 @@ function getDataProductD(id,color,material,size) {
             	for (var i = 0; i < respu.length; i++) {
             		
 					htmlimg+='<img src="../view/imgdetails/'+respu[i].img+'" class="responsive-img" style="height: 250px; width: 100%;">';
+					$("#nameprode").html(respu[i].name_pro);
 					$("#quantitydeta").html(respu[i].quantity);
-					$("#pricedeta").html(respu[i].price);  
+					$("#pricedeta").html("$"+respu[i].price);  
 					$("#discodeta").html(respu[i].discount);   
 					$("#imgpro").html(htmlimg);
             	}
