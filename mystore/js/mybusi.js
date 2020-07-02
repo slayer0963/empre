@@ -178,7 +178,16 @@ $("#tp").select2({
 			return false;
 		});
 
-
+$("#backmenuprin").click(function(event) {
+	$("#productnocombimen").addClass('zoomOut');
+	$("#productnocombimen").removeClass('zoomIn');
+					    setTimeout(function(){ 
+							$("#productnocombimen").addClass('hide');
+							$("#menu").removeClass('hide');
+							$("#menu").removeClass('zoomOut');
+							$("#menu").addClass('zoomIn');
+						}, 500);
+});
 $("#backfrm").click(function(event) {
   $("#backfrm").addClass('hide');
       $("#llenado").removeClass('slideOutUp');
@@ -190,6 +199,29 @@ $("#backfrm").click(function(event) {
     }, 1000);
       
   });
+
+$("#backmenuf").click(function(event) {
+	
+	$("#datospro").addClass('zoomOut');
+	$("#datospro").removeClass('zoomIn');
+					    setTimeout(function(){ 
+							$("#datospro").addClass('hide');
+							$("#productnocombimen").removeClass('hide');
+							$("#productnocombimen").removeClass('zoomOut');
+							$("#productnocombimen").addClass('zoomIn');
+						}, 500);
+});
+
+$("#generar").click(function(event) {
+	$("#llenado").addClass('slideOutUp');
+      setTimeout(function(){ 
+        $("#llenado").addClass('hide');
+        $("#tablage").removeClass('hide');
+        $("#tablage").removeClass('slideOutUp');
+        $("#tablage").addClass('slideInUp');
+        $("#backfrm").removeClass('hide');
+      }, 1000);
+});
 
 		$('#formbusie').submit(function() {
 		  if(Validate(0)==idinpute.length){
@@ -509,7 +541,30 @@ function validateproduct(id) {
 					      break;
 					 
 					    case "catch":
-					      swal("Gotcha!", "Pikachu was caught!", "success");
+					    $("#menu").addClass('zoomOut');
+						$("#menu").removeClass('zoomIn');
+					    setTimeout(function(){ 
+							$("#menu").addClass('hide');
+							$("#productnocombimen").removeClass('hide');
+							$("#productnocombimen").removeClass('zoomOut');
+							$("#productnocombimen").addClass('zoomIn');
+						}, 500);
+
+						var html='';
+					      for (var i = 0; i < res.length; i++) {
+					      	html+='<div class="col s12 m4 l3 " >';
+						      html+='<div class="card ">';
+						        html+='<div class="card-image">';
+						          html+='<a class="btn-floating halfway-fab waves-effect waves-light red" onclick="adddetailspro('+res[i].id_pro+');"><i class="material-icons">edit</i></a>';
+						        html+='</div>';
+						        html+='<div class="card-content">';
+						          html+='<p>'+res[i].name_pro+'</p>';
+						        html+='</div>';
+						      html+='</div>';
+						    html+='</div>';	   
+					      }
+
+					      $("#productnocombi").html(html);
 					      break;
 					 
 					   
@@ -662,6 +717,18 @@ function getsizes(id,material,color) {
             	}
             	$("#csizesp").html(html);
             }});
+}
+
+function adddetailspro(idpro) {
+	$("#idpro").val(idpro);
+	$("#productnocombimen").addClass('zoomOut');
+	$("#productnocombimen").removeClass('zoomIn');
+					    setTimeout(function(){ 
+							$("#productnocombimen").addClass('hide');
+							$("#datospro").removeClass('hide');
+							$("#datospro").removeClass('zoomOut');
+							$("#datospro").addClass('zoomIn');
+						}, 500);
 }
 
 

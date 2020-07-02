@@ -133,7 +133,7 @@
 	      									<p><a href="#!" class="collection-item"><span class="new badge blue">4</span>Pedidos</a></p>
 	      									</div>
 	    									</div>
-	  									</div>
+	  								</div>
 								</div>
 								<?php 
 								}
@@ -325,65 +325,7 @@
 					<div class="row center-align" id="contentpro">
 						
 					</div>
-					<div class="row hide left-align animated bounceInDown" id="datospro">
-					  <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
-					  <br>
-					  <div class="col s12 m12 l8 offset-l2 center-align">
-					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
-					    <div class="card-panel animated" id="llenado">
-					       <h6 id="nombredtp"></h6>
-					        <select  class="select2 browser-default" id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)">
 
-					        </select>
-					        <span class="" id="txtuser">Seleccionar Colores</span>
-
-					        <select  class="select2 browser-default" id="mater" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
-
-					        </select>
-					        <span class="" id="txtuser">Seleccionar Material</span>
-
-					        <select  class="select2 browser-default" id="size" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
-
-					        </select>
-					        <span class="" id="txtuser">Seleccionar Tallas</span>
-					        <br>
-					        <br>
-					        <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
-					      </div>
-					  </div>
-					  
-
-
-
-					  
-					    <div class="card-panel animated hide" id="tablage">
-					      Datos
-					      <div class="row">
-					      <div class="col s12 m12 l12">
-					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
-					        <thead>
-					            <tr>
-					                <th>Color</th>
-					                <th>Material</th>
-					                <th>Talla</th>
-					                <th>Acción</th>
-					            </tr>
-					        </thead>
-					        <tfoot>
-					            <tr>
-					                <th>Color</th>
-					                <th>Material</th>
-					                <th>Talla</th>
-					                <th>Acción</th>
-					            </tr>
-					        </tfoot>
-					      </table>
-					      <!-- tabla de DAT -->
-					      
-					    </div>
-					    </div>
-					  </div>
-					</div>
 					
 				</div>
 			</div>
@@ -411,6 +353,89 @@
 				</div>
 			</div>
 		</div>
+		<div class="row hide left-align animated " id="productnocombimen">
+			
+				<a id="backmenuprin" class="btn-floating blu" style="margin-left: 3rem;"><i class="material-icons">keyboard_backspace</i></a>
+			<div class="container"  id="productnocombi">
+			
+			</div>
+		</div>
+		
+
+		<div class="row hide left-align animated " id="datospro">
+					  <a id="backmenuf" class="btn-floating blu" style="margin-left: 3rem;"><i class="material-icons">keyboard_backspace</i></a><br>
+					  <br>
+					  <div class="col s12 m12 l8 offset-l2 center-align">
+					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
+					    <div class="card-panel animated" id="llenado">
+					       <h6 id="nombredtp"></h6>
+					       <input type="text" id="idpro" name="idpro">
+					        <div class="row">
+					        	<div class="col s10 m10 l10">
+					        		<select  class="select2 browser-default " id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)"> </select>
+					        	</div>
+					        	<div class="col l1 m1 s1"><button class="btn"></button></div>
+					        	
+					        </div>
+					        <span class="" id="txtuser">Seleccionar Colores</span>
+						<div class="row">
+							<div class="col s10 m10 l10">
+					        <select  class="select2 browser-default" id="mater" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
+
+					        </select>
+					    </div>
+					       <div class="col l1 m1 s1"><button class="btn"></button>
+					       </div>
+					   </div>
+					        <span class="" id="txtuser">Seleccionar Material</span>
+					        <div class="row">
+					    <div class="col s10 m10 l10">
+					        <select  class="select2 browser-default" id="size" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
+
+					        </select>
+					    </div>
+					        	<div class="col l1 m1 s1"><button class="btn"></button></div></div>
+					        <span class="" id="txtuser">Seleccionar Tallas</span>
+					        <br>
+					        <br>
+					        <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
+					      </div>
+					  </div>
+					  
+
+
+
+					  <div class="container">
+					    <div class="card-panel animated hide" id="tablage">
+					      Datos
+					      <div class="row">
+					      
+					      	<div class="col s12 m12 l12">
+					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+					        <thead>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </thead>
+					        <tfoot>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </tfoot>
+					      </table>
+					      <!-- tabla de DAT -->
+					      
+					    </div>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 
 
 
