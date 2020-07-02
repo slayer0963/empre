@@ -33,7 +33,7 @@ function changeSelect3(event){
 
 $(document).ready(function(){
 
-   
+   consultar();
     $('#fileprice').change(function(){
         document.getElementById("img").removeAttribute('src');
         $("#viewpic").html('');
@@ -44,7 +44,7 @@ $(document).ready(function(){
             var type=archivos[i].type;
             var name=archivos[i].name;
             var objeto_url=navegador.createObjectURL(archivos[i]);
-            $("#viewpic").append("<center><img id='img' name='img' class='circle responsive-img' src="+objeto_url+" style='height: 160px; width: 160px;' ></center>");
+            $("#viewpic").append("<center><img id='img' name='img' class='circle responsive-img'   src="+objeto_url+" style='height: 160px; width: 160px;' ></center>");
             
         };
     });
@@ -55,7 +55,7 @@ $(document).ready(function(){
   
 
 $('#frmpricesa').submit(function() {
-
+    if(Validate()==idinput.length){
     var formData = new FormData(document.getElementById("frmpricesa"));
       formData.append("dato", "valor");
            $.ajax({
@@ -82,54 +82,13 @@ $('#frmpricesa').submit(function() {
             }   
                 
         });
-
+}
   return false;
 }); 
 
 
 
-$("#tbproduct").DataTable( {
-    "responsive": true,
-    "order": [[ 0, "desc" ]],
-    "stateSave": true,
-   
-    "bDeferRender": true,
-    "sPaginationType": "full_numbers",
-    "bDestroy": true,
-    "paging": true,
-    "responsive": true,
-      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
-    "oLanguage": {
-            "sProcessing":     "Procesando...",
 
-        "sLengthMenu": 'Mostrar <select>'+
-            '<option value="5">5</option>'+
-            '<option value="10">10</option>'+
-            '<option value="25">25</option>'+
-            '<option value="-1">Todos</option>'+
-            '</select> registros',
-        "sZeroRecords":    "No se encontraron resultados",
-        "sEmptyTable":     "Ningún dato disponible en esta tabla",
-        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
-        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
-        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
-        "sInfoPostFix":    "",
-        "sSearch":         "Filtrar:",
-        "sUrl":            "",
-        "sInfoThousands":  ",",
-        "sLoadingRecords": "Por favor espere - cargando...",
-        "oPaginate": {
-            "sFirst":    "Primero",
-            "sLast":     "Último",
-            "sNext":     ">",
-            "sPrevious": "<"
-        },
-        "oAria": {
-            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
-            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
-        }
-        }
-  });
 setComboBusi();
 $("#bus").select2({
     dropdownAutoWidth: true,
@@ -271,6 +230,11 @@ $("#backtb").click(function(event) {
 
 
 $("#generar").click(function(event) {
+
+      if (true) {}
+
+
+
       var dataSet="";
       var dataa="";
       var btn="";
@@ -384,6 +348,86 @@ $("#backfrm").click(function(event) {
 
 
 
+function consultar(dato) {
+
+    $("#tbproduct").DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+   
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+
+}
+
+
+var idinput = ['fname','quantity','pextra','discount'];
+var idinputerror= ['txtfname','txtquantity','txtpextra','txtdiscount'];
+
+
+var Validate = () =>{
+  var validate=0, html="", count=0, counte=0;
+  
+        idinput.forEach(names => {
+          
+       if($("#"+names).val()!=0){
+        
+         validate+=1;
+         html="Listo";
+         //alert($("#"+names).val());
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
+       }
+       else{  
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+ 
+ 
+
+    return validate;
+}
 
 
 
@@ -418,8 +462,8 @@ var Validatebtn=()=>{
 
 
 
-var idinputie = ['pcompra','pventa','cantidad'];
-var idinputerrorie= ['txtpcompra','txtpventa','txtcantidad'];
+var idinputie = ['pcompra','pventa'];
+var idinputerrorie= ['txtpcompra','txtpventa'];
 
 var cleanform = () =>{
     idinpute.forEach(names => {
@@ -455,10 +499,10 @@ var Validatebtnprice=()=>{
             url: "../../controller/caproduct.php?btnsetData=setData",
             data: $("#frmprice").serialize(),
             success: function(resp) {
-              M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+              M.toast({html: "¡Información guardada con exito!", classes: 'rounded  green'});
+              consultar();
               $('.modal').modal('close');
               cleanform();
-              
             }
           });
     }
@@ -620,7 +664,7 @@ function formatStateC (opt) {
 
  var FillDiv = (id,nombre) =>{
   
-      $("#nombredtp").html("Producto: "+nombre);
+      $("#nombredtp").html("Producto: <b>"+nombre+"</b>");
       $("#inicial").addClass('hide');
       $("#tabla").addClass('hide');
       $("#datospro").removeClass('hide');

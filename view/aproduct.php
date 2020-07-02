@@ -1,5 +1,5 @@
 
-<title>Asignacion de precio</title>
+<title>Asignaci&oacute;n de precio</title>
 <div class="animated slideInLeft " id="inicial">
   <div class="row">
         <div class="input-field col s12 m12 l6">
@@ -50,14 +50,14 @@
 <!-- Modal Structure -->
 <div id="modaladd" class="modal modal-fixed-footer aproduct ">
   <div class="modal-content align-center">
-    <h4>Agregar precio de <h4 for="name" id="namepro"></h4></h4>
+    <center><h4>Fijar precio para <h4 for="name" id="namepro"></h4></h4></center>
 
       <form class="col s12 center-align" id="frmprice" name="frmprice" method="post">
         <div class="row">
             <input type="hidden" id="idpro" name="idpro">
             <div class="input-field col s12 m12 l12">
               <input id="pcompra" name="pcompra" title="Precio Compra (*)" type="text" >
-              <label for="pcompra">Precio de compra</label>
+              <label for="pcompra">Costo de elaboración</label>
               <span class="" id="txtpcompra"></span>
             </div>
             <div class="input-field col s12 m12 l12">
@@ -65,15 +65,11 @@
               <label for="pventa" id="">Precio de venta</label>
               <span class="" id="txtpventa"></span>
             </div>
-            <div class="input-field col s12 m12 l12">
-              <input id="cantidad" name="cantidad" title="Cantidad (*)" type="text">
-              <label for="cantidad" id="">Cantidad</label>
-              <span class="" id="txtcantidad"></span>
-            </div>
+            
          </div>
         
       </form>
-      <button  id="addpricepro" class=" btn">Agregar<i class="material-icons">add</i></button>
+     <center> <button  id="addpricepro" class=" btn">Agregar<i class="material-icons">add</i></button></center>
     
   </div>
   <div class="modal-footer">
@@ -115,7 +111,7 @@
 
   
     <div class="card-panel animated hide" id="tablage">
-      Datos
+     
       <div class="row">
       <div class="col s12 m12 l12">
       <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
@@ -161,17 +157,18 @@
               </div>
             <div class="file-field input-field">
             <div class="btn">
-                <span>File</span>
+                <span>PRODUCTO</span>
                 <input type="file" id="fileprice" name="fileprice">
             </div>
             <div class="file-path-wrapper">
                 <input class="file-path validate" id="fname" name="fname" type="text">
             </div>
+            <span class="" id="txtfname"></span>
             </div>
             </div>
             <div class="col s12 m6 l6">
             <div class="input-field col s12 m12 l12">
-              <input id="quantity" name="quantity" title="Cantidad (*)" type="text">
+              <input id="quantity" name="quantity" title="Cantidad (*)" type="number">
               <label for="quantity" id="">Cantidad</label>
               <span class="" id="txtquantity"></span>
             </div>
