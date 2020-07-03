@@ -267,6 +267,29 @@ var setComboBusie = (id,name) =>{
       
 }
 
+var setComboBusiee = (id,name) =>{
+          var html="";
+          var dataString = 'id='+id;
+          $.ajax({
+            type: "POST",
+            url: "../../controller/cproductassigment.php?btngetData=getDataBusi",
+            data: dataString,
+            success: function(resp) {
+            var values = eval(resp);        
+             
+                for (var i = 0; i < values.length; i++) {
+                 if (name==values[i][1]) {
+                    html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                  }else{
+                    html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                  }
+                }
+               $("#buse").html(html);
+            } 
+        }); 
+      
+}
+
 
 var FillBoxes =(id,name,des) =>{
     $("#productid").val(id);
@@ -287,11 +310,11 @@ var FillBoxese =(id,idp,name,des,namebus,nameus) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' selected>Seleccione un usuario</option>";
+              
                for (var i = 0; i < values.length; i++) {
                 
                 if (nameus==values[i][1]) {
-                  setComboBusie(values[i][0],namebus);
+                  setComboBusiee(values[i][0],namebus);
                   html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
                 }else{
                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"

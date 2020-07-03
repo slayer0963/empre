@@ -208,7 +208,6 @@ var FillBoxes =(id,name,des,cat,tp) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' selected>Seleccione una categoria</option>";
                for (var i = 0; i < values.length; i++) {
                 
                 if (cat==values[i][1]) {
@@ -227,7 +226,6 @@ var FillBoxes =(id,name,des,cat,tp) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' selected>Seleccione un tipo de producto</option>";
                for (var i = 0; i < values.length; i++) {
                 
                 if (tp==values[i][1]) {

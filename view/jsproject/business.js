@@ -238,10 +238,10 @@ var FillBoxes =(id,name,imagen,usuario) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' selected>Seleccione un usuario</option>";
                for (var i = 0; i < values.length; i++) {
                 
                 if (usuario==values[i][1]) {
+                  // alert(usuario+"---"+values[i][1])
                   html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
                 }else{
                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"

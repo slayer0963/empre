@@ -244,7 +244,6 @@ var FillBoxes =(id,name,phone,imagen,mail,user,pass, typeuser) =>{
       
                var values = eval(resp);
                html="";
-               html+="<option value='0' selected>Seleccione tipo de usuario</option>";
                for (var i = 0; i < values.length; i++) {
                 
                 if (typeuser==values[i][1]) {
