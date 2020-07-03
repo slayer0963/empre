@@ -49,6 +49,15 @@
 	    $dat->setData(insert());
 	}
 
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getDataExist'){
+	    $dat=new DAOAproduct();
+	    echo json_encode($dat->getDataExis($_GET['idprod'],$_GET['idcolor'],$_GET['idmaterial'],$_GET['idsize']));
+	}
+
+
+	
+
 
 	// $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
 	// if($page=='setData1'){
@@ -70,14 +79,14 @@ if($page=='getDataAp'){
          $name="'".$c["name_pro"]."'";
          $descrip="'".$c["descr_pro"]."'";
          $cat="'".$c["id_cat"]."'";
-         $tp="'".$c["id_tpro"]."'";
+         $id_tpro="'".$c["id_tpro"]."'";
          $state="'".$c["state_pro"]."'";
 		 $btnedit='';
          if($dat->Verifi($c["id_pro"])==0){
          	$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b green modal-trigger\" href=\"#modaladd\" onclick=\"FillBoxes('.$id.','.$name.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">attach_money</i></a>';
          }
          else{
-			$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"FillDiv('.$id.','.$name.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">add</i></a>';
+			$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"FillDiv('.$id.','.$name.','.$id_tpro.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">add</i></a>';
          }
         
          
@@ -85,7 +94,7 @@ if($page=='getDataAp'){
                   "name_pro":"'.$c["name_pro"].'",
                   "descr_pro":"'.$c["descr_pro"].'",
                   "id_cat":"'.$c["id_cat"].'",
-                  "id_tpro":"'.$c["id_tpro"].'",
+                  "id_tpro":"'.$c["name_tpro"].'",
                   "actions":"'.$btnedit.'"
                 },';    
      }
@@ -93,6 +102,37 @@ if($page=='getDataAp'){
         echo '{"data":['.$table.']}';   
 }
 
+
+$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+if($page=='getvaDataGen'){
+    $dat = new DAOAproduct();
+         $r=$dat->getvaDataGen($_GET['id']);
+         $table="";
+         foreach($r as $c){
+         $btnstate='';
+         $color ='';
+         //$id="'".$c["id_pro"]."'";
+   //       $name="'".$c["name_pro"]."'";
+   //       $descrip="'".$c["descr_pro"]."'";
+   //       $cat="'".$c["id_cat"]."'";
+   //       $id_tpro="'".$c["id_tpro"]."'";
+   //       $state="'".$c["state_pro"]."'";
+		 // $btnedit='';
+       
+        $imagen = '<a href=\"../imgdetails/'.$c["img"].'\" data-lightbox=\"image-'.$c["name_color"].'\" data-title=\"'.$c["name_color"].'\"><img src=\"../imgdetails/'.$c["img"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
+         
+         $table.='{
+                  "img":"'.$imagen.'",
+                  "name_color":"'.$c["name_color"].'",
+                  "name_mat":"'.$c["name_mat"].'",
+                  "size":"'.$c["number_size"].'-'.$c["name_size"].'",
+                  "quantity":"'.$c["quantity"].'"
+                  
+                },';    
+     }
+        $table = substr($table,0, strlen($table) - 1);
+        echo '{"data":['.$table.']}';   
+}
 
 
 

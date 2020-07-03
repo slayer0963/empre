@@ -79,13 +79,45 @@
 </div>
 
 
+<div id="tablaviewcombi" class="modal">
+    <div class="modal-content">
+      <table id="tgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>Imagen</th>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Talla</th>
+                <th>Cantidad</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Imagen</th>
+                <th>Color</th>
+                <th>Material</th>
+                <th>Talla</th>
+                <th>Cantidad</th>
+            </tr>
+        </tfoot>
+      </table>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+
+
 <div class="row hide left-align animated bounceInDown" id="datospro">
   <a id="backtb" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br>
   <br>
   <div class="col s12 m12 l8 offset-l2 center-align">
     <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
     <div class="card-panel animated" id="llenado">
-       <h6 id="nombredtp"></h6>
+       <h6 id="nombredtp"></h6><div id="printbutton"></div>
+       <input type="hidden" id="id_prod">
         <select  class="select2 browser-default" id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="changeSelect1(event)">
 
         </select>
@@ -117,6 +149,7 @@
       <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
         <thead>
             <tr>
+
                 <th>Color</th>
                 <th>Material</th>
                 <th>Talla</th>
