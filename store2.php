@@ -57,7 +57,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <body class=" grey darken-3">
+    <body class=" black">
 		
 		<div class="">
 			<nav class="black">
@@ -81,7 +81,7 @@
 			  </ul>
 		</div>
 	
-			<div class="row ">
+			<div class="row container">
 				<div class="col l12 m12 s12" id="business"></div>
 			</div>
 	

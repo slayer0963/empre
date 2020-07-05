@@ -32,10 +32,10 @@ var business = (val) =>{
                //          html+='</div>';
 
 
-                html+='<div class="col s12 m6 l3">';
-                  html+='<div class="card">';
+                html+='<div class="col s12 m6 l3 ">';
+                  html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 150px;" class="img-responsive">';
+                      html+='<img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 100px;" class="img-responsive">';
                       // html+='<span class="card-title flow-text"></span>';
                       html+='<a href="store/'+values[i].id_bus+'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>';
                    html+=' </div>';
