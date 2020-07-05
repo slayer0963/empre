@@ -133,7 +133,7 @@ $("#user").select2({
     templateSelection: formatStateU
 });
 
-setComboColor();
+
 $("#color").select2({
     dropdownAutoWidth: true,
     width: '100%',
@@ -150,6 +150,8 @@ $("#color").select2({
   }
 });
 
+
+setComboColor();
 $("#color").select2({
     templateResult: formatStateC,
     templateSelection: formatStateC
@@ -222,6 +224,7 @@ $("#backtb").click(function(event) {
   });
 
 
+
 /*$('#color').on("select2:select", function (e) {
       console.log("ID seleccionado: " + e.params.data.text);
     });
@@ -231,7 +234,7 @@ $("#backtb").click(function(event) {
 
 $("#generar").click(function(event) {
 
-      if (true) {}
+   
 
 
 
@@ -285,26 +288,46 @@ $("#generar").click(function(event) {
         for (var j = 0; j < materiales.length; j++) {
           for (var k = 0; k < tallas.length; k++) {
                
-     
-                 
+                  //alert(colores[i]+','+ materiales[j]+','+tallas[k]);
+                  var html="";  
+                  var dataString = 'idprod='+$("#id_prod").val()+'&idcolor='+colores[i]+'&idmaterial='+materiales[j]+'&idsize='+tallas[k];
+                  $.ajax({
+                    type: "GET",
+                    url: "../../controller/caproduct.php?btngetData=getDataExist",
+                    data: dataString,
+                    success: function(resp) {
+                      //alert(resp);
+                    var values = eval(resp);        
+                          
+                        
+                        if (values[0].existe==1){
+                          btn='<a class="btn-floating #ffeb3b green darken-3" ><i class="material-icons">playlist_add_check</i></a>';
+                          table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
+                          
+                        }
+                        else{
+                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+');" ><i class="material-icons">playlist_add</i></a>';
+                          table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
+                          
+                        }
+                        
+                       
+                       
+                    } 
+                }); 
                
                  
                   
                   //add some rows
                   
-                  btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+colores[i]+"'")+','+String("'"+materiales[j]+"'")+','+String("'"+tallas[k]+"'")+');" ><i class="material-icons">playlist_add</i></a>';
-                  table.row.add([colores[i], materiales[j],tallas[k],btn]).draw(false);
+                  
                  //dataa+='['+ colores[i]+','+ materiales[j]+','+tallas[k] +'],';
                     
           }
         }
       }
 
-        //dataSet=JSON.stringify("["+dataa.toString().slice(0, -1)+"]");
-        /*var dataSet = [
-    [ "Tiger Nixon", "System Architect", "Edinburgh"  ],
-    [ "Garrett Winters", "Accountant", "Tokyo" ]];*/
-        //alert(dataSet);
+      
         
 
           
@@ -547,6 +570,7 @@ var setComboBusi = (val) =>{
 }
 
 
+
 var setComboColor = () =>{
 var html="";
           $.ajax({
@@ -563,7 +587,6 @@ var html="";
         }); 
       
 }
-
 
 var setComboMaterial = () =>{
 var html="";
@@ -662,15 +685,95 @@ function formatStateC (opt) {
 
  }
 
- var FillDiv = (id,nombre) =>{
+ var FillDiv = (id,nombre,id_tpro) =>{
   
       $("#nombredtp").html("Producto: <b>"+nombre+"</b>");
+      $("#id_prod").val(id);
+      $("#printbutton").html('<button class="btn right-align modal-trigger" href="#tablaviewcombi" onclick="viewcombi('+id+')">Ver combinaciones</button>');
       $("#inicial").addClass('hide');
       $("#tabla").addClass('hide');
       $("#datospro").removeClass('hide');
       $("#idpres").val(id);
       $("#namepres").html("Agregar detalles de "+nombre);
- }
+
+
+      
+          
+      
+       
+
+
+
+}
+
+
+var viewcombi = (val)=>{
+    
+
+    $('#tgen').DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+   
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+
+
+    "ajax": {
+          url:"../../controller/caproduct.php?btngetData=getvaDataGen&id="+val,//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "img" },
+      { "data": "name_color" },
+      { "data": "name_mat" },
+      { "data": "size" },
+      { "data": "quantity" }
+      
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+}
+
+
+
+
 
  var modalGen = (c,m,z) =>{
   $('#modaladdproduct').modal('open');
