@@ -56,11 +56,8 @@
       </style>
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
-
-    <body class=" black">
-		
-		<div class="">
-			<nav class="black">
+	<div class="">
+			<nav class="teal">
 			    <div class="nav-wrapper">
 			      <a href="#!" class="brand-logo"><i class="gi gi-shop"></i> CARAJA<strong>DA</strong></a>
 			      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -80,10 +77,56 @@
 			    <li class="center-align"><a href="#!">Registrarse</a></li>
 			  </ul>
 		</div>
+    <body class="">
+		
 	
-			<div class="row container">
+		<div class="parallax-container">
+	      <div class="parallax">
+<div class="slider fullscreen ">
+    <ul class="slides">
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+	      </div>
+	    </div>
+		<div class="section white">
+	      <div class="row container">
+	       
 				<div class="col l12 m12 s12" id="business"></div>
-			</div>
+			
+	      </div>
+	    </div>
+			
+			<div class="parallax-container">
+      <div class="parallax"><img src="https://i.pinimg.com/originals/2c/75/63/2c7563813eaceeb6421175c3b961c902.jpg"></div>
+    </div>
 	
    	</body>
   </html>
@@ -110,11 +153,18 @@ $(document).ready(function(){
 
   $('.modal').modal();
       
+    
     $('.dropdown-trigger').dropdown();
     $('#descrip').characterCounter();
     $('.collapsible').collapsible();
     $('.tabs').tabs();
-    $('.carousel').carousel();
+    $('.parallax').parallax();
+ 
+  
+     $('.slider').slider({
+    indicators: false
+  });
+
 });
   </script>
 

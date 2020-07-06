@@ -51,10 +51,13 @@
 
 		 .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
 		 .addpro { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+		 .addfrm { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 55%;}
+		 .addfrmat { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 45%;}
  			@media only screen and (max-width : 992px) {
             .businessmodal { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 85%;}
             .addpro { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 85%;}
-            
+            .addfrm { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 50%;}
+            .addfrmat { padding: 0; width: 100% !important ; height: 84% !important ; max-height: 40%;}
           }
 	  </style>
 
@@ -364,43 +367,110 @@
 
 		<div class="row hide left-align animated " id="datospro">
 					  <a id="backmenuf" class="btn-floating blu" style="margin-left: 3rem;"><i class="material-icons">keyboard_backspace</i></a><br>
-					  <br>
+			
 					  <div class="col s12 m12 l8 offset-l2 center-align">
 					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
 					    <div class="card-panel animated" id="llenado">
-					       <h6 id="nombredtp"></h6>
-					       <input type="text" id="idpro" name="idpro">
+					       <h4 >Agregar combinacion de productos</h4>
+					       <input type="hidden" id="idpro" name="idpro">
 					        <div class="row">
-					        	<div class="col s10 m10 l10">
-					        		<select  class="select2 browser-default " id="color" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)"> </select>
+					        	<div class="col s10 m10 l8 offset-l2">
+					        		<select  class="select2 browser-default " id="colora" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)"> </select><br><span class="" id="txtuser">Seleccionar Colores</span>
 					        	</div>
-					        	<div class="col l1 m1 s1"><button class="btn"></button></div>
+					        	<div class="col l1 m1 s1"><button class="btn modal-trigger blue darken-3" href="#frmaddcolor"><i class="material-icons">note_add</i></button></div>
 					        	
 					        </div>
-					        <span class="" id="txtuser">Seleccionar Colores</span>
+					        
 						<div class="row">
-							<div class="col s10 m10 l10">
-					        <select  class="select2 browser-default" id="mater" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
+							<div class="col s10 m10 l8 offset-l2">
+					        <select  class="select2 browser-default" id="matera" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
 
-					        </select>
+					        </select><br><span class="" id="txtuser">Seleccionar Material</span>
 					    </div>
-					       <div class="col l1 m1 s1"><button class="btn"></button>
+					       <div class="col l1 m1 s1"><button class="btn modal-trigger blue darken-3" href="#frmaddmaterial"><i class="material-icons">note_add</i></button>
 					       </div>
 					   </div>
-					        <span class="" id="txtuser">Seleccionar Material</span>
+					        
 					        <div class="row">
-					    <div class="col s10 m10 l10">
-					        <select  class="select2 browser-default" id="size" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
+					    <div class="col s10 m10 l8 offset-l2">
+					        <select  class="select2 browser-default" id="sizea" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
 
-					        </select>
+					        </select><br><span class="" id="txtuser">Seleccionar Tallas</span>
 					    </div>
-					        	<div class="col l1 m1 s1"><button class="btn"></button></div></div>
-					        <span class="" id="txtuser">Seleccionar Tallas</span>
+					        	<div class="col l1 m1 s1"><button class="btn modal-trigger blue darken-3" href="#frmaddsize"><i class="material-icons">note_add</i></button></div></div>
+					        
 					        <br>
 					        <br>
 					        <button  id="generar" class=" btn">Generar <i class="material-icons">cached</i></button>
 					      </div>
 					  </div>
+
+					  <div id="frmaddcolor" class="modal addfrm animated fadeInRight">
+					    <div class="modal-content">
+					      <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
+					      	<h4>Agregar color</h4>
+					        <div class="row">
+					           <div class="input-field col s12">
+					           <input type="color" name="pcolor" id="pcolor"><input type="hidden" name="txtcode" title="Selecciona un color (*)" id="txtcode">
+					            <span class="" id="txtcodeerror">Selecciona un color</span>
+					          </div>
+					          <div class="input-field col s12">
+					            <input type="text" name="txtcolor" title="Nombre (*)" id="txtcolor">
+					            <label for="txtcolor">Color</label>
+					            <span class="" id="txtcolorerror"></span>
+					          </div>
+					        </div>
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
+
+					  <div id="frmaddmaterial" class="modal addfrmat animated fadeInRight">
+					    <div class="modal-content">
+					    	<h4>Agregar material</h4>
+					       <form class="col s12 center-align" id="formmaterial" name="formmaterial" method="post">
+					        <div class="row">
+					          <div class="input-field col s12">
+					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamemat">
+					            <label for="txtname">Nombre</label>
+					            <span class="" id="txtnamematerror"></span>
+					          </div>
+					        </div>
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
+
+					  <div id="frmaddsize" class="modal addfrm animated fadeInRight">
+					    <div class="modal-content">
+					      <form class="col s12 center-align" id="formsize" name="formsize" method="post">
+					      	<h4>Agregar tamaños</h4>
+					        <div class="row">
+					           <div class="input-field col s12">
+					            <input type="text" name="txtnumber" title="Número (*)" id="txtnumber">
+					            <label for="txtnumber">Número</label>
+					            <span class="" id="txtnumbererror"></span>
+					          </div>
+					          <div class="input-field col s12">
+					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamesize">
+					            <label for="txtname">Nombre</label>
+					            <span class="" id="txtnamesizeerror"></span>
+					          </div>
+					        </div>
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
+					  
 					  
 
 

@@ -1,5 +1,318 @@
 	var contclick=0;
 	$(document).ready(function() {
+
+
+
+
+
+
+
+
+
+
+
+/*add color*/
+
+$("#pcolor").change(function(event) {
+  $("#txtcode").val($("#pcolor").val());
+});
+
+
+$('#formcolor').submit(function() {
+  if(Validatecolor(1)==idinputcolor.length){
+	$.ajax({
+            type: "POST",
+            url: "../controller/ccolor.php?btnsetData=setData", 
+            data: $("#formcolor").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                   setComboColor();
+                   $('.modal').modal('close');
+                    cleanformcolor();
+                    M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+                     cleanboxcolor();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }		
+                
+        });
+}
+	return false;
+});
+
+var idinputcolor = ['txtcolor','txtcode'];
+var idinputerrorcolor= ['txtcolorerror','txtcodeerror'];
+var Validatecolor = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputcolor.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrorcolor[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorcolor[count]).removeClass('errorinputs');
+         $("#"+idinputerrorcolor[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrorcolor[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorcolor[count]).removeClass('successinputs');      
+         $("#"+idinputerrorcolor[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+
+
+    return validate;
+}
+
+
+var cleanformcolor = () =>{
+    idinputcolor.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+var cleanboxcolor=()=>{
+idinputerrorcolor.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+/*--------------------------------------------------------------------------------------*/
+
+/*add material*/
+
+
+var idinputmat = ['txtnamemat'];
+var idinputerrormat= ['txtnamematerror'];
+
+$('#formmaterial').submit(function() {
+  if(Validatematerial(1)==idinputmat.length){
+	$.ajax({
+            type: "POST",
+            url: "../controller/cmaterial.php?btnsetData=setData", 
+            data: $("#formmaterial").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+             		setComboMaterial();
+             		$('.modal').modal('close');
+                    cleanformmat();
+                    
+                    M.toast({html: "¡Se ha agregado el material exitosamente!", classes: 'rounded  green'});
+                    
+                     cleanboxmat();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }		
+                
+        });
+}
+	return false;
+});
+
+
+
+
+
+var cleanformmat = () =>{
+    idinputmat.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+
+
+var Validatematerial = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputmat.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrormat[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrormat[count]).removeClass('errorinputs');
+         $("#"+idinputerrormat[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrormat[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrormat[count]).removeClass('successinputs');      
+         $("#"+idinputerrormat[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+
+    return validate;
+}
+
+var cleanboxmat=()=>{
+idinputerrormat.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+
+}
+/*--------------------------------------------------------------------------------------*/
+/*add size */
+$('#formsize').submit(function() {
+  if(Validatesize(1)==idinputsize.length){
+	$.ajax({
+            type: "POST",
+            url: "../controller/csize.php?btnsetData=setData", 
+            data: $("#formsize").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                   setComboSize();
+                    $('.modal').modal('close');
+                    cleanform();
+                    
+                    M.toast({html: "¡Se ha agregado el tamaño exitosamente!", classes: 'rounded  green'});
+                   
+                     cleanbox();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }		
+                
+        });
+}
+	return false;
+});
+
+var idinputsize = ['txtnumber','txtnamesize'];
+var idinputerrorsize= ['txtnumbererror','txtnamesizeerror'];
+
+
+
+var cleanformsize = () =>{
+    idinputsize.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+
+
+var Validatesize = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputsize.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrorsize[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorsize[count]).removeClass('errorinputs');
+         $("#"+idinputerrorsize[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrorsize[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorsize[count]).removeClass('successinputs');      
+         $("#"+idinputerrorsize[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+    return validate;
+}
+
+var cleanboxsize=()=>{
+idinputerrorsize.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+/*--------------------------------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+$("#colora").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+
+setComboColor();
+$("#colora").select2({
+    templateResult: formatStateC,
+    templateSelection: formatStateC
+});
+
+setComboMaterial();
+$("#matera").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+setComboSize();
+$("#sizea").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+
+
+
+
 	setComboCat();
 	setComboTp();
 	$("#btnmedit").click(function(event) {
@@ -423,11 +736,87 @@ var Validatep = (type) =>{
 
 
 
+
+
 		/**/
 
 
 	});
 
+
+
+var setComboColor = () =>{
+var html="";
+          $.ajax({
+            type: "POST",
+            url: "../controller/caproduct.php?btngetData=getDataColor",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][2]+"' data-color='"+values[i][1]+"'><span>"+values[i][2]+"</span></option>";
+               }
+               $("#colora").html(html);
+            } 
+        }); 
+      
+}
+
+var setComboMaterial = () =>{
+var html="";
+          $.ajax({
+            type: "POST",
+            url: "../controller/caproduct.php?btngetData=getDataMaterial",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][1]+"'><span>"+values[i][1]+"</span></option>";
+               }
+               $("#matera").html(html);
+            } 
+        }); 
+      
+}
+
+
+var setComboSize = () =>{
+var html="";
+          $.ajax({
+            type: "POST",
+            url: "../controller/caproduct.php?btngetData=getDataSize",
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][2]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
+               }
+               $("#sizea").html(html);
+            } 
+        }); 
+      
+}
+
+
+
+
+function formatStateC (opt) {
+    if (!opt.id) {
+        return opt.text;
+    } 
+
+    var color = $(opt.element).attr('data-color'); 
+    console.log(color)
+    if(!color){
+       return opt.text;
+    } else {
+
+        var $opt = $(
+           '<span><input type="color" value="'+color+'" disabled>&nbsp;' + opt.text + '</span>'
+        );
+        return $opt;
+    }
+};
 
 
 function details(id) {
