@@ -29,7 +29,7 @@ include_once "../cn/connection.php";
 	public function getDataHome()
  	{
 		$c = conectar();
-		$sql="select * from business;";
+		$sql="select * from business limit 8;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
@@ -43,7 +43,7 @@ include_once "../cn/connection.php";
  	public function getData()
  	{
 		$c = conectar();
-		$sql="select bu.id_bus,bu.name_bus,bu.pic_logo_bus,u.fullname_user as id_user, bu.state_bus  from business bu inner join users u on bu.id_user=u.id_user;";
+		$sql="select bu.id_bus,bu.name_bus,bu.pic_logo_bus,u.fullname_user as id_user, bu.description, bu.state_bus  from business bu inner join users u on bu.id_user=u.id_user;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
@@ -63,7 +63,8 @@ include_once "../cn/connection.php";
 		$_name_bus=$obj->getNameBus();
 		$_pic_logo_bus=$obj->getPicLogoBus();
 		$_id_user=$obj->getIdUser();
-		$sql="insert into business value (0,'$_name_bus','$_pic_logo_bus',$_id_user,1);";
+		$descrip=$obj->getDescription();
+		$sql="insert into business value (0,'$_name_bus','$_pic_logo_bus',$_id_user,1,'$descrip');";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{
@@ -85,7 +86,8 @@ include_once "../cn/connection.php";
 		$_name_bus=$obj->getNameBus();
 		$_pic_logo_bus=$obj->getPicLogoBus();
 		$_id_user=$obj->getIdUser();
-		$sql="update business set name_bus='$_name_bus',pic_logo_bus='$_pic_logo_bus',id_user=$_id_user where id_bus=$_id_bus;";
+		$descrip=$obj->getDescription();
+		$sql="update business set name_bus='$_name_bus',pic_logo_bus='$_pic_logo_bus',id_user=$_id_user, description='$descrip' where id_bus=$_id_bus;";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{

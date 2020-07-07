@@ -6,6 +6,7 @@ class Business
 	private $_name_bus;
 	private $_pic_logo_bus;
     private $_id_user;
+    private $_description;
 	private $_state_bus;
 
 	function __construct()
@@ -79,6 +80,20 @@ class Business
     public function setIdUser($_id_user)
     {
         $this->_id_user = $_id_user;
+
+        return $this;
+    }
+
+ 
+    public function getDescription()
+    {
+        return $this->_description;
+    }
+
+
+    public function setDescription($_description)
+    {
+        $this->_description = $_description;
 
         return $this;
     }
