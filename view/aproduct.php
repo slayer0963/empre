@@ -186,7 +186,7 @@
             <input type="hidden" id="sizepre" name="sizepre">
             <div class="col s12 m6 l6">
               <div id="viewpic">
-                <img src="https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png" style="height: 160px; width: 160px;" class="circle responsive-img" id="img" name="img">
+                <img src="../images/empty.jpg" style="height: 200px; width: 220px;" class="circle responsive-img" id="img" name="img">
               </div>
             <div class="file-field input-field">
             <div class="btn">
@@ -247,7 +247,7 @@
             <input type="hidden" id="id_sizee" name="id_sizee">
             <div class="col s12 m6 l6">
               <div id="viewpice">
-                <img src="https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png" style="height: 160px; width: 160px;" class="circle responsive-img" id="imge" name="imge">
+                <img src="../images/empty.jpg" style="height: 200px; width: 220px;" class="circle responsive-img" id="imge" name="imge">
               </div>
             <div class="file-field input-field">
             <div class="btn">

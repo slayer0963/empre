@@ -145,7 +145,7 @@ $('#frmpricesa').submit(function() {
              //alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
-                    
+                    $('#modaladdproduct').modal('close');
                    }else if(resp=="x"){
                     M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
                     
@@ -406,7 +406,7 @@ $("#generar").click(function(event) {
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
                         }
                         else{
-                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+');" ><i class="material-icons">playlist_add</i></a>';
+                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_material+"'")+','+String("'"+values[0].id_size+"'")+');" ><i class="material-icons">playlist_add</i></a>';
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
                           
                         } 

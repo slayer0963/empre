@@ -35,6 +35,36 @@ function changeSelect3(event){
 	$(document).ready(function() {
 /*add color*/
 
+  $('#pextra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#discount').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
 $("#pcolor").change(function(event) {
   $("#txtcode").val($("#pcolor").val());
 });
@@ -65,6 +95,54 @@ $('#formcolor').submit(function() {
 }
 	return false;
 });
+
+
+$('#frmpricesa').submit(function() {
+    if(ValidateGen()==idinput.length){
+    var formData = new FormData(document.getElementById("frmpricesa"));
+      formData.append("dato", "valor");
+           $.ajax({
+            type: "POST",
+            url: "../controller/cadetailsgeneral.php?btnsetData=setData", 
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+             alert(resp);
+                   if(resp==1){
+                    M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
+                    $('#modaladdproduct').modal('close');
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+}
+  return false;
+}); 
+
+ $('#fileprice').change(function(){
+        document.getElementById("img").removeAttribute('src');
+        $("#viewpic").html('');
+        var archivos=document.getElementById('fileprice').files;
+        var navegador=window.URL || window.webkitURL;
+        for (var i = 0; i < archivos.length; i++) {
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            var objeto_url=navegador.createObjectURL(archivos[i]);
+            $("#viewpic").append("<center><img id='img' name='img' class='circle responsive-img'   src="+objeto_url+" style='height: 160px; width: 160px;' ></center>");
+            
+        };
+    });
 
 var idinputcolor = ['txtcolor','txtcode'];
 var idinputerrorcolor= ['txtcolorerror','txtcodeerror'];
@@ -548,7 +626,7 @@ $("#backmenuf").click(function(event) {
 });
 
 $("#generar").click(function(event) {
-	alert($("#idprod").val());
+	//alert($("#idprod").val());
 	var dataSet="";
       var dataa="";
       var btn="";
@@ -605,14 +683,14 @@ $("#generar").click(function(event) {
                     url: "../controller/caproduct.php?btngetData=getDataExist",
                     data: dataString,
                     success: function(resp) {
-                      alert(resp);
+                      //alert(resp);
                         var values = eval(resp);         
                         if (values[0].existe==1){
                           btn='<a class="btn-floating #ffeb3b green darken-3" ><i class="material-icons">playlist_add_check</i></a>';
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
                         }
                         else{
-                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+');" ><i class="material-icons">playlist_add</i></a>';
+                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+$("#idprod").val()+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_material+"'")+','+String("'"+values[0].id_size+"'")+');" ><i class="material-icons">playlist_add</i></a>';
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
                           
                         } 
@@ -702,6 +780,8 @@ $("#generar").click(function(event) {
 		var idinputerror= ['txtimg','txtname'];
 		var idinpute = ['imge','namee'];
 		var idinputerrore= ['txtimge','txtnamee'];
+
+
 
 
 var cleanform = () =>{
@@ -831,7 +911,36 @@ var Validatep = (type) =>{
     return validate;
 }
 
+var idinput = ['fname','quantity'];
+var idinputerror= ['txtfname','txtquantity'];
+var ValidateGen = () =>{
+  var validate=0, html="", count=0, counte=0;
+  
+        idinput.forEach(names => {
+          
+       if($("#"+names).val()!=0){
+        
+         validate+=1;
+         html="Listo";
+         //alert($("#"+names).val());
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('errorinputs');
+         $("#"+idinputerror[count]).addClass('successinputs');
+         
+       }
+       else{  
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('successinputs');      
+         $("#"+idinputerror[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+ 
+ 
 
+    return validate;
+}
 
 
 
@@ -840,6 +949,15 @@ var Validatep = (type) =>{
 
 	});
 
+
+ var modalGen = (a,c,m,z) =>{
+  $('#modaladdproduct').modal('open');
+  $("#idpres").val(a);
+  $("#colorpre").val(c);
+  $("#matpre").val(m);
+  $("#sizepre").val(z);
+
+}
 
 
 var setComboColor = () =>{

@@ -371,9 +371,9 @@
 					  <div class="col s12 m12 l8 offset-l2 center-align">
 					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
 					    <div class="card-panel animated" id="llenado">
-					    	       <h6 id="nombredtp"></h6><div id="printbutton"></div>
+					    	       <h4 >Generar combinaciones</h4>
 
-					       <input type="text" id="idprod" name="idprod">
+					       <input type="hidden" id="idprod" name="idprod">
 					        <div class="row">
 					        	<div class="col s10 m10 l8 offset-l2">
 					        		<select  class="select2 browser-default " id="colora" multiple name="color[]" title="Seleccionar Colores (*)" onchange="changeSelect1(event)"> </select><br><span class="" id="txtuser">Seleccionar Colores</span>
@@ -477,11 +477,11 @@
 
 					  <div class="container">
 					    <div class="card-panel animated hide" id="tablage">
-					      Datos
+					     
 					      <div class="row">
-					      
 					      	<div class="col s12 m12 l12">
-					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="100%">
+					      		<center>
+					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="80%">
 					        <thead>
 					            <tr>
 					                <th>Color</th>
@@ -499,6 +499,7 @@
 					            </tr>
 					        </tfoot>
 					      </table>
+					      </center>
 					      <!-- tabla de DAT -->
 					      
 					    </div>
@@ -522,6 +523,69 @@
 				</div>
 			</div>
 		</div>
+
+
+
+
+
+		<div id="modaladdproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
+  <div class="modal-content align-center">
+    <h4 for="name" id="namepres"></h4>
+
+      <form class="col s12 m12 l12 center-align" id="frmpricesa" name="frmpricesa" method="post">
+        <div class="row">
+            <input type="hidden" id="idpres" name="idpres">
+            <input type="hidden" id="colorpre" name="colorpre">
+            <input type="hidden" id="matpre" name="matpre">
+            <input type="hidden" id="sizepre" name="sizepre">
+            <div class="col s12 m6 l6">
+              <div id="viewpic">
+                <img src="../view/images/empty.jpg" style="height: 200px; width: 220px;" class="circle responsive-img" id="img" name="img">
+              </div>
+            <div class="file-field input-field">
+            <div class="btn">
+                <span>PRODUCTO</span>
+                <input type="file" id="fileprice" name="fileprice">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" id="fname" name="fname" title="Imagen (*)" type="text">
+            </div>
+            <span class="" id="txtfname"></span>
+            </div>
+            </div>
+            <div class="col s12 m6 l6">
+            <div class="input-field col s12 m12 l12">
+              <input id="quantity" name="quantity" title="Cantidad (*)" type="number" min=0 oninput="validity.valid||(value='');">
+              <label for="quantity" id="">Cantidad</label>
+              <span class="" id="txtquantity"></span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="pextra" name="pextra"  type="text" value="0.00">
+              <label for="pextra" id="">Costo agregado</label>
+              <span class="" id="txtpextra"></span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="discount" name="discount"  type="text" value="0.00">
+              <label for="discount" id="">Descuento</label>
+              <span class="" id="txtdiscount"></span>
+            </div>
+            </div>
+         </div>
+        <button  id="addpricesa" class=" btn">Agregar <i class="material-icons">add</i></button>
+      </form>
+      
+    
+  </div>
+  <div class="modal-footer">
+    <a id="salir" class="modal-close  btn-flat">Salir</a>
+
+  </div>
+</div>
+
+
+
+
+
 
 
 		<div class=" animated hide" id="details">
