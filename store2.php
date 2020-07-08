@@ -121,7 +121,13 @@
 	       
 				<div class="col l12 m12 s12" id="business"></div>
 			
-	      </div>
+	      
+        <div class="col l12 m12 s12 center-align">
+          <a class="waves-light btn-small "><i class="material-icons">more_horiz</i></a>
+        </div>
+        </div>
+          
+        </div>
 	    </div>
 			
 			<div class="parallax-container">

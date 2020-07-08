@@ -129,7 +129,7 @@ $('#formbusie').submit(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-
+              // alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se ha modificado el negocio exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
@@ -154,10 +154,10 @@ $('#formbusie').submit(function() {
 
 });
 
-var idinput = ['img','name','user'];
-var idinputerror= ['txtimg','txtname','txtuser'];
-var idinpute = ['imge','namee','usere'];
-var idinputerrore= ['txtimge','txtnamee','txtusere'];
+var idinput = ['img','name','user','descrip'];
+var idinputerror= ['txtimg','txtname','txtuser','txtdescrip'];
+var idinpute = ['imge','namee','usere','descripe'];
+var idinputerrore= ['txtimge','txtnamee','txtusere','txtdescripe'];
 
 
 var cleanform = () =>{
@@ -319,6 +319,7 @@ var getData = ()=> {
       { "data": "name_bus" },
       { "data": "pic_logo_bus" },
       { "data": "id_user" },
+      { "data": "description" },
       { "data": "actions" },
       ],
       "columnDefs": [

@@ -6,6 +6,7 @@
 	    $obj->setNameBus($_POST["name"]);
 		$obj->setPicLogoBus($_POST["img"]);
 		$obj->setIdUser($_POST["user"]);
+		$obj->setDescription($_POST["descrip"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
   		$nombreArchivo=$_FILES["file"]["name"];
 		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
@@ -35,6 +36,7 @@
 	    $obj->setNameBus($_POST["namee"]);
 		$obj->setPicLogoBus($_POST["imge"]);
 		$obj->setIdUser($_POST["usere"]);
+		$obj->setDescription($_POST["descripe"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
   		$nombreArchivo=$_FILES["filee"]["name"];
 		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];
@@ -119,6 +121,7 @@ if($page=='getData'){
          $name_bus="'".$c["name_bus"]."'";
          $pic_logo_bus="'".$c["pic_logo_bus"]."'";
          $id_user="'".$c["id_user"]."'";
+         $description="'".$c["description"]."'";
          $state_bus="'".$c["state_bus"]."'";
 
 
@@ -129,7 +132,7 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_bus.','.$state_bus.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_bus.','.$name_bus.','.$pic_logo_bus.','.$id_user.','.$state_bus.');\" id=\"btnd'.$c["id_bus"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_bus.','.$name_bus.','.$pic_logo_bus.','.$id_user.','.$state_bus.','.$description.');\" id=\"btnd'.$c["id_bus"].'\"><i class=\"material-icons\">edit</i></a>';
 
         $imagen = '<a href=\"../imgbusiness/'.$c["pic_logo_bus"].'\" data-lightbox=\"image-'.$id_bus.'\" data-title=\"'.$c["name_bus"].'\"><img src=\"../imgbusiness/'.$c["pic_logo_bus"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
 
@@ -137,6 +140,7 @@ if($page=='getData'){
                   "name_bus":"'.$c["name_bus"].'",
                   "pic_logo_bus":"'.$imagen.'",
                   "id_user":"'.$c["id_user"].'",
+                  "description":"'.$c["description"].'",
                   "actions":"'.$btnedit.$btnstate.'"
                 },';    
      }

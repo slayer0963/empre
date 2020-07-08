@@ -16,37 +16,37 @@ var business = (val) =>{
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
                 
-             	 // html+='<div class="col-md-3" data-toggle="animation-appear" data-animation-class="animation-fadeInQuick" data-element-offset="-100">';
-               //             html+=' <div class="store-item">';
-               //                  html+='<div class="store-item-image">';
-               //                      html+='<a href="store/'+values[i].id_bus+'">';
-               //                          html+='<img src="view/imgbusiness/'+values[i].pic_logo_bus+'" alt="" class="img-responsive">';
-               //                      html+='</a>';
-               //                  html+='</div>';
-               //                  html+='<div class="store-item-info clearfix">';
-               //                      html+='<b class=" themed-color-dark pull-right">'+values[i].name_bus+'</b>';
-               //                      html+='<a href="store/'+values[i].id_bus+'"><strong>Ver</strong></a><br>';
-               //                      // html+='<small><i class="fa fa-shopping-cart text-muted"></i> <a href="javascript:void(0)" class="text-muted">Add to cart</a></small>';
-               //                  html+='</div>';
-               //              html+='</div>';
-               //          html+='</div>';
 
-
-                html+='<div class="col s12 m6 l3 ">';
-                  html+='<div class="card hoverable">';
-                    html+='<div class="card-image">';
-                      html+='<img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 100px;" class="img-responsive">';
-                      // html+='<span class="card-title flow-text"></span>';
-                      html+='<a href="store/'+values[i].id_bus+'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>';
-                   html+=' </div>';
-                    html+='<div class="card-content">';
-                      html+=values[i].name_bus+'<br><p>QUE HACEN</p>';
-                    html+='</div>';
+                // html+='<div class="col s12 m6 l3 ">';
+                //   html+='<div class="card hoverable">';
+                //     html+='<div class="card-image">';
+                //       html+='<img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 100px;" class="img-responsive">';
+                //       // html+='<span class="card-title flow-text"></span>';
+                //       html+='<a href="store/'+values[i].id_bus+'" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>';
+                //    html+=' </div>';
+                //     html+='<div class="card-content">';
+                //       html+=values[i].name_bus+'<br><h6>'+values[i].description+'</h6>';
+                //     html+='</div>';
+                //   html+='</div>';
+                // html+='</div>';
+                html+='<div class="col s12 m6 l3">';
+                html+='<div class="card animated flipInY">';
+                  html+='<div class="card-image waves-effect waves-block waves-light">';
+                    html+='<img  src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 125px;" class="img-responsive activator">';
                   html+='</div>';
+                  html+='<div class="card-content center-align">';
+                    html+='<span class="card-title activator grey-text text-darken-4" style="font-size:15px; text-transform: uppercase;">'+values[i].name_bus+'<i class="material-icons right">more_vert</i></span>';
+                    html+='<p><a class="btn-small " href="store/'+values[i].id_bus+'"><i class="material-icons">local_mall</i></a></p>';
+                  html+='</div>';
+                  html+='<div class="card-reveal">';
+                    html+='<span class="card-title grey-text text-darken-4">'+values[i].name_bus+'<i class="material-icons right">close</i></span>';
+                    html+='<p>'+values[i].description+'</p>';
+                  html+='</div>';
+                html+='</div>';
                 html+='</div>';
 
 
-                htmlcarru+='<div class="carousel-item blue white-text" href="#two!"><a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"><p>HOLA</p></a><h2>First Panel</h2>';
+                //htmlcarru+='<div class="carousel-item blue white-text" href="#two!"><a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"><p>HOLA</p></a><h2>First Panel</h2>';
               
 
                     

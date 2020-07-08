@@ -12,6 +12,7 @@
                               <th style="text-align: center;">Nombre</th>
                               <th style="text-align: center;">Imagen</th>
                               <th style="text-align: center;">Usuario</th>
+                              <th style="text-align: center;">Descripci&oacute;n</th>
                               <th style="text-align: center;">Acciones</th>
                             </tr>
                             </thead>
@@ -21,6 +22,7 @@
                               <th style="text-align: center;">Nombre</th>
                               <th style="text-align: center;">Imagen</th>
                               <th style="text-align: center;">Usuario</th>
+                              <th style="text-align: center;">Descripci&oacute;n</th>
                               <th style="text-align: center;">Acciones</th>
                             </tr>
                             </tfoot>
@@ -75,6 +77,11 @@
               </select>
               <span class="" id="txtuser"></span>
             </div>
+            <div class="input-field col s12">
+            <textarea id="descrip" name="descrip" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="150"></textarea>
+            <label for="descrip">Descripci&oacute;n</label>
+            <span class="" id="txtdescrip"></span>
+          </div>
       
         </div>
         <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
@@ -128,6 +135,11 @@
               </select>
               <span class="" id="txtusere">Nombre del usuario</span>
             </div>
+            <div class="input-field col s12">
+            <textarea id="descripe" name="descripe" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="150"></textarea>
+            <label for="descripe">Descripci&oacute;n</label>
+            <span class="" id="txtdescripe"></span>
+          </div>
             
           </div>
         </div>
