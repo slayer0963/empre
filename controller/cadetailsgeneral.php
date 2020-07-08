@@ -36,7 +36,58 @@
 
 	}
 
+	function update(){
+	    $obj=new Adetailsgeneral();
+	    $obj->setIdPrices($_POST["id_pricese"]);
+	    $obj->setIdColor($_POST["id_colore"]);
+	    $obj->setIdMaterial($_POST["id_materiale"]);
+	    $obj->setIdSize($_POST["id_sizee"]);
+	    $obj->setImg($_POST["fnamee"]);
+	    $obj->setQuantity($_POST["quantitye"]);
+	    $obj->setExtraprice($_POST["pextrae"]);
+	    $obj->setDiscount($_POST["discounte"]);
 
+	    $formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["filepricee"]["name"];
+		$nombreTmpArchivo=$_FILES["filepricee"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		if (file_exists("../view/imgdetails/$nombreArchivo")) {
+		    return $obj;
+		} else {
+		if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imgdetails/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+	}
+	}
+
+
+
+	function updateState(){
+	    $obj=new Adetailsgeneral();
+	    $obj->setIdPrices($_POST["id_prices"]);
+	    $obj->setIdColor($_POST["id_color"]);
+	    $obj->setIdMaterial($_POST["id_material"]);
+	    $obj->setIdSize($_POST["id_size"]);
+	   	$value = $_POST["state"];
+	    if($value=="1"){
+	    	 $obj->setState("0");
+	    }
+	    else{
+	    	 $obj->setState("1");
+	    }
+	    return $obj;
+	}
 	
 	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
 	if($page=='setData'){
@@ -44,7 +95,17 @@
 	    $dat->setData(insert());
 	}
 
+	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+	if($page=='setDataUpdt'){
+	    $dat=new DAOAdetailsgeneral();
+	    $dat->setDataUpdt(update());
+	}
 
+	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
+	if($page=='statechange'){
+	    $dat=new DAOAdetailsgeneral();
+	    $dat->updateState(updateState());
+	}
 	// $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
 	// if($page=='setData1'){
 	//     $dat=new DAOAproduct();

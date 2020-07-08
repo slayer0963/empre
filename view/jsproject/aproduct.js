@@ -33,6 +33,67 @@ function changeSelect3(event){
 
 $(document).ready(function(){
 
+
+  $('#pextra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#discount').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#pextrae').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#discounte').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
    consultar();
     $('#fileprice').change(function(){
         document.getElementById("img").removeAttribute('src');
@@ -49,6 +110,21 @@ $(document).ready(function(){
         };
     });
 
+
+    $('#filepricee').change(function(){
+        document.getElementById("imge").removeAttribute('src');
+        $("#viewpice").html('');
+        var archivos=document.getElementById('filepricee').files;
+        var navegador=window.URL || window.webkitURL;
+        for (var i = 0; i < archivos.length; i++) {
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            var objeto_url=navegador.createObjectURL(archivos[i]);
+            $("#viewpice").append("<center><img id='imge' name='imge' class='circle responsive-img'   src="+objeto_url+" style='height: 160px; width: 160px;' ></center>");
+            
+        };
+    });
 /*$("#addpricesa").click(function(event) {
   alert($("#frmpricesa").serialize());
 });*/
@@ -70,6 +146,40 @@ $('#frmpricesa').submit(function() {
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
                     
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+}
+  return false;
+}); 
+
+
+$('#frmpricese').submit(function() {
+    if(ValidateE()==idinput.length){
+    var formData = new FormData(document.getElementById("frmpricese"));
+      formData.append("dato", "valor");
+           $.ajax({
+            type: "POST",
+            url: "../../controller/cadetailsgeneral.php?btnsetData=setDataUpdt", 
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+             //alert(resp);
+                   if(resp==1){
+                    M.toast({html: "¡Se modificó el detalle exitosamente!", classes: 'rounded  green'});
+                    viewcombi($("#id_prod").val());
+                    $('#modalaeditproduct').modal('close');
                    }else if(resp=="x"){
                     M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
                     
@@ -233,11 +343,6 @@ $("#backtb").click(function(event) {
 
 
 $("#generar").click(function(event) {
-
-   
-
-
-
       var dataSet="";
       var dataa="";
       var btn="";
@@ -282,12 +387,10 @@ $("#generar").click(function(event) {
         }
       }
         });
-     // alert(colores[0]);
      table.clear().draw();
       for (var i = 0; i < colores.length; i++) {
         for (var j = 0; j < materiales.length; j++) {
           for (var k = 0; k < tallas.length; k++) {
-               
                   //alert(colores[i]+','+ materiales[j]+','+tallas[k]);
                   var html="";  
                   var dataString = 'idprod='+$("#id_prod").val()+'&idcolor='+colores[i]+'&idmaterial='+materiales[j]+'&idsize='+tallas[k];
@@ -297,41 +400,21 @@ $("#generar").click(function(event) {
                     data: dataString,
                     success: function(resp) {
                       //alert(resp);
-                    var values = eval(resp);        
-                          
-                        
+                        var values = eval(resp);         
                         if (values[0].existe==1){
                           btn='<a class="btn-floating #ffeb3b green darken-3" ><i class="material-icons">playlist_add_check</i></a>';
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
-                          
                         }
                         else{
                           btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_color+"'")+');" ><i class="material-icons">playlist_add</i></a>';
                           table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
                           
-                        }
-                        
-                       
-                       
+                        } 
                     } 
                 }); 
-               
-                 
-                  
-                  //add some rows
-                  
-                  
-                 //dataa+='['+ colores[i]+','+ materiales[j]+','+tallas[k] +'],';
-                    
           }
         }
       }
-
-      
-        
-
-          
-
         $("#llenado").addClass('slideOutUp');
       setTimeout(function(){ 
         $("#llenado").addClass('hide');
@@ -340,9 +423,6 @@ $("#generar").click(function(event) {
         $("#tablage").addClass('slideInUp');
         $("#backfrm").removeClass('hide');
       }, 1000);
-
-            
-
   });
 
 
@@ -419,8 +499,10 @@ function consultar() {
 }
 
 
-var idinput = ['fname','quantity','pextra','discount'];
-var idinputerror= ['txtfname','txtquantity','txtpextra','txtdiscount'];
+var idinput = ['fname','quantity'];
+var idinputerror= ['txtfname','txtquantity'];
+var idinpute = ['fnamee','quantitye'];
+var idinputerrore= ['txtfnamee','txtquantitye'];
 
 
 var Validate = () =>{
@@ -452,7 +534,56 @@ var Validate = () =>{
     return validate;
 }
 
+var ValidateE= () =>{
+  var validate=0, html="", count=0, counte=0;
+  
+        idinpute.forEach(names => {
+          
+       if($("#"+names).val()!=0){
+        
+         validate+=1;
+         html="Listo";
+         //alert($("#"+names).val());
+         $("#"+idinputerrore[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrore[count]).removeClass('errorinputs');
+         $("#"+idinputerrore[count]).addClass('successinputs');
+         
+       }
+       else{  
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrore[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrore[count]).removeClass('successinputs');      
+         $("#"+idinputerrore[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+ 
+ 
 
+    return validate;
+}
+
+var StateChange = (id_prices,id_color,id_material,id_size,status) =>{
+
+    
+          var dataString = 'id_prices='+id_prices+"&id_color="+id_color+"&id_material="+id_material+"&id_size="+id_size+"&state="+status;
+           $.ajax({
+            type: "POST",
+            url: "../../controller/cadetailsgeneral.php?updateData=statechange",
+            data: dataString,
+            success: function(resp) {            
+                    if (resp=="1") {
+                            M.toast({html: "¡Se ha modificado el estado exitosamente!", classes: 'rounded  green'});
+                            viewcombi($("#id_prod").val());
+                    }else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                    
+                   } 
+            
+            }
+        }); 
+     return false;
+}
 
 var idinputi = ['user','bus'];
 var idinputerrori= ['txtuser','txtbus'];
@@ -523,7 +654,7 @@ var Validatebtnprice=()=>{
             data: $("#frmprice").serialize(),
             success: function(resp) {
               M.toast({html: "¡Información guardada con exito!", classes: 'rounded  green'});
-              consultar();
+              getData($("#bus").val());
               $('.modal').modal('close');
               cleanform();
             }
@@ -685,6 +816,20 @@ function formatStateC (opt) {
 
  }
 
+  var FillBox = (id_prices,id_color,id_material,id_size,img,quantity,extraprice,discount) =>{
+  $("#id_pricese").val(id_prices);
+  $("#id_colore").val(id_color);
+  $("#id_materiale").val(id_material);
+  $("#id_sizee").val(id_size);
+  $("#imge").attr("src",'../imgdetails/'+img); 
+  $("#fnamee").val(img);
+  $("#quantitye").val(quantity);
+  $("#pextrae").val(extraprice);
+  $("#discounte").val(discount);
+  
+
+ }
+
  var FillDiv = (id,nombre,id_tpro) =>{
   
       $("#nombredtp").html("Producto: <b>"+nombre+"</b>");
@@ -731,7 +876,8 @@ var viewcombi = (val)=>{
       { "data": "name_color" },
       { "data": "name_mat" },
       { "data": "size" },
-      { "data": "quantity" }
+      { "data": "quantity" },
+      { "data": "actions"}
       
       ],
       "columnDefs": [

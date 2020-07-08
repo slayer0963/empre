@@ -56,7 +56,6 @@
 	}
 
 
-	
 
 
 	// $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
@@ -111,13 +110,28 @@ if($page=='getvaDataGen'){
          foreach($r as $c){
          $btnstate='';
          $color ='';
-         //$id="'".$c["id_pro"]."'";
+         $id_prices="'".$c["id_prices"]."'";
+         $id_color="'".$c["id_color"]."'";
+         $id_material="'".$c["id_material"]."'";
+         $id_size="'".$c["id_size"]."'";
+         $extraprice="'".$c["extraprice"]."'";
+         $img="'".$c["img"]."'";
+         $discount="'".$c["discount"]."'";
+         $quantity="'".$c["quantity"]."'";
    //       $name="'".$c["name_pro"]."'";
    //       $descrip="'".$c["descr_pro"]."'";
    //       $cat="'".$c["id_cat"]."'";
    //       $id_tpro="'".$c["id_tpro"]."'";
    //       $state="'".$c["state_pro"]."'";
 		 // $btnedit='';
+		 if($c["state"]=="1"){ 
+         	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prices.','.$id_color.','.$id_material.','.$id_size.',\'1\');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
+         }
+         else if ($c["state"]=="0") {
+         	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prices.','.$id_color.','.$id_material.','.$id_size.',\'0\');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
+         }
+
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modalaeditproduct\" onclick=\"FillBox('.$id_prices.','.$id_color.','.$id_material.','.$id_size.','.$img.','.$quantity.','.$extraprice.','.$discount.');\"><i class=\"material-icons\">edit</i></a>';
        
         $imagen = '<a href=\"../imgdetails/'.$c["img"].'\" data-lightbox=\"image-'.$c["name_color"].'\" data-title=\"'.$c["name_color"].'\"><img src=\"../imgdetails/'.$c["img"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
          
@@ -126,8 +140,8 @@ if($page=='getvaDataGen'){
                   "name_color":"'.$c["name_color"].'",
                   "name_mat":"'.$c["name_mat"].'",
                   "size":"'.$c["number_size"].'-'.$c["name_size"].'",
-                  "quantity":"'.$c["quantity"].'"
-                  
+                  "quantity":"'.$c["quantity"].'",
+                  "actions":"'.$btnedit.$btnstate.'"
                 },';    
      }
         $table = substr($table,0, strlen($table) - 1);

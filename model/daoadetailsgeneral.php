@@ -81,10 +81,14 @@ include_once "../cn/connection.php";
  	}
 
 
- 	public function updateData($obj)
+ 	public function setDataUpdt($obj)
  	{
+ 		if($obj=="x"){
+ 			echo "x";
+ 		}else{
+
  		$c=conectar();
- 		$id_prices = $obj->getIdPrices();
+		$id_prices = $obj->getIdPrices();
 		$id_color = $obj->getIdColor();
 		$id_material = $obj->getIdMaterial();
 		$id_size = $obj->getIdSize();
@@ -92,21 +96,29 @@ include_once "../cn/connection.php";
 		$quantity = $obj->getQuantity();
 		$extraprice = $obj->getExtraprice();
 		$discount = $obj->getDiscount();
-		$sql="update assignment_details_general ... where id_prices=$id_prices;";
+		
+
+		$sql="update assignment_details_general set img='$img', quantity=$quantity, extraprice='$extraprice', discount='$discount' where id_prices=$id_prices and id_color=$id_color and id_material=$id_material and id_size=$id_size ";
 		if (!$c->query($sql)) {
-			print "0".$sql;
+			print "0 ".$sql;
 		}else{
 			    echo "1"; 
+
 		     }
 		mysqli_close($c);
+	}
  	}
+
 
  	public function updateState($obj)
  	{
  		$c=conectar();
  		$id_prices = $obj->getIdPrices();
+ 		$id_color = $obj->getIdColor();
+ 		$id_material = $obj->getIdMaterial();
+ 		$id_size = $obj->getIdSize();
 		$state = $obj->getState();
-		$sql="update assignment_details_general set state=$state where id_prices=$id_prices;";
+		$sql="update assignment_details_general set state=$state where id_prices=$id_prices and id_color=$id_color and id_material=$id_material and id_size=$id_size ;";
 		if (!$c->query($sql)) {
 			print "0";
 		}else{

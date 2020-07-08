@@ -167,7 +167,7 @@ include_once "../cn/connection.php";
 		$re = $resultado->fetch_array();
 		$id_prices=$re["id_prices"];
 
-        $sql="select adg.img, c.name_color, m.name_mat, s.name_size, s.number_size, adg.quantity FROM assignment_details_general adg inner join sizes s on s.id_size=adg.id_size inner join color c on c.id_color=adg.id_color inner join material m on m.id_mat=adg.id_material where id_prices=1;";
+        $sql="select adg.id_prices, adg.id_color, adg.id_material, adg.id_size, adg.extraprice, adg.discount, adg.img, c.name_color, m.name_mat, s.name_size, s.number_size, adg.quantity, adg.state FROM assignment_details_general adg inner join sizes s on s.id_size=adg.id_size inner join color c on c.id_color=adg.id_color inner join material m on m.id_mat=adg.id_material where id_prices=$id_prices;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();

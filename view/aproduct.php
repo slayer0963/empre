@@ -89,6 +89,7 @@
                 <th>Material</th>
                 <th>Talla</th>
                 <th>Cantidad</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tfoot>
@@ -98,13 +99,12 @@
                 <th>Material</th>
                 <th>Talla</th>
                 <th>Cantidad</th>
+                <th>Acción</th>
             </tr>
         </tfoot>
       </table>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+   
   </div>
 
 
@@ -194,30 +194,30 @@
                 <input type="file" id="fileprice" name="fileprice">
             </div>
             <div class="file-path-wrapper">
-                <input class="file-path validate" id="fname" name="fname" type="text">
+                <input class="file-path validate" id="fname" name="fname" title="Imagen (*)" type="text">
             </div>
             <span class="" id="txtfname"></span>
             </div>
             </div>
             <div class="col s12 m6 l6">
             <div class="input-field col s12 m12 l12">
-              <input id="quantity" name="quantity" title="Cantidad (*)" type="number">
+              <input id="quantity" name="quantity" title="Cantidad (*)" type="number" min=0 oninput="validity.valid||(value='');">
               <label for="quantity" id="">Cantidad</label>
               <span class="" id="txtquantity"></span>
             </div>
             <div class="input-field col s12 m12 l12">
-              <input id="pextra" name="pextra" title="Precio Extra (*)" type="text" >
-              <label for="pextra" id="">Precio de extra</label>
+              <input id="pextra" name="pextra"  type="text" value="0.00">
+              <label for="pextra" id="">Costo agregado</label>
               <span class="" id="txtpextra"></span>
             </div>
             <div class="input-field col s12 m12 l12">
-              <input id="discount" name="discount" title="Descuento (*)" type="text" >
+              <input id="discount" name="discount"  type="text" value="0.00">
               <label for="discount" id="">Descuento</label>
               <span class="" id="txtdiscount"></span>
             </div>
             </div>
          </div>
-        <button  id="addpricesa" class=" btn">Agregar<i class="material-icons">add</i></button>
+        <button  id="addpricesa" class=" btn">Agregar <i class="material-icons">add</i></button>
       </form>
       
     
@@ -226,6 +226,63 @@
     <a id="salir" class="modal-close  btn-flat">Salir</a>
 
   </div>
+</div>
+
+
+
+
+
+
+
+
+<div id="modalaeditproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
+  <div class="modal-content align-center">
+    <h4 for="name" id="namepres"> EDITAR COMBINACIÓN</h4>
+
+      <form class="col s12 m12 l12 center-align" id="frmpricese" name="frmpricese" method="post">
+        <div class="row">
+            <input type="hidden" id="id_pricese" name="id_pricese">
+            <input type="hidden" id="id_colore" name="id_colore">
+            <input type="hidden" id="id_materiale" name="id_materiale">
+            <input type="hidden" id="id_sizee" name="id_sizee">
+            <div class="col s12 m6 l6">
+              <div id="viewpice">
+                <img src="https://sanitationsolutions.net/wp-content/uploads/2015/05/empty-image.png" style="height: 160px; width: 160px;" class="circle responsive-img" id="imge" name="imge">
+              </div>
+            <div class="file-field input-field">
+            <div class="btn">
+                <span>PRODUCTO</span>
+                <input type="file" id="filepricee" name="filepricee">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" id="fnamee" name="fnamee" title="Imagen (*)" type="text">
+            </div>
+              <span class="" id="txtfnamee"></span>
+            </div>
+            </div>
+            <div class="col s12 m6 l6">
+            <div class="input-field col s12 m12 l12">
+              <input id="quantitye" name="quantitye" title="Cantidad (*)" type="number" min=0 oninput="validity.valid||(value='');">
+              <span class="" id="txtquantitye">Cantidad</span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="pextrae" name="pextrae" title="Precio Extra (*)" type="text" >
+              
+              <span class="" id="txtpextrae">Costo agregado</span>
+            </div>
+            <div class="input-field col s12 m12 l12">
+              <input id="discounte" name="discounte" title="Descuento (*)" type="text" >
+             
+              <span class="" id="txtdiscounte">Descuento</span>
+            </div>
+            </div>
+         </div>
+        <button  id="editpricesa" class=" btn">Modificar <i class="material-icons">edit</i></button>
+      </form>
+      
+    
+  </div>
+  
 </div>
 
 <!-- <div id="modaladdproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
