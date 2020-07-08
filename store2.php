@@ -50,7 +50,7 @@
 
         @media only screen and (max-width : 992px) {
            
-            #modallogin { width: 75% !important ; height: 45% !important ; } 
+            #modallogin { width: 100% !important ; height: 60% !important ; } 
              
         }
       </style>
@@ -70,7 +70,7 @@
 			    </div>
 			  </nav>
 
-			  <ul class="sidenav" id="mobile-demo">
+			  <ul class="sidenav" id="mobile-demo" style="margin-top: 4rem; width: 100%;">
 			    <!-- <li><a href="sass.html">Sass</a></li>
 			    <li><a href="badges.html">Components</a></li> -->
 			    <li class="center-align"><a class="modal-trigger" href="#modallogin">Inciar sesion</a></li>
@@ -169,7 +169,9 @@ $(document).ready(function(){
   
      $('.slider').slider({
     indicators: false
-  });
+      });
+
+
 
 });
   </script>

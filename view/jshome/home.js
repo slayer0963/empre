@@ -36,7 +36,7 @@ var business = (val) =>{
                   html+='</div>';
                   html+='<div class="card-content center-align">';
                     html+='<span class="card-title activator grey-text text-darken-4" style="font-size:15px; text-transform: uppercase;">'+values[i].name_bus+'<i class="material-icons right">more_vert</i></span>';
-                    html+='<p><a class="btn-small " href="store/'+values[i].id_bus+'"><i class="material-icons">local_mall</i></a></p>';
+                    html+='<p><a class="btn-small" onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+')"><i class="material-icons">local_mall</i></a></p>';
                   html+='</div>';
                   html+='<div class="card-reveal">';
                     html+='<span class="card-title grey-text text-darken-4">'+values[i].name_bus+'<i class="material-icons right">close</i></span>';
@@ -46,7 +46,6 @@ var business = (val) =>{
                 html+='</div>';
 
 
-                //htmlcarru+='<div class="carousel-item blue white-text" href="#two!"><a class="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"><p>HOLA</p></a><h2>First Panel</h2>';
               
 
                     
@@ -59,4 +58,13 @@ var business = (val) =>{
             } 
         }); 
       
+}
+
+function viewstore(id,nombre){
+    var obj = new Object();
+     obj.id = id;
+     obj.name  = nombre;
+     var jsonString= JSON.stringify(obj);
+      location.href="store/";
+      localStorage.setItem('Store',jsonString);
 }
