@@ -65,6 +65,36 @@ function changeSelect3(event){
   });
 });
 
+  $('#pcompra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#pventa').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
 $("#pcolor").change(function(event) {
   $("#txtcode").val($("#pcolor").val());
 });
@@ -761,9 +791,8 @@ $("#generar").click(function(event) {
 		                    //getData();
 		                    cleanformp();
 		                    cleanboxp();
-		                    M.toast({html: "¡Se ha agregado el tipo de usuario exitosamente!", classes: 'rounded  green'});
-		                    $('.modal').modal('close');
-		                     
+		                    M.toast({html: "¡Se ha agregado el producto exitosamente!", classes: 'rounded  green'});
+		                   		$('.modal').modal('close');
 		                   }
 		                   else{
 		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
@@ -1116,6 +1145,8 @@ function mybusii(id,name) {
             }
             });
 }
+
+
 
 function validateproduct(id) {
 	var dataString = 'id='+id;

@@ -94,6 +94,36 @@ $(document).ready(function(){
   });
 });
 
+  $('#pcompra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#pventa').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
    consultar();
     $('#fileprice').change(function(){
         document.getElementById("img").removeAttribute('src');
