@@ -2,7 +2,7 @@
 
 
     <?php
-  require 'headerlogin.php';?>
+  //require 'headerlogin.php';?>
 
 
 
@@ -13,12 +13,12 @@
         include $views[0].'.php';
       }
       else{
-        include 'store2.php';
+        include 'store.php';
       }
       
     }
     else{
-      include 'store2.php';
+      include 'store.php';
     }
          ?>
 
