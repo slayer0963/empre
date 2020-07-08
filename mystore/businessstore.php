@@ -371,11 +371,12 @@
 					  <div class="col s12 m12 l8 offset-l2 center-align">
 					    <a id="backfrm" class="btn-floating blue darken-4 hide"><i class="material-icons">keyboard_arrow_up</i></a><br>
 					    <div class="card-panel animated" id="llenado">
-					       <h4 >Agregar combinacion de productos</h4>
-					       <input type="hidden" id="idpro" name="idpro">
+					    	       <h6 id="nombredtp"></h6><div id="printbutton"></div>
+
+					       <input type="text" id="idprod" name="idprod">
 					        <div class="row">
 					        	<div class="col s10 m10 l8 offset-l2">
-					        		<select  class="select2 browser-default " id="colora" multiple name="color[]" title="Seleccionar Colores (*)" onchange="//changeSelect1(event)"> </select><br><span class="" id="txtuser">Seleccionar Colores</span>
+					        		<select  class="select2 browser-default " id="colora" multiple name="color[]" title="Seleccionar Colores (*)" onchange="changeSelect1(event)"> </select><br><span class="" id="txtuser">Seleccionar Colores</span>
 					        	</div>
 					        	<div class="col l1 m1 s1"><button class="btn modal-trigger blue darken-3" href="#frmaddcolor"><i class="material-icons">note_add</i></button></div>
 					        	
@@ -383,7 +384,7 @@
 					        
 						<div class="row">
 							<div class="col s10 m10 l8 offset-l2">
-					        <select  class="select2 browser-default" id="matera" multiple name="mater[]" title="Seleccionar Material (*)" onchange="//changeSelect2(event)">
+					        <select  class="select2 browser-default" id="matera" multiple name="mater[]" title="Seleccionar Material (*)" onchange=" changeSelect2(event)">
 
 					        </select><br><span class="" id="txtuser">Seleccionar Material</span>
 					    </div>
@@ -393,8 +394,7 @@
 					        
 					        <div class="row">
 					    <div class="col s10 m10 l8 offset-l2">
-					        <select  class="select2 browser-default" id="sizea" multiple name="size[]" title="Seleccionar Talla (*)" onchange="//changeSelect3(event)">
-
+					        <select  class="select2 browser-default" id="sizea" multiple name="size[]" title="Seleccionar Talla (*)" onchange=" changeSelect3(event)">
 					        </select><br><span class="" id="txtuser">Seleccionar Tallas</span>
 					    </div>
 					        	<div class="col l1 m1 s1"><button class="btn modal-trigger blue darken-3" href="#frmaddsize"><i class="material-icons">note_add</i></button></div></div>

@@ -841,14 +841,6 @@ function formatStateC (opt) {
       $("#idpres").val(id);
       $("#namepres").html("Agregar detalles de "+nombre);
 
-
-      
-          
-      
-       
-
-
-
 }
 
 
