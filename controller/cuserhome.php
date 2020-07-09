@@ -43,6 +43,7 @@
 	    $obj->setNameBus($_POST["name"]);
 		$obj->setPicLogoBus($_POST["img"]);
 		$obj->setIdUser($_POST["user"]);
+		$obj->setDescription($_POST["descrip"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
   		$nombreArchivo=$_FILES["file"]["name"];
 		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
@@ -78,6 +79,7 @@
 	    $obj->setNameBus($_POST["namee"]);
 		$obj->setPicLogoBus($_POST["imge"]);
 		$obj->setIdUser($_POST["usere"]);
+		$obj->setDescription($_POST["descripe"]);
 		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
   		$nombreArchivo=$_FILES["filee"]["name"];
 		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];

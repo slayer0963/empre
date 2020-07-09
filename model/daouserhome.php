@@ -43,7 +43,8 @@ include_once "../cn/connection.php";
         $_name_bus=$obj->getNameBus();
         $_pic_logo_bus=$obj->getPicLogoBus();
         $_id_user=$obj->getIdUser();
-        $sql="insert into business value (0,'$_name_bus','$_pic_logo_bus',$_id_user,1);";
+        $descrip=$obj->getDescription();
+        $sql="insert into business value (0,'$_name_bus','$_pic_logo_bus',$_id_user,1,'$descrip');";
         if (!$c->query($sql)) {
             print "0".$sql;
         }else{
@@ -68,7 +69,8 @@ include_once "../cn/connection.php";
         $_name_bus=$obj->getNameBus();
         $_pic_logo_bus=$obj->getPicLogoBus();
         $_id_user=$obj->getIdUser();
-        $sql="update business set name_bus='$_name_bus',pic_logo_bus='$_pic_logo_bus',id_user=$_id_user where id_bus=$_id_bus;";
+        $descrip=$obj->getDescription();
+        $sql="update business set name_bus='$_name_bus',pic_logo_bus='$_pic_logo_bus',id_user=$_id_user, description='$descrip' where id_bus=$_id_bus;";
         if (!$c->query($sql)) {
             print "0".$sql;
         }else{
@@ -199,11 +201,11 @@ include_once "../cn/connection.php";
                 $id_pro=$re["id_pro"]; 
                 $sqls="insert into assignment_probus value (0,$_idbus,$id_pro);";
                 if (!$c->query($sqls)) {
-                    print "0";
+                    print "0".$sqls;
                 }else{
                     $sqlprice="insert into assignment_prices_object value (0,$id_pro,'$purprice','$salprice',1);";
                     if (!$c->query($sqlprice)) {
-                        print "0";
+                        print "0".$sqlprice;
                     }else{
                         echo "1";
                     }

@@ -14,12 +14,12 @@
         include $views[0].'.php';
       }
       else{
-        include 'businessstore.php';
+        include 'mybusis.php';
       }
       
     }
     else{
-      include 'businessstore.php';
+      include 'mybusis.php';
     }
          ?>
   </div>
