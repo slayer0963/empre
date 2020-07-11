@@ -19,14 +19,14 @@
     <link href="../store/assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
 
     <style>
-        .modal-dialog { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
+        .login { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
 
-      
+      	.details { top:10px; width: 100% !important ; height: 100% !important ;  max-height: 55%;}
           
 
         @media only screen and (max-width : 992px) {
            
-            .modal-dialog { width: 100% !important ; height: 60% !important ; } 
+            .login { width: 100% !important ; height: 60% !important ; } 
              
         }
     </style>
@@ -69,10 +69,10 @@
 		<div class="page-header header-filter header-small" data-parallax="true" style="background-image: url('../store/assets/img/examples/ecommerce-tips2.jpg');">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
+				<div class="col-md-8 col-md-offset-1">
 					<div class="brand">
-						<h1 class="title">Ecommerce Page!</h1>
-						<h4>Free global delivery for all products. Use coupon <b>25summer</b> for an extra 25% Off</h4>
+						<h1 class="title" id="titlebusi"></h1>
+						<h4 id="description"></h4>
 					</div>
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 	</div>
 
     <div class="main main-raised">
-        <div class="section">
+    <!--     <div class="section">
                <div class="container">
                    <h2 class="section-title">Latest Offers</h2>
                    <div class="row">
@@ -172,7 +172,7 @@
 
                    </div>
                </div>
-        </div><!-- section -->
+        </div> section --> 
 
         <div class="section">
             <div class="container">
@@ -482,164 +482,12 @@
 					</div>
 
 					<div class="col-md-9">
-	   					<div class="row">
-	   						 <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-1.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Polo Ralph Lauren</h4>
-	   									 </a>
-	   									 <p class="description">
-	   										Impeccably tailored in Italy from lightweight navy wool.
-	   									 </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	<span class="price"> &euro; 800</span>
-											 </div>
+	   					<div class="row" id="productstore">
+	   						 
 
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Remove from wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
-	   						  </div>
-	   						  <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-2.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Wooyoungmi</h4>
-	   									 </a>
-	   									 <p class="description">
-											 Dark-grey slub wool, pintucked notch lapels.
-	   									 </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	<span class="price">&euro; 555</span>
-											 </div>
-
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Add to wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite_border</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
-	   						  </div>
-	   						   <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-3.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Tom Ford</h4>
-	   									 </a>
-	   									 <p class="description">
-	   										Immaculate tailoring is TOM FORD's forte.
-	   								    </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	 <span class="price"> &euro; 879</span>
-											 </div>
-
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"  rel="tooltip" title="Add to wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite_border</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
-	   						  </div>
-
-	   						   <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-4.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Thom Sweeney</h4>
-	   									 </a>
-	   									 <p class="description">
-	   										It's made from lightweight grey wool woven.
-	   								   </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	<span class="price"> &euro; 680</span>
-											 </div>
-
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"  rel="tooltip" title="Add to wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite_border</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
-	   						  </div>
-
-	   						  <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-5.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Kingsman</h4>
-	   									 </a>
-	   									 <p class="description">
-	   										Crafted from khaki cotton and fully canvassed.
-	   									 </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	 <span class="price"> &euro; 725</span>
-											 </div>
-
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Remove from wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
-	   						  </div>
-	   						  <div class="col-md-4">
-	   							 <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-	   								 <div class="card-image">
-	   									 <a href="#">
-	   										 <img src="../store/assets/img/examples/suit-6.jpg" alt="..."/>
-	   									 </a>
-	   								 </div>
-	   								 <div class="card-content">
-	   									 <a href="#">
-	   										 <h4 class="card-title">Boglioli</h4>
-	   									 </a>
-	   									 <p class="description">
-	   										Masterfully crafted in Northern Italy.
-	   									 </p>
-	   									 <div class="footer">
-											 <div class="price-container">
-											 	<span class="price">&euro; 699</span>
-											 </div>
-
-	   										 <button class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right" rel="tooltip" title="Add to wishlist" data-placement="left">
-	   											 <i class="material-icons">favorite_border</i>
-	   										 </button>
-	   									 </div>
-	   								 </div>
-	   							 </div> <!-- end card -->
+	   						
+	   						
+	   						 
 	   						  </div>
 	   						  <div class="col-md-3 col-md-offset-4">
 	   							   <button rel="tooltip" class="btn btn-rose btn-round">Load more...</button>
@@ -710,35 +558,42 @@
     <!--    Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
     <script src="../store/assets/js/jasny-bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../view/jshome/home.js"></script>
+    
+	<script src="../store/assets/js/jquery.flexisel.js"></script>
+
+
+	<!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/   -->
+
+	<script src="../store/assets/js/bootstrap-tagsinput.js"></script>
+
+    <script type="text/javascript" src="./js/busi.js"></script>
       <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
         <script type="text/javascript" src="view/jsproject/google.js"></script> -->
         <script type="text/javascript" src="../view/jsproject/local.js"></script>
 
     <!--    Plugin For Google Maps   -->
-    <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-    <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
-        <script src="../store/assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
 
    
 </html>
       <script>
       	$(document).ready(function(){
 
+
+
 			 var obj = JSON.parse(localStorage.getItem('Store'));
 			 //alert(obj.name);
 			 $("#namebusi").html("<strong>"+obj.name+"</strong>")
 			 $("#title").html(obj.name);
-
-		  
+			 $("#titlebusi").html(obj.name);
+		  	 $("#description").html(obj.des);
 		  });
       </script>
- 
+
+       
 
  
   <div class="modal fade" id="modallogin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog login" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">¡Bienvenido!</h5>
@@ -780,3 +635,4 @@
     </div>
   </div>
 </div>
+

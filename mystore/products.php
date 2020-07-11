@@ -109,7 +109,7 @@
 								    <i class="large material-icons">format_quote</i>
 								  </a>
 								  <ul>
-								    <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li>
+								    <!-- <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li> -->
 								    <li><a class="btn-floating blue modal-trigger" href="#addpro"><i class="material-icons">add</i></a></li>
 								  </ul>
 								</div>
@@ -179,7 +179,7 @@
   <div class="tap-target green" data-target="menuadde">
     <div class="tap-target-content">
       <h5>Aviso</h5>
-      <p>Aqui tendras las opciones de agregar productos y poder entrar en modo edicion para editarlos.</p>
+      <p>Aqui tendras la opcion de agregar productos</p>
     </div>
   </div>
 
