@@ -14,6 +14,12 @@
 	    echo json_encode($dat->getProductUser(getidbuss()));
 	}
 
+	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDatac'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductClient(getidbuss()));
+	}
+
 	function getidpro(){
 	    $obj=new Userhome();
 	    $obj->setIdPro($_POST["id"]);;
@@ -166,6 +172,12 @@
 	if($page=='getDataProc'){
 	    $dat=new DAOUserhome();
 	    echo json_encode($dat->getDataProc(getIdbyProduct()));
+	}
+
+	$page = isset($_GET['btngetProdsc'])?$_GET['btngetProdsc']:'';
+	if($page=='getDataProcCli'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getDataProcCli(getIdbyProduct()));
 	}
 
 
