@@ -109,8 +109,8 @@
 
   <div class="tap-target green" data-target="menuadde">
     <div class="tap-target-content">
-      <h5>Aviso</h5>
-      <p>Aqui tendras las opciones de agregar productos y poder entrar en modo edicion para editarlos.</p>
+      <h5>IMPORTANTE</h5>
+      <p>Aquí tendrás las opciones de agregar productos y poder entrar en modo edición para editarlos.</p>
     </div>
   </div>
 

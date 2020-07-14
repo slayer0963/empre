@@ -99,7 +99,7 @@
 			</div>
 			<div class="row">
 				
-					<div class="col s12 m4 l4 center-align">
+					<div class="col s12 m4 l5 center-align">
 						<ul class="collapsible ">
 					    <li class="active">
 					      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Color</div>
@@ -116,11 +116,11 @@
 					  </ul>
 						
 					</div>
-					<div class="col s12 m4 l5 center-align" id="imgpro">
+					<div class="col s12 m4 l3 center-align" id="imgpro">
 
 						
 					</div>
-					<div class="col s12 m4 l3 center-align">
+					<div class="col s12 m4 l4 center-align">
 						<div class="collection">
 					    <a href="#!" class="collection-item"><span class="badge" id="quantitydeta">1</span>Cantidad</a>
 					    <a href="#!" class="collection-item"><span class="badge" id="pricedeta">1</span>Precio</a>
