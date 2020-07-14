@@ -27,6 +27,31 @@ include_once "../cn/connection.php";
 		$pass_user = $obj->getPassUser();
  		$result = 0;
  		if($id_service==null){
+ 			$sentencia = $c->prepare("SELECT count(id_cl) as id_cl FROM clients WHERE email_cl ='$email_user'");
+			$sentencia->execute();
+			$resultado = $sentencia->get_result();
+			$res = $resultado->fetch_assoc();
+			$cliente=$res["id_cl"];
+			if($cliente>0){
+				$sentencia = $c->prepare("SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$email_user' and pass_cl='$pass_user' or user_cl ='$email_user' and pass_cl='$pass_user'");
+			$sentencia->execute();
+			$resultado = $sentencia->get_result();
+			$res = $resultado->fetch_assoc();
+			$nombre=$res["fullname_cl"];
+			$img=$res["imagen"];
+			$email=$res["email_cl"];
+			$tipo=3;
+			$id=$res["id_cl"];
+			$_SESSION["name"]=$nombre;
+			$_SESSION["type"]=$tipo;
+			$_SESSION["img"]=$img;
+			$_SESSION["email"]=$email;
+			$_SESSION["idus"]=$id;
+			$arreglo = array();
+			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+			return $arreglo;
+			}
+			else{
 			$sentencia = $c->prepare("SELECT id_user, fullname_user,id_ustp, imagen, email_user FROM users WHERE email_user ='$email_user' and pass_user='$pass_user' or user_user ='$email_user' and pass_user='$pass_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
@@ -44,6 +69,9 @@ include_once "../cn/connection.php";
 			$arreglo = array();
 			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
 			return $arreglo;
+			}
+
+			
  		}
  		else{
  			$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");

@@ -2,14 +2,13 @@ $(document).ready(function() {
 	var obj = JSON.parse(localStorage.getItem('ProductC'));
 	Colors(obj.id);
 
+    getcoments(obj.id);
+
 
 
       $("#comentproduc").click(function () {
          if(localStorage.getItem('nameper')==""){
             $("#modallogin").modal('show');
-         }
-         else{
-            
          }
       });
 
@@ -17,10 +16,84 @@ $(document).ready(function() {
          if(localStorage.getItem('nameper')==""){
             $("#modallogin").modal('show');
          }else{
-            
+            // alert($('#rate1').swidget().value());
+            addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
          }
       });
 });
+
+function addcomentario(idcliente,comentario,valoracion) {
+    var obj = JSON.parse(localStorage.getItem('ProductC'));
+    var dataString = 'idcliente='+idcliente+'&idprod='+obj.id+'&comentario='+comentario+'&valoracion='+valoracion;
+    alert(dataString);
+    $.ajax({
+            type: "POST",
+            url: "../controller/cclient.php?btnaddcoment=setcoment", 
+            data: dataString,
+            success: function(resp) {
+                alert(resp);
+                if(resp!=0){
+                    getcoments(obj.id);
+                }       
+            }
+        });
+}
+
+
+function getcoments(id) {
+    var dataString = 'id='+id;
+    
+    $.ajax({
+            type: "POST",
+            url: "../controller/cclient.php?btngetcoment=getcoment", 
+            data: dataString,
+            success: function(resp) {
+                // alert(resp);
+                var respu = eval(resp);
+                var html='';
+                for (var i = 0; i < respu.length; i++) {
+                
+                 html+='<div class="media-area">';
+                                    
+                                     html+='<div class="media">';
+                                         html+='<a class="pull-left" href="#pablo">';
+                                             html+='<div class="avatar">';
+                                                 html+='<img class="img-circle img-responsive"" style="height:100%;" src="../view/imguser/'+respu[i].img+'" alt="...">';
+                                             html+='</div>';
+                                         html+='</a>';
+                                         html+='<div class="media-body">';
+                                             html+='<h4 class="media-heading">'+respu[i].fullname_cl+'<small>· 7 minutes ago</small></h4>';
+                                             html+='<h6 class="text-muted"></h6>';
+                                            html+=' <p>'+respu[i].coment+'</p>';
+                                             html+='<div class="media-footer">';
+                                                html+='<a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">';
+                                                     html+='<i class="material-icons">reply</i> Reply';
+                                                 html+='</a>';
+                                                 html+='<a href="#pablo" class="btn btn-danger btn-simple pull-right">';
+                                                     html+='<i class="material-icons">favorite</i> '+respu[i].likes+'';
+                                                 html+='</a>';
+                                                 if(respu[i].rating>2.5){
+                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess">'+respu[i].rating+'</div></span>';
+                                                 }
+                                                 else{
+                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess">'+respu[i].rating+'</div></span>';
+
+                                                 }
+                                                  
+                                             html+='</div>';
+                                         html+='</div>';
+                                     html+='</div>';
+                                    
+                                 html+='</div>';
+                    
+                }
+                
+                $("#comentinput").append(html);
+            }
+        });
+}
+
+
 
 
 

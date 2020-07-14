@@ -12,7 +12,55 @@ include_once "../cn/connection.php";
 
  	}
 
- 	public function getDetailsColor($id)
+ 	public function setComent($cliente,$producto,$comentario,$valoracion)
+ 	{
+		$c = conectar();
+
+		$sql="insert into product_reviews value (0,$cliente,$producto,'$comentario',0,1);";
+		if (!$c->query($sql)) {
+			print "0";
+		}else{
+			    $sqlra="insert into product_rating value (0,$cliente,$producto,$valoracion);";
+				if (!$c->query($sqlra)) {
+					print "0";
+				}else{
+					    echo "1"; 
+				     }
+
+		     }
+		mysqli_close($c);
+	}
+
+ 	public function getcoment($id)
+ 	{
+		$c = conectar();
+
+		$arreglo = array();
+		$sql="SELECT pr.id_prev,pr.coment,pr.likes,cli.fullname_cl,cli.imagen FROM product_reviews pr inner join clients cli on pr.id_cl = cli.id_cl where pr.id_pro=$id;";
+		$c->set_charset('utf8');
+		$contador=0;
+		$resultado = $c->query($sql);
+		$r = $c->query($sql);	
+		while($re = $r->fetch_array()){
+			$coments=$re["coment"];
+			$id_prev=$re["id_prev"];
+			$likes=$re["likes"];
+			$fullname_cl=$re["fullname_cl"];
+			$imagen=$re["imagen"];
+			$contador++;
+			$consulta= "SELECT rating FROM product_rating where id_pro=$id and id_prra=$contador;";
+			$c->set_charset('utf8');
+			$resultado = $c->query($consulta);
+			$res = $resultado->fetch_array();
+			$rating=$res["rating"];
+			
+			$arreglo[] = array('id_prev'=>$id_prev,'coment' =>$coments,'likes' =>$likes,'rating' =>$rating,'fullname_cl' =>$fullname_cl,'img' =>$imagen);
+			}
+		
+		return $arreglo;
+	}
+
+	public function getDetailsColor($id)
  	{
 		$c = conectar();
 

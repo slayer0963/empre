@@ -3,9 +3,25 @@
 
 
 
+
+
+	$page = isset($_GET['btnaddcoment'])?$_GET['btnaddcoment']:'';
+	if($page=='setcoment'){
+	    $dat=new DAOClient();
+	    echo json_encode($dat->setComent($_POST['idcliente'],$_POST['idprod'],$_POST['comentario'],$_POST['valoracion']));
+	}
+
+
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 	if($page=='getDetailsColor'){
 	    $dat=new DAOClient();
 	    echo json_encode($dat->getDetailsColor($_POST['id']));
+	}
+
+
+	$page = isset($_GET['btngetcoment'])?$_GET['btngetcoment']:'';
+	if($page=='getcoment'){
+	    $dat=new DAOClient();
+	    echo json_encode($dat->getcoment($_POST['id']));
 	}
 ?>

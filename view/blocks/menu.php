@@ -32,6 +32,7 @@
     
     <li><a class="dropdown-trigger" href="" data-target="dropdown1">Usuarios<i class="material-icons right">arrow_drop_down</i></a></li>
     <li><a href="<?php echo SERVERURL; ?>business/"  class="">Negocio</a></li>
+    <li><a href="<?php echo SERVERURL; ?>client/" class="">Cliente</a></li>
     <li><a class="dropdown-trigger" href="" data-target="dropdown2">Producto<i class="material-icons right">arrow_drop_down</i></a></li>
     <!-- <li><a href="mystore/"  class="">Ver mi negocio</a></li> -->
     <li><a href=""  class="">Salir</a></li>
@@ -52,3 +53,4 @@
   <li><a href="<?php echo SERVERURL; ?>aproduct/" class="">Asiganci&oacute;n de precios</a></li>   
 
 </ul>
+
