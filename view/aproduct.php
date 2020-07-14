@@ -211,9 +211,22 @@
               <span class="" id="txtpextra"></span>
             </div>
             <div class="input-field col s12 m12 l12">
-              <input id="discount" name="discount"  type="text" value="0.00">
-              <label for="discount" id="">Descuento</label>
-              <span class="" id="txtdiscount"></span>
+              <input type="range" list="marks" id="discount" name="discount">
+              <datalist id="marks">
+                <option value="0" label="0%">
+                <option value="10">
+                <option value="20">
+                <option value="30">
+                <option value="40">
+                <option value="50" label="50%">
+                <option value="60">
+                <option value="70">
+                <option value="80">
+                <option value="90">
+                <option value="100" label="100%">
+              </datalist>
+              
+              <span class="" id="txtdiscount">Descuento (%)</span>
             </div>
             </div>
          </div>
@@ -271,9 +284,21 @@
               <span class="" id="txtpextrae">Costo agregado</span>
             </div>
             <div class="input-field col s12 m12 l12">
-              <input id="discounte" name="discounte" title="Descuento (*)" type="text" >
-             
-              <span class="" id="txtdiscounte">Descuento</span>
+              <input type="range" list="markse" id="discounte" name="discounte">
+              <datalist id="markse">
+                <option value="0" label="0%">
+                <option value="10">
+                <option value="20">
+                <option value="30">
+                <option value="40">
+                <option value="50" label="50%">
+                <option value="60">
+                <option value="70">
+                <option value="80">
+                <option value="90">
+                <option value="100" label="100%">
+              </datalist>
+              <span class="" id="txtdiscounte">Descuento (%)</span>
             </div>
             </div>
          </div>

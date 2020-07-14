@@ -75,7 +75,7 @@
                 </div>
             </div>
               <div class="col-md-12">
-                    	<!-- <div class="media-area">
+                    	 <div class="media-area">
 		        					<h3 class="title text-center"> 1 Comments</h3>
 		        					<div class="media">
 		        						<a class="pull-left" href="#pablo">
@@ -89,6 +89,8 @@
 
 		        							<p>Chance too good. God level bars. I'm so proud of @LifeOfDesiigner #1 song in the country. Panda! Don't be scared of the truth because we need to restart the human foundation in truth I stand with the most humility. We are so blessed!</p>
 		        							<p>All praises and blessings to the families of people who never gave up on dreams. Don't forget, You're Awesome!</p>
+
+
 
 		        							<div class="media-footer">
 		        								<a href="#pablo" class="btn btn-primary btn-simple pull-right" rel="tooltip" title="" data-original-title="Reply to Comment">
@@ -104,7 +106,7 @@
 		        					</div>
 
 		        					
-		        				</div> -->
+		        				</div> 
 
 		        				<div class="media media-post">
 		                              <a class="pull-left author"  data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="<?php  echo (isset($_SESSION['name'])) ? $_SESSION['name'] : 'Inicar sesion'; ?>" aria-describedby="tooltip3467" href="#pablo">
@@ -113,7 +115,17 @@
 		                                  </div>
 		                              </a>
 		                              <div class="media-body">
-		                                    <div class="form-group is-empty"><textarea class="form-control" id="comentproduc" placeholder="Comentar" rows="6"></textarea><span class="material-input"></span></div>
+		                                    <div class="form-group is-empty"><textarea class="form-control" id="comentproduc" placeholder="Comentar" rows="6"></textarea><span class="material-input"></span>
+		                                    	<ul class="list-group list-group-flush text-center">
+                <li class="list-group-item">
+                    <div class="skillLineDefault">
+                        <div class="skill pull-left text-center">VALORACIÓN</div>
+                        <div class="rating" id="rate1"></div>
+                    </div>
+                </li>
+               
+            </ul>
+		                                    </div>
 		                                    <div class="media-footer">
 		                                         <a href="#pablo" class="btn btn-primary btn-wd pull-right">Publicar</a>
 		                                    </div>
@@ -346,12 +358,55 @@
 	</div>
 </footer>
 
+
+
+<style>
+    #container1 {
+        margin-bottom: 120px;
+        padding:20px;
+        background-color:#f5f5f5;
+    }
+
+    .rating {
+        margin-left: 30px;
+    }
+
+    div.skill {
+        background: #5cb85c;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        padding: 3px 4px;
+        width: 100px;
+    }
+
+    .skillLine {
+        display: inline-block;
+        width: 100%;
+        min-height: 90px;
+        padding: 3px 4px;
+    }
+
+    skillLineDefault {
+        padding: 3px 4px;
+    }
+</style>
+
 <?php include 'blocks/footer.php'; ?>
 	<script type="text/javascript" src="./js/details.js"></script>
 	<script type="text/javascript" src="./js/local.js"></script>
+	<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+	<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+
+
+
+
+
     <script type="text/javascript">
 
+
     $(document).ready(function() {
+    	initializeRatings();
 		$("#flexiselDemo1").flexisel({
 			visibleItems: 4,
     		itemsToScroll: 1,
@@ -378,6 +433,20 @@
 			 $("#namebusi").html("<strong>"+obj.name+"</strong>");
 			 $("#title").html(obj.name);
     });
+
+
+
+    
+
+    function initializeRatings() {
+        $('#rate1').shieldRating({
+            max: 5,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+       
+    }
    </script>
 
 

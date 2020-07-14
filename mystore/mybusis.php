@@ -73,7 +73,7 @@
 	<body class="grey darken-4 valign-wrapper">
 		<div class="row  center-align hide" id="text">
 			<div class="container justify-text">
-				<h3 class="white-text animated  bounceIn" id="texto">Hola bienvenido <?php echo $_SESSION['name']; ?> aqui podras ver estadisticas, tus negocios y productos.</h3>
+				<h3 class="white-text animated  bounceIn" id="texto">Hola, bienvenido <?php echo $_SESSION['name']; ?>, aquí podrás ver estadisticas, tus negocios y productos.</h3>
 				<div class="preloader-wrapper big active">
 			    <div class="spinner-layer spinner-green-only">
 			      <div class="circle-clipper left">
