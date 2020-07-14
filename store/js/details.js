@@ -117,7 +117,9 @@ function getsizes(id,material,color) {
             	var respu = eval(resp);
             	var html='';
             	for (var i = 0; i < respu.length; i++) {
-            		// html+='<button class="btn" ></button>&nbsp;';
+            		if(i==0){
+                              getDataProductD(id,color,material,respu[i].id_size);
+                        }
             		html+='<a href="#!" id="size'+respu[i].id_size+'" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+');"><span class="badge badge-pill badge-secondary">'+respu[i].number_size+'-'+respu[i].name_size+'</span></a>&nbsp;';
             	}
             	$("#contsize").html(html);

@@ -346,6 +346,7 @@
 
 <?php include 'blocks/footer.php'; ?>
 	<script type="text/javascript" src="./js/details.js"></script>
+	<script type="text/javascript" src="./js/local.js"></script>
     <script type="text/javascript">
 
     $(document).ready(function() {

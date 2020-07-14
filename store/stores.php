@@ -91,7 +91,7 @@
    <script type="text/javascript" src="./js/busi.js"></script>
       <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
         <script type="text/javascript" src="view/jsproject/google.js"></script> -->
-        <script type="text/javascript" src="../view/jsproject/local.js"></script>
+        <script type="text/javascript" src="./js/local.js"></script>
     <script>
         $(document).ready(function(){
 
