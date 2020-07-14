@@ -8,6 +8,17 @@ $(document).ready(function() {
          if(localStorage.getItem('nameper')==""){
             $("#modallogin").modal('show');
          }
+         else{
+            
+         }
+      });
+
+      $("#publish").click(function () {
+         if(localStorage.getItem('nameper')==""){
+            $("#modallogin").modal('show');
+         }else{
+            
+         }
       });
 });
 

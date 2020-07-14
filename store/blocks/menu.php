@@ -19,13 +19,13 @@
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                    <li>
-                        <a  class="btn btn-white btn-simple" data-toggle="modal" data-target="#modallogin">
+                        <a  class="btn btn-white " style="" data-toggle="modal" data-target="#modallogin">
                             <i class="material-icons">shopping_cart</i> Iniciar
                         </a>
 
                     </li>
                     <li>
-                        <a href="" class="btn btn-white btn-simple">
+                        <a href="" class="btn btn-white " style="">
                             <i class="material-icons">shopping_cart</i> Registrarse
                         </a>
                         
