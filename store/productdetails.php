@@ -1,65 +1,9 @@
 <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-	<link rel="icon" type="image/png" href="../assets/img/favicon.png">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-	<title id="title"></title>
-
-	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-
-	<!--     Fonts and icons     -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
-	<!-- CSS Files -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
-
-    <style>
-    	.selectionbtn{
-    		-webkit-box-shadow: 1px 7px 17px 4px rgba(36,39,51,0.6);
-			-moz-box-shadow: 1px 7px 17px 4px rgba(36,39,51,0.6);
-			box-shadow: 1px 7px 17px 4px rgba(36,39,51,0.6);
-    	}
-    </style>
-</head>
+<?php include 'blocks/header.php'; ?>
 
 <body class="product-page">
-	    <nav class="navbar navbar-danger navbar-transparent navbar-absolute">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="../presentation.html" id="namebusi"></a>
-            </div>
-
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-
-                    <li>
-                        <a  class="btn btn-white btn-simple" data-toggle="modal" data-target="#modallogin">
-                            <i class="material-icons">shopping_cart</i> Iniciar
-                        </a>
-
-                    </li>
-                    <li>
-                        <a href="" class="btn btn-white btn-simple">
-                            <i class="material-icons">shopping_cart</i> Registrarse
-                        </a>
-                        
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	    <?php include 'blocks/menu.php'; ?>
 
 	<div class="page-header header-filter" data-parallax="true" filter-color="black" style="background-image: url('assets/img/bg6.jpg');">
 
@@ -126,7 +70,10 @@
                             <button class="btn btn-rose btn-round">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                  
+                </div>
+            </div>
+              <div class="col-md-12">
                     	<div class="media-area">
 		        					<h3 class="title text-center"> 1 Comments</h3>
 		        					<div class="media">
@@ -151,27 +98,13 @@
 		        								</a>
 		        							</div>
 
-		        							<div class="media media-post">
-		        								<a class="pull-left author" href="#pablo">
-		        									<div class="avatar">
-		        										<img class="media-object" alt="64x64" src="assets/img/faces/kendall.jpg">
-		        									</div>
-		        								</a>
-		        								<div class="media-body">
-		        										<div class="form-group is-empty"><textarea class="form-control" placeholder="Write a nice reply or go home..." rows="4"></textarea><span class="material-input"></span></div>
-		        										<div class="media-footer">
-		        											<a href="#pablo" class="btn btn-primary pull-right">
-		        												<i class="material-icons">reply</i> Reply
-		        											</a>
-		        										</div>
-		        								</div>
-		        							</div>
+		        						
 		        						</div>
 		        					</div>
 
 		        					
 		        				</div>
-            <div class="media media-post">
+		        				<div class="media media-post">
 		                              <a class="pull-left author" href="#pablo">
 		                                  <div class="avatar">
 		                                        <img class="media-object" alt="64x64" src="assets/img/faces/avatar.jpg">
@@ -184,9 +117,8 @@
 		                                    </div>
 		                              </div>
 		                          </div>
+            
                     </div>
-                </div>
-            </div>
 			<div class="section">
 				
 			</div>
@@ -412,40 +344,7 @@
 	</div>
 </footer>
 
-</body>
-
-	<!--   Core JS Files   -->
-	<script src="assets/js/jquery.min.js" type="text/javascript"></script>
-	<script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="assets/js/material.min.js"></script>
-
-	<!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
-	<script src="assets/js/moment.min.js"></script>
-
-	<!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/   -->
-	<script src="assets/js/nouislider.min.js" type="text/javascript"></script>
-
-	<!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker   -->
-	<script src="assets/js/bootstrap-datetimepicker.js" type="text/javascript"></script>
-
-	<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select   -->
-	<script src="assets/js/bootstrap-selectpicker.js" type="text/javascript"></script>
-
-	<!--	Plugin for Tags, full documentation here: http://xoxco.com/projects/code/tagsinput/   -->
-	<script src="assets/js/bootstrap-tagsinput.js"></script>
-
-	<!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
-	<script src="assets/js/jasny-bootstrap.min.js"></script>
-
-	<!--	Plugin for Product Gallery, full documentation here: https://9bitstudios.github.io/flexisel/ -->
-	<script src="assets/js/jquery.flexisel.js"></script>
-
-	<!--    Plugin For Google Maps   -->
-	<script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-
-	<!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
-	<script src="assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
-
+<?php include 'blocks/footer.php'; ?>
 	<script type="text/javascript" src="./js/details.js"></script>
     <script type="text/javascript">
 

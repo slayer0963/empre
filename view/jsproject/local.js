@@ -36,8 +36,7 @@ $(document).ready(function($) {
                   else if(datos[0].tipo == 3){
                     $(".loginoff").addClass('hidden');
                     $(".loginon").removeClass('hidden');
-                    localStorage.setItem('type', datos[0].tipo);
-                    //alert("sdasdasddsa");
+                    location.reload();
                   }
                  else{
                  	alert("Verifique su usuario o contraseña");
