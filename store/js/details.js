@@ -1,6 +1,14 @@
 $(document).ready(function() {
 	var obj = JSON.parse(localStorage.getItem('ProductC'));
 	Colors(obj.id);
+
+
+
+      $("#comentproduc").click(function () {
+         if(localStorage.getItem('nameper')==""){
+            $("#modallogin").modal('show');
+         }
+      });
 });
 
 

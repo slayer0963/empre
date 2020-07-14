@@ -40,23 +40,22 @@
 
 
 <?php if(!isset($_SESSION["name"])){?>
-     <nav class="navbar navbar-danger navbar-transparent navbar-absolute">
+     <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="../presentation.html" id="namebusi">Tienda Local</a>
+                <a class="navbar-brand" id="namebusi">Tienda Local </a>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-
-                    <li>
+                   <li>
                         <a  class="btn btn-white btn-simple" data-toggle="modal" data-target="#modallogin">
                             <i class="material-icons">shopping_cart</i> Iniciar
                         </a>
@@ -68,10 +67,14 @@
                         </a>
                         
                     </li>
+
+                
+                 
                 </ul>
             </div>
         </div>
-</nav>
+    </nav>
+
 <?php }else{ ?>
  <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
         <div class="container">
@@ -118,7 +121,7 @@
                             </li>
                             <li class="divider"></li>
                             <li>
-                                <a href="salir.php" class="btn btn-danger">
+                                <a onclick="salir();" class="btn btn-danger">
                                     <i class="material-icons">close</i> Salir
                                 </a>
                             </li>

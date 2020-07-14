@@ -34,8 +34,7 @@ $(document).ready(function($) {
                    location.href="http://localhost/empre/mystore/";
                   }
                   else if(datos[0].tipo == 3){
-                    $(".loginoff").addClass('hidden');
-                    $(".loginon").removeClass('hidden');
+                    
                     localStorage.setItem('nameper',datos[0].nombre);
                     location.reload();
                   }
@@ -49,3 +48,16 @@ $(document).ready(function($) {
 		return false; 
 	});
 });
+
+function salir() {
+  $.ajax({
+                type: "POST",
+                url: "../cn/sessiondestroy.php", 
+                success: function(resp) 
+                {
+                  localStorage.setItem('nameper',"");
+                  location.reload();
+
+                }
+        });
+}

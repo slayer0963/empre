@@ -1,8 +1,11 @@
+<!doctype html>
 <?php include 'blocks/header.php'; ?>
 
+
+<?php include 'blocks/menu.php'; ?>
 <body class="landing-page">
     
-    <?php include 'blocks/menu.php'; ?>
+    
 
 		<div class="page-header header-filter header-small" data-parallax="true" style="background-image: url('../store/assets/img/examples/ecommerce-tips2.jpg');">
 		<div class="container">
@@ -95,7 +98,7 @@
     <script>
         $(document).ready(function(){
 
-            $('.collapse').collapse();
+            //$('.collapse').collapse();
 
 
              var obj = JSON.parse(localStorage.getItem('Store'));

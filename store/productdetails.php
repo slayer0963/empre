@@ -2,8 +2,9 @@
 
 <?php include 'blocks/header.php'; ?>
 
+<?php include 'blocks/menu.php'; ?>
 <body class="product-page">
-	    <?php include 'blocks/menu.php'; ?>
+	    
 
 	<div class="page-header header-filter" data-parallax="true" filter-color="black" style="background-image: url('assets/img/bg6.jpg');">
 
@@ -74,7 +75,7 @@
                 </div>
             </div>
               <div class="col-md-12">
-                    	<div class="media-area">
+                    	<!-- <div class="media-area">
 		        					<h3 class="title text-center"> 1 Comments</h3>
 		        					<div class="media">
 		        						<a class="pull-left" href="#pablo">
@@ -103,17 +104,18 @@
 		        					</div>
 
 		        					
-		        				</div>
+		        				</div> -->
+
 		        				<div class="media media-post">
-		                              <a class="pull-left author" href="#pablo">
+		                              <a class="pull-left author"  data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="<?php  echo (isset($_SESSION['name'])) ? $_SESSION['name'] : 'Inicar sesion'; ?>" aria-describedby="tooltip3467" href="#pablo">
 		                                  <div class="avatar">
-		                                        <img class="media-object" alt="64x64" src="assets/img/faces/avatar.jpg">
+		                                        <img class="media-object" alt="64x64" src="assets/img/placeholder.jpg">
 		                                  </div>
 		                              </a>
 		                              <div class="media-body">
-		                                    <div class="form-group is-empty"><textarea class="form-control" placeholder="Write some nice stuff or nothing..." rows="6"></textarea><span class="material-input"></span></div>
+		                                    <div class="form-group is-empty"><textarea class="form-control" id="comentproduc" placeholder="Comentar" rows="6"></textarea><span class="material-input"></span></div>
 		                                    <div class="media-footer">
-		                                         <a href="#pablo" class="btn btn-primary btn-wd pull-right">Post Comment</a>
+		                                         <a href="#pablo" class="btn btn-primary btn-wd pull-right">Publicar</a>
 		                                    </div>
 		                              </div>
 		                          </div>
