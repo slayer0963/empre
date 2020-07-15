@@ -77,7 +77,7 @@
               <div class="col-md-12">
                     	  
 
-		        				<div class="media media-post" id="comentinput">
+		        				<div class="media media-post" id="">
 		                              <a class="pull-left author"  data-toggle="tooltip" data-placement="top" title="" data-container="body" data-original-title="<?php  echo (isset($_SESSION['name'])) ? $_SESSION['name'] : 'Inicar sesion'; ?>" aria-describedby="tooltip3467" href="#pablo">
 		                                  <div class="avatar">
 		                                  	<input type="hidden" id="idclient" value=" <?php echo $_SESSION["idus"]; ?> ">
@@ -93,6 +93,9 @@
 		                                         <a id="publish" class="btn btn-primary btn-wd pull-right">Publicar</a>
 		                                    </div>
 		                              </div>
+		                          </div>
+		                          <div class="comentper" id="comentinput">
+		                          	
 		                          </div>
             
                     </div>

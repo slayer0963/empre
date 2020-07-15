@@ -36,7 +36,7 @@ include_once "../cn/connection.php";
 		$c = conectar();
 
 		$arreglo = array();
-		$sql="SELECT pr.id_prev,pr.coment,pr.likes,cli.fullname_cl,cli.imagen FROM product_reviews pr inner join clients cli on pr.id_cl = cli.id_cl where pr.id_pro=$id;";
+		$sql="SELECT pr.id_prev,pr.coment,pr.likes,cli.fullname_cl,cli.imagen FROM product_reviews pr inner join clients cli on pr.id_cl = cli.id_cl where pr.id_pro=$id order by id_prev desc;";
 		$c->set_charset('utf8');
 		$contador=0;
 		$resultado = $c->query($sql);
@@ -48,7 +48,7 @@ include_once "../cn/connection.php";
 			$fullname_cl=$re["fullname_cl"];
 			$imagen=$re["imagen"];
 			$contador++;
-			$consulta= "SELECT rating FROM product_rating where id_pro=$id and id_prra=$contador;";
+			$consulta= "SELECT rating FROM product_rating where id_pro=$id and id_prra=$id_prev;";
 			$c->set_charset('utf8');
 			$resultado = $c->query($consulta);
 			$res = $resultado->fetch_array();

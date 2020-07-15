@@ -16,8 +16,18 @@ $(document).ready(function() {
          if(localStorage.getItem('nameper')==""){
             $("#modallogin").modal('show');
          }else{
-            // alert($('#rate1').swidget().value());
-            addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
+            if ($("#comentproduc").val()!="") {
+            if($('#rate').swidget().value()>0){
+                 addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
+            }
+            else{
+                alert("verifica si has putuando el producto esto nos sirve para mejorar como negocio");
+            }
+        }
+        else{
+              alert("tu comentatio esta vacio");
+        }
+           
          }
       });
 });
@@ -31,7 +41,7 @@ function addcomentario(idcliente,comentario,valoracion) {
             url: "../controller/cclient.php?btnaddcoment=setcoment", 
             data: dataString,
             success: function(resp) {
-                alert(resp);
+                //alert(resp);
                 if(resp!=0){
                     getcoments(obj.id);
                 }       
@@ -42,7 +52,7 @@ function addcomentario(idcliente,comentario,valoracion) {
 
 function getcoments(id) {
     var dataString = 'id='+id;
-    
+    $("#comentinput").html('');
     $.ajax({
             type: "POST",
             url: "../controller/cclient.php?btngetcoment=getcoment", 
@@ -88,7 +98,7 @@ function getcoments(id) {
                     
                 }
                 
-                $("#comentinput").append(html);
+                $("#comentinput").html(html);
             }
         });
 }

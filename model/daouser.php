@@ -27,7 +27,7 @@ include_once "../cn/connection.php";
 		$pass_user = $obj->getPassUser();
  		$result = 0;
  		if($id_service==null){
- 			$sentencia = $c->prepare("SELECT count(id_cl) as id_cl FROM clients WHERE email_cl ='$email_user'");
+ 			$sentencia = $c->prepare("SELECT count(id_cl) as id_cl FROM clients WHERE email_cl ='$email_user' and pass_cl='$pass_user'  or user_cl ='$email_user' and pass_cl='$pass_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
