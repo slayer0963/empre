@@ -37,9 +37,9 @@
 
 	function insert(){
 	    $obj=new Apobject();
-	    $obj->setIdPro($_POST["idpro"]);
-	    $obj->setPurPrice($_POST["pcompra"]);
-	    $obj->setSalPrice($_POST["pventa"]);
+	    $obj->setIdPro($_REQUEST["idpro"]);
+	    $obj->setPurPrice($_REQUEST["pcompra"]);
+	    $obj->setSalPrice($_REQUEST["pventa"]);
 	    
 	    return $obj;
 	}
@@ -47,6 +47,13 @@
 	if($page=='setData'){
 	    $dat=new DAOAproduct();
 	    $dat->setData(insert());
+	}
+
+
+	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+	if($page=='updateData'){
+	    $dat=new DAOAproduct();
+	    $dat->updateData(insert());
 	}
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';

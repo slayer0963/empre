@@ -418,7 +418,29 @@
 
 
 
+  <div id="modaledit" class="modal bottom-sheet ">
+  <div class="modal-content align-center">
+    <h4 for="name" id="nameproduct"> </h4>
 
+      <form class="col s12 m12 l6 center-align" id="frmeditpr" name="frmeditpr">
+        
+            
+            
+            <div class="input-field col s12 m12 l6">
+              <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" > 
+              <span class="" id="txtpcompra">Coste de fabricación</span>
+            </div>
+            <div class="input-field col s12 m12 l6">
+              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
+              <span class="" id="txtpventa">Precio Venta</span>
+            </div>
+            
+            
+         
+        <button  id="editprod" class=" btn">Modificar <i class="material-icons">edit</i></button>
+      </form>
+  </div>
+</div>
 
 
 		<div class=" animated zoomIn" id="details">

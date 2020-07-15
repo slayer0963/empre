@@ -91,6 +91,39 @@ $(document).ready(function() {
   });
 });
 
+
+      $('#pcompra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+
+      $('#pventa').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+
         $('#pextrae').keyup(function(event) {
   // skip for arrow keys
   if(event.which >= 37 && event.which <= 40){
@@ -155,17 +188,47 @@ $(document).ready(function() {
 }); 
 
 
+       $('#frmeditpr').submit(function() {
+    //if(ValidateUpdt()==idinput.length){
+    var dataString = 'idpro='+$("#id_product").val()+'&pcompra='+$("#pcompra").val()+'&pventa='+$("#pventa").val();
+           $.ajax({
+            type: "POST",
+            url: "../controller/caproduct.php?btnsetData=updateData", 
+            data: dataString,
+            
+            success: function(resp) {
+             //alert(resp);
+                   if(resp==1){
+                    M.toast({html: "¡Se modificó el registro exitosamente!", classes: 'rounded  green'});
+                    $('#modaledit').modal('close');
+                    details($("#id_product").val());
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+//}
+  return false;
+}); 
 
-         $("#addcombi").click(function(event) {
+
+
+      $("#addcombi").click(function(event) {
   
-      $("#nombredtp").html("Producto: <b>"+$("#name_product").val()+"</b>");
-      $("#printbutton").html('<button class="btn right-align modal-trigger" href="#tablaviewcombi" onclick="viewcombi('+$("#id_product").val()+')">Ver combinaciones</button>');
-      $("#details").addClass('hide');
-      $("#datospro").removeClass('hide');
-
-      $("#namepres").html("Agregar detalles de "+$("#name_product").val());
+            $("#nombredtp").html("Producto: <b>"+$("#name_product").val()+"</b>");
+            $("#printbutton").html('<button class="btn right-align modal-trigger" href="#tablaviewcombi" onclick="viewcombi('+$("#id_product").val()+')">Ver combinaciones</button>');
+            $("#details").addClass('hide');
+            $("#datospro").removeClass('hide');
+            $("#namepres").html("Agregar detalles de "+$("#name_product").val());
 
       });
+
+         
+         
 
 
          $('#frmpricese').submit(function() {
@@ -481,7 +544,9 @@ function details(id) {
             	for (var i = 0; i < respu.length; i++) {
             		
 					html+='<img src="../view/imgdetails/'+respu[i].img+'" class="responsive-img" style="display: block;margin-left: auto;margin-right: auto;padding:10px;">';
-						    $("#nameprode").html(respu[i].name_pro); 
+						    $("#nameprode").html(respu[i].name_pro);
+                                         $("#pcompra").val(respu[i].pur_price);
+                                         $("#pventa").val(respu[i].sal_price);
 					getDataProductD(respu[i].id_pro,respu[i].id_color,respu[i].id_material,respu[i].id_size);
             	}
             	
@@ -626,6 +691,13 @@ var html="";
       
 }
 
+function openModalEdit(){
+
+            $("#nameproduct").html("Producto: <b>"+$("#name_product").val()+"</b>");
+            $('#modaledit').modal('open');
+            //alert("holaaa");
+         
+}
 
 
 
@@ -647,7 +719,7 @@ function getDataProductD(id,color,material,size) {
             	for (var i = 0; i < respu.length; i++) {
             		
 					htmlimg+='<center><img src="../view/imgdetails/'+respu[i].img+'" class="responsive-img" style="display: block;margin-left: auto;margin-right: auto;padding:10px;" ></center>';
-					$("#nameprode").html(respu[i].name_pro+'&nbsp;<button class="btn"><i class="material-icons">edit</i></button>');
+					$("#nameprode").html(respu[i].name_pro+'&nbsp;<button onclick="openModalEdit()" class="btn"><i class="material-icons">edit</i></button>');
                               $("#name_product").val(respu[i].name_pro);
 					$("#id_product").val(id);
                               $("#quantitydeta").html(respu[i].quantity);

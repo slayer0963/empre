@@ -193,6 +193,21 @@ include_once "../cn/connection.php";
 		mysqli_close($c);
  	}
 
+ 	public function updateData($obj)
+ 	{
+ 		$c=conectar();
+ 		$idpro = $obj->getIdPro();
+		$purprice = $obj->getPurPrice();
+		$salprice = $obj->getSalPrice();
+		$sql="update assignment_prices_object set pur_price='$purprice', sal_price='$salprice' where id_pro=$idpro;";
+		if (!$c->query($sql)) {
+			print "0".$sql;
+		}else{
+			    echo "1"; 
+
+		     }
+		mysqli_close($c);
+ 	}
 
 
 
