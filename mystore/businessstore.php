@@ -66,10 +66,10 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-	<body class="grey darken-4">
+	<body class="">
 
 		 <div class=" hide" id="contenidomenu">
-		  	<nav class="transparent "  >
+		  	<nav class="teal "  >
 		    <div class="nav-wrapper">
 		    	<a class="dropdown-trigger brand-logo left valign-wrapper animated  heartBeat slower" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem;" id="namebusi">LARIBE</a>
 		    	<!-- <a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a> -->
@@ -82,7 +82,7 @@
 	
 
 		        </a>
-		      <ul id="dropdown1" class="dropdown-content grey darken-4">
+		      <ul id="dropdown1" class="dropdown-content">
 			  <li><a href="#!">Perfil</a></li>
 			  <li class="divider"></li>
 			  <li><a href="#!">Salir</a></li>

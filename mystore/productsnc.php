@@ -46,10 +46,10 @@
 
       </style>
   </head>
-	<body class="grey darken-4 ">
+	<body class=" ">
 
 		 <div class="" id="contenidomenu">
-		  	<nav class="transparent "  >
+		  	<nav class="teal "  >
 		    <div class="nav-wrapper">
 		    	<a class=" left valign-wrapper animated  heartBeat slower" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem; font-size: 25px;" id="namebusi"></a>
 		    	<!-- <a class="dropdown-trigger brand-logo center valign-wrapper " id="businame">asdasdsdad</a> -->
@@ -62,7 +62,7 @@
 	
 
 		        </a>
-		      <ul id="dropdown1" class="dropdown-content grey darken-4 center-align " >
+		      <ul id="dropdown1" class="dropdown-content center-align " >
 		      	<li class=""><a href="./">Mis Negocios</a></li>
 		      	<li class="divider"></li>
 		      	<?php
