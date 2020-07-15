@@ -1,6 +1,60 @@
  <?php session_start(); ?>
 
+<style>
 
+.btnarr{
+    margin-top: 5rem;
+}
+
+@media only screen and (max-width: 600px) {
+    li.corto{
+        display: none;
+    }
+    .largo{
+        
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    li.corto{
+        display: none;
+    }
+    .largo{
+        
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .largo{
+        display: none;
+    }
+    li.corto{
+        display: block;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .largo{
+        display: none;
+    }
+    li.corto{
+        display: block;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .largo{
+        display: none;
+    }
+    li.corto{
+        display: block;
+    }
+}
+</style>
 
 <?php if(!isset($_SESSION["name"])){?>
      <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
@@ -42,28 +96,37 @@
  <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll=" " id="sectionsNav">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header text-right">
                 <button type="button" class="navbar-toggle" data-toggle="collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" id="namebusi"></a>
+                <a class="navbar-brand " id="namebusi"></a>
+                <a  class="btn btn-default btn-md  largo btnarr">
+                            <i class="material-icons">shopping_cart</i>&nbsp;&nbsp;&nbsp;<sup>0</sup>
+                        </a>
             </div>
 
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                   
-                    <li class="">
-                        <a  class="btn btn-info btn-simple">
-                            <i class="material-icons">shopping_cart</i> Carrito
+                    <li class="corto">
+                        <a  class="btn btn-white btn-sm ">
+                            <i class="material-icons">shopping_cart</i> Carrito &nbsp;&nbsp;&nbsp;<sup>0</sup>
                         </a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle btn btn-white" data-toggle="dropdown">
-                            <?php echo $_SESSION['name']; ?>
+                        
+                        <div class="author dropdown-toggle btn btn-white btn-sm " data-toggle="dropdown" style="width: 100%;">
+                            <a href="#!" >
+                                <img src="../view/imguser/<?php echo $_SESSION['img']; ?>" alt="..." style="height: 22px; width: 20px;" class="avatar img-raised">
+                            <span><?php echo $_SESSION['name']; ?></span>
                         </a>
+                        </div>
+                        <a href="">
+                        
                         <ul class="dropdown-menu dropdown-with-icons">
                             <li>
                                 <a href="#!" class="btn btn-white">

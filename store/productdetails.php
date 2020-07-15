@@ -12,7 +12,7 @@
 
 
 
-	<div class="section section-gray" style="margin-top: -9rem;">
+	<div class="section section-gray" style="margin-top: -5rem;">
 	    <div class="container">
             <div class="main main-raised main-product">
           
