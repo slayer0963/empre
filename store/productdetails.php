@@ -4,8 +4,7 @@
 
 <?php include 'blocks/menu.php'; ?>
 <body class="product-page">
-	    
-
+	
 	<div class="page-header header-filter" data-parallax="true" filter-color="black" style="background-image: url('assets/img/bg6.jpg');">
 
 	</div>
@@ -102,6 +101,7 @@
 			<div class="section">
 				
 			</div>
+
 
  
 
@@ -359,11 +359,12 @@
 </style>
 
 <?php include 'blocks/footer.php'; ?>
+<?php include 'blocks/shoppingcartpreview.php'; ?>
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 	<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 	<script type="text/javascript" src="./js/details.js"></script>
 	<script type="text/javascript" src="./js/local.js"></script>
-	
+	 
 
 
 

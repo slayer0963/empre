@@ -90,7 +90,7 @@
 		</div>
 
 		<div class="row animated center-align hide" id="business">
-			<h2 class=" green-text darken-4 animated "  style="font-family: 'Shadows Into Light', cursive;">LARIBE</h2>
+      <img src="../view/images/logo.jpg" width="270px" height="270px">
 			<div class="col s12 m12 l12">
 				<div class="">
 					<div class="row center-align" id="containerbusi">

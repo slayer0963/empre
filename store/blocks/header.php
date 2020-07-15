@@ -17,6 +17,7 @@
     <!-- CSS Files -->
     <link href="../store/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../store/assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pushbar.js@1.0.0/src/pushbar.min.css" />
 
     <style>
         .login { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}

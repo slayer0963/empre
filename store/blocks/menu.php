@@ -104,7 +104,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand " id="namebusi"></a>
-                <a  class="btn btn-default btn-md  largo btnarr">
+                <a  class="btn btn-default btn-md  largo btnarr" data-pushbar-target="mypushbar1">
                             <i class="material-icons">shopping_cart</i>&nbsp;&nbsp;&nbsp;<sup>0</sup>
                         </a>
             </div>
@@ -113,7 +113,7 @@
                 <ul class="nav navbar-nav navbar-right">
                   
                     <li class="corto">
-                        <a  class="btn btn-white btn-sm ">
+                        <a  class="btn btn-white btn-sm" data-pushbar-target="mypushbar1">
                             <i class="material-icons">shopping_cart</i> Carrito &nbsp;&nbsp;&nbsp;<sup>0</sup>
                         </a>
                     </li>

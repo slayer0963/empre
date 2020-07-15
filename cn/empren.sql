@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-03-2020 a las 03:20:19
--- Versión del servidor: 10.1.33-MariaDB
--- Versión de PHP: 7.2.6
+-- Tiempo de generación: 15-07-2020 a las 23:46:49
+-- Versión del servidor: 10.4.10-MariaDB
+-- Versión de PHP: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,20 +25,79 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `address`
+--
+
+CREATE TABLE `address` (
+  `id_add` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `addr` varchar(500) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `assignment_details_general`
+--
+
+CREATE TABLE `assignment_details_general` (
+  `id_prices` int(11) DEFAULT NULL,
+  `id_color` int(11) DEFAULT NULL,
+  `id_material` int(11) DEFAULT NULL,
+  `id_size` int(11) DEFAULT NULL,
+  `img` varchar(150) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `extraprice` float DEFAULT NULL,
+  `discount` float DEFAULT NULL,
+  `state` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `assignment_details_general`
+--
+
+INSERT INTO `assignment_details_general` (`id_prices`, `id_color`, `id_material`, `id_size`, `img`, `quantity`, `extraprice`, `discount`, `state`) VALUES
+(1, 1, 2, 1, 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 12, 2, 0.25, 1),
+(1, 1, 2, 2, 'noche-cielo-estrellas-y-cometa_3840x2160_xtrafondos.com.jpg', 5, 1, 0.25, 1),
+(2, 1, 1, 1, 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 2, 0, 0.1, 1),
+(2, 1, 2, 1, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 3, 1, 0.05, 1),
+(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 4, 1, 0.05, 1),
+(3, 2, 1, 1, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 12, 5, 0.25, 1),
+(3, 3, 2, 2, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 23, 34, 0.25, 1),
+(4, 1, 1, 2, '4x4-desert-dust-golden-hour-1149066.jpg', 2, 23.23, 0.3, 1),
+(9, 2, 2, 2, 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 23, 23, 0.5, 1),
+(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 50, 5, 0.2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `assignment_prices_object`
 --
 
 CREATE TABLE `assignment_prices_object` (
   `id_prices` int(11) NOT NULL,
   `id_pro` int(11) DEFAULT NULL,
-  `id_mat` int(11) DEFAULT NULL,
-  `id_size` int(11) DEFAULT NULL,
-  `id_color` int(11) DEFAULT NULL,
   `pur_price` float DEFAULT NULL,
   `sal_price` float DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL,
   `state_prices_pro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `assignment_prices_object`
+--
+
+INSERT INTO `assignment_prices_object` (`id_prices`, `id_pro`, `pur_price`, `sal_price`, `state_prices_pro`) VALUES
+(1, 2, 2, 3, 1),
+(2, 4, 25, 30, 1),
+(3, 3, 5, 10, 1),
+(4, 7, 23, 23, 1),
+(5, 13, 23, 23, 1),
+(6, 14, 23, 12, 1),
+(7, 15, 23, 23, 1),
+(8, 16, 23, 54, 1),
+(9, 17, 23, 34, 1),
+(10, 18, 23, 24, 1),
+(11, 19, 23, 42, 1);
 
 -- --------------------------------------------------------
 
@@ -50,7 +109,27 @@ CREATE TABLE `assignment_probus` (
   `id_assprob` int(11) NOT NULL,
   `id_bus` int(11) DEFAULT NULL,
   `id_pro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `assignment_probus`
+--
+
+INSERT INTO `assignment_probus` (`id_assprob`, `id_bus`, `id_pro`) VALUES
+(1, 1, 1),
+(2, 2, 2),
+(3, 3, 4),
+(4, 3, 3),
+(5, 4, 5),
+(6, 4, 6),
+(7, 20, 7),
+(8, 20, 13),
+(9, 20, 14),
+(10, 20, 15),
+(11, 20, 16),
+(12, 20, 17),
+(13, 20, 18),
+(14, 20, 19);
 
 -- --------------------------------------------------------
 
@@ -63,8 +142,25 @@ CREATE TABLE `business` (
   `name_bus` varchar(250) DEFAULT NULL,
   `pic_logo_bus` varchar(500) DEFAULT NULL,
   `id_user` int(11) DEFAULT NULL,
-  `state_bus` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `state_bus` int(11) DEFAULT NULL,
+  `description` varchar(150) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `business`
+--
+
+INSERT INTO `business` (`id_bus`, `name_bus`, `pic_logo_bus`, `id_user`, `state_bus`, `description`) VALUES
+(1, 'SERTRACEN', 'tarjeta.jpg', 1, 1, 'asdasdasdasd'),
+(2, 'Tipicos', 'noucamp.JPG', 1, 1, 'adsasdasd'),
+(3, 'LARIBE', 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf 234sqdasd'),
+(4, 'MMMM', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 2, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf 234sqdasd'),
+(20, 'RIOT3', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf'),
+(21, 'Fornite', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfasdasd asdasdasd'),
+(22, 'Warzone', '4x4-desert-dust-golden-hour-1149066.jpg', 3, 1, 'war'),
+(23, 'Activision', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfasdasd asdasdasd'),
+(24, 'wwwww', 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'sadasdasd asdasdasdsad'),
+(25, 'larive v2 ds', 'noche-cielo-estrellas-y-cometa_3840x2160_xtrafondos.com.jpg', 4, 1, 'LARIVE ASDASD 123');
 
 -- --------------------------------------------------------
 
@@ -76,7 +172,41 @@ CREATE TABLE `categories` (
   `id_cat` int(11) NOT NULL,
   `name_cat` varchar(250) DEFAULT NULL,
   `state_cat` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `categories`
+--
+
+INSERT INTO `categories` (`id_cat`, `name_cat`, `state_cat`) VALUES
+(1, 'Calzado', 1),
+(2, 'Bisuteria', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `clients`
+--
+
+CREATE TABLE `clients` (
+  `id_cl` int(11) NOT NULL,
+  `fullname_cl` varchar(500) DEFAULT NULL,
+  `imagen` varchar(500) DEFAULT NULL,
+  `email_cl` varchar(150) DEFAULT NULL,
+  `user_cl` varchar(30) DEFAULT NULL,
+  `pass_cl` varchar(30) DEFAULT NULL,
+  `state_cl` int(11) DEFAULT NULL,
+  `idservices` varchar(250) DEFAULT NULL,
+  `services` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `clients`
+--
+
+INSERT INTO `clients` (`id_cl`, `fullname_cl`, `imagen`, `email_cl`, `user_cl`, `pass_cl`, `state_cl`, `idservices`, `services`) VALUES
+(1, 'cliente potencial', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 'cliente@gmail.com', 'client', '1234', 1, '', ''),
+(2, 'COMPRADOR', 'estrellas-en-el-universo-morado_3000x2000_xtrafondos.com.jpg', 'compra@todo.com', 'compra', '123', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -89,18 +219,30 @@ CREATE TABLE `color` (
   `code_color` varchar(16) DEFAULT NULL,
   `name_color` varchar(150) DEFAULT NULL,
   `state_color` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `color`
 --
 
 INSERT INTO `color` (`id_color`, `code_color`, `name_color`, `state_color`) VALUES
-(1, '#191919', 'Negro', 1),
-(2, '#004080', 'Azul', 1),
-(3, '#ff0000', 'Rojo', 1),
-(4, '#ff0080', 'Rosado', 1),
-(5, '#ffff00', 'Amarillo', 1);
+(1, '#2a8d5f', 'Verde', 1),
+(2, '#17159e', 'Azul', 1),
+(3, '#0d0d0d', 'Negro', 1),
+(4, '#ffd500', 'Amarillo', 1),
+(5, '#f50000', 'rojo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contact`
+--
+
+CREATE TABLE `contact` (
+  `id_con` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `contac` varchar(15) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -112,7 +254,17 @@ CREATE TABLE `material` (
   `id_mat` int(11) NOT NULL,
   `name_mat` varchar(150) DEFAULT NULL,
   `state_mat` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `material`
+--
+
+INSERT INTO `material` (`id_mat`, `name_mat`, `state_mat`) VALUES
+(1, 'Cuero', 1),
+(2, 'Madera', 1),
+(3, 'asdasdasd', 1),
+(4, 'Plastico', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +279,86 @@ CREATE TABLE `product` (
   `id_cat` int(11) DEFAULT NULL,
   `id_tpro` int(11) DEFAULT NULL,
   `state_pro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `product`
+--
+
+INSERT INTO `product` (`id_pro`, `name_pro`, `descr_pro`, `id_cat`, `id_tpro`, `state_pro`) VALUES
+(1, 'Zapatos', 'Buen zapato de gran calidad', 1, 1, 1),
+(2, 'Pastelitos', 'Deliciosos', 2, 2, 1),
+(3, 'Cadenas', 'Bonitas buena calidad', 2, 1, 1),
+(4, 'Juego de aritos', 'Totalmente hechos a mano', 2, 1, 1),
+(5, 'asdasdasd2323', 'asdsadasdsad', 1, 1, 1),
+(6, 'adasdasd2444', 'asdasdasdsa', 1, 2, 1),
+(7, 'sadas32323', 'asdasd', 1, 1, 1),
+(8, 'LLLLLL', 'sdsadasd', 1, 2, 1),
+(9, 'asdasd', 'asdasdas', 1, 1, 1),
+(10, 'asdasd', 'asdasdas', 1, 1, 1),
+(11, 'asdasd', 'asdasdas', 1, 1, 1),
+(12, 'asdasd', 'asdasdas', 1, 1, 1),
+(13, 'asdasdasd', 'asdasdasdsa', 2, 2, 1),
+(14, 'mmmmmm', 'aaaaaaaaa', 1, 2, 1),
+(15, 'kkkkk', 'sdaasdasdasd', 1, 2, 1),
+(16, 'ssssssss', 'sssssss', 1, 2, 1),
+(17, 'cxxzczxczxc', 'asdasdasdasd', 1, 2, 1),
+(18, 'A2', 'asdasdasd', 1, 2, 1),
+(19, 'vvvvv', 'xxxxxxxx', 2, 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `product_rating`
+--
+
+CREATE TABLE `product_rating` (
+  `id_prra` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `id_pro` int(11) DEFAULT NULL,
+  `rating` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `product_rating`
+--
+
+INSERT INTO `product_rating` (`id_prra`, `id_cl`, `id_pro`, `rating`) VALUES
+(1, 1, 4, 4.5),
+(2, 1, 4, 2),
+(3, 1, 4, 1.7),
+(4, 2, 4, 4.8),
+(5, 2, 4, 0.4),
+(6, 2, 4, 0.5),
+(7, 2, 4, 1.9);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `product_reviews`
+--
+
+CREATE TABLE `product_reviews` (
+  `id_prev` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `id_pro` int(11) DEFAULT NULL,
+  `coment` varchar(250) DEFAULT NULL,
+  `likes` int(11) DEFAULT NULL,
+  `state_prev` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `product_reviews`
+--
+
+INSERT INTO `product_reviews` (`id_prev`, `id_cl`, `id_pro`, `coment`, `likes`, `state_prev`) VALUES
+(1, 1, 4, 'asdasdasdasdasd', 0, 1),
+(2, 1, 4, 'COMA MIERDA GRAN CULERO', 0, 1),
+(3, 1, 4, 'COMA MIERDA', 0, 1),
+(4, 2, 4, 'QUE WUEN PRODUCTO', 0, 1),
+(5, 2, 4, 'VALE VERGA QUE ASCO', 0, 1),
+(6, 2, 4, 'asdasdsadsadsadasd', 0, 1),
+(7, 2, 4, 'dsadsadasdasdasd', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -139,7 +370,40 @@ CREATE TABLE `product_type` (
   `id_tpro` int(11) NOT NULL,
   `name_tpro` varchar(250) DEFAULT NULL,
   `state_tpro` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `product_type`
+--
+
+INSERT INTO `product_type` (`id_tpro`, `name_tpro`, `state_tpro`) VALUES
+(1, 'Objeto', 1),
+(2, 'Comida', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `shopping_cart`
+--
+
+CREATE TABLE `shopping_cart` (
+  `id_shp_c` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL,
+  `total_amount` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `shopping_cart_details`
+--
+
+CREATE TABLE `shopping_cart_details` (
+  `id_shp_c_d` int(11) NOT NULL,
+  `id_shp_c` int(11) DEFAULT NULL,
+  `id_prices` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -152,7 +416,17 @@ CREATE TABLE `sizes` (
   `number_size` float DEFAULT NULL,
   `name_size` varchar(150) DEFAULT NULL,
   `state_size` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `sizes`
+--
+
+INSERT INTO `sizes` (`id_size`, `number_size`, `name_size`, `state_size`) VALUES
+(1, 40, 'L', 1),
+(2, 42, 'XL', 1),
+(3, 23, 'XL', 1),
+(4, 8, 'M', 1);
 
 -- --------------------------------------------------------
 
@@ -169,20 +443,20 @@ CREATE TABLE `users` (
   `user_user` varchar(30) DEFAULT NULL,
   `pass_user` varchar(30) DEFAULT NULL,
   `id_ustp` int(11) DEFAULT NULL,
-  `state_user` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `state_user` int(11) DEFAULT NULL,
+  `idservices` varchar(250) DEFAULT NULL,
+  `services` varchar(250) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id_user`, `fullname_user`, `phone_user`, `imagen`, `email_user`, `user_user`, `pass_user`, `id_ustp`, `state_user`) VALUES
-(1, 'Juan Perez', '(503) 2257-7777', '11834734_1143605288989355_8211990350207519370_o.jpg', 'kmb124@live.com', 'pepe1236', '1232', 1, 1),
-(2, 'Juanes', '(503) 2215-4556', 'omar.jpg', 'moisesrivera2012@hotmail.com', '123', '123', 3, 1),
-(3, 'Juanes', '(503) 2215-4556', 'derecho.jpg', 'moisesrivera@hotmail.com', '123', '123', 3, 1),
-(4, 'Momo153', '(503) 1234-4312', '740314_584256098257613_1968960693_o.jpg', 'moisesrivera2010@hotmail.com', '12333', '123', 3, 1),
-(14, '11', '(503) 7777-7777', '12301738_1209656965717520_3414937646955594641_n.jpg', '11@gmail.com', '11', '11', 1, 1),
-(15, 'Pedro Jose Alvarez Prudencio', '(503) 2257-6600', '12301738_1209656965717520_3414937646955594641_n.jpg', 'pepe@gmail.com', 'pepe1', '123', 1, 1);
+INSERT INTO `users` (`id_user`, `fullname_user`, `phone_user`, `imagen`, `email_user`, `user_user`, `pass_user`, `id_ustp`, `state_user`, `idservices`, `services`) VALUES
+(1, 'Moises Rivera', '22577777', '736277_584256111590945_817041861_o.jpg', 'moisesrivera796@gmail.com', 'moises796', '123', 1, 0, NULL, NULL),
+(2, 'Gerardo landos', '(503) 2204-0845', 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 'landos112@gmail.com', 'admin', '123', 1, 1, '', ''),
+(3, 'Gerardo Erazo', '(503) 2222-2222', 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 'landos110@gmail.com', 'user', '123', 2, 1, '', ''),
+(4, 'eeeee', '(503) 2222-2222', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 'asdasd@asdasdsad.com', 'user1', '123', 2, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -194,32 +468,65 @@ CREATE TABLE `user_type` (
   `id_ustp` int(11) NOT NULL,
   `name_ustp` varchar(250) DEFAULT NULL,
   `state_ustp` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `user_type`
 --
 
 INSERT INTO `user_type` (`id_ustp`, `name_ustp`, `state_ustp`) VALUES
-(1, 'Supervisor', 1),
-(2, 'Asistente', 1),
-(3, 'Empleado', 1),
-(4, 'Usuario', 1),
-(5, 'Admin', 1);
+(1, 'Administrador', 1),
+(2, 'Usuario', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `wish_list`
+--
+
+CREATE TABLE `wish_list` (
+  `id_w_l` int(11) NOT NULL,
+  `id_cl` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `wish_list_details`
+--
+
+CREATE TABLE `wish_list_details` (
+  `id_w_l_d` int(11) NOT NULL,
+  `id_w_l` int(11) DEFAULT NULL,
+  `id_prices` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Índices para tablas volcadas
 --
 
 --
+-- Indices de la tabla `address`
+--
+ALTER TABLE `address`
+  ADD PRIMARY KEY (`id_add`),
+  ADD KEY `id_cl` (`id_cl`);
+
+--
+-- Indices de la tabla `assignment_details_general`
+--
+ALTER TABLE `assignment_details_general`
+  ADD KEY `id_prices` (`id_prices`),
+  ADD KEY `id_color` (`id_color`),
+  ADD KEY `id_material` (`id_material`),
+  ADD KEY `id_size` (`id_size`);
+
+--
 -- Indices de la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
   ADD PRIMARY KEY (`id_prices`),
-  ADD KEY `id_pro` (`id_pro`),
-  ADD KEY `id_mat` (`id_mat`),
-  ADD KEY `id_size` (`id_size`),
-  ADD KEY `id_color` (`id_color`);
+  ADD KEY `id_pro` (`id_pro`);
 
 --
 -- Indices de la tabla `assignment_probus`
@@ -243,10 +550,23 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id_cat`);
 
 --
+-- Indices de la tabla `clients`
+--
+ALTER TABLE `clients`
+  ADD PRIMARY KEY (`id_cl`);
+
+--
 -- Indices de la tabla `color`
 --
 ALTER TABLE `color`
   ADD PRIMARY KEY (`id_color`);
+
+--
+-- Indices de la tabla `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id_con`),
+  ADD KEY `id_cl` (`id_cl`);
 
 --
 -- Indices de la tabla `material`
@@ -263,10 +583,41 @@ ALTER TABLE `product`
   ADD KEY `id_tpro` (`id_tpro`);
 
 --
+-- Indices de la tabla `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD PRIMARY KEY (`id_prra`),
+  ADD KEY `id_cl` (`id_cl`),
+  ADD KEY `id_pro` (`id_pro`);
+
+--
+-- Indices de la tabla `product_reviews`
+--
+ALTER TABLE `product_reviews`
+  ADD PRIMARY KEY (`id_prev`),
+  ADD KEY `id_cl` (`id_cl`),
+  ADD KEY `id_pro` (`id_pro`);
+
+--
 -- Indices de la tabla `product_type`
 --
 ALTER TABLE `product_type`
   ADD PRIMARY KEY (`id_tpro`);
+
+--
+-- Indices de la tabla `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`id_shp_c`),
+  ADD KEY `id_cl` (`id_cl`);
+
+--
+-- Indices de la tabla `shopping_cart_details`
+--
+ALTER TABLE `shopping_cart_details`
+  ADD PRIMARY KEY (`id_shp_c_d`),
+  ADD KEY `id_shp_c` (`id_shp_c`),
+  ADD KEY `id_prices` (`id_prices`);
 
 --
 -- Indices de la tabla `sizes`
@@ -279,7 +630,6 @@ ALTER TABLE `sizes`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `email_user_UNIQUE` (`email_user`),
   ADD KEY `id_ustp` (`id_ustp`);
 
 --
@@ -289,32 +639,59 @@ ALTER TABLE `user_type`
   ADD PRIMARY KEY (`id_ustp`);
 
 --
+-- Indices de la tabla `wish_list`
+--
+ALTER TABLE `wish_list`
+  ADD PRIMARY KEY (`id_w_l`),
+  ADD KEY `id_cl` (`id_cl`);
+
+--
+-- Indices de la tabla `wish_list_details`
+--
+ALTER TABLE `wish_list_details`
+  ADD PRIMARY KEY (`id_w_l_d`),
+  ADD KEY `id_w_l` (`id_w_l`),
+  ADD KEY `id_prices` (`id_prices`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `address`
+--
+ALTER TABLE `address`
+  MODIFY `id_add` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
-  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_probus`
 --
 ALTER TABLE `assignment_probus`
-  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `business`
 --
 ALTER TABLE `business`
-  MODIFY `id_bus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_bus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `clients`
+--
+ALTER TABLE `clients`
+  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `color`
@@ -323,53 +700,107 @@ ALTER TABLE `color`
   MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id_con` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT de la tabla `product_rating`
+--
+ALTER TABLE `product_rating`
+  MODIFY `id_prra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT de la tabla `product_reviews`
+--
+ALTER TABLE `product_reviews`
+  MODIFY `id_prev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `id_tpro` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT de la tabla `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `shopping_cart_details`
+--
+ALTER TABLE `shopping_cart_details`
+  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id_size` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_size` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `wish_list`
+--
+ALTER TABLE `wish_list`
+  MODIFY `id_w_l` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `wish_list_details`
+--
+ALTER TABLE `wish_list_details`
+  MODIFY `id_w_l_d` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
+-- Filtros para la tabla `address`
+--
+ALTER TABLE `address`
+  ADD CONSTRAINT `address_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`);
+
+--
+-- Filtros para la tabla `assignment_details_general`
+--
+ALTER TABLE `assignment_details_general`
+  ADD CONSTRAINT `assignment_details_general_ibfk_1` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`),
+  ADD CONSTRAINT `assignment_details_general_ibfk_2` FOREIGN KEY (`id_color`) REFERENCES `color` (`id_color`),
+  ADD CONSTRAINT `assignment_details_general_ibfk_3` FOREIGN KEY (`id_material`) REFERENCES `material` (`id_mat`),
+  ADD CONSTRAINT `assignment_details_general_ibfk_4` FOREIGN KEY (`id_size`) REFERENCES `sizes` (`id_size`);
+
+--
 -- Filtros para la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
-  ADD CONSTRAINT `assignment_prices_object_ibfk_1` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`),
-  ADD CONSTRAINT `assignment_prices_object_ibfk_2` FOREIGN KEY (`id_mat`) REFERENCES `material` (`id_mat`),
-  ADD CONSTRAINT `assignment_prices_object_ibfk_3` FOREIGN KEY (`id_size`) REFERENCES `sizes` (`id_size`),
-  ADD CONSTRAINT `assignment_prices_object_ibfk_4` FOREIGN KEY (`id_color`) REFERENCES `color` (`id_color`);
+  ADD CONSTRAINT `assignment_prices_object_ibfk_1` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
 
 --
 -- Filtros para la tabla `assignment_probus`
@@ -385,6 +816,12 @@ ALTER TABLE `business`
   ADD CONSTRAINT `business_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
 
 --
+-- Filtros para la tabla `contact`
+--
+ALTER TABLE `contact`
+  ADD CONSTRAINT `contact_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`);
+
+--
 -- Filtros para la tabla `product`
 --
 ALTER TABLE `product`
@@ -392,10 +829,50 @@ ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_2` FOREIGN KEY (`id_tpro`) REFERENCES `product_type` (`id_tpro`);
 
 --
+-- Filtros para la tabla `product_rating`
+--
+ALTER TABLE `product_rating`
+  ADD CONSTRAINT `product_rating_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`),
+  ADD CONSTRAINT `product_rating_ibfk_2` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
+
+--
+-- Filtros para la tabla `product_reviews`
+--
+ALTER TABLE `product_reviews`
+  ADD CONSTRAINT `product_reviews_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`),
+  ADD CONSTRAINT `product_reviews_ibfk_2` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
+
+--
+-- Filtros para la tabla `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD CONSTRAINT `shopping_cart_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`);
+
+--
+-- Filtros para la tabla `shopping_cart_details`
+--
+ALTER TABLE `shopping_cart_details`
+  ADD CONSTRAINT `shopping_cart_details_ibfk_1` FOREIGN KEY (`id_shp_c`) REFERENCES `shopping_cart` (`id_shp_c`),
+  ADD CONSTRAINT `shopping_cart_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`);
+
+--
 -- Filtros para la tabla `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`id_ustp`) REFERENCES `user_type` (`id_ustp`);
+
+--
+-- Filtros para la tabla `wish_list`
+--
+ALTER TABLE `wish_list`
+  ADD CONSTRAINT `wish_list_ibfk_1` FOREIGN KEY (`id_cl`) REFERENCES `clients` (`id_cl`);
+
+--
+-- Filtros para la tabla `wish_list_details`
+--
+ALTER TABLE `wish_list_details`
+  ADD CONSTRAINT `wish_list_details_ibfk_1` FOREIGN KEY (`id_w_l`) REFERENCES `wish_list` (`id_w_l`),
+  ADD CONSTRAINT `wish_list_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
