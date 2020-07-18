@@ -18,7 +18,7 @@
     <!-- CSS Files -->
     <link href="store/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="store/assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pushbar.js@1.0.0/src/pushbar.min.css" />
+
 
     <style>
         .modal-dialog { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
@@ -312,20 +312,14 @@
 
     <!--    Plugin For Google Maps   -->
     <script  type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/pushbar.js@1.0.0/src/pushbar.min.js"></script>
-
+ 
     <!--    Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc    -->
         <script src="store/assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
 
    
 </html>
 
-<script type="text/javascript">
-  const pushbar = new Pushbar({
-        blur:true,
-        overlay:true,
-      });
-</script>
+
 
 
 

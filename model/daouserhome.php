@@ -200,7 +200,7 @@ include_once "../cn/connection.php";
         $id_color=$obj->getIdColor();
         $id_material=$obj->getIdMat();
         $id_size=$obj->getIdSize();
-        $sql="select pro.name_pro, pro.descr_pro, asdg.img, asdg.quantity, aspo.sal_price, asdg.extraprice, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material and si.id_size=$id_size;";
+        $sql="select aspo.id_prices,pro.name_pro, pro.descr_pro, asdg.img, asdg.quantity, aspo.sal_price, asdg.extraprice, asdg.discount from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro inner join color c on c.id_color=asdg.id_color inner join material mat on mat.id_mat=asdg.id_material inner join sizes si on si.id_size=asdg.id_size where pro.id_pro=$id and c.id_color=$id_color and mat.id_mat=$id_material and si.id_size=$id_size;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -262,7 +262,53 @@ include_once "../cn/connection.php";
         return $arreglo;
     }
 
-       
 
- }
+    public function setcarshop($client,$idprices,$color,$material,$size,$precio,$descuento)
+    {
+        $c=conectar();
+        
+        
+                $query= "SELECT * FROM shopping_cart where id_cl=$client and state=0;";
+                $c->set_charset('utf8');
+                $result = $c->query($query);
+                $re = $result->fetch_array();
+                $id_shp_c=$re["id_shp_c"];
+                if($id_shp_c==0){
+                    $sqls="insert into shopping_cart value (0,$client,0,0);";
+                    if (!$c->query($sqls)) {
+                        print "0".$sqls;
+                    }else{
+                        $sqls="insert into shopping_cart_details value (0,$id_shp_c,$idprices,$color,$material,$size,1,$precio,$descuento);";
+                        if (!$c->query($sqls)) {
+                            print "0".$sqls;
+                        }else{
+                            echo "1";
+                        }
+                    }
+                }
+                else{
+                    $query= "SELECT count(*) npro FROM shopping_cart_details where id_prices=$idprices and id_color=$color and id_mat=$material and id_size=$size;";
+
+                    $c->set_charset('utf8');
+                    $result = $c->query($query);
+                    $re = $result->fetch_array();
+                    $npro=$re["npro"];
+                    if($npro<=0){
+                        $sqls="insert into shopping_cart_details value (0,$id_shp_c,$idprices,$color,$material,$size,1,$precio,$descuento);";
+                        if (!$c->query($sqls)) {
+                            print "0".$sqls;
+                        }else{
+                            echo "1";
+                        }
+                    }
+                    else{
+                        echo "3";
+                    }
+                }
+             
+        mysqli_close($c);
+    }
+       
+}
+ 
  ?>

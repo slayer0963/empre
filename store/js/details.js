@@ -240,16 +240,23 @@ function getDataProductD(id,color,material,size) {
             	
             	for (var i = 0; i < respu.length; i++) {
             		
-				
+				    $("#pfidprices").val(respu[i].id_prices);
+                    $("#pfidprod").val(id);
+                    $("#pfcolor").val(color);
+                    $("#pfmaterial").val(material);
+                    $("#pfsize").val(size);
+
 					$("#quantity").html(respu[i].quantity);
 					$("#pdet").html(""+respu[i].descr_pro);
-					
+					$("#discount").val(respu[i].discount);
 					if(respu[i].discount==0||respu[i].discount==""){
 						$("#pricepro").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
+                        $("#pfprices").val((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)))
 					}
 					else{
 						$("#priceprosindes").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
 						$("#pricepro").html("$"+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)));
+                        $("#pfprices").val(((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)))
 					}
 					// $("#discodeta").html(respu[i].discount);   
 					// $("#imgpro").html(htmlimg);

@@ -13,11 +13,14 @@
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
     <!-- CSS Files -->
     <link href="../store/assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../store/assets/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pushbar.js@1.0.0/src/pushbar.min.css" />
+    <link rel="stylesheet" href="../view/css/dataTables.bootstrap4.min.css">
+    
+      <link rel="stylesheet" href="../view/css/responsive.bootstrap4.min.css">
 
     <style>
         .login { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
