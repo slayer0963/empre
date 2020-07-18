@@ -90,7 +90,7 @@
 		</div>
 
 		<div class="row animated center-align hide" id="business">
-      <img src="../view/images/logo.jpg" width="270px" height="270px">
+      <img src="../view/images/logo.jpg" width="250px" height="200px">
 			<div class="col s12 m12 l12">
 				<div class="">
 					<div class="row center-align" id="containerbusi">
@@ -160,7 +160,7 @@
   <div class="tap-target green" data-target="addbusiness">
     <div class="tap-target-content">
       <h5>Aviso</h5>
-      <p>Aqui tendras las opciones de agregar Negocios y poder entrar en modo edicion para editarlos.</p>
+      <p><?php echo $_SESSION['name']; ?>, aquí podrás encontrar las opciones de "agregar" negocios y de entrar a "modo edición" para editarlos.</p>
     </div>
   </div>
 

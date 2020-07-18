@@ -144,73 +144,9 @@
 					      </div>
 					  </div>
 
-					  <div id="frmaddcolor" class="modal addfrm ">
-					    <div class="modal-content">
-					      <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
-					      	<h4>Agregar color</h4>
-					        <div class="row">
-					           <div class="input-field col s12">
-					           <input type="color" name="pcolor" id="pcolor"><input type="hidden" name="txtcode" title="Selecciona un color (*)" id="txtcode">
-					            <span class="" id="txtcodeerror">Selecciona un color</span>
-					          </div>
-					          <div class="input-field col s12">
-					            <input type="text" name="txtcolor" title="Nombre (*)" id="txtcolor">
-					            <label for="txtcolor">Color</label>
-					            <span class="" id="txtcolorerror"></span>
-					          </div>
-					        <div class="input-field col s12">
-					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
-					    </div>
-					        </div>
-					      </form>
-					    </div>
-					    <div class="modal-footer">
-					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
-					    </div>
-					  </div>
+					
 
-					  <div id="frmaddmaterial" class="modal addfrmat animated fadeInRight">
-					    <div class="modal-content">
-					    	<h4>Agregar material</h4>
-					       <form class="col s12 center-align" id="formmaterial" name="formmaterial" method="post">
-					        <div class="row">
-					          <div class="input-field col s12">
-					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamemat">
-					            <label for="txtname">Nombre</label>
-					            <span class="" id="txtnamematerror"></span>
-					          </div>
-					        </div>
-					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
-					      </form>
-					    </div>
-					    <div class="modal-footer">
-					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
-					    </div>
-					  </div>
-
-					  <div id="frmaddsize" class="modal addfrm animated fadeInRight">
-					    <div class="modal-content">
-					      <form class="col s12 center-align" id="formsize" name="formsize" method="post">
-					      	<h4>Agregar tamaños</h4>
-					        <div class="row">
-					           <div class="input-field col s12">
-					            <input type="text" name="txtnumber" title="Número (*)" id="txtnumber">
-					            <label for="txtnumber">Número</label>
-					            <span class="" id="txtnumbererror"></span>
-					          </div>
-					          <div class="input-field col s12">
-					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamesize">
-					            <label for="txtname">Nombre</label>
-					            <span class="" id="txtnamesizeerror"></span>
-					          </div>
-					        </div>
-					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
-					      </form>
-					    </div>
-					    <div class="modal-footer">
-					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
-					    </div>
-					  </div>
+					  
 
 					  <div class="container">
 					    <div class="card-panel animated hide" id="tablage">
@@ -252,7 +188,73 @@
 
 
 
+  						<div id="frmaddcolor" class="modal addfrm fadeInRight">
+					    <div class="modal-content">
+					      <form class="col s12 m12 l12 center-align" id="formcolor" name="formcolor" method="post">
+					      	<h4>Agregar color</h4>
+					        <div class="row">
+					           <div class="input-field col s12 m12 l12">
+					           <input type="color" name="pcolor" id="pcolor"><input type="hidden" name="txtcode" title="Selecciona un color (*)" id="txtcode">
+					            <span class="" id="txtcodeerror">Selecciona un color</span>
+					          </div>
+					          <div class="input-field col s12 m12 l12">
+					            <input type="text" name="txtcolor" title="Nombre (*)" id="txtcolor">
+					            <label for="txtcolor">Color</label>
+					            <span class="" id="txtcolorerror"></span>
+					          </div>
+					        <div class="input-field col s12 m12 l12">
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					    </div>
+					        </div>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
 
+					  <div id="frmaddmaterial" class="modal addfrmat animated fadeInRight">
+					    <div class="modal-content">
+					    	<h4>Agregar material</h4>
+					       <form class="col s12 center-align" id="formmaterial" name="formmaterial" method="post">
+					        <div class="row">
+					          <div class="input-field col s12">
+					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamemat">
+					            <label for="txtname">Nombre</label>
+					            <span class="" id="txtnamematerror"></span>
+					          </div>
+					        </div>
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
+
+					  <div id="frmaddsize" class="modal addfrm animated fadeInRight">
+					    <div class="modal-content">
+					      <form class="col s12 center-align" id="formsize" name="formsize" method="post">
+					      	<h4>Agregar tamaño</h4>
+					        <div class="row">
+					           <div class="input-field col s12">
+					            <input type="text" name="txtnumber" title="Número (*)" id="txtnumber">
+					            <label for="txtnumber">Número</label>
+					            <span class="" id="txtnumbererror"></span>
+					          </div>
+					          <div class="input-field col s12">
+					            <input type="text" name="txtname" title="Nombre (*)" id="txtnamesize">
+					            <label for="txtname">Nombre</label>
+					            <span class="" id="txtnamesizeerror"></span>
+					          </div>
+					        </div>
+					        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+					      </form>
+					    </div>
+					    <div class="modal-footer">
+					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+					    </div>
+					  </div>
 
 
 		<div id="modaladdproduct" class="modal modal-fixed-footer aprices animated zoomInRight">
@@ -427,10 +429,12 @@
             
             
             <div class="input-field col s12 m12 l6">
+            	<i class="material-icons prefix">attach_money</i>
               <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" > 
               <span class="" id="txtpcompra">Coste de fabricación</span>
             </div>
             <div class="input-field col s12 m12 l6">
+            	<i class="material-icons prefix">attach_money</i>
               <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
               <span class="" id="txtpventa">Precio Venta</span>
             </div>
@@ -446,7 +450,7 @@
 		<div class=" animated zoomIn" id="details">
 			
 			<div class="col s12 m12 l12 center-align" style="margin-top: 0px;">
-					<h3 class="green-text darken-4" style="font-family: 'Shadows Into Light', cursive;" id="nameprode"></h3>
+					<h3 class="green-text darken-4"  id="nameprode"></h3>
 
 					<input type="hidden" id="id_product">
 					<input type="hidden" id="idcolor">
@@ -460,8 +464,12 @@
 						<div style="padding-top: 10px;"><b>COMBINACIONES</b>&nbsp;<button id="addcombi" class="btn btn-success"><i class="material-icons">add</i></button></div>
 						<ul class="collapsible ">
 					    <li class="active">
+					    	
 					      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Color</div>
-					      <div class="collapsible-header" id="ccolorsp"></div>
+					      <div class="row "><br>
+					      <div class="col s12 m12 l12 " id="ccolorsp"></div>
+					      </div>
+					      <hr style="background-color: #E0E5E9;height: 0.01px;border-color: #E0E5E9">
 					    </li>
 					    <li>
 					      <div class="collapsible-header"><i class="material-icons">place</i>Material</div>

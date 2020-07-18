@@ -63,9 +63,12 @@ include_once "../cn/connection.php";
 		$re = $resultado->fetch_array();
 		$id_mat=$re["id_mat"];
 
-		$consulta= "select id_size from sizes where name_size='$size';";
-		$c->set_charset('utf8');
-		$resultado = $c->query($consulta);
+		
+		$nnamesize = explode("-", $size);
+
+		$consulta="select id_size from sizes where name_size='".$nnamesize[0]."' and number_size=".$nnamesize[1];
+        $c->set_charset('utf8');
+        $resultado = $c->query($consulta);
 		$re = $resultado->fetch_array();
 		$id_size=$re["id_size"];
 

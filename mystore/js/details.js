@@ -167,10 +167,11 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-             //alert(resp);
+             alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
                     $('#modaladdproduct').modal('close');
+                    reloadTable();
                    }else if(resp=="x"){
                     M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
                     
@@ -259,10 +260,10 @@ $(document).ready(function() {
                      
             }   
                 
-        });
-}
-  return false;
-}); 
+            });
+            }
+              return false;
+            }); 
 
 
          $("#generar").click(function(event) {
@@ -439,6 +440,92 @@ var idinputerrore= ['txtfnamee','txtquantitye'];
     });
     return validate;
 }
+
+
+
+
+
+
+var reloadTable= () =>{
+  var dataSet="";
+      var dataa="";
+      var btn="";
+      var table = $('#tbgen').DataTable({
+        "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+    "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros.",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros.",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+      }
+        });
+     table.clear().draw();
+      for (var i = 0; i < colores.length; i++) {
+        for (var j = 0; j < materiales.length; j++) {
+          for (var k = 0; k < tallas.length; k++) {
+                  //alert(colores[i]+','+ materiales[j]+','+tallas[k]);
+                  var html="";  
+                  var dataString = 'idprod='+$("#id_product").val()+'&idcolor='+colores[i]+'&idmaterial='+materiales[j]+'&idsize='+tallas[k];
+                  $.ajax({
+                    type: "GET",
+                    url: "../controller/caproduct.php?btngetData=getDataExist",
+                    data: dataString,
+                    success: function(resp) {
+                        //alert(resp);
+                        var values = eval(resp);         
+                        if (values[0].existe==1){
+                          btn='<a class="btn-floating #ffeb3b green darken-3" ><i class="material-icons">playlist_add_check</i></a>';
+                          table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
+                        }
+                        else{
+                          btn='<a class="btn-floating #ffeb3b blue" onclick="modalGen('+$("#id_product").val()+','+String("'"+values[0].id_color+"'")+','+String("'"+values[0].id_material+"'")+','+String("'"+values[0].id_size+"'")+');" ><i class="material-icons">playlist_add</i></a>';
+                          table.row.add([values[0].id_color, values[0].id_material,values[0].id_size,btn]).draw(false);
+                          
+                        } 
+                    } 
+                }); 
+          }
+        }
+      }
+}
+
+
+
+
+
+
 
 
 var StateChange = (id_prices,id_color,id_material,id_size,status) =>{
@@ -683,7 +770,7 @@ var html="";
             var values = eval(resp);        
               html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][2]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
+                   html+="<option value='"+values[i][2]+"-"+values[i][1]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
                }
                $("#sizea").html(html);
             } 
