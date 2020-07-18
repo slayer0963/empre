@@ -16,7 +16,7 @@ include_once "../cn/connection.php";
 	public function getDataAP($busi)
  	{
 		$c = conectar();
-		$sql="select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro, pt.id_tpro, state_pro from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus where busi.id_bus=$busi";
+		$sql="select p.id_pro, name_pro, descr_pro, cat.name_cat as id_cat, pt.name_tpro, pt.id_tpro, state_pro, aspo.pur_price, aspo.sal_price from product p inner join categories cat on p.id_cat=cat.id_cat inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro inner join business busi on busi.id_bus=aspb.id_bus inner join assignment_prices_object aspo on aspo.id_pro=p.id_pro where busi.id_bus=$busi";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

@@ -54,6 +54,7 @@
 
       <form class="col s12 center-align" id="frmprice" name="frmprice" method="post">
         <div class="row">
+          <input type="hidden" name="idpd" id="idpd">
             <input type="hidden" id="idpro" name="idpro">
             <div class="input-field col s12 m12 l12">
               <input id="pcompra" name="pcompra" title="Precio Compra (*)" type="text" >
@@ -169,6 +170,33 @@
       
     </div>
     </div>
+  </div>
+</div>
+
+
+  <div id="modaledit" class="modal bottom-sheet ">
+  <div class="modal-content align-center">
+    <h4 for="name" id="nameproduct"> </h4>
+
+      <form class="col s12 m12 l6 center-align" id="frmeditpr" name="frmeditpr">
+        
+            
+            
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">attach_money</i>
+              <input id="pcompra2" name="pcompra2" title="Coste de fabricación (*)" type="text" > 
+              <span class="" id="txtpcompra">Coste de fabricación</span>
+            </div>
+            <div class="input-field col s12 m12 l6">
+              <i class="material-icons prefix">attach_money</i>
+              <input id="pventa2" name="pventa2" title="Precio Venta (*)" type="text" >
+              <span class="" id="txtpventa">Precio Venta</span>
+            </div>
+            
+            
+         
+        <button  id="editprod" class=" btn">Modificar <i class="material-icons">edit</i></button>
+      </form>
   </div>
 </div>
 

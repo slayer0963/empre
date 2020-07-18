@@ -98,6 +98,42 @@ $(document).ready(function(){
   });
 });
 
+
+
+
+  $('#pcompra2').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  $('#pventa2').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+
+
+
    consultar();
     $('#fileprice').change(function(){
         document.getElementById("img").removeAttribute('src');
@@ -433,6 +469,33 @@ $("#generar").click(function(event) {
 
 
 
+ $('#frmeditpr').submit(function() {
+    //if(ValidateUpdt()==idinput.length){
+    var dataString = 'idpro='+$("#idpd").val()+'&pcompra='+$("#pcompra2").val()+'&pventa='+$("#pventa2").val();
+           $.ajax({
+            type: "POST",
+            url: "../../controller/caproduct.php?btnsetData=updateData", 
+            data: dataString,
+            
+            success: function(resp) {
+             //alert(resp);
+                   if(resp==1){
+                    M.toast({html: "¡Se modificó el registro exitosamente!", classes: 'rounded  green'});
+                    $('#modaledit').modal('close');
+                    getData($("#bus").val());
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }   
+                
+        });
+//}
+  return false;
+}); 
+
 
 
 
@@ -453,6 +516,17 @@ $("#backfrm").click(function(event) {
 
 
 });
+
+
+function openModalEdit(id,name,pc,pv){
+            $('#idpd').val(id);
+            $('#pcompra2').val(pc);
+            $('#pventa2').val(pv);
+            $("#nameproduct").html("Producto: <b>"+name+"</b>");
+            $('#modaledit').modal('open');
+            //alert("holaaa");
+         
+}
 
 
 

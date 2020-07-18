@@ -86,13 +86,17 @@ if($page=='getDataAp'){
          $descrip="'".$c["descr_pro"]."'";
          $cat="'".$c["id_cat"]."'";
          $id_tpro="'".$c["id_tpro"]."'";
+
+         $pur_price="'".$c["pur_price"]."'";
+         $sal_price="'".$c["sal_price"]."'";
+         
          $state="'".$c["state_pro"]."'";
 		 $btnedit='';
          if($dat->Verifi($c["id_pro"])==0){
          	$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b green modal-trigger\" href=\"#modaladd\" onclick=\"FillBoxes('.$id.','.$name.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">attach_money</i></a>';
          }
          else{
-			$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"FillDiv('.$id.','.$name.','.$id_tpro.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">add</i></a>';
+			$btnedit.='&nbsp;<a class=\"btn-floating #ffeb3b orange\" href=\"#modaledit\"  onclick=\"openModalEdit('.$id.','.$name.','.$pur_price.','.$sal_price.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">edit</i></a>&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"FillDiv('.$id.','.$name.','.$id_tpro.');\" id=\"btnd'.$c["id_pro"].'\"><i class=\"material-icons\">add</i></a>';
          }
         
          
