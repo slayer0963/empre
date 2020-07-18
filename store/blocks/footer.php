@@ -29,8 +29,14 @@
 
 	<script src="assets/js/bootstrap-tagsinput.js"></script>
 
-  <script src="assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
+        <script type="text/javascript" src="../view/js/jquery.dataTables.js"></script>
 
+      <script type="text/javascript" src="../view/js/dataTables.bootstrap4.min.js"></script>
+       <script  type="text/javascript" src="../view/js/dataTables.responsive.js"></script>
+       <script  type="text/javascript" src="../view/js/responsive.bootstrap4.js"></script>
+  <script src="assets/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
+  <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+  
     <!--    Plugin For Google Maps   -->
 
    
@@ -83,14 +89,7 @@
     </div>
   </div>
 </div>
-  <script  type="text/javascript" src="https://cdn.jsdelivr.net/npm/pushbar.js@1.0.0/src/pushbar.min.js"></script>
 
-    <script type="text/javascript">
-  const pushbar = new Pushbar({
-        blur:true,
-        overlay:true,
-      });
-</script>
 
 			   					
 				

@@ -39,8 +39,9 @@ $(document).ready(function($) {
                     location.reload();
                   }
                  else{
-                 	alert("Verifique su usuario o contraseña");
-
+                 	
+                  alertify.set('notifier','position', 'bottom-center');
+                  alertify.error('Verifique su usuario o contraseña');
                  }
 
                 }

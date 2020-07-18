@@ -104,7 +104,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand " id="namebusi"></a>
-                <a  class="btn btn-default btn-md  largo btnarr" data-pushbar-target="mypushbar1">
+                <a  class="btn btn-default btn-md  largo btnarr" href="shoppingcar">
                             <i class="material-icons">shopping_cart</i>&nbsp;&nbsp;&nbsp;<sup>0</sup>
                         </a>
             </div>
@@ -113,13 +113,13 @@
                 <ul class="nav navbar-nav navbar-right">
                   
                     <li class="corto">
-                        <a  class="btn btn-white btn-sm" data-pushbar-target="mypushbar1">
-                            <i class="material-icons">shopping_cart</i> Carrito &nbsp;&nbsp;&nbsp;<sup>0</sup>
+                        <a  class="btn btn-simple btn-sm" href="shoppingcar">
+                            <i class="material-icons">shopping_cart</i>&nbsp;<sup>0</sup>
                         </a>
                     </li>
                     <li class="dropdown">
                         
-                        <div class="author dropdown-toggle btn btn-white btn-sm " data-toggle="dropdown" style="width: 100%;">
+                        <div class="author dropdown-toggle btn btn-round btn-simple btn-sm " data-toggle="dropdown" style="width: 100%;">
                             <a href="#!" >
                                 <img src="../view/imguser/<?php echo $_SESSION['img']; ?>" alt="..." style="height: 22px; width: 20px;" class="avatar img-raised">
                             <span><?php echo $_SESSION['name']; ?></span>

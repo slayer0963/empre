@@ -9,7 +9,7 @@
 
 	</div>
 
-
+	
 
 	<div class="section section-gray" style="margin-top: -5rem;">
 	    <div class="container">
@@ -66,13 +66,27 @@
                           </div>
 						</div>
 					</div>
+					<form method="POST" id="frmcarpro" name="frmcarpro" class="hide">
+						<input type="text" id="idcliet" name="idcliet" value="<?php echo $valor = isset($_SESSION["idus"])?$_SESSION["idus"]:'';?>">
+						<input type="text" id="pfidprod" name="pfidprod">
+						<input type="text" id="pfidprices" name="pfidprices">
+						<input type="text" id="pfcolor" name="pfcolor">
+						<input type="text" id="pfmaterial" name="pfmaterial">
+						<input type="text" id="pfsize" name="pfsize">
+						<input type="text" id="pfprices" name="pfprices">
+						<input type="text" id="discount" name="discount">
+					</form>
                         <div class="row text-center">
-                            <button class="btn btn-rose btn-round">Add to Cart &nbsp;<i class="material-icons">shopping_cart</i></button>
+                            <button class="btn btn-rose btn-round" id="addcar">Agregar a Carrito &nbsp;<i class="material-icons">shopping_cart</i></button>
                         </div>
+						
+					
+                              
                     </div>
                   
                 </div>
             </div>
+
               <div class="col-md-12">
                     	  
 
@@ -359,10 +373,11 @@
 </style>
 
 <?php include 'blocks/footer.php'; ?>
-<?php include 'blocks/shoppingcartpreview.php'; ?>
+
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
 	<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 	<script type="text/javascript" src="./js/details.js"></script>
+	<script type="text/javascript" src="./js/addcar.js"></script>
 	<script type="text/javascript" src="./js/local.js"></script>
 	 
 

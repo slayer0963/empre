@@ -211,4 +211,14 @@
 	    $dat=new DAOUserhome();
 	    $dat->setDataproduct(insertproduct());
 	}
+
+
+
+
+	// add product car
+	$page = isset($_GET['btnsetshcar'])?$_GET['btnsetshcar']:'';
+	if($page=='setshcar'){
+	    $dat=new DAOUserhome();
+	    $dat->setcarshop($_POST['idcliet'],$_POST['pfidprices'],$_POST['pfcolor'],$_POST['pfmaterial'],$_POST['pfsize'],$_POST['pfprices'],$_POST['discount']);
+	}
 ?>
