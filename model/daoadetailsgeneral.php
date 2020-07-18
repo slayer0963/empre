@@ -63,8 +63,13 @@ include_once "../cn/connection.php";
 		$re = $resultado->fetch_array();
 		$id_mat=$re["id_mat"];
 
-		
+		//echo "Esta es la talla base=".$size;
+		//echo "  ".	$size;
+
+
 		$nnamesize = explode("-", $size);
+		//echo " valor1=".$nnamesize[0];
+		//echo " valor2=".$nnamesize[1];
 
 		$consulta="select id_size from sizes where name_size='".$nnamesize[0]."' and number_size=".$nnamesize[1];
         $c->set_charset('utf8');
