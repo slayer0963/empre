@@ -2,7 +2,8 @@ $(document).ready(function() {
 	$("#addcar").click(function () {
         
         if(localStorage.getItem('nameper')==""){
-            $("#modallogin").modal('show');
+            
+            $('#loginm').modal('open');
          }else{
         
 	        $.ajax({
@@ -11,13 +12,13 @@ $(document).ready(function() {
 	            data: $("#frmcarpro").serialize(),
 	            success: function(resp) {
 	            	if(resp==1){
-	            		alertify.set('notifier','position', 'bottom-center');
- 						alertify.success('Producto agregado');
+	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
+ 						
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		alertify.set('notifier','position', 'bottom-center');
- 						alertify.warning('El producto ya esta en el carrito');
+	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
+ 						
 	            	}
 	            	else{
 	            		alert("Problemas");

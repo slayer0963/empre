@@ -57,7 +57,7 @@
        <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
         <script type="text/javascript" src="view/jsproject/google.js"></script> -->
         <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/local.js"></script>
-        <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/buss.js"></script>
+
       <script>
         $(document).ready(function(){
 
@@ -66,11 +66,11 @@
 
         
         $('.collapsible').collapsible();
-        $('.modal').modal();
+        
         $('.tap-target').tapTarget();
 
         $('.carousel').carousel();
-        
+        $('.modal').modal();
       });
 
         // window.onscroll = function() {

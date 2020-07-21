@@ -9,9 +9,49 @@ $(document).ready(function($) {
              $("#description").html(obj.des);
             mybusii(obj.id);
       //alert(obj.id);
+
+      $("#comentproduc").click(function () {
+         if(localStorage.getItem('nameper')==""){
+            $('#loginm').modal('open');
+         }
+      });
+
+      $("#publish").click(function () {
+         if(localStorage.getItem('nameper')==""){
+           $('#loginm').modal('open');
+         }else{
+            if ($("#comentproduc").val()!="") {
+            if($('#rate').swidget().value()>0){
+                 addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
+            }
+            else{
+                alert("verifica si has putuando el producto esto nos sirve para mejorar como negocio");
+            }
+        }
+        else{
+              alert("tu comentatio esta vacio");
+        }
+           
+         }
+      });
 });
 
-
+function addcomentario(idcliente,comentario,valoracion) {
+    var obj = JSON.parse(localStorage.getItem('ProductC'));
+    var dataString = 'idcliente='+idcliente+'&idprod='+obj.id+'&comentario='+comentario+'&valoracion='+valoracion;
+    //alert(dataString);
+    $.ajax({
+            type: "POST",
+            url: "../controller/cclient.php?btnaddcoment=setcoment", 
+            data: dataString,
+            success: function(resp) {
+                //alert(resp);
+                if(resp!=0){
+                    getcoments(obj.id);
+                }       
+            }
+        });
+}
 
 
 
@@ -80,8 +120,62 @@ function viewproduct(id,name,img,desc){
            obj.name  = name;
            obj.img  = img;
            obj.desc  = desc;
-
+       var jsonString= JSON.stringify(obj);
+      localStorage.setItem('ProductC',jsonString);
       Colors(obj.id);
+      getcoments(obj.id);
+}
+
+function getcoments(id) {
+    var dataString = 'id='+id;
+    $("#comentinput").html('');
+    $.ajax({
+            type: "POST",
+            url: "../controller/cclient.php?btngetcoment=getcoment", 
+            data: dataString,
+            success: function(resp) {
+                // alert(resp);
+                var respu = eval(resp);
+                var html='';
+                for (var i = 0; i < respu.length; i++) {
+                  html+='<div class="col s12 m12 s12">';
+              html+='<div class="card white">';
+                html+='<div class="card-content white-text row">';
+                    html+='<div class="col l2 m2 s12 center-align">';
+                      html+='<img class="circle" style="height:75px; width:80;"  src="../view/imguser/'+respu[i].img+'" alt="..."><br>'+respu[i].fullname_cl;
+                    html+='</div>';
+                    html+='<div class="col l10 m10 s12 black-text">';
+                  
+                      html+=' <h6>'+respu[i].coment+'</h6>';
+                   
+                    html+='</div>';
+                    html+='<div class="col l12 m12 s12 black-text">';
+                      html+='<div class="row">';
+                        html+='<div class="col l6 m6 s6 center-align">';
+                          if(respu[i].rating>2.5){
+                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess">'+respu[i].rating+'</div></span>';
+                                                 }
+                                                 else{
+                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess">'+respu[i].rating+'</div></span>';
+
+                                                 }
+                        html+='</div>';
+                        html+='<div class="col l6 m6 s6 right-align">';
+                         html+='<a href="#pablo" class="btn btn-xs red">';
+                                                     html+='<i class="material-icons">favorite</i> '+respu[i].likes+'';
+                                                 html+='</a>';
+                        html+='</div>';
+                      html+='</div>';
+                    html+='</div>';
+                html+='</div>';
+            html+='</div>';                       
+        html+='</div>';
+                    
+                }
+                
+                $("#comentinput").html(html);
+            }
+        });
 }
 
 
@@ -117,16 +211,16 @@ function Colors(id) {
        }
 
        function productDet(id,idcolor,code,pro,color,material,talla) {
-            // $("#producttittle").html(pro+' color '+color);
-            getmaterials(id,idcolor,code);
-            getDataProductD(id,idcolor,material,talla);
-            getsizes(id,material,idcolor);
+            $("#producttittle").html(pro);
+            getmaterials(id,idcolor,code,color);
+            getDataProductD(id,idcolor,material,talla,color);
+            getsizes(id,material,idcolor,color);
             
             
        }
 
 
-function getmaterials(id,color,code) {
+function getmaterials(id,color,code,namecolor) {
       var dataString = 'id='+id+'&idcolor='+color;
       $("#contsize").html('');
       $.ajax({
@@ -139,7 +233,7 @@ function getmaterials(id,color,code) {
                   var html='';
                   for (var i = 0; i < respu.length; i++) {
                         // html+='<button class="btn"  >'+respu[i].name_mat+'</button>&nbsp;';
-                        html+='<a href="#!" class="col col l2 m4 s4"   onclick="getsizes('+id+','+respu[i].id_material+','+color+')">';
+                        html+='<a href="#!" class="col col l2 m4 s4"   onclick="getsizes('+id+','+respu[i].id_material+','+color+','+String("'"+namecolor+"'")+')">';
                         html+='<div class="chip chips-initial" >';
                         html+='<span style="height:5px; width:30px; background-color:'+code+' ;" >&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;';
                             html+=respu[i].name_mat;
@@ -150,7 +244,7 @@ function getmaterials(id,color,code) {
             }});
 }
 
-function getsizes(id,material,color) {
+function getsizes(id,material,color,namecolor) {
       var dataString = 'id='+id+'&idcolor='+color+'&idmat='+material;
       $.ajax({
             type: "POST",
@@ -162,19 +256,19 @@ function getsizes(id,material,color) {
                   var html='';
                   for (var i = 0; i < respu.length; i++) {
                         if(i==0){
-                              getDataProductD(id,color,material,respu[i].id_size);
+                              getDataProductD(id,color,material,respu[i].id_size,namecolor);
                         }
-                         html+='<a href="#!" class="col l2 m4 s4" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+');">';
+                         html+='<a href="#!" class="col l2 m4 s4" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+','+String("'"+namecolor+"'")+');">';
                         html+='<div class="chip" >';
                             html+=respu[i].number_size+'-'+respu[i].name_size;
-                          html+='</div></a>&nbsp;';
+                          html+='</div></a>';
                         // html+='<a href="#!" id="size'+respu[i].id_size+'" ><span class="badge badge-pill badge-secondary">'+respu[i].number_size+'-'+respu[i].name_size+'</span></a>&nbsp;';
                   }
                   $("#contsize").html(html);
             }});
 }
 
-function getDataProductD(id,color,material,size) {
+function getDataProductD(id,color,material,size,namecolor) {
       var dataString = 'id='+id+'&idcolor='+color+'&idmat='+material+'&idsiz='+size;
       $.ajax({
             type: "POST",
@@ -193,7 +287,7 @@ function getDataProductD(id,color,material,size) {
                     $("#pfsize").val(size);
 
                               $("#quantity").html(respu[i].quantity);
-                              $("#pdet").html(""+respu[i].descr_pro);
+                              $("#pdet").html(respu[i].name_pro+" color "+namecolor+" "+respu[i].descr_pro);
                               $("#discount").val(respu[i].discount);
                               if(respu[i].discount==0||respu[i].discount==""){
                                     $("#pricepro").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
