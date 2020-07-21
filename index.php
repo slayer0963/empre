@@ -13,12 +13,12 @@
         include $views[0].'.php';
       }
       else{
-        include 'store.php';
+        include 'store2.php';
       }
       
     }
     else{
-      include 'store.php';
+      include 'store2.php';
     }
          ?>
 

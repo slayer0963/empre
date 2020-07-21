@@ -29,7 +29,34 @@ include_once "../cn/connection.php";
 	public function getDataHome()
  	{
 		$c = conectar();
-		$sql="select * from business limit 8;";
+		$sql="select * from business;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+
+	public function getHomebycat($id)
+ 	{
+		$c = conectar();
+		$sql="SELECT bu.id_bus, bu.name_bus,bu.pic_logo_bus,bu.description FROM assignment_probus aspb inner join product pro on pro.id_pro=aspb.id_pro inner join business bu on bu.id_bus=aspb.id_bus where pro.id_cat=$id group by bu.id_bus limit 7;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+	public function getHomebytp($id)
+ 	{
+		$c = conectar();
+		$sql="SELECT bu.id_bus, bu.name_bus,bu.pic_logo_bus,bu.description FROM assignment_probus aspb inner join product pro on pro.id_pro=aspb.id_pro inner join business bu on bu.id_bus=aspb.id_bus where pro.id_tpro=$id group by bu.id_bus limit 7;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

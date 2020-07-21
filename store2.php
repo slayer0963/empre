@@ -1,185 +1,266 @@
-
 <html>
 
+  <?php
+    session_start();
+    include 'php/config.php';
+    include_once "cn/connection.php";
+   ?>
     <head>
+      <title>Mi negocio</title>
+
+       <meta name="google-signin-client_id" content="606135828680-bfek54p79i4it5ussuoutenuc1p6ing1.apps.googleusercontent.com">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
-        <meta name="google-signin-client_id" content="606135828680-bfek54p79i4it5ussuoutenuc1p6ing1.apps.googleusercontent.com">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="view/css/materialize.min.css"  media="screen,projection"/>
+      <link type="text/css" rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/materialize.min.css"  media="screen,projection"/>
 
-      <link rel="stylesheet" href="view/css/dataTables.bootstrap4.min.css">
+      <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/dataTables.bootstrap4.min.css">
 
-      <link rel="stylesheet" href="view/css/responsive.bootstrap4.min.css">
+      <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/responsive.bootstrap4.min.css">
 
-      <link rel="stylesheet" href="view/css/animate.css">
+      <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/animate.css">
 
-      <link rel="stylesheet" href="view/css/lightbox.css">
+      <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/lightbox.css">
 
-		<link rel="stylesheet" href="view/css/select2-materialize.css">
+    <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/select2-materialize.css">
+
+    <style>
+      .men{
+        margin-top: 5rem;
+      }
+    #profile{
+    margin-top: 1rem;
+      }
+      .dropdown-content {
+        top: -50px;
+
+      }
+    </style>
 
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
-		
-		<title>LOCAL CARAJADA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style>
-      	 #modallogin { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
+        #loginm { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
 
-          .container{
-            margin-top: 2rem;
-            padding-left: 0;
-          }
-          .main{
-             padding-left: 175px;
-          }
-
-          .errorinputs{
-            color:red;
-          }
-          .full{
-            padding-top: 0;
-            margin-top: 0;
-          }
-          .successinputs{
-            color:green;
-          }
-          header, footer {
-            padding-left: 300px;
-          }
+      
           
 
         @media only screen and (max-width : 992px) {
            
-            #modallogin { width: 100% !important ; height: 60% !important ; } 
+            #loginm { width: 100% !important ; height: 60% !important ; } 
              
         }
       </style>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-	<div class="">
-			<nav class="teal">
-			    <div class="nav-wrapper">
-			      <a href="#!" class="brand-logo"><i class="gi gi-shop"></i> CARAJA<strong>DA</strong></a>
-			      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-			      <ul class="right hide-on-med-and-down">
-			    <!--     <li><a href="sass.html">Sass</a></li>
-			        <li><a href="badges.html">Components</a></li> -->
-			        <li class="center-align"><a class="modal-trigger" href="#modallogin">Inciar sesion</a></li>
-			        <li class="center-align"><a href="#!">Registrarse</a></li>
-			      </ul>
-			    </div>
-			  </nav>
+  </head>
+  <body class="">
 
-			  <ul class="sidenav" id="mobile-demo" style="margin-top: 4rem; width: 100%;">
-			    <!-- <li><a href="sass.html">Sass</a></li>
-			    <li><a href="badges.html">Components</a></li> -->
-			    <li class="center-align"><a class="modal-trigger" href="#modallogin">Inciar sesion</a></li>
-			    <li class="center-align"><a href="#!">Registrarse</a></li>
-			  </ul>
-		</div>
-    <body class="">
-		
-	
-		<div class="parallax-container">
-	      <div class="parallax">
-<div class="slider fullscreen ">
-    <ul class="slides">
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/1"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+     <div class="" id="contenidomenu">
+      <?php if(!isset($_SESSION["name"])){?>
+        <div class="navbar-fixed">
+          <nav class="cyan darken-3">
+    
+    <div class="nav-wrapper">
+      
+      <a href="#!" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;">Tienda Local</a>
+      <a href="#!" class="brand-logo hide-on-large-only" style="width: 50%; margin-top: .5px; ">
+        
+        <form>
+        <div class="">
+          <input id="search" type="search" placeholder="Buscar" required>
         </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
-        <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </form>
+      </a>
+      <a href="#!" class="brand-logo show-on-large-only hide-on-med-and-down" style=" margin-left: 15rem; width: 45%; margin-top: .5px;">
+        
+        <form>
+        <div class="">
+          <input id="search" type="search" placeholder="Buscar" required>
         </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
-        <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+      </form>
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+        
+      
+
+      
+      <ul class="right hide-on-med-and-down">
+         
+        <li>
+          <a class=" modal-trigger" href="#loginm">Iniciar</a>
+        </li>
+
+        <li style="">
+          <a href="">Registrase</a>
+        </li>
+      </ul>
+    </div>
+
+
+          
+ 
+      </nav>
         </div>
-      </li>
-      <li>
-        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
-        <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        
+
+    <ul class="sidenav center-align" id="mobile-demo" style="">
+         <li>
+          Tienda Local
+        </li>
+        <li class="divider"></li>
+            <li><a  class=" modal-trigger" href="#loginm">Iniciar</a></li>
+            <li class="divider"></li>
+            <li><a href="#!" class="">Registarse</a></li>
+      </ul>
+
+
+
+
+
+
+         <?php }else{?>
+          <div class="navbar-fixed">
+            <nav class="cyan darken-3 ">
+    
+    <div class="nav-wrapper">
+      
+      <a href="#!" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;">Tienda Local</a>
+      <a href="#!" class="brand-logo hide-on-large-only" style="width: 50%; margin-top: .5px; ">
+        
+        <form>
+        <div class="">
+          <input id="search" type="search" placeholder="Buscar" required>
         </div>
-      </li>
-    </ul>
-  </div>
-	      </div>
-	    </div>
-		<div class="section white">
-	      <div class="row container">
-	       
-				<div class="col l12 m12 s12" id="business"></div>
-			
-	      
-        <div class="col l12 m12 s12 center-align">
-          <a class="waves-light btn-small "><i class="material-icons">more_horiz</i></a>
+      </form>
+      </a>
+      <a href="#!" class="brand-logo show-on-large-only hide-on-med-and-down" style=" margin-left: 15rem; width: 45%; margin-top: .5px;">
+        
+        <form>
+        <div class="">
+          <input id="search" type="search" placeholder="Buscar" required>
         </div>
-        </div>
+      </form>
+      </a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      
+        <a href="#!" class="hide-on-large-only right brand-logo"><i class="material-icons">shopping_cart </i></a>
+        <span class="new badge hide-on-large-only">4</span>
+      
+
+      
+      <ul class="right hide-on-med-and-down">
+        <li>
+          <a href="#!" class=" brand-logo"><i class="material-icons">shopping_cart </i></a>
+        <span class="new badge ">4</span>
+        </li>
+
+        <li style="width: 180px;">
+          <a class="dropdown-trigger brand-logo right valign-wrapper left hide-on-med-and-down" href="#!" data-target="dropdown1">
+        
+            <div class="chip" id="profile" style="color:black;">
+          <img src="view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
+            <?php echo $_SESSION['name']; ?>
+          </div>
+  
+
+            </a>
+        </li>
+      </ul>
+    </div>
+
+          <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
+                
+            
+            <li class="divider"></li>
+            <li><a href="#!" class="">Perfil</a></li>
+            <li class="divider"></li>
+            <li><a href="#!" onclick="salir();" class="">Salir</a></li>
+          </ul>
           
         </div>
-	    </div>
-			
-			<div class="parallax-container">
-      <div class="parallax"><img src="https://i.pinimg.com/originals/2c/75/63/2c7563813eaceeb6421175c3b961c902.jpg"></div>
-    </div>
-	
-   	</body>
-  </html>
-  		
-      <script type="text/javascript" src="view/js/jquery.js"></script>
-      <script type="text/javascript" src="view/js/jquery.dataTables.js"></script>
-
-      <script type="text/javascript" src="view/js/dataTables.bootstrap4.min.js"></script>
-       <script  type="text/javascript" src="view/js/dataTables.responsive.js"></script>
-       <script  type="text/javascript" src="view/js/responsive.bootstrap4.js"></script>
-      <script  type="text/javascript" src="view/js/select2.full.js"></script>
-      <script type="text/javascript" src="view/js/materialize.js"></script>
-      <script type="text/javascript" src="view/js/lightbox.js"></script>
-      <script type="text/javascript" src="view/js/jquery.maskedinput.js"></script>
-      <script type="text/javascript" src="view/jshome/home.js"></script>
-      <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
-        <script type="text/javascript" src="view/jsproject/google.js"></script> -->
-      	<script type="text/javascript" src="view/jsproject/local.js"></script>
-  <script>
-$(document).ready(function(){
-
-  $('.sidenav').sidenav();
-  $('#sidenav-1').sidenav({ edge: 'left' });
-
-  $('.modal').modal();
-      
+      </nav>
+          </div>
     
-    $('.dropdown-trigger').dropdown();
-    $('#descrip').characterCounter();
-    $('.collapsible').collapsible();
-    $('.tabs').tabs();
-    $('.parallax').parallax();
- 
-  
-     $('.slider').slider({
-    indicators: false
-      });
+
+    <ul class="sidenav" id="mobile-demo" style="">
+        <li>
+          <div class="chip" style="width: 100%;">
+            <img src="view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
+            <?php echo $_SESSION['name']; ?>
+          </div>
+        </li>
+        <li class="divider"></li>
+            <li><a href="#!" class="">Perfil</a></li>
+            <li class="divider"></li>
+            <li><a href="#!" onclick="salir();" class="">Salir</a></li>
+      </ul>
+      
+         <?php }?>
+    
+    <div class="row " style="z-index: -1;">
+      <div class="col l6 m6 s12">
+        <ul class="collapsible hide-on-med-and-down animated slideInDown">
+            <li>
+              <div class="collapsible-header " ><i class="material-icons">arrow_drop_down</i>Todas las Categorias</div>
+              <div class="collapsible-body" >
+                    <div class="row center-align " id="categories"> </div>
+
+              </div>
+              
+            </li>
+          </ul>
+      </div>
+      <div class="col l6 m6 s12">
+        <ul class="collapsible hide-on-med-and-down animated slideInDown">
+            <li>
+              <div class="collapsible-header "><i class="material-icons">arrow_drop_down</i>Todos los Tipos</div>
+              <div class="collapsible-body" >
+                    <div class="row center-align " id="producttype">
+                      
+                    </div>
+
+              </div>
+              
+            </li>
+          </ul>
+      </div>
+        
+    
+      <div class="animated slideInDown show-on-med-and-down hide-on-large-only center-align">
+        <h5>Categorias</h5>
+          <div class="row center-align " id="categoriesm"> </div>
+        <h5>Tipos</h5>
+          <div class="row center-align" id="productypem"> </div>
+      </div>
+      <div class="col l12 m12 s12 animated" id="contbusi">
+        <div class="">
+          <div class="row " id="business">
+
+
+       </div>
+        </div>
+      </div>
+
+      
+    </div>
 
 
 
-});
-  </script>
+
+    </body>
+  </html>
 
 
-<div id="modallogin" class="modal animated bounceInRight">
+
+
+
+
+<div id="loginm" class="modal">
     <div class="modal-content">
-        <form  method="post" name="login" id="login">
+      <h4>Iniciar sesion</h4>
+      <form  method="post" name="login" id="login">
                                 <div class="form-group">
                                     <label for="contact-name">Correo</label>
                                     <input type="text" id="email" name="email" class="form-control input-md" placeholder="ejemplo@gmail.com">
@@ -189,26 +270,60 @@ $(document).ready(function(){
                                     <input type="text" id="password" name="password" class="form-control input-md" placeholder="******">
                                 </div>
                                 <center>
-																<button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>
-																<br>
-																
-											<div>
-														<a class="btn  blue" onclick="logInWithFacebook();" style="width: 250px; margin-bottom: 1rem; height: 35px;">
-												            <span class="fa fa-facebook"></span><span class="buttonText">Inicia con Facebook</span>
-													</a>
-											</div>
-													
+                                                                <button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>
+                                                                <br>
+                                 
+                                                    
 
-												<div>
-													<div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
+                                                <div>
+                                                    <div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
 
-												<script src="https://apis.google.com/js/platform.js" async defer></script>
-												</div>
-																
-															</center>
+                                                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                                                </div>
+                                                                
+                                                            </center>
         </form>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
     </div>
   </div>
+
+
+
+
+      
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/jquery.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>
+
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/dataTables.bootstrap4.min.js"></script>
+       <script  type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/dataTables.responsive.js"></script>
+       <script  type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/responsive.bootstrap4.js"></script>
+      <script  type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/select2.full.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/materialize.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/lightbox.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/jquery.maskedinput.js"></script>
+      <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jshome/homecat.js"></script>
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+       <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
+        <script type="text/javascript" src="view/jsproject/google.js"></script> -->
+        <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/local.js"></script>
+      <script>
+        $(document).ready(function(){
+
+       $('.dropdown-trigger').dropdown({constrainWidth: false});
+        $('.sidenav').sidenav();
+
+        $('.carousel').carousel();
+        $('.collapsible').collapsible();
+        $('.modal').modal();
+        $('.tap-target').tapTarget();
+        
+      });
+
+        // window.onscroll = function() {
+        //   console.log("Vertical: " + window.scrollY);
+          
+        // };
+      </script>
+  <script>

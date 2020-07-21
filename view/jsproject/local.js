@@ -39,7 +39,8 @@ $(document).ready(function($) {
                     location.reload();
                   }
                  else{
-                 	alert("Verifique su usuario o contraseña");
+                  M.toast({html: 'Verifique su usuario o contraseña!', classes: 'rounded red'});
+                 	
 
                  }
 

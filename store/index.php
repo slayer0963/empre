@@ -14,12 +14,12 @@
         include $views[0].'.php';
       }
       else{
-        include 'stores.php';
+        include 'store.php';
       }
       
     }
     else{
-      include 'stores.php';
+      include 'store.php';
     }
          ?>
   </div>
