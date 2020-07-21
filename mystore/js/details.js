@@ -167,7 +167,7 @@ $(document).ready(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-             alert(resp);
+             //alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
                     $('#modaladdproduct').modal('close');
@@ -264,6 +264,247 @@ $(document).ready(function() {
             }
               return false;
             }); 
+
+
+
+         /*-----------------*/
+
+/*add color*/
+
+$("#pcolor").change(function(event) {
+  $("#txtcode").val($("#pcolor").val());
+});
+
+
+$('#formcolor').submit(function() {
+  if(Validatecolor(1)==idinputcolor.length){
+      $.ajax({
+            type: "POST",
+            url: "../controller/ccolor.php?btnsetData=setData", 
+            data: $("#formcolor").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                   setComboColor();
+                   $('.modal').modal('close');
+                    cleanformcolor();
+                    M.toast({html: "¡Se ha agregado el color exitosamente!", classes: 'rounded  green'});
+                     cleanboxcolor();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }           
+                
+        });
+}
+      return false;
+});
+
+
+
+
+var idinputcolor = ['txtcolor','txtcode'];
+var idinputerrorcolor= ['txtcolorerror','txtcodeerror'];
+var Validatecolor = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputcolor.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrorcolor[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorcolor[count]).removeClass('errorinputs');
+         $("#"+idinputerrorcolor[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrorcolor[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorcolor[count]).removeClass('successinputs');      
+         $("#"+idinputerrorcolor[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+
+
+    return validate;
+}
+
+
+var cleanformcolor = () =>{
+    idinputcolor.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+var cleanboxcolor=()=>{
+idinputerrorcolor.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+/*--------------------------------------------------------------------------------------*/
+
+/*add material*/
+
+
+var idinputmat = ['txtnamemat'];
+var idinputerrormat= ['txtnamematerror'];
+
+$('#formmaterial').submit(function() {
+  if(Validatematerial(1)==idinputmat.length){
+      $.ajax({
+            type: "POST",
+            url: "../controller/cmaterial.php?btnsetData=setData", 
+            data: $("#formmaterial").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                        setComboMaterial();
+                        $('.modal').modal('close');
+                    cleanformmat();
+                    
+                    M.toast({html: "¡Se ha agregado el material exitosamente!", classes: 'rounded  green'});
+                    
+                     cleanboxmat();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }           
+                
+        });
+}
+      return false;
+});
+
+
+
+
+
+var cleanformmat = () =>{
+    idinputmat.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+
+
+var Validatematerial = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputmat.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrormat[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrormat[count]).removeClass('errorinputs');
+         $("#"+idinputerrormat[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrormat[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrormat[count]).removeClass('successinputs');      
+         $("#"+idinputerrormat[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+
+    return validate;
+}
+
+var cleanboxmat=()=>{
+idinputerrormat.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+
+}
+/*--------------------------------------------------------------------------------------*/
+/*add size */
+$('#formsize').submit(function() {
+  if(Validatesize(1)==idinputsize.length){
+      $.ajax({
+            type: "POST",
+            url: "../controller/csize.php?btnsetData=setData", 
+            data: $("#formsize").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                   setComboSize();
+                    $('.modal').modal('close');
+                    cleanform();
+                    
+                    M.toast({html: "¡Se ha agregado el tamaño exitosamente!", classes: 'rounded  green'});
+                   
+                     cleanbox();
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                    
+                   }
+                     
+            }           
+                
+        });
+}
+      return false;
+});
+
+var idinputsize = ['txtnumber','txtnamesize'];
+var idinputerrorsize= ['txtnumbererror','txtnamesizeerror'];
+
+
+
+var cleanformsize = () =>{
+    idinputsize.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+
+
+var Validatesize = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinputsize.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerrorsize[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerrorsize[count]).removeClass('errorinputs');
+         $("#"+idinputerrorsize[count]).addClass('successinputs');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerrorsize[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerrorsize[count]).removeClass('successinputs');      
+         $("#"+idinputerrorsize[count]).addClass('errorinputs'); 
+       }
+       count++;
+    });
+  }
+    return validate;
+}
+
+var cleanboxsize=()=>{
+idinputerrorsize.forEach(names => {
+  $("#"+names).removeClass('successinputs');      
+});
+}
+/*--------------------------------------------------------------------------------------*/
 
 
          $("#generar").click(function(event) {

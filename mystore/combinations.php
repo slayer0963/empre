@@ -132,6 +132,48 @@
 					      </div>
 					  </div>
 
+					  
+					  
+					  
+
+
+
+					  <div class="container">
+					    <div class="card-panel animated hide" id="tablage">
+					     
+					      <div class="row">
+					      	<div class="col s12 m12 l12">
+					      		<center>
+					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="80%">
+					        <thead>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </thead>
+					        <tfoot>
+					            <tr>
+					                <th>Color</th>
+					                <th>Material</th>
+					                <th>Talla</th>
+					                <th>Acción</th>
+					            </tr>
+					        </tfoot>
+					      </table>
+					      </center>
+					      <!-- tabla de DAT -->
+					      
+					    </div>
+					      </div>
+					    </div>
+					  </div>
+
+
+
+
+
 					  <div id="frmaddcolor" class="modal addfrm animated fadeInRight">
 					    <div class="modal-content">
 					      <form class="col s12 center-align" id="formcolor" name="formcolor" method="post">
@@ -197,42 +239,8 @@
 					      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
 					    </div>
 					  </div>
+
 					  
-					  
-
-
-
-					  <div class="container">
-					    <div class="card-panel animated hide" id="tablage">
-					     
-					      <div class="row">
-					      	<div class="col s12 m12 l12">
-					      		<center>
-					      <table id="tbgen" class="table table-striped table-bordered table-hover text-center" cellspacing="0" width="80%">
-					        <thead>
-					            <tr>
-					                <th>Color</th>
-					                <th>Material</th>
-					                <th>Talla</th>
-					                <th>Acción</th>
-					            </tr>
-					        </thead>
-					        <tfoot>
-					            <tr>
-					                <th>Color</th>
-					                <th>Material</th>
-					                <th>Talla</th>
-					                <th>Acción</th>
-					            </tr>
-					        </tfoot>
-					      </table>
-					      </center>
-					      <!-- tabla de DAT -->
-					      
-					    </div>
-					      </div>
-					    </div>
-					  </div>
 					</div>
 
 
