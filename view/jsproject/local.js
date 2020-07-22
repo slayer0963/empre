@@ -34,7 +34,7 @@ $(document).ready(function($) {
                    location.href="http://localhost/empre/mystore/";
                   }
                   else if(datos[0].tipo == 3){
-                    
+                    localStorage.setItem('client',datos[0].id);
                     localStorage.setItem('nameper',datos[0].nombre);
                     location.reload();
                   }

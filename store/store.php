@@ -138,7 +138,7 @@
 <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
   <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
         <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/buss.js"></script>
-        <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/addcar.js"></script>
+        <!-- <script type="text/javascript" src="<?php //echo SERVERURLB; ?>store/js/addcar.js"></script> -->
 
 <script>
   $(document).ready(function() {

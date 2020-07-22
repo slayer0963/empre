@@ -87,15 +87,15 @@
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
-        <a href="#!" class="hide-on-large-only right brand-logo"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge hide-on-large-only">4</span>
+        <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>
+        <span class="new badge hide-on-large-only numbercar"></span>
       
 
       
       <ul class="right hide-on-med-and-down">
         <li>
-          <a href="#!" class=" brand-logo"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge ">4</span>
+          <a  class=" brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons" >shopping_cart </i></a>
+        <span class="new badge numbercar"></span>
         </li>
 
         <li style="width: 180px;">

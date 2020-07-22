@@ -48,7 +48,7 @@ include_once "../cn/connection.php";
 			$_SESSION["email"]=$email;
 			$_SESSION["idus"]=$id;
 			$arreglo = array();
-			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+			$arreglo[] = array('id' =>$id,'tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
 			return $arreglo;
 			}
 			else{
@@ -67,7 +67,7 @@ include_once "../cn/connection.php";
 			$_SESSION["email"]=$email;
 			$_SESSION["idus"]=$id;
 			$arreglo = array();
-			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+			$arreglo[] = array('id' =>$id,'tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
 			return $arreglo;
 			}
 

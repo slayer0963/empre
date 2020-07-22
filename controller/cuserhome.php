@@ -174,6 +174,12 @@
 	    echo json_encode($dat->getDataProc(getIdbyProduct()));
 	}
 
+	$page = isset($_GET['btngetcart'])?$_GET['btngetcart']:'';
+	if($page=='getcart'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getcart($_POST['id']));
+	}
+
 	$page = isset($_GET['btngetProdsc'])?$_GET['btngetProdsc']:'';
 	if($page=='getDataProcCli'){
 	    $dat=new DAOUserhome();

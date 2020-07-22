@@ -139,9 +139,9 @@ function getcoments(id) {
                 var html='';
                 for (var i = 0; i < respu.length; i++) {
                   html+='<div class="col s12 m12 s12">';
-              html+='<div class="card white">';
+              html+='<div class="card  blue lighten-5" id="card'+respu[i].id_prev+'">';
                 html+='<div class="card-content white-text row">';
-                    html+='<div class="col l2 m2 s12 center-align">';
+                    html+='<div class="col l2 m2 s12 center-align black-text">';
                       html+='<img class="circle" style="height:75px; width:80;"  src="../view/imguser/'+respu[i].img+'" alt="..."><br>'+respu[i].fullname_cl;
                     html+='</div>';
                     html+='<div class="col l10 m10 s12 black-text">';
@@ -152,13 +152,16 @@ function getcoments(id) {
                     html+='<div class="col l12 m12 s12 black-text">';
                       html+='<div class="row">';
                         html+='<div class="col l6 m6 s6 center-align">';
-                          if(respu[i].rating>2.5){
-                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess">'+respu[i].rating+'</div></span>';
-                                                 }
-                                                 else{
-                                                        html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess">'+respu[i].rating+'</div></span>';
+                        if(respu[i].rating>2.5)
+                        {
+                              
+                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess">'+respu[i].rating+'</div></span>';
+                        }
+                        else{
+                              
+                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess">'+respu[i].rating+'</div></span>';
 
-                                                 }
+                        }
                         html+='</div>';
                         html+='<div class="col l6 m6 s6 right-align">';
                          html+='<a href="#pablo" class="btn btn-xs red">';
