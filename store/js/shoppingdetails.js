@@ -1,35 +1,7 @@
 $(document).ready(function() {
 
-	consultcar(localStorage.getItem('client'));
-	$("#addcar").click(function () {
-        
-        if(localStorage.getItem('nameper')==""){
-            
-            $('#loginm').modal('open');
-         }else{
-        
-	        $.ajax({
-	            type: "POST",
-	            url: "../controller/cuserhome.php?btnsetshcar=setshcar", 
-	            data: $("#frmcarpro").serialize(),
-	            success: function(resp) {
-	            	if(resp==1){
-	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
- 						consultcar(localStorage.getItem('client'));
-	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
-	            	}
-	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
- 						
-	            	}
-	            	else{
-	            		alert("Problemas");
-	            	}
-
-	            }
-	        });
-	    }
-     });
+    consultcar(localStorage.getItem('client'));
+    
 });
 
 
@@ -62,7 +34,7 @@ function consultcar(id){
                           html+='</div><br>';
 					         html+='<span class="price-new">$'+respu[i].precio+'</span>';
 					      html+='</p></div>';
-					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" class="btn red"><i class="material-icons">remove_shopping_cart</i></a></div></div>';
+					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" class="btn red"><i class="material-icons">delete</i></a></div></div>';
 					    html+='</li> ';
 					    total+=parseFloat(respu[i].precio);
                 }

@@ -155,11 +155,11 @@ function getcoments(id) {
                         if(respu[i].rating>2.5)
                         {
                               
-                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess">'+respu[i].rating+'</div></span>';
+                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:green;" id="ratess"><i class="material-icons">star</i> '+respu[i].rating+'</div></span>';
                         }
                         else{
                               
-                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess">'+respu[i].rating+'</div></span>';
+                              html+='<span class="material-input">VALORACIÓN<div class="rating" style="color:red;" id="ratess"><i class="material-icons">star</i> '+respu[i].rating+'</div></span>';
 
                         }
                         html+='</div>';
