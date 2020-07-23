@@ -49,7 +49,7 @@
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="green waves-effect waves-green btn-flat">Ir a carrito</a>
+      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat">Ir a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>

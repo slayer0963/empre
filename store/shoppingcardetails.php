@@ -22,7 +22,7 @@
   }
  </style>
  <?php include 'block/menu.php'; ?>
-  <title id="title"></title>
+  <title id="title">Carrito</title>
 
 
 <center><h3>Mi carrito <i class="small material-icons dp50">shopping_cart</i></h3></center>
