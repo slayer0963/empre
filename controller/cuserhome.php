@@ -240,6 +240,19 @@
 	    $dat->updatequantityshop($_REQUEST['id_detalle_carrito'],$_REQUEST['cantidad']);
 	}
 
+	$page = isset($_GET['btnVenta'])?$_GET['btnVenta']:'';
+	if($page=='modificarCantidadInv'){
+	    $dat=new DAOUserhome();
+	    $dat->updateinv($_REQUEST['id_prices'],$_REQUEST['id_color'],$_REQUEST['id_material'],$_REQUEST['id_size'],$_REQUEST['val']);
+	}
+
+
+	$page = isset($_GET['btnVenta'])?$_GET['btnVenta']:'';
+	if($page=='modificarStatusCart'){
+	    $dat=new DAOUserhome();
+	    $dat->updateStatusCart($_REQUEST['id_car']);
+	}
+
 	$page = isset($_GET['btnEliminar'])?$_GET['btnEliminar']:'';
 	if($page=='eliminar'){
 	    $dat=new DAOUserhome();

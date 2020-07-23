@@ -1,6 +1,46 @@
 $(document).ready(function() {
 
     consultcar(localStorage.getItem('client'));
+
+
+    $("#endedpur").click(function () {
+
+        for (var i = 0; i < parseInt($("#totval").val()); i++) {
+                var idp=$("#id_prices"+i).val();
+                var idc=$("#id_color"+i).val();
+                var idm=$("#id_material"+i).val();
+                var ids=$("#id_size"+i).val();
+                var val=parseInt($("#cantidad"+i).text());
+                $.ajax({
+                            type: "POST",
+                            url: "../controller/cuserhome.php?btnVenta=modificarCantidadInv&id_prices="+idp+"&id_color="+idc+"&id_material="+idm+"&id_size="+ids+"&val="+val, 
+                            success: function(resp2) {
+                            
+                      }   
+                 });            
+        }
+
+        $.ajax({
+                            type: "POST",
+                            url: "../controller/cuserhome.php?btnVenta=modificarStatusCart&id_car="+$(".id_shp_c").val(), 
+                            success: function(resp) {
+                            if(resp==1){
+                                M.toast({html: 'PRODUCTOS VENDIDOS CORRECTAMENTE', classes: 'rounded green'});
+                                consultcar(localStorage.getItem('client'));
+                            }
+                            else{
+                                M.toast({html: '¡Hubo un error al querer hacer la compra!', classes: 'rounded orange'});
+                                
+                            }
+                      }   
+                 }); 
+        
+
+        
+     });
+
+
+
     
 });
 
@@ -17,8 +57,10 @@ function consultcar(id){
                 var respu = eval(resp);
                 var html='';
                 var cont=0, total=0;
+                html+='<input type="hidden" id="totval" value="'+respu.length+'">';
                 for (var i = 0; i < respu.length; i++) {
                 	cont++;
+                        html+='<input type="hidden" class="id_shp_c" value="'+ respu[i].id_shp_c+'"><input type="hidden" id="id_prices'+i+'" value="'+ respu[i].id_prices+'"><input type="hidden" id="id_color'+i+'" value="'+ respu[i].id_color+'"><input type="hidden" id="id_material'+i+'" value="'+ respu[i].id_mat+'"><input type="hidden" id="id_size'+i+'" value="'+ respu[i].id_size+'">';
                 	    html+='<li class="collection-item"><div class="row"><div class="col s12 m12 l1 center-align"><a href="#!" style="margin-top:2rem;" class="btn red" title="Remover"  onClick="deletefromcar('+String("'"+respu[i].id_shp_c_d+"'")+');"><i class="material-icons">remove_shopping_cart</i></a>  <br><br></div> <div class="col s12 m12 l2 center-align">';
 					      html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:100px; width:100;" ></div>';
 					      html+='<div class="col s12 m12 l3 center-align"><h5>'+respu[i].name_pro+'</h5>';

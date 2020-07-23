@@ -36,7 +36,7 @@
   </ul>
     
     <div class="right-align">
-      <a href="#!" class="green waves-effect waves-green btn-flat" style="color: white">Comprar</a>
+      <a href="#!" class="green waves-effect waves-green btn-flat" id="endedpur" style="color: white">Comprar</a>
     </div>
     </div>
     <br>
