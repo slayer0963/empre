@@ -234,6 +234,18 @@
 	    $dat->setDataproduct(insertproduct());
 	}
 
+	$page = isset($_GET['btnModificar'])?$_GET['btnModificar']:'';
+	if($page=='modificarCantidadCart'){
+	    $dat=new DAOUserhome();
+	    $dat->updatequantityshop($_REQUEST['id_detalle_carrito'],$_REQUEST['cantidad']);
+	}
+
+	$page = isset($_GET['btnEliminar'])?$_GET['btnEliminar']:'';
+	if($page=='eliminar'){
+	    $dat=new DAOUserhome();
+	    $dat->deleteshop($_REQUEST['id_detalle_carrito']);
+	}
+
 
 
 

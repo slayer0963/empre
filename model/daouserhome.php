@@ -57,6 +57,38 @@ include_once "../cn/connection.php";
     }
 
 
+    /*UPDATE QUANTITY CART*/
+    public function updatequantityshop($id_shp_c_d,$n)
+    {
+        
+        $c=conectar();
+ 
+        $sql="update shopping_cart_details set quantity=$n where id_shp_c_d=$id_shp_c_d;";
+        if (!$c->query($sql)) {
+            print "0".$sql;
+        }else{
+                echo "1"; 
+
+             }
+        mysqli_close($c);
+        
+    }
+
+
+    //DELETE FROM CART//
+    public function deleteshop($id_shp_c_d)
+    {
+        $c=conectar();
+       
+        $sql="delete from shopping_cart_details where id_shp_c_d=$id_shp_c_d;";
+        if (!$c->query($sql)) {
+            print "0".$sql;
+        }else{
+                echo "1"; 
+
+             }
+        mysqli_close($c);
+    }
 
 
 

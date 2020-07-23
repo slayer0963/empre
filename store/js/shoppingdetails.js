@@ -35,7 +35,7 @@ function consultcar(id){
 					       
 					      html+='</div><div class="col s12 m12 l3 center-align stockec"><b>Stock: </b><i>'+ respu[i].tquantity+'</i><br>';
                           html+='<a href="javascript:void(0)" title="Incrementar" class="btn green waves-effect waves-green" style="color:white" onClick="mas('+i+','+String("'"+respu[i].id_shp_c_d+"'")+','+String("'"+respu[i].tquantity+"'")+','+String("'"+respu[i].precio+"'")+','+String("'"+respu.length+"'")+');"><i class="tiny material-icons">exposure_plus_1</i></a>&nbsp;&nbsp;';
-                          html+='<label style="font-size:17px;font-weight: bold;" id="cantidad'+i+'">1</label>&nbsp;&nbsp;';
+                          html+='<label style="font-size:17px;font-weight: bold;" id="cantidad'+i+'">'+ respu[i].quantity+'</label>&nbsp;&nbsp;';
                           html+='<a href="javascript:void(0)" title="Descontar" class="btn red waves-effect waves-red" style="color:white" onClick="menos('+i+','+String("'"+respu[i].id_shp_c_d+"'")+','+String("'"+respu[i].precio+"'")+','+String("'"+respu.length+"'")+');"><i class="tiny material-icons">exposure_neg_1</i></a><br><br></div>';
 					      html+='<div class="col s12 m12 l1 center-align">Precio <label class="price-new right-align">$'+parseFloat(respu[i].precio).toFixed(2)+'</label><br><br></div><div class="col s12 m12 l2 center-align">Sub total<br><label class="price-new">$</label><label id="totalf'+i+'" class="right-align price-new">'+parseFloat(respu[i].precio).toFixed(2)+'</label></div></div>';
 					    html+='</li> ';
@@ -93,10 +93,11 @@ function mas(i, id_shp_c_d,tm,price,n){
                       success: function(resp2) {
                         //alert(resp2);
                         if(resp2==1){
-                          swal("¡Muy bien!", "¡El producto se eliminó correctamente del carrito!", "success");
+                          M.toast({html: "¡El producto se eliminó correctamente del carrito!", classes: 'rounded  green'});
                           
                         }else if (resp2==0){
-                          swal("Upps!", "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", "error");
+                          M.toast({html: "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", classes: 'rounded deep-orange'});
+
                           
                         }
                      
