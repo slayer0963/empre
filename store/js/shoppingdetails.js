@@ -93,10 +93,11 @@ function mas(i, id_shp_c_d,tm,price,n){
                       success: function(resp2) {
                         //alert(resp2);
                         if(resp2==1){
-                          swal("¡Muy bien!", "¡El producto se eliminó correctamente del carrito!", "success");
+                          M.toast({html: "¡El producto se eliminó correctamente del carrito!", classes: 'rounded  green'});
                           
                         }else if (resp2==0){
-                          swal("Upps!", "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", "error");
+                          M.toast({html: "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", classes: 'rounded deep-orange'});
+
                           
                         }
                      
