@@ -145,15 +145,15 @@
       </a>
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
-        <a href="#!" class="hide-on-large-only right brand-logo"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge hide-on-large-only">4</span>
+       <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>
+        <span class="new badge hide-on-large-only numbercar"></span>
       
 
       
       <ul class="right hide-on-med-and-down">
         <li>
-          <a href="#!" class=" brand-logo"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge ">4</span>
+           <a  class=" brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons" >shopping_cart </i></a>
+        <span class="new badge numbercar"></span>
         </li>
 
         <li style="width: 180px;">
@@ -172,7 +172,8 @@
 
           <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
                 
-            
+            <li class="divider"></li>
+            <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>
@@ -191,6 +192,8 @@
             <?php echo $_SESSION['name']; ?>
           </div>
         </li>
+        <li class="divider"></li>
+            <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
         <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>
@@ -290,6 +293,36 @@
   </div>
 
 
+ <div id="modalcarshop" class="modal bottom-sheet" >
+    <div class="modal-content">
+      <ul class="collection" id="cartcli">
+
+      </ul>
+        <ul class="collection right-align">
+          <li  class="collection-item"><h6 id="totalshop" class="price-new">0</h6></li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="green waves-effect waves-green btn-flat">Ir a carrito</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
+    </div>
+  </div>
+
+   <div id="modalwis" class="modal bottom-sheet" >
+    <div class="modal-content">
+      <ul class="collection" id="wishcli">
+
+      </ul>
+        <ul class="collection right-align">
+          <li  class="collection-item"><h6 id="totalwish" class="price-new">0</h6></li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="green waves-effect waves-green btn-flat">Enviar todo a carrito</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
+    </div>
+  </div>
+
 
 
       
@@ -308,6 +341,7 @@
        <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
         <script type="text/javascript" src="view/jsproject/google.js"></script> -->
         <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/local.js"></script>
+        <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/addcarh.js"></script>
       <script>
         $(document).ready(function(){
 
