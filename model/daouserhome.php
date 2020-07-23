@@ -33,7 +33,7 @@ include_once "../cn/connection.php";
     public function getcart($id)
     {
         $c = conectar();
-        $sql="SELECT pro.name_pro, adg.img, scd.quantity, scd.precio, c.name_color,m.name_mat,s.name_size,s.number_size FROM shopping_cart_details scd inner join assignment_prices_object apo on scd.id_prices=apo.id_prices inner join color c on scd.id_color=c.id_color inner join material m on scd.id_mat=m.id_mat inner join sizes s on scd.id_size=s.id_size inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join product pro on pro.id_pro=apo.id_pro inner join shopping_cart cho on cho.id_shp_c=scd.id_shp_c where cho.id_cl=$id;";
+        $sql="SELECT pro.name_pro, adg.img, scd.quantity, scd.precio, c.name_color,m.name_mat,s.name_size,s.number_size, adg.quantity as tquantity FROM shopping_cart_details scd inner join assignment_prices_object apo on scd.id_prices=apo.id_prices inner join color c on scd.id_color=c.id_color inner join material m on scd.id_mat=m.id_mat inner join sizes s on scd.id_size=s.id_size inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join product pro on pro.id_pro=apo.id_pro inner join shopping_cart cho on cho.id_shp_c=scd.id_shp_c where cho.id_cl=$id;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();

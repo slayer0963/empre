@@ -5,6 +5,11 @@
     color: green;
     font-size: 20px;
    }
+
+   .stockec{
+    color: green;
+    font-size: 15px;
+   }
    .price-old{
     color: red;
     text-decoration: line-through;
@@ -25,37 +30,9 @@
     <div class="container">
       <ul class="collection" id="cartcli">
 
- <!-- <li class="collection-item avatar align-left" >
-     <div class="row">
-        <div class="col s12 m6 l4"> <i class="material-icons circle green">insert_chart</i></div>
-        <div class="col s12 m6 l4">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-        </div>
-        <div class="col s12 m12 l4"><a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div>
-      </div>
-    </li>
-        "<li class="collection-item avatar">
-      <i class="material-icons circle green">insert_chart</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-    </li> -->
-  </ul>
+      </ul>
   <ul class="collection right-align">
-    <li  class="collection-item"><h6 id="totalshop" class="price-new">0</h6></li>
+    <li  class="collection-item"><h6 id="totalshop" class="price-new"></h6></li>
   </ul>
     
     <div class="right-align">
