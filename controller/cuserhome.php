@@ -174,11 +174,20 @@
 	    echo json_encode($dat->getDataProc(getIdbyProduct()));
 	}
 
+/*cart and wish*/
 	$page = isset($_GET['btngetcart'])?$_GET['btngetcart']:'';
 	if($page=='getcart'){
 	    $dat=new DAOUserhome();
 	    echo json_encode($dat->getcart($_POST['id']));
 	}
+
+
+	$page = isset($_GET['btngetwish'])?$_GET['btngetwish']:'';
+	if($page=='getwish'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getwish($_POST['id']));
+	}
+/**/
 
 	$page = isset($_GET['btngetProdsc'])?$_GET['btngetProdsc']:'';
 	if($page=='getDataProcCli'){
@@ -226,5 +235,12 @@
 	if($page=='setshcar'){
 	    $dat=new DAOUserhome();
 	    $dat->setcarshop($_POST['idcliet'],$_POST['pfidprices'],$_POST['pfcolor'],$_POST['pfmaterial'],$_POST['pfsize'],$_POST['pfprices'],$_POST['discount']);
+	}
+
+	// add product wish
+	$page = isset($_GET['btnsetwish'])?$_GET['btnsetwish']:'';
+	if($page=='setwish'){
+	    $dat=new DAOUserhome();
+	    $dat->setwishlist($_POST['idcliet'],$_POST['pfidprices'],$_POST['pfcolor'],$_POST['pfmaterial'],$_POST['pfsize'],$_POST['pfprices'],$_POST['discount']);
 	}
 ?>

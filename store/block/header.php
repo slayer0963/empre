@@ -42,7 +42,7 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style>
-
+        #modalwis{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
         #modalcarshop{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
         #loginm { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
 
@@ -53,7 +53,7 @@
            
             #loginm { width: 100% !important ; height: 60% !important ; } 
             #modalcarshop { width: 100% !important ; height: 80% !important ; } 
-             
+              #modalwis { width: 100% !important ; height: 80% !important ; }
         }
       </style>
   </head>

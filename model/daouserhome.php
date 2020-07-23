@@ -43,6 +43,19 @@ include_once "../cn/connection.php";
         return $arreglo;
     }
 
+    public function getwish($id)
+    {
+        $c = conectar();
+        $sql="SELECT pro.name_pro, adg.img, apo.sal_price,adg.discount, c.name_color,m.name_mat,s.name_size,s.number_size FROM wish_list_details scd inner join assignment_prices_object apo on scd.id_prices=apo.id_prices inner join color c on scd.id_color=c.id_color inner join material m on scd.id_mat=m.id_mat inner join sizes s on scd.id_size=s.id_size inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join product pro on pro.id_pro=apo.id_pro inner join wish_list wis on wis.id_w_l=scd.id_w_l where wis.id_cl=$id;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
 
 
 
@@ -277,6 +290,8 @@ include_once "../cn/connection.php";
     }
 
 
+
+
     public function setcarshop($client,$idprices,$color,$material,$size,$precio,$descuento)
     {
         $c=conectar();
@@ -309,6 +324,52 @@ include_once "../cn/connection.php";
                     $npro=$re["npro"];
                     if($npro<=0){
                         $sqls="insert into shopping_cart_details value (0,$id_shp_c,$idprices,$color,$material,$size,1,$precio,$descuento);";
+                        if (!$c->query($sqls)) {
+                            print "0".$sqls;
+                        }else{
+                            echo "1";
+                        }
+                    }
+                    else{
+                        echo "3";
+                    }
+                }
+             
+        mysqli_close($c);
+    }
+
+    public function setwishlist($client,$idprices,$color,$material,$size,$precio,$descuento)
+    {
+        $c=conectar();
+        
+        
+                $query= "SELECT * FROM wish_list where id_cl=$client and state=0;";
+                $c->set_charset('utf8');
+                $result = $c->query($query);
+                $re = $result->fetch_array();
+                $id_w_l=$re["id_w_l"];
+                if($id_w_l==0){
+                    $sqls="insert into wish_list value (0,$client,0);";
+                    if (!$c->query($sqls)) {
+                        print "0".$sqls;
+                    }else{
+                        $sqls="insert into wish_list_details value (0,$id_w_l,$idprices,$color,$material,$size);";
+                        if (!$c->query($sqls)) {
+                            print "0".$sqls;
+                        }else{
+                            echo "1";
+                        }
+                    }
+                }
+                else{
+                    $query= "SELECT count(*) npro FROM wish_list_details where id_w_l=$id_w_l and id_prices=$idprices and id_color=$color and id_mat=$material and id_size=$size;";
+
+                    $c->set_charset('utf8');
+                    $result = $c->query($query);
+                    $re = $result->fetch_array();
+                    $npro=$re["npro"];
+                    if($npro<=0){
+                        $sqls="insert into wish_list_details value (0,$id_w_l,$idprices,$color,$material,$size);";
                         if (!$c->query($sqls)) {
                             print "0".$sqls;
                         }else{

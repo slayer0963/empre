@@ -114,7 +114,8 @@
 
           <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
                 
-            
+            <li class="divider"></li>
+            <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>
@@ -133,6 +134,8 @@
             <?php echo $_SESSION['name']; ?>
           </div>
         </li>
+        <li class="divider"></li>
+            <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
         <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>

@@ -59,7 +59,7 @@
           <img id="imginitial" src="" height="250px;" width="250px">
           <ul class="collection with-header">
           <li class="collection-item center-align">Precio <br><span id="priceprosindes" class="price-old"></span>&nbsp;&nbsp;<span class="price-new" id="pricepro"></span><br>
-            <a class="btn-floating btn-sm waves-effect waves-light green" id="addcar"><i class="material-icons">add_shopping_cart</i></a>&nbsp;<a class="btn-floating btn-sm waves-effect waves-light red"><i class="material-icons">shopping_basket</i></a>
+            <a class="btn-floating btn-sm waves-effect waves-light green" id="addcar"><i class="material-icons">add_shopping_cart</i></a>&nbsp;<a class="btn-floating btn-sm waves-effect waves-light red" id="addwish"><i class="material-icons">shopping_basket</i></a>
           </li>
 
            </ul>

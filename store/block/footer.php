@@ -43,41 +43,28 @@
     <div class="modal-content">
       <ul class="collection" id="cartcli">
 
- <!-- <li class="collection-item avatar align-left" >
-     <div class="row">
-        <div class="col s12 m6 l4"> <i class="material-icons circle green">insert_chart</i></div>
-        <div class="col s12 m6 l4">
-          <span class="title">Title</span>
-          <p>First Line <br>
-             Second Line
-          </p>
-        </div>
-        <div class="col s12 m12 l4"><a href="#!" class="secondary-content"><i class="material-icons">delete</i></a></div>
-      </div>
-    </li>
-        "<li class="collection-item avatar">
-      <i class="material-icons circle green">insert_chart</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-    </li>
-    <li class="collection-item avatar">
-      <i class="material-icons circle red">play_arrow</i>
-      <span class="title">Title</span>
-      <p>First Line <br>
-         Second Line
-      </p>
-      <a href="#!" class="secondary-content"><i class="material-icons">delete</i></a>
-    </li> -->
-  </ul>
-  <ul class="collection right-align">
-    <li  class="collection-item"><h6 id="totalshop" class="price-new">0</h6></li>
-  </ul>
+      </ul>
+        <ul class="collection right-align">
+          <li  class="collection-item"><h6 id="totalshop" class="price-new">0</h6></li>
+        </ul>
     </div>
     <div class="modal-footer">
       <a href="#!" class="green waves-effect waves-green btn-flat">ver carrito</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
+    </div>
+  </div>
+
+   <div id="modalwis" class="modal bottom-sheet" >
+    <div class="modal-content">
+      <ul class="collection" id="wishcli">
+
+      </ul>
+        <ul class="collection right-align">
+          <li  class="collection-item"><h6 id="totalwish" class="price-new">0</h6></li>
+        </ul>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="green waves-effect waves-green btn-flat">Enviar todo a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
