@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-07-2020 a las 23:46:49
+-- Tiempo de generación: 23-07-2020 a las 05:06:06
 -- Versión del servidor: 10.4.10-MariaDB
 -- Versión de PHP: 7.3.12
 
@@ -330,7 +330,9 @@ INSERT INTO `product_rating` (`id_prra`, `id_cl`, `id_pro`, `rating`) VALUES
 (4, 2, 4, 4.8),
 (5, 2, 4, 0.4),
 (6, 2, 4, 0.5),
-(7, 2, 4, 1.9);
+(7, 2, 4, 1.9),
+(8, 1, 3, 4.1),
+(9, 1, 3, 2.4);
 
 -- --------------------------------------------------------
 
@@ -358,7 +360,9 @@ INSERT INTO `product_reviews` (`id_prev`, `id_cl`, `id_pro`, `coment`, `likes`, 
 (4, 2, 4, 'QUE WUEN PRODUCTO', 0, 1),
 (5, 2, 4, 'VALE VERGA QUE ASCO', 0, 1),
 (6, 2, 4, 'asdasdsadsadsadasd', 0, 1),
-(7, 2, 4, 'dsadsadasdasdasd', 0, 1);
+(7, 2, 4, 'dsadsadasdasdasd', 0, 1),
+(8, 1, 3, 'asdasdsad', 0, 1),
+(9, 1, 3, 'Fuck you man', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -389,8 +393,17 @@ INSERT INTO `product_type` (`id_tpro`, `name_tpro`, `state_tpro`) VALUES
 CREATE TABLE `shopping_cart` (
   `id_shp_c` int(11) NOT NULL,
   `id_cl` int(11) DEFAULT NULL,
-  `total_amount` float DEFAULT NULL
+  `total_amount` float DEFAULT NULL,
+  `state` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `shopping_cart`
+--
+
+INSERT INTO `shopping_cart` (`id_shp_c`, `id_cl`, `total_amount`, `state`) VALUES
+(1, 1, 0, 0),
+(2, 2, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -402,8 +415,26 @@ CREATE TABLE `shopping_cart_details` (
   `id_shp_c_d` int(11) NOT NULL,
   `id_shp_c` int(11) DEFAULT NULL,
   `id_prices` int(11) DEFAULT NULL,
-  `quantity` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_color` int(11) DEFAULT NULL,
+  `id_mat` int(11) DEFAULT NULL,
+  `id_size` int(11) DEFAULT NULL,
+  `quantity` int(11) DEFAULT NULL,
+  `precio` float DEFAULT NULL,
+  `descuento` float DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `shopping_cart_details`
+--
+
+INSERT INTO `shopping_cart_details` (`id_shp_c_d`, `id_shp_c`, `id_prices`, `id_color`, `id_mat`, `id_size`, `quantity`, `precio`, `descuento`) VALUES
+(1, 1, 2, 1, 1, 1, 1, 27, 0.1),
+(5, 1, 2, 1, 2, 1, 1, 29.45, 0.05),
+(6, 1, 3, 2, 1, 1, 1, 11.25, 0.25),
+(7, 1, 3, 3, 4, 4, 1, 12, 0.2),
+(8, 1, 4, 1, 1, 2, 1, 32.361, 0.3),
+(9, 1, 9, 2, 2, 2, 1, 28.5, 0.5),
+(10, 2, 4, 1, 1, 2, 1, 32.361, 0.3);
 
 -- --------------------------------------------------------
 
@@ -486,8 +517,16 @@ INSERT INTO `user_type` (`id_ustp`, `name_ustp`, `state_ustp`) VALUES
 
 CREATE TABLE `wish_list` (
   `id_w_l` int(11) NOT NULL,
-  `id_cl` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_cl` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `wish_list`
+--
+
+INSERT INTO `wish_list` (`id_w_l`, `id_cl`, `state`) VALUES
+(1, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -498,8 +537,22 @@ CREATE TABLE `wish_list` (
 CREATE TABLE `wish_list_details` (
   `id_w_l_d` int(11) NOT NULL,
   `id_w_l` int(11) DEFAULT NULL,
-  `id_prices` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_prices` int(11) DEFAULT NULL,
+  `id_color` int(11) DEFAULT NULL,
+  `id_mat` int(11) DEFAULT NULL,
+  `id_size` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `wish_list_details`
+--
+
+INSERT INTO `wish_list_details` (`id_w_l_d`, `id_w_l`, `id_prices`, `id_color`, `id_mat`, `id_size`) VALUES
+(1, 1, 3, 2, 1, 1),
+(2, 1, 3, 3, 4, 4),
+(3, 1, 3, 3, 2, 2),
+(4, 1, 2, 1, 1, 1),
+(5, 1, 2, 2, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -617,7 +670,10 @@ ALTER TABLE `shopping_cart`
 ALTER TABLE `shopping_cart_details`
   ADD PRIMARY KEY (`id_shp_c_d`),
   ADD KEY `id_shp_c` (`id_shp_c`),
-  ADD KEY `id_prices` (`id_prices`);
+  ADD KEY `id_prices` (`id_prices`),
+  ADD KEY `id_color` (`id_color`),
+  ADD KEY `id_mat` (`id_mat`),
+  ADD KEY `id_size` (`id_size`);
 
 --
 -- Indices de la tabla `sizes`
@@ -651,7 +707,10 @@ ALTER TABLE `wish_list`
 ALTER TABLE `wish_list_details`
   ADD PRIMARY KEY (`id_w_l_d`),
   ADD KEY `id_w_l` (`id_w_l`),
-  ADD KEY `id_prices` (`id_prices`);
+  ADD KEY `id_prices` (`id_prices`),
+  ADD KEY `id_color` (`id_color`),
+  ADD KEY `id_mat` (`id_mat`),
+  ADD KEY `id_size` (`id_size`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -721,13 +780,13 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT de la tabla `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id_prra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_prra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `product_reviews`
 --
 ALTER TABLE `product_reviews`
-  MODIFY `id_prev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_prev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `product_type`
@@ -739,13 +798,13 @@ ALTER TABLE `product_type`
 -- AUTO_INCREMENT de la tabla `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `shopping_cart_details`
 --
 ALTER TABLE `shopping_cart_details`
-  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
@@ -769,13 +828,13 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT de la tabla `wish_list`
 --
 ALTER TABLE `wish_list`
-  MODIFY `id_w_l` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_w_l` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `wish_list_details`
 --
 ALTER TABLE `wish_list_details`
-  MODIFY `id_w_l_d` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_w_l_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -853,7 +912,10 @@ ALTER TABLE `shopping_cart`
 --
 ALTER TABLE `shopping_cart_details`
   ADD CONSTRAINT `shopping_cart_details_ibfk_1` FOREIGN KEY (`id_shp_c`) REFERENCES `shopping_cart` (`id_shp_c`),
-  ADD CONSTRAINT `shopping_cart_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`);
+  ADD CONSTRAINT `shopping_cart_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`),
+  ADD CONSTRAINT `shopping_cart_details_ibfk_3` FOREIGN KEY (`id_color`) REFERENCES `color` (`id_color`),
+  ADD CONSTRAINT `shopping_cart_details_ibfk_4` FOREIGN KEY (`id_mat`) REFERENCES `material` (`id_mat`),
+  ADD CONSTRAINT `shopping_cart_details_ibfk_5` FOREIGN KEY (`id_size`) REFERENCES `sizes` (`id_size`);
 
 --
 -- Filtros para la tabla `users`
@@ -872,7 +934,10 @@ ALTER TABLE `wish_list`
 --
 ALTER TABLE `wish_list_details`
   ADD CONSTRAINT `wish_list_details_ibfk_1` FOREIGN KEY (`id_w_l`) REFERENCES `wish_list` (`id_w_l`),
-  ADD CONSTRAINT `wish_list_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`);
+  ADD CONSTRAINT `wish_list_details_ibfk_2` FOREIGN KEY (`id_prices`) REFERENCES `assignment_prices_object` (`id_prices`),
+  ADD CONSTRAINT `wish_list_details_ibfk_3` FOREIGN KEY (`id_color`) REFERENCES `color` (`id_color`),
+  ADD CONSTRAINT `wish_list_details_ibfk_4` FOREIGN KEY (`id_mat`) REFERENCES `material` (`id_mat`),
+  ADD CONSTRAINT `wish_list_details_ibfk_5` FOREIGN KEY (`id_size`) REFERENCES `sizes` (`id_size`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
