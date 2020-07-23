@@ -93,7 +93,7 @@ function consultcar(id){
                           html+='</div><br>';
 					         html+='<span class="price-new">$'+respu[i].precio+'</span>';
 					      html+='</p></div>';
-					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" class="btn red"><i class="material-icons">delete</i></a></div></div>';
+					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" class="btn red"><i class="material-icons">remove_shopping_cart</i></a></div></div>';
 					    html+='</li> ';
 					    total+=parseFloat(respu[i].precio);
                 }
