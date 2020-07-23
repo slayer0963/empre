@@ -219,6 +219,13 @@
 	}
 
 
+	$page = isset($_GET['btnsetDataproduct'])?$_GET['btnsetDataproduct']:'';
+	if($page=='setDataproduct'){
+	    $dat=new DAOUserhome();
+	    $dat->setDataproduct(insertproduct());
+	}
+
+
 
 
 	// add product car
