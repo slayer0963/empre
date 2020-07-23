@@ -200,6 +200,7 @@ function addcarfromwish(idcliente,pfidprices,pfcolor,pfmaterial,pfsize,pfprices,
 	            data: 'idcliet='+idcliente+'&pfidprices='+pfidprices+'&pfcolor='+pfcolor+'&pfmaterial='+pfmaterial+'&pfsize='+pfsize+'&pfprices='+pfprices+'&discount='+discount,
 	            success: function(resp) {
 	            	if(resp==1){
+	            		// alert(resp);
 	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
  						$.ajax({
