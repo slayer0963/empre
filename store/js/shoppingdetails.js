@@ -85,7 +85,7 @@ function mas(i, id_shp_c_d,tm,price,n){
         }
     }
 
-      function eliminar(id_shp_c_d){
+      function deletefromcar(id_shp_c_d){
               
                      $.ajax({
                           type: "POST",
@@ -94,7 +94,7 @@ function mas(i, id_shp_c_d,tm,price,n){
                         //alert(resp2);
                         if(resp2==1){
                           M.toast({html: "¡El producto se eliminó correctamente del carrito!", classes: 'rounded  green'});
-                          
+                          consultcar(localStorage.getItem('client'));
                         }else if (resp2==0){
                           M.toast({html: "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", classes: 'rounded deep-orange'});
 
