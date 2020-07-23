@@ -1,21 +1,13 @@
 
  <?php include 'block/header.php'; ?>
  <style>
-   .price-new{
-    color: green;
-    font-size: 20px;
-   }
+
 
    .stockec{
     color: green;
     font-size: 15px;
    }
-   .price-old{
-    color: red;
-    text-decoration: line-through;
-    opacity: 0.5;
-    font-size: 20px;
-   }
+
    #prodetails { padding: 0; margin-top: -40px; width: 80% !important ; height: 95% !important ;  max-height: 100%;}
  @media only screen and (max-width : 992px) {
    #prodetails { margin-top: 5px; width: 100% !important ; height: 95% !important ; } 
@@ -36,7 +28,7 @@
   </ul>
     
     <div class="right-align">
-      <a href="#!" class="green waves-effect waves-green btn-flat" style="color: white">Comprar</a>
+      <a href="#!" class="green waves-effect waves-green btn-flat" id="endedpur" style="color: white">Comprar</a>
     </div>
     </div>
     <br>

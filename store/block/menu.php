@@ -48,7 +48,7 @@
         
 
     <ul class="sidenav center-align" id="mobile-demo" style="">
-         <li id="namebusi">
+        <li id="namebusi">
           
         </li>
         <li class="divider"></li>
@@ -68,7 +68,7 @@
     
     <div class="nav-wrapper">
       
-      <a href="#!" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;" id="namebusi"></a>
+      <a href="./" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;" id="namebusi"></a>
       <a href="#!" class="brand-logo hide-on-large-only" style="width: 50%; margin-top: .5px; ">
         
         <form>
@@ -113,7 +113,7 @@
     </div>
 
           <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
-                
+            
             <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
@@ -133,6 +133,10 @@
             <img src="../view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
             <?php echo $_SESSION['name']; ?>
           </div>
+        </li>
+         <li class="divider"></li>
+        <li class="brand-logo">
+          <a href="./" class="namebusi"></a>
         </li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>

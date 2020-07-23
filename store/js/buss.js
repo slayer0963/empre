@@ -6,6 +6,7 @@ $(document).ready(function($) {
              $("#namebusi").html("<strong>"+obj.name+"</strong>");
              $("#title").html(obj.name);
              $("#titlebusi").html(obj.name);
+            $(".namebusi").html(obj.name);
              $("#description").html(obj.des);
             mybusii(obj.id);
       //alert(obj.id);

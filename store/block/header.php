@@ -35,6 +35,16 @@
         top: -50px;
 
       }
+      .price-new{
+    color: green;
+    font-size: 20px;
+   }
+   .price-old{
+    color: red;
+    text-decoration: line-through;
+    opacity: 0.5;
+    font-size: 20px;
+   }
     </style>
 
       <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
