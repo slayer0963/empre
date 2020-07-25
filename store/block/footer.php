@@ -6,7 +6,7 @@
 
 
 
-<div id="loginm" class="modal">
+<div id="loginm" class="modal animated bounceInDown">
     <div class="modal-content">
       <h4>Iniciar sesion</h4>
       <form  method="post" name="login" id="login">
@@ -39,7 +39,7 @@
   </div>
 
 
- <div id="modalcarshop" class="modal bottom-sheet" >
+ <div id="modalcarshop" class="modal bottom-sheet " >
     <div class="modal-content">
       <ul class="collection" id="cartcli">
 

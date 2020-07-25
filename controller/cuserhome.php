@@ -20,6 +20,33 @@
 	    echo json_encode($dat->getProductClient(getidbuss()));
 	}
 
+
+	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDatacbr'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductClientbyrange($_POST["id"],$_POST["range"]));
+	}
+
+	$page = isset($_GET['btngettype'])?$_GET['btngettype']:'';
+	if($page=='getDatatype'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getDatatype($_POST["id"]));
+	}
+
+	$page = isset($_GET['btngetcategories'])?$_GET['btngetcategories']:'';
+	if($page=='getDatacategories'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getDatacategories($_POST["id"]));
+	}
+
+	$page = isset($_GET['btngetcategoriesbtype'])?$_GET['btngetcategoriesbtype']:'';
+	if($page=='getDatacategoriesbytype'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getDatacategoriesbytype($_POST["id"],$_POST['type']));
+	}
+
+	
+
 	function getidpro(){
 	    $obj=new Userhome();
 	    $obj->setIdPro($_POST["id"]);;

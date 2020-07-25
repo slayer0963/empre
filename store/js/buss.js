@@ -9,7 +9,14 @@ $(document).ready(function($) {
             $(".namebusi").html(obj.name);
              $("#description").html(obj.des);
             mybusii(obj.id);
-      //alert(obj.id);
+            gettypes(obj.id);
+            getcategories(obj.id);
+      alert(obj.id);
+
+      $("#range").change(function(event) {
+        mybusiibyrange(obj.id,$("#range").val());
+        
+      });
 
       $("#comentproduc").click(function () {
          if(localStorage.getItem('nameper')==""){
@@ -55,9 +62,6 @@ function addcomentario(idcliente,comentario,valoracion) {
 }
 
 
-
-
-
 function mybusii(id) {
 		var dataString = 'id='+id;
 		
@@ -70,11 +74,7 @@ function mybusii(id) {
             	var html='';
             	 
             	for (var i = 0; i < respu.length; i++) {
-            		
-
-
-
-                                  html+='<div class="col s12 m6 l3">';
+                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
                                         html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
@@ -110,6 +110,145 @@ function mybusii(id) {
             	
             }
             });
+}
+
+function mybusiibyrange(id,range) {
+    var dataString = 'id='+id+'&range='+range;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetpro=getDatacbr", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content">';
+                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
+                                                html+='<div class="price">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price">';
+                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<h1>No tenemos productos con estos precios</h1>';
+                 html+='</div>';
+              }
+              //alert(html);
+              $("#productstore").html(html);
+                  // alert(html);
+              //$("#idbusinp").val(id);
+              
+              
+            }
+            });
+}
+
+
+function gettypes(id) {
+   var dataString = 'id='+id;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngettype=getDatatype", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" onclick="getcategories('+id+');" type="radio" checked  />';
+                    html+='<span>Todos</span>';
+                  html+='</label>';
+                html+='</p>';
+              for (var i = 0; i < respu.length; i++) {
+
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" onclick="getcategoriesbytype('+id+','+respu[i].id_tpro+');" type="radio"  />';
+                    html+='<span>'+respu[i].name_tpro+'</span>';
+                  html+='</label>';
+                html+='</p>';
+
+              }
+              
+               $("#types").html(html);
+            }
+          });
+}
+
+function getcategories(id) {
+   var dataString = 'id='+id;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetcategories=getDatacategories", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+                
+              for (var i = 0; i < respu.length; i++) {
+
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" type="radio"  />';
+                    html+='<span>'+respu[i].name_cat+'</span>';
+                  html+='</label>';
+                html+='</p>';
+
+              }
+              
+               $("#categories").html(html);
+            }
+          });
+}
+
+function getcategoriesbytype(id,idtype) {
+   var dataString = 'id='+id+'&type='+idtype;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetcategoriesbtype=getDatacategoriesbytype", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+                
+              for (var i = 0; i < respu.length; i++) {
+
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" type="radio"  />';
+                    html+='<span>'+respu[i].name_cat+'</span>';
+                  html+='</label>';
+                html+='</p>';
+
+              }
+              
+               $("#categories").html(html);
+            }
+          });
 }
 
 

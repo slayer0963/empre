@@ -11,29 +11,27 @@
   <title id="title"></title>
     <div class="row">
       <div class="col l3 m10 s10 offset-s1 offset-m1">
-         <ul class="collapsible expandable">
-          <li class="active">
-            <div class="collapsible-header"><i class="material-icons">filter_drama</i>Rango de precios</div>
-            <div class="collapsible-body">
-                <form action="#">
-                  <p class="range-field">
-                    <input type="range" id="test5" value="1" min="1" max="100" />
-                  </p>
-                </form>
+         <ul class="collection">
+          <li class="collection-item">Rango de precios <br>
+            <form action="#">
+              <p class="range-field">
+                <input type="range" id="range" min="0" max="100" value="1" />
+              </p>
+            </form>
+          </li>
+          <li class="collection-item">Tipos <br>
+            <div id="types">
+              
             </div>
           </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">place</i>Categorias</div>
-            <div class="collapsible-body">
-              <div class="categories">
-                
-              </div>
+
+          <li class="collection-item">Categorias <br>
+            <div id="categories">
+              
             </div>
           </li>
-          <li>
-            <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-            <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-          </li>
+          <li class="collection-item">Alvin</li>
+          <li class="collection-item">Alvin</li>
         </ul>
       </div>
       <div class="col l9 m10 s10 offset-s1 offset-m1">
@@ -43,7 +41,7 @@
       </div>
     </div>
 
- <div id="prodetails" class="modal">
+ <div id="prodetails" class="modal animated bounceInDown">
     <div class="modal-content row">
         <div class="col s12 m12 l12 center-align" ><h5 id="producttittle"></h5></div>
          <div class="col s12 m6 l4 center-align">

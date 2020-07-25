@@ -30,6 +30,46 @@ include_once "../cn/connection.php";
     }
 
 
+    public function getDatatype($id)
+    {
+        $c = conectar();
+        $sql="select pt.id_tpro, pt.name_tpro from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join product_type pt on pt.id_tpro=pro.id_tpro where asp.id_bus=$id group by pt.id_tpro;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    public function getDatacategories($id)
+    {
+        $c = conectar();
+        $sql="select ca.id_cat, name_cat from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join categories ca on pro.id_cat=ca.id_cat  where asp.id_bus=$id  group by ca.id_cat;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    public function getDatacategoriesbytype($id,$type)
+    {
+        $c = conectar();
+        $sql="select ca.id_cat, name_cat from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join categories ca on pro.id_cat=ca.id_cat  where asp.id_bus=$id and pro.id_tpro=$type  group by ca.id_cat;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+
     public function getcart($id)
     {
         $c = conectar();
@@ -215,6 +255,20 @@ include_once "../cn/connection.php";
         $c = conectar();
         $id=$obj->getIdBus();
         $sql="select asdg.id_color,asdg.id_material,asdg.id_size, pro.id_pro, pro.name_pro, asdg.img, asdg.quantity, aspo.pur_price, aspo.sal_price, asdg.discount, pro.descr_pro, asdg.extraprice from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro where aspro.id_bus=$id group by id_pro;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
+    public function getProductClientbyrange($id,$range)
+    {
+        $c = conectar();
+        
+        $sql="select asdg.id_color,asdg.id_material,asdg.id_size, pro.id_pro, pro.name_pro, asdg.img, asdg.quantity, aspo.pur_price, aspo.sal_price, asdg.discount, pro.descr_pro, asdg.extraprice from assignment_details_general asdg inner join assignment_prices_object aspo on asdg.id_prices=aspo.id_prices inner join assignment_probus aspro on aspro.id_pro=aspo.id_pro inner join product pro on pro.id_pro=aspro.id_pro where aspro.id_bus=$id and (aspo.sal_price-(aspo.sal_price*asdg.discount))<=$range group by id_pro;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
