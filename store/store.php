@@ -30,8 +30,7 @@
               
             </div>
           </li>
-          <li class="collection-item">Alvin</li>
-          <li class="collection-item">Alvin</li>
+          
         </ul>
       </div>
       <div class="col l9 m10 s10 offset-s1 offset-m1">

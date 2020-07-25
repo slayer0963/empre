@@ -11,7 +11,7 @@ $(document).ready(function($) {
             mybusii(obj.id);
             gettypes(obj.id);
             getcategories(obj.id);
-      alert(obj.id);
+      // alert(obj.id);
 
       $("#range").change(function(event) {
         mybusiibyrange(obj.id,$("#range").val());
