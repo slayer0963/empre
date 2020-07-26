@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-07-2020 a las 05:06:06
--- Versión del servidor: 10.4.10-MariaDB
--- Versión de PHP: 7.3.12
+-- Tiempo de generación: 26-07-2020 a las 03:06:30
+-- Versión del servidor: 10.1.33-MariaDB
+-- Versión de PHP: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -59,14 +59,14 @@ CREATE TABLE `assignment_details_general` (
 INSERT INTO `assignment_details_general` (`id_prices`, `id_color`, `id_material`, `id_size`, `img`, `quantity`, `extraprice`, `discount`, `state`) VALUES
 (1, 1, 2, 1, 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 12, 2, 0.25, 1),
 (1, 1, 2, 2, 'noche-cielo-estrellas-y-cometa_3840x2160_xtrafondos.com.jpg', 5, 1, 0.25, 1),
-(2, 1, 1, 1, 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 2, 0, 0.1, 1),
+(2, 1, 1, 1, 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 40, 0, 0, 1),
 (2, 1, 2, 1, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 3, 1, 0.05, 1),
-(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 4, 1, 0.05, 1),
-(3, 2, 1, 1, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 12, 5, 0.25, 1),
-(3, 3, 2, 2, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 23, 34, 0.25, 1),
-(4, 1, 1, 2, '4x4-desert-dust-golden-hour-1149066.jpg', 2, 23.23, 0.3, 1),
+(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 1, 1, 0.05, 1),
+(3, 2, 1, 1, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 160, 5, 0, 1),
+(3, 3, 2, 2, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 17, 34, 0.25, 1),
+(4, 1, 1, 2, '4x4-desert-dust-golden-hour-1149066.jpg', 97, 23.23, 0, 1),
 (9, 2, 2, 2, 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 23, 23, 0.5, 1),
-(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 50, 5, 0.2, 1);
+(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 25, 5, 0.2, 1);
 
 -- --------------------------------------------------------
 
@@ -394,16 +394,27 @@ CREATE TABLE `shopping_cart` (
   `id_shp_c` int(11) NOT NULL,
   `id_cl` int(11) DEFAULT NULL,
   `total_amount` float DEFAULT NULL,
-  `state` int(11) NOT NULL
+  `state` int(11) NOT NULL,
+  `datesold` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `shopping_cart`
 --
 
-INSERT INTO `shopping_cart` (`id_shp_c`, `id_cl`, `total_amount`, `state`) VALUES
-(1, 1, 0, 0),
-(2, 2, 0, 0);
+INSERT INTO `shopping_cart` (`id_shp_c`, `id_cl`, `total_amount`, `state`, `datesold`) VALUES
+(6, 1, 0, 1, '2020-07-25 15:40:27'),
+(7, 1, 0, 1, '2020-07-25 15:43:08'),
+(8, 1, 0, 1, '2020-07-25 15:47:39'),
+(9, 1, 0, 1, '2020-07-25 15:49:16'),
+(10, 1, 0, 1, '2020-07-25 15:52:48'),
+(11, 1, 0, 1, '2020-07-25 15:53:24'),
+(12, 1, 0, 1, '2020-07-25 15:54:35'),
+(13, 1, 0, 1, '2020-07-25 15:58:51'),
+(14, 1, 0, 1, '2020-07-25 16:00:33'),
+(15, 1, 0, 1, '2020-07-25 16:02:04'),
+(16, 1, 0, 1, '2020-07-25 16:05:50'),
+(17, 1, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -428,13 +439,20 @@ CREATE TABLE `shopping_cart_details` (
 --
 
 INSERT INTO `shopping_cart_details` (`id_shp_c_d`, `id_shp_c`, `id_prices`, `id_color`, `id_mat`, `id_size`, `quantity`, `precio`, `descuento`) VALUES
-(1, 1, 2, 1, 1, 1, 1, 27, 0.1),
-(5, 1, 2, 1, 2, 1, 1, 29.45, 0.05),
-(6, 1, 3, 2, 1, 1, 1, 11.25, 0.25),
-(7, 1, 3, 3, 4, 4, 1, 12, 0.2),
-(8, 1, 4, 1, 1, 2, 1, 32.361, 0.3),
-(9, 1, 9, 2, 2, 2, 1, 28.5, 0.5),
-(10, 2, 4, 1, 1, 2, 1, 32.361, 0.3);
+(19, 6, 3, 3, 2, 2, 2, 33, 0.25),
+(20, 6, 2, 1, 1, 1, 5, 30, 0),
+(21, 6, 2, 2, 1, 1, 1, 29.45, 0.05),
+(22, 7, 3, 3, 2, 2, 1, 33, 0.25),
+(23, 7, 3, 2, 1, 1, 1, 15, 0),
+(24, 8, 3, 2, 1, 1, 1, 15, 0),
+(25, 9, 3, 2, 1, 1, 1, 15, 0),
+(26, 10, 3, 2, 1, 1, 1, 15, 0),
+(27, 11, 3, 2, 1, 1, 1, 15, 0),
+(28, 12, 3, 2, 1, 1, 1, 15, 0),
+(29, 13, 3, 2, 1, 1, 1, 15, 0),
+(30, 14, 3, 2, 1, 1, 1, 15, 0),
+(31, 15, 3, 2, 1, 1, 1, 15, 0),
+(32, 16, 3, 2, 1, 1, 1, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -526,7 +544,8 @@ CREATE TABLE `wish_list` (
 --
 
 INSERT INTO `wish_list` (`id_w_l`, `id_cl`, `state`) VALUES
-(1, 1, 0);
+(1, 1, 0),
+(2, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -550,9 +569,7 @@ CREATE TABLE `wish_list_details` (
 INSERT INTO `wish_list_details` (`id_w_l_d`, `id_w_l`, `id_prices`, `id_color`, `id_mat`, `id_size`) VALUES
 (1, 1, 3, 2, 1, 1),
 (2, 1, 3, 3, 4, 4),
-(3, 1, 3, 3, 2, 2),
-(4, 1, 2, 1, 1, 1),
-(5, 1, 2, 2, 1, 1);
+(3, 1, 3, 3, 2, 2);
 
 --
 -- Índices para tablas volcadas
@@ -798,13 +815,13 @@ ALTER TABLE `product_type`
 -- AUTO_INCREMENT de la tabla `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `shopping_cart_details`
 --
 ALTER TABLE `shopping_cart_details`
-  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
@@ -816,19 +833,19 @@ ALTER TABLE `sizes`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `wish_list`
 --
 ALTER TABLE `wish_list`
-  MODIFY `id_w_l` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_w_l` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `wish_list_details`
