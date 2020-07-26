@@ -23,6 +23,7 @@ $(document).ready(function() {
  						
 	            	}
 	            	else{
+                  
 	            		$('#loginm').modal('open');
 	            	}
 

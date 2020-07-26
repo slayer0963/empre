@@ -2,14 +2,10 @@
 
 $(document).ready(function($) {
 
-  if(localStorage.getItem('type')!=0){
-    $(".loginoff").addClass('hidden');
-    $(".loginon").removeClass('hidden');
-  }
-  else{
-    $(".loginon").addClass('hidden');
-    $(".loginoff").removeClass('hidden');
-  }
+  localStorage.setItem('client',"");
+  localStorage.setItem('nameper',"");
+
+
 
 
 
@@ -40,8 +36,7 @@ $(document).ready(function($) {
                   }
                  else{
                  	
-                  alertify.set('notifier','position', 'bottom-center');
-                  alertify.error('Verifique su usuario o contraseña');
+                  M.toast({html: 'Verifique su usuario o contraseña!', classes: 'rounded red'});
                  }
 
                 }

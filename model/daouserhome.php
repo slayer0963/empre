@@ -460,9 +460,14 @@ include_once "../cn/connection.php";
                     if (!$c->query($sqls)) {
                         print "0".$sqls;
                     }else{
+                        $query= "SELECT * FROM shopping_cart where id_cl=$client and state=0;";
+                        $c->set_charset('utf8');
+                        $result = $c->query($query);
+                        $re = $result->fetch_array();
+                        $id_shp_c=$re["id_shp_c"];
                         $sqls="insert into shopping_cart_details value (0,$id_shp_c,$idprices,$color,$material,$size,1,$precio,$descuento);";
                         if (!$c->query($sqls)) {
-                            print "0".$sqls;
+                            print "ccc".$sqls;
                         }else{
                             echo "1";
                         }
