@@ -87,7 +87,7 @@
             <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
-            <li><a href="#!" class="">Perfil</a></li>
+            <li><a  class="modal-trigger" onclick="fillboxprofile(<?php echo $_SESSION['idus']; ?>);" href="#profiled">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="#!" onclick="salir();" class="">Salir</a></li>
           </ul>
@@ -111,7 +111,7 @@
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
         <li class="divider"></li>
-            <li><a href="#!" class="">Perfil</a></li>
+            <li><a  class="modal-trigger" onclick="fillboxprofile(<?php echo $_SESSION['idus']; ?>);" href="#profiled">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="#!" onclick="salir();" class="">Salir</a></li>
       </ul>

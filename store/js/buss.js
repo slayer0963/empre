@@ -43,6 +43,94 @@ $(document).ready(function($) {
            
          }
       });
+
+
+      $("#imge").change(function(event) {
+     document.getElementById("imgcontainere").removeAttribute('src');
+
+        $("#vista-previae").html('');
+                var archivos=document.getElementById('filee').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+    });
+
+    $('#formclie').submit(function() {
+   if(Validate(0)==idinpute.length){
+    var formData = new FormData(document.getElementById("formclie"));
+            $.ajax({
+            type: "POST",
+            url: "../controller/cclienta.php?updateData=update", 
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(resp) {
+
+                   if(resp==1){
+                    M.toast({html: "¡Se ha modificado al usuario exitosamente!", classes: 'rounded  green'});
+                    $('.modal').modal('close');
+          
+                    cleanbox();
+                   }else if(resp=="x"){
+                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                   } 
+               }
+                
+        });
+    
+  }
+  return false;
+});
+
+
+var idinpute = ['imge','fullnamee','emaile','usere','passe'];
+var idinputerrore= ['txtimge','txtfullnamee','txtemaile','txtusere','txtpasse'];
+
+
+
+
+var Validate = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==0){
+   idinpute.forEach(names => {
+       if($("#"+names).val()!=0){
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('red-text');
+         $("#"+idinputerrore[counte]).addClass('green-text');
+       }
+       else{
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('green-text');
+         $("#"+idinputerrore[counte]).addClass('red-text');
+       }
+        counte++;
+    });
+
+  }
+
+    return validate;
+}
+
+var cleanbox=()=>{
+idinputerrore.forEach(names => {
+  $("#"+names).removeClass('green-text');      
+});
+}
 });
 
 function addcomentario(idcliente,comentario,valoracion) {
@@ -541,4 +629,26 @@ function getDataProductD(id,color,material,size,namecolor) {
                   }
             }
         });
+}
+
+function fillboxprofile(id) {
+  var dataString = 'id='+id;
+      $.ajax({
+            type: "POST",
+            url: "../controller/cclienta.php?btngetDatacli=getdataprofile", 
+            data: dataString,
+            success: function(resp) {
+              
+              var respu = eval(resp);
+                  for (var i = 0; i < respu.length; i++) {
+                    $("#id").val(respu[0].id_cl);
+                    $("#fullnamee").val(respu[0].fullname_cl);
+                    $("#imgcontainere").attr("src",'../view/imguser/'+respu[0].imagen);
+                    $("#imge").val(respu[0].imagen);
+                    $("#emaile").val(respu[0].email_cl);
+                    $("#usere").val(respu[0].user_cl);
+                    $("#passe").val(respu[0].pass_cl);
+                  }
+            }
+          });
 }

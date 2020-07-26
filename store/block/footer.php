@@ -4,6 +4,71 @@
 
 
 
+  <div id="profiled" class="modal">
+    <div class="modal-content row">
+      <div class="col s12 m12 l12 center-align">
+        <div id="vista-previae">
+                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" class="circle responsive-img" style="height: 150px; width: 150px;" id="imgcontainere"  >
+              </div>
+      </div>
+      <div class="col s12 m12 l12">
+                <form class="col s12 center-align" id="formclie" name="formclie" method="post">
+        <div class="row">
+          <div class=" col s12">
+
+            <input type="hidden" name="id"  id="id">
+
+            <div class="input-fiel col s12">
+             <div class="col s12 align-center">
+              
+            </div>
+            <br>
+            <div class="file-field input-field col s12">
+              <div class="btn">
+                <span>Imagen</span>
+                <input type="file" id="filee" name="filee">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="text">
+              </div>
+            </div>
+            <span class="" id="txtimge"></span>
+            </div>
+
+            <div class="input-field col s12 m12 l6  ">
+              <input type="text" name="fullnamee"  title="Nombre completo" id="fullnamee" style="text-align: center;">
+              <span class="" id="txtfullnamee">Nombre completo</span>
+            </div>
+
+            <div class="input-field col s12 m12 l6 col s12 m12 l6 ">
+              <input type="email" name="emaile" title="Correo electr&oacute;nico" id="emaile" style="text-align: center;">
+              <span class="" id="txtemaile">Correo electr&oacute;nico</span>
+            </div>
+   
+            <div class="input-field col s12 m12 l6  ">
+              <input type="text" name="usere"  title="Usuario" id="usere" style="text-align: center;">
+              <span class="" id="txtusere">Usuario</span>
+            </div>
+
+            <div class="input-field col s11 m11 l5 ">
+              <input type="password" name="passe"  title="Contraseña" id="passe" style="text-align: center;">
+              <span class="" id="txtpasse">Contraseña</span>
+            </div>
+            <div class="input-field col s1 m1 l1 " >
+              <button type="button" class="btn btn-xs" style="margin-top: 1rem;"><i class="material-icons">remove_red_eye</i></button>
+            </div>
+          </div>
+        </div>
+          <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
+        </form>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
+
+
 
 
 <div id="loginm" class="modal animated bounceInDown">

@@ -129,17 +129,16 @@
 		echo json_encode($dat->loginService(DataUserLC()));
 	}
 
-	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
-	if($page=='FB'){
-	    $dat=new DAOUser();
-		echo $dat->loginService(DataUser("Facebook"));
+
+	$page = isset($_GET['btngetDatacli'])?$_GET['btngetDatacli']:'';
+	if($page=='getdataprofile'){
+	    $dat=new DAOClienta();
+		echo json_encode($dat->getdataprofile($_POST['id']));
 	}
 
-	$page = isset($_GET['btnlogin'])?$_GET['btnlogin']:'';
-	if($page=='GG'){
-	    $dat=new DAOUser();
-		echo $dat->loginService(DataUser("Google"));
-	}
+
+
+
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getData'){

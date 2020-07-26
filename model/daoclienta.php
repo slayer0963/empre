@@ -14,14 +14,17 @@ include_once "../cn/connection.php";
  	}
 
 
- 	public function loginService($obj)
+ 	public function getdataprofile($id)
  	{
- 		
- 		
-		
-		
-					
-		
+ 		$c = conectar();
+		$sql="select * from clients where id_cl=$id;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;		
 	}
 
 
