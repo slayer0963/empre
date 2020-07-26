@@ -1,15 +1,10 @@
 
 
 $(document).ready(function($) {
+  localStorage.setItem('client',"");
+  localStorage.setItem('nameper',"");
 
-  if(localStorage.getItem('type')!=0){
-    $(".loginoff").addClass('hidden');
-    $(".loginon").removeClass('hidden');
-  }
-  else{
-    $(".loginon").addClass('hidden');
-    $(".loginoff").removeClass('hidden');
-  }
+
 
 
 
