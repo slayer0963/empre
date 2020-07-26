@@ -2,8 +2,7 @@
 
 $(document).ready(function($) {
 
-  localStorage.setItem('client',"");
-  localStorage.setItem('nameper',"");
+  
 
 
 
@@ -20,7 +19,7 @@ $(document).ready(function($) {
                 data: "email="+$("#email").val()+"&password="+$("#password").val(),
                 success: function(resp) 
                 {
-
+                  
                   var datos = eval(resp);
                   
                  if(datos[0].tipo == 1){
@@ -51,8 +50,10 @@ function salir() {
                 url: "../cn/sessiondestroy.php", 
                 success: function(resp) 
                 {
-                  localStorage.setItem('client',"");
-                  localStorage.setItem('nameper',"");
+
+                  localStorage.removeItem('client');
+                  localStorage.removeItem('nameper');
+                  
                   location.reload();
 
                 }

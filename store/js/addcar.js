@@ -1,10 +1,12 @@
 $(document).ready(function() {
-
+  
 	consultcar(localStorage.getItem('client'));
 	consultwish(localStorage.getItem('client'));
+
+
 	$("#addcarr").click(function () {
         
-        if(localStorage.getItem('nameper')==""){
+        if(localStorage.getItem('nameper')==null){
             $('#loginm').modal('open');
          }else{
         
@@ -13,6 +15,7 @@ $(document).ready(function() {
 	            url: "../controller/cuserhome.php?btnsetshcar=setshcar", 
 	            data: $("#frmcarpro").serialize(),
 	            success: function(resp) {
+                
 	            	if(resp==1){
 	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
@@ -24,7 +27,7 @@ $(document).ready(function() {
 	            	}
 	            	else{
                   
-	            		$('#loginm').modal('open');
+	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -33,7 +36,7 @@ $(document).ready(function() {
      });
 	$("#addwish").click(function () {
         
-        if(localStorage.getItem('nameper')==""){
+        if(localStorage.getItem('nameper')==null){
             
             $('#loginm').modal('open');
          }else{
@@ -54,7 +57,7 @@ $(document).ready(function() {
  						
 	            	}
 	            	else{
-	            		$('#loginm').modal('open');
+	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
 	            	}
 
 	            }

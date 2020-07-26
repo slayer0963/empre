@@ -1,8 +1,7 @@
 
 
 $(document).ready(function($) {
-  localStorage.setItem('client',"");
-  localStorage.setItem('nameper',"");
+  
 
 
 
@@ -51,7 +50,8 @@ function salir() {
                 url: "cn/sessiondestroy.php", 
                 success: function(resp) 
                 {
-                  localStorage.setItem('nameper',"");
+                  localStorage.removeItem('client');
+                  localStorage.removeItem('nameper');
                   location.reload();
                 }
         });

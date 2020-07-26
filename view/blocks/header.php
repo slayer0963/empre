@@ -33,7 +33,7 @@
           .product { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 89%;}
           .asign { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
           th.dt-center, td.dt-center { text-align: center; } 
-          .aproduct { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 85%;}
+          .aproduct { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 90%;}
           .addpri { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 55%;}
           .aprices { padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 72%;}
 

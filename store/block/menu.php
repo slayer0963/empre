@@ -6,22 +6,7 @@
     <div class="nav-wrapper">
       
       <a href="#!" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;">Tienda Local</a>
-      <a href="#!" class="brand-logo hide-on-large-only" style="width: 50%; margin-top: .5px; ">
-        
-        <form>
-        <div class="">
-          <input id="search" type="search" placeholder="Buscar" required>
-        </div>
-      </form>
-      </a>
-      <a href="#!" class="brand-logo show-on-large-only hide-on-med-and-down" style=" margin-left: 15rem; width: 45%; margin-top: .5px;">
-        
-        <form>
-        <div class="">
-          <input id="search" type="search" placeholder="Buscar" required>
-        </div>
-      </form>
-      </a>
+
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
         
@@ -69,22 +54,7 @@
     <div class="nav-wrapper">
       
       <a href="./" class="brand-logo hide-on-med-and-down" style="margin-left: 1rem;" id="namebusi"></a>
-      <a href="#!" class="brand-logo hide-on-large-only" style="width: 50%; margin-top: .5px; ">
-        
-        <form>
-        <div class="">
-          <input id="search" type="search" placeholder="Buscar" required>
-        </div>
-      </form>
-      </a>
-      <a href="#!" class="brand-logo show-on-large-only hide-on-med-and-down" style=" margin-left: 15rem; width: 45%; margin-top: .5px;">
-        
-        <form>
-        <div class="">
-          <input id="search" type="search" placeholder="Buscar" required>
-        </div>
-      </form>
-      </a>
+
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
         <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>

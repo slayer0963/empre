@@ -9,7 +9,7 @@
  </style>
  <?php include 'block/menu.php'; ?>
   <title id="title"></title>
-    <div class="row">
+    <div class="row" id="contentpage">
       <div class="col l3 m10 s10 offset-s1 offset-m1">
          <ul class="collection">
           <li class="collection-item">Rango de precios <br>
@@ -25,7 +25,7 @@
             </div>
           </li>
 
-          <li class="collection-item">Categorias <br>
+          <li class="collection-item hide" id="cate">Categorias <br>
             <div id="categories">
               
             </div>
@@ -39,6 +39,7 @@
         </div>
       </div>
     </div>
+    <div class="row" id="none"></div>
 
  <div id="prodetails" class="modal animated bounceInDown">
     <div class="modal-content row">

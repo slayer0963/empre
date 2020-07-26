@@ -1,10 +1,10 @@
 $(document).ready(function() {
 
 	consultcar(localStorage.getItem('client'));
-	consultwish(localStorage.getItem('client'));
+  consultwish(localStorage.getItem('client'));
 	$("#addcar").click(function () {
         
-        if(localStorage.getItem('nameper')==""){
+        if(localStorage.getItem('nameper')==null){
             
             $('#loginm').modal('open');
          }else{
@@ -24,7 +24,7 @@ $(document).ready(function() {
  						
 	            	}
 	            	else{
-	            		alert("Problemas");
+	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -33,7 +33,7 @@ $(document).ready(function() {
      });
 	$("#addwish").click(function () {
         
-        if(localStorage.getItem('nameper')==""){
+        if(localStorage.getItem('nameper')==null){
             
             $('#loginm').modal('open');
          }else{
@@ -54,7 +54,7 @@ $(document).ready(function() {
  						
 	            	}
 	            	else{
-	            		alert("Problemas");
+	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
 	            	}
 
 	            }

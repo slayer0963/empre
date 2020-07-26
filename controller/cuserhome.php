@@ -27,6 +27,18 @@
 	    echo json_encode($dat->getProductClientbyrange($_POST["id"],$_POST["range"]));
 	}
 
+	$page = isset($_GET['btngetprotp'])?$_GET['btngetprotp']:'';
+	if($page=='getDatactp'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductClientbytype($_POST["id"],$_POST["type"]));
+	}
+
+	$page = isset($_GET['btngetprotpcat'])?$_GET['btngetprotpcat']:'';
+	if($page=='getDatactpandcat'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductClientbytypeandcat($_POST["id"],$_POST["type"],$_POST["cat"]));
+	}
+
 	$page = isset($_GET['btngettype'])?$_GET['btngettype']:'';
 	if($page=='getDatatype'){
 	    $dat=new DAOUserhome();

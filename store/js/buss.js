@@ -9,8 +9,8 @@ $(document).ready(function($) {
             $(".namebusi").html(obj.name);
              $("#description").html(obj.des);
             mybusii(obj.id);
-            gettypes(obj.id);
-            getcategories(obj.id);
+             gettypes(obj.id);
+              
       // alert(obj.id);
 
       $("#range").change(function(event) {
@@ -19,13 +19,14 @@ $(document).ready(function($) {
       });
 
       $("#comentproduc").click(function () {
-         if(localStorage.getItem('nameper')==""){
+         if(localStorage.getItem('nameper')==null){
             $('#loginm').modal('open');
          }
+         
       });
 
       $("#publish").click(function () {
-         if(localStorage.getItem('nameper')==""){
+         if(localStorage.getItem('nameper')==null){
            $('#loginm').modal('open');
          }else{
             if ($("#comentproduc").val()!="") {
@@ -63,6 +64,7 @@ function addcomentario(idcliente,comentario,valoracion) {
 
 
 function mybusii(id) {
+ 
 		var dataString = 'id='+id;
 		
 	     $.ajax({
@@ -100,12 +102,18 @@ function mybusii(id) {
                               
             	}
             	if(respu.length==0){
-            		alert("nada");
+                $("#contentpage").addClass('hide');
+            		html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="https://i.pinimg.com/originals/78/e8/26/78e826ca1b9351214dfdd5e47f7e2024.gif" style="height:300px; width:300px;"/>'
+                html+='<h3>Por el momento estamos tratando de comenzar dentro de poco traeremos algo interesante para ti</h3>';
+                 html+='</div>';
+                 $("#none").html(html);
             	}
-            	//alert(html);
-            	$("#productstore").html(html);
-                  // alert(html);
-            	//$("#idbusinp").val(id);
+            	else{
+                $("#productstore").html(html);
+              }
+            	
+
             	
             	
             }
@@ -118,6 +126,110 @@ function mybusiibyrange(id,range) {
        $.ajax({
             type: "POST",
             url: "../controller/cuserhome.php?btngetpro=getDatacbr", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content">';
+                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
+                                                html+='<div class="price">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price">';
+                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<h1>No tenemos productos con estos precios</h1>';
+                 html+='</div>';
+              }
+              //alert(html);
+              $("#productstore").html(html);
+                  // alert(html);
+              //$("#idbusinp").val(id);
+              
+              
+            }
+            });
+}
+
+function mybusiibytype(id,type) {
+    var dataString = 'id='+id+'&type='+type;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetprotp=getDatactp", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content">';
+                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
+                                                html+='<div class="price">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price">';
+                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<h1>No tenemos productos con estos precios</h1>';
+                 html+='</div>';
+              }
+              //alert(html);
+              $("#productstore").html(html);
+                  // alert(html);
+              //$("#idbusinp").val(id);
+              
+              
+            }
+            });
+}
+
+function mybusiibytypeandcat(id,type,cat) {
+    var dataString = 'id='+id+'&type='+type+'&cat='+cat;
+    
+       $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btngetprotpcat=getDatactpandcat", 
             data: dataString,
             success: function(resp) {
               var respu = eval(resp);
@@ -177,7 +289,7 @@ function gettypes(id) {
               var html='';
                 html+='<p class="animated zoomIn">';
                   html+='<label>';
-                    html+='<input class="with-gap" name="group1" onclick="getcategories('+id+');" type="radio" checked  />';
+                    html+='<input class="with-gap" name="group1" onclick="mybusii('+id+');getcategories('+id+');" type="radio" checked  />';
                     html+='<span>Todos</span>';
                   html+='</label>';
                 html+='</p>';
@@ -198,33 +310,13 @@ function gettypes(id) {
 }
 
 function getcategories(id) {
-   var dataString = 'id='+id;
     
-       $.ajax({
-            type: "POST",
-            url: "../controller/cuserhome.php?btngetcategories=getDatacategories", 
-            data: dataString,
-            success: function(resp) {
-              var respu = eval(resp);
-              var html='';
-                
-              for (var i = 0; i < respu.length; i++) {
-
-                html+='<p class="animated zoomIn">';
-                  html+='<label>';
-                    html+='<input class="with-gap" name="group1" type="radio"  />';
-                    html+='<span>'+respu[i].name_cat+'</span>';
-                  html+='</label>';
-                html+='</p>';
-
-              }
-              
-               $("#categories").html(html);
-            }
-          });
+  $("#cate").addClass('hide');
 }
 
 function getcategoriesbytype(id,idtype) {
+  mybusiibytype(id,idtype);
+  $("#cate").removeClass('hide');
    var dataString = 'id='+id+'&type='+idtype;
     
        $.ajax({
@@ -239,7 +331,7 @@ function getcategoriesbytype(id,idtype) {
 
                 html+='<p class="animated zoomIn">';
                   html+='<label>';
-                    html+='<input class="with-gap" name="group1" type="radio"  />';
+                    html+='<input class="with-gap" name="group2" type="radio" onclick="mybusiibytypeandcat('+id+','+idtype+','+respu[i].id_cat+')"  />';
                     html+='<span>'+respu[i].name_cat+'</span>';
                   html+='</label>';
                 html+='</p>';
