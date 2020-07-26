@@ -2,10 +2,9 @@ $(document).ready(function() {
 
 	consultcar(localStorage.getItem('client'));
 	consultwish(localStorage.getItem('client'));
-	$("#addcar").click(function () {
+	$("#addcarr").click(function () {
         
         if(localStorage.getItem('nameper')==""){
-            
             $('#loginm').modal('open');
          }else{
         

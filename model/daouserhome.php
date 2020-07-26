@@ -33,7 +33,11 @@ include_once "../cn/connection.php";
     public function getDatatype($id)
     {
         $c = conectar();
-        $sql="select pt.id_tpro, pt.name_tpro from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join product_type pt on pt.id_tpro=pro.id_tpro where asp.id_bus=$id group by pt.id_tpro;";
+       $sql="select DISTINCT pt.id_tpro, pt.name_tpro from product p 
+        inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat 
+        inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro 
+        inner join business busi on busi.id_bus=aspb.id_bus  where busi.id_bus=$id and exists(select * from assignment_details_general adg 
+        where adg.id_prices=apob.id_prices);";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -46,7 +50,11 @@ include_once "../cn/connection.php";
     public function getDatacategories($id)
     {
         $c = conectar();
-        $sql="select ca.id_cat, name_cat from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join categories ca on pro.id_cat=ca.id_cat  where asp.id_bus=$id  group by ca.id_cat;";
+        $sql="select DISTINCT cat.id_cat, cat.name_cat from product p 
+        inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat 
+        inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro 
+        inner join business busi on busi.id_bus=aspb.id_bus  where busi.id_bus=$id and exists(select * from assignment_details_general adg 
+        where adg.id_prices=apob.id_prices);";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -59,7 +67,12 @@ include_once "../cn/connection.php";
     public function getDatacategoriesbytype($id,$type)
     {
         $c = conectar();
-        $sql="select ca.id_cat, name_cat from assignment_probus asp inner join product pro on asp.id_pro=pro.id_pro inner join categories ca on pro.id_cat=ca.id_cat  where asp.id_bus=$id and pro.id_tpro=$type  group by ca.id_cat;";
+
+        $sql="select DISTINCT cat.id_cat, cat.name_cat from product p 
+        inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat 
+        inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro 
+        inner join business busi on busi.id_bus=aspb.id_bus  where busi.id_bus=$id and pt.id_tpro=$type and exists(select * from assignment_details_general adg 
+        where adg.id_prices=apob.id_prices);";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -142,7 +155,7 @@ include_once "../cn/connection.php";
     {
         
         $c=conectar();
-        $sql="update shopping_cart set state=1 where id_shp_c=$idc;";
+        $sql="update shopping_cart set state=1, datesold=now() where id_shp_c=$idc;";
         if (!$c->query($sql)) {
             print "0".$sql;
         }else{
@@ -443,7 +456,7 @@ include_once "../cn/connection.php";
                 $re = $result->fetch_array();
                 $id_shp_c=$re["id_shp_c"];
                 if($id_shp_c==0){
-                    $sqls="insert into shopping_cart value (0,$client,0,0);";
+                    $sqls="insert into shopping_cart value (0,$client,0,0,null);";
                     if (!$c->query($sqls)) {
                         print "0".$sqls;
                     }else{

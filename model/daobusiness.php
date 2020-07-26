@@ -43,7 +43,11 @@ include_once "../cn/connection.php";
 	public function getHomebycat($id)
  	{
 		$c = conectar();
-		$sql="SELECT bu.id_bus, bu.name_bus,bu.pic_logo_bus,bu.description FROM assignment_probus aspb inner join product pro on pro.id_pro=aspb.id_pro inner join business bu on bu.id_bus=aspb.id_bus where pro.id_cat=$id group by bu.id_bus limit 7;";
+		$sql="select DISTINCT busi.id_bus, busi.name_bus,busi.pic_logo_bus,busi.description from product p 
+		inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat 
+		inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro 
+		inner join business busi on busi.id_bus=aspb.id_bus  where cat.id_cat=$id  and exists(select * from assignment_details_general adg 
+		where adg.id_prices=apob.id_prices);";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
@@ -56,7 +60,11 @@ include_once "../cn/connection.php";
 	public function getHomebytp($id)
  	{
 		$c = conectar();
-		$sql="SELECT bu.id_bus, bu.name_bus,bu.pic_logo_bus,bu.description FROM assignment_probus aspb inner join product pro on pro.id_pro=aspb.id_pro inner join business bu on bu.id_bus=aspb.id_bus where pro.id_tpro=$id group by bu.id_bus limit 7;";
+		$sql="select DISTINCT busi.id_bus, busi.name_bus,busi.pic_logo_bus,busi.description from product p 
+		inner join assignment_prices_object apob on apob.id_pro=p.id_pro inner join categories cat on p.id_cat=cat.id_cat 
+		inner join product_type pt on p.id_tpro = pt.id_tpro inner join assignment_probus aspb on aspb.id_pro=p.id_pro 
+		inner join business busi on busi.id_bus=aspb.id_bus  where pt.id_tpro=$id  and exists(select * from assignment_details_general adg 
+		where adg.id_prices=apob.id_prices);";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
