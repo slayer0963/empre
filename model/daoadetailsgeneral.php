@@ -41,7 +41,7 @@ include_once "../cn/connection.php";
 		$img = $obj->getImg();
 		$quantity = $obj->getQuantity();
 		$extraprice = $obj->getExtraprice();
-		$discount = $obj->getDiscount();
+		$discount = ($obj->getDiscount()/100);
 		$state = $obj->getState();
 
 		$consulta= "select id_prices from assignment_prices_object where id_pro='$id_pro';";
@@ -103,7 +103,7 @@ include_once "../cn/connection.php";
 		$img = $obj->getImg();
 		$quantity = $obj->getQuantity();
 		$extraprice = $obj->getExtraprice();
-		$discount = $obj->getDiscount();
+		$discount = ($obj->getDiscount()/100);
 		
 
 		$sql="update assignment_details_general set img='$img', quantity=$quantity, extraprice='$extraprice', discount='$discount' where id_prices=$id_prices and id_color=$id_color and id_material=$id_material and id_size=$id_size ";
