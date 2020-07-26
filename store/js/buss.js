@@ -104,8 +104,8 @@ function mybusii(id) {
             	if(respu.length==0){
                 $("#contentpage").addClass('hide');
             		html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
-                html+='<img src="https://i.pinimg.com/originals/78/e8/26/78e826ca1b9351214dfdd5e47f7e2024.gif" style="height:300px; width:300px;"/>'
-                html+='<h3>Por el momento estamos tratando de comenzar dentro de poco traeremos algo interesante para ti</h3>';
+                html+='<img src="https://www.noooquebarato.com/public/images/loader.gif" style="height:350px; width:350px;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momento estamos tratando de comenzar dentro de poco traeremos algo interesante para ti</h3>';
                  html+='</div>';
                  $("#none").html(html);
             	}
