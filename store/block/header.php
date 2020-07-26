@@ -56,7 +56,7 @@
         #modalcarshop{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
         #loginm { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
 
-      
+      #profiled{ margin-top: -25px;  padding: 0; width: 60% !important ; height: 90% !important ;  max-height: 90%;}
           
 
         @media only screen and (max-width : 992px) {
@@ -64,6 +64,7 @@
             #loginm { width: 100% !important ; height: 60% !important ; } 
             #modalcarshop { width: 100% !important ; height: 80% !important ; } 
               #modalwis { width: 100% !important ; height: 80% !important ; }
+              #profiled{ width: 100% !important ; height: 80% !important ; }
         }
       </style>
   </head>
