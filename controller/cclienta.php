@@ -170,8 +170,8 @@ if($page=='getData'){
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id_cl.','.$fullname_cl.','.$imagen.','.$email_cl.','.$user_cl.','.$pass_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">edit</i></a>';
 
         $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$id_cl.'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
-        $btnnumber='&nbsp;<a class=\"btn-floating #ffeb3b teal modal-trigger tooltipped\" data-position=\"top\" data-tooltip=\"Agregar Numero\" href=\"#modalnumber\" onclick=\"FillBoxNumber('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">contact_phone</i></a>';
-        $btnadress='&nbsp;<a class=\"btn-floating #ffeb3b cyan modal-trigger\" href=\"#modaladdress\" onclick=\"FillBoxAdress('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">contact_mail</i></a>';
+        
+        $btnadress='&nbsp;<a class=\"btn-floating #ffeb3b cyan modal-trigger\" title=\"Direcciones de entrega\" href=\"#modaladdress\" onclick=\"FillBoxAdress('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">directions</i></a>';
          $table.='{
                   "fullname_cl":"'.$c["fullname_cl"].'",
                   "imagen":"'.$imagen.'",
