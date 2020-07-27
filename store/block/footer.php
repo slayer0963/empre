@@ -6,11 +6,7 @@
 
   <div id="profiled" class="modal">
     <div class="modal-content row">
-      <div class="col s12 m12 l12 center-align">
-        <div id="vista-previae">
-                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" class="circle responsive-img" style="height: 150px; width: 150px;" id="imgcontainere"  >
-              </div>
-      </div>
+
       <div class="col s12 m12 l12">
                 <form class="col s12 center-align" id="formclie" name="formclie" method="post">
         <div class="row">
@@ -24,12 +20,22 @@
             </div>
             <br>
             <div class="file-field input-field col s12">
-              <div class="btn">
-                <span>Imagen</span>
-                <input type="file" id="filee" name="filee">
+              <div class="col s1 m1 l1">
+                <div class="btn " style="margin-top: 4rem;">
+                  <span>Cambiar imagen</span>
+                  <input type="file" id="filee" name="filee">
+                </div>
               </div>
+              
+              <div class="col s10 m10 l10 ">
+              <div id="vista-previae">
+                
+                       <img src="https://image.flaticon.com/icons/png/512/149/149071.png" class=" responsive-img" style="height: 150px; width: 150px;" id="imgcontainere"  >
+                    </div>
+            </div>
+              
               <div class="file-path-wrapper">
-                <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="text">
+                <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="hidden">
               </div>
             </div>
             <span class="" id="txtimge"></span>
@@ -55,17 +61,26 @@
               <span class="" id="txtpasse">Contraseña</span>
             </div>
             <div class="input-field col s1 m1 l1 " >
-              <button type="button" class="btn btn-xs" style="margin-top: 1rem;"><i class="material-icons">remove_red_eye</i></button>
+              <button type="button" class="btn btn-xs" id="viewpass" style="margin-top: 1rem;"><i class="material-icons">remove_red_eye</i></button>
             </div>
           </div>
         </div>
           <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
         </form>
       </div>
+      <br>
+      <div class="fixed-action-btn">
+        <a class="btn-floating  red">
+          <i class=" material-icons">assignment_ind</i>
+        </a>
+        <ul>
+          <li><a class="btn-floating green"><i class="material-icons">contact_phone</i></a></li>
+          <li><a class="btn-floating yellow"><i class="material-icons">contact_mail</i></a></li>
+          
+        </ul>
+      </div>
     </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
-    </div>
+   
   </div>
 
 
@@ -165,6 +180,10 @@
 
         $('.carousel').carousel();
         $('.modal').modal();
+        $('.fixed-action-btn').floatingActionButton({
+            direction: 'left',
+            hoverEnabled: false
+        });
       });
 
         // window.onscroll = function() {

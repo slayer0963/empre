@@ -43,8 +43,24 @@ $(document).ready(function($) {
            
          }
       });
-
-
+      var contpass=0;
+      $("#viewpass").click(function(event) {
+        
+        if(contpass==0){
+          $("#passe").attr({
+          type: 'text'
+          });
+          contpass++;
+        }
+        else{
+          $("#passe").attr({
+            type: 'password'
+          });
+          contpass=0;
+        }
+        
+        
+      });
       $("#imge").change(function(event) {
      document.getElementById("imgcontainere").removeAttribute('src');
 
