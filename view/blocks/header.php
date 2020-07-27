@@ -29,14 +29,15 @@
     <style>
           .peque { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 60%;} 
           .usuariomodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
-          .businessmodal { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
+          .businessmodal { margin-top:-3rem; padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 95%;}
           .product { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 89%;}
           .asign { padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 85%;}
           th.dt-center, td.dt-center { text-align: center; } 
           .aproduct { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 90%;}
           .addpri { padding: 0; width: 25% !important ; height: 100% !important ;  max-height: 55%;}
           .aprices { padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 72%;}
-
+          #modaladdress { margin-top:-3rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
+          #modalnumber { margin-top:-3rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -69,11 +70,13 @@
             }
             .peque { width: 75% !important ; height: 75% !important ; } 
             .usuariomodal {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;} 
-            .businessmodal { padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
+            .businessmodal { margin-top:-3rem; padding: 0; width: 100% !important ; height: 80% !important ; max-height: 95%;}
             .product {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;}
             .asign { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
             .aproduct { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 85%;}
             .aprices { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 72%;}
+            #modaladdress { margin-top:-3rem; padding: 0; width: 100% !important ; height: 100% !important ;  max-height: 90%;}
+            #modalnumber { margin-top:-3rem; padding: 0; width: 100% !important ; height: 100% !important ;  max-height: 90%;}
           }
           .tb{
             margin-top: 2rem;

@@ -42,6 +42,32 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
+	public function getDataPhone($id)
+ 	{
+		$c = conectar();
+		$sql="select * from contact where id_cl=$id;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+	public function getDataAddre($id)
+ 	{
+		$c = conectar();
+		$sql="select * from address where id_cl=$id;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
 
  	public function setData($obj)
  	{

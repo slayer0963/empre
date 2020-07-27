@@ -26,7 +26,7 @@
                               <th style="text-align: center;">Acciones</th>
                             </tr>
                             </tfoot>
-                        </table>
+                    </table>
       </div>
 
  </div>
@@ -168,6 +168,65 @@
         
       </div>
     </div>
+
+    <div id="modaladdress" class="modal">
+    <div class="modal-content">
+      <h3>Agregar Dirección</h3>
+      <form action="" id="frmadd" name="frmadd" class="center-align">
+        <input type="hidden" name="idaddre" id="idaddre">
+        <div class="input-field col s12 m12 l12 ">
+              <input type="text" name="addr" title="Dirección" id="addr" style="text-align: center;">
+              <span class="" id="txtaddr">Dirección</span>
+        </div>
+        <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+      </form>
+      <table id="tbaddres" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
+                            <thead >
+                            <tr>
+                              <th style="text-align: center;">Dirección</th>
+                              <th style="text-align: center;">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                             <tfoot>
+                            <tr>
+                              <th style="text-align: center;">Dirección</th>
+                              <th style="text-align: center;">Acciones</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+    </div>
+
+  </div>
+
+  <div id="modalnumber" class="modal">
+    <div class="modal-content">
+      <h3>Agregar Télefono</h3>
+      <form action="" id="frmnumber" name="frmnumber" class="center-align">
+                <input type="hidden" name="idphone" id="idphone">
+        <div class="input-field col s12 m12 l12 ">
+              <input type="text" name="numberpho" title="Télefono" id="numberpho" style="text-align: center;">
+              <span class="" id="numberpho">Télefono</span>
+            </div>
+            <button type="submit" class=" btn">Guardar <i class="material-icons">save</i></button>
+      </form>
+      <table id="tbphone" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
+                            <thead >
+                            <tr>
+                              <th style="text-align: center;">Télefono</th>
+                              <th style="text-align: center;">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                             <tfoot>
+                            <tr>
+                              <th style="text-align: center;">Télefono</th>
+                              <th style="text-align: center;">Acciones</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+    </div>
+  </div>
 
 
 <?php require 'blocks/footer.php'; ?>

@@ -45,7 +45,7 @@ $(document).ready(function($) {
       });
       var contpass=0;
       $("#viewpass").click(function(event) {
-        
+
         if(contpass==0){
           $("#passe").attr({
           type: 'text'
@@ -165,6 +165,7 @@ function addcomentario(idcliente,comentario,valoracion) {
             }
         });
 }
+
 
 
 function mybusii(id) {

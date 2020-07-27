@@ -99,14 +99,15 @@
 
     <ul class="sidenav" id="mobile-demo" style="">
         <li>
-          <div class="chip" style="width: 100%;">
-            <img src="../view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
-            <?php echo $_SESSION['name']; ?>
+          <div class="user-view">
+          <div class="background">
+            <img src="https://www.pintoresmadridprofesionales.com/wp-content/uploads/2016/02/Pintores-Madrid-profesionales-20.jpg">
           </div>
-        </li>
-         <li class="divider"></li>
-        <li class="brand-logo">
-          <a href="./" class="namebusi"></a>
+          <a href="#user"><img class="circle" src="<?php echo SERVERURL.'imguser/'.$_SESSION["img"]; ?>"></a>
+          <a href="#name"><span class="white-text name"><?php echo $_SESSION["name"]; ?></span></a>
+          <a href="#email"><span class="white-text email"><?php echo $_SESSION["email"]; ?></span></a>
+          <a href="./" ><span class="namebusi white-text"><?php echo $_SESSION["email"]; ?></span></a>
+        </div>
         </li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>

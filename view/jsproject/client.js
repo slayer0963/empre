@@ -233,6 +233,16 @@ var StateChange = (id,estado) =>{
 }
 
 
+function FillBoxNumber(id){
+  $("#idphone").val(id);
+  getDataPhone(id);
+
+}
+
+function FillBoxAdress(id){
+  $("#idaddre").val(id);
+  getDataAddre(id);
+}
 
 
 var getData = ()=> {
@@ -257,6 +267,124 @@ var getData = ()=> {
       { "data": "email_cl" },
       { "data": "user_cl" },
       { "data": "pass_cl" },
+      { "data": "actions" },
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros.",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros.",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+
+}
+
+
+
+var getDataPhone= (id)=> {
+
+    $('#tbphone').DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+
+    "ajax": {
+          url:"../../controller/cclienta.php?btngetData=getDataPhone&id="+id,//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "contac" },
+      { "data": "actions" },
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros.",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros.",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+
+}
+
+var getDataAddre = (id)=> {
+
+    $('#tbaddres').DataTable( {
+    "responsive": true,
+    "order": [[ 0, "desc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+
+   "ajax": {
+          url:"../../controller/cclienta.php?btngetData=getDataAddre&id="+id,//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "addr" },
       { "data": "actions" },
       ],
       "columnDefs": [

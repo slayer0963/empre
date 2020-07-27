@@ -16,27 +16,30 @@
 
             <div class="input-fiel col s12">
              <div class="col s12 align-center">
-              
+              <a class="btn-floating green"><i class="material-icons">contact_phone</i></a>
+      <a class="btn-floating yellow"><i class="material-icons">contact_mail</i></a>
             </div>
             <br>
             <div class="file-field input-field col s12">
-              <div class="col s1 m1 l1">
-                <div class="btn " style="margin-top: 4rem;">
-                  <span>Cambiar imagen</span>
-                  <input type="file" id="filee" name="filee">
-                </div>
-              </div>
-              
-              <div class="col s10 m10 l10 ">
+              <div class="col s8 m6 l6 ">
               <div id="vista-previae">
                 
                        <img src="https://image.flaticon.com/icons/png/512/149/149071.png" class=" responsive-img" style="height: 150px; width: 150px;" id="imgcontainere"  >
                     </div>
             </div>
-              
-              <div class="file-path-wrapper">
+              <div class="col s4 m6 l6 center-align">
+                <div class="btn " style="margin-top: 4rem;">
+                  <span>Cambiar imagen</span>
+                  <input type="file" id="filee" name="filee">
+                  <div class="file-path-wrapper">
                 <input class="file-path validate" name="imge" title="Imagen" id="imge"  type="hidden">
               </div>
+                </div>
+              </div>
+              
+              
+              
+              
             </div>
             <span class="" id="txtimge"></span>
             </div>
@@ -68,17 +71,11 @@
           <button type="submit" class="waves-effect waves-light btn">Editar <i class="material-icons">save</i></button>
         </form>
       </div>
-      <br>
-      <div class="fixed-action-btn">
-        <a class="btn-floating  red">
-          <i class=" material-icons">assignment_ind</i>
-        </a>
-        <ul>
-          <li><a class="btn-floating green"><i class="material-icons">contact_phone</i></a></li>
-          <li><a class="btn-floating yellow"><i class="material-icons">contact_mail</i></a></li>
-          
-        </ul>
-      </div>
+      
+      
+    </div>
+    <div class="modal-footer">
+      
     </div>
    
   </div>

@@ -171,7 +171,7 @@ if($page=='getData'){
 
         $imagen = '<a href=\"../imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$id_cl.'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" circle responsive-img\"></a>';
         $btnnumber='&nbsp;<a class=\"btn-floating #ffeb3b teal modal-trigger tooltipped\" data-position=\"top\" data-tooltip=\"Agregar Numero\" href=\"#modalnumber\" onclick=\"FillBoxNumber('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">contact_phone</i></a>';
-        $btnadress='&nbsp;<a class=\"btn-floating #ffeb3b cyan modal-trigger\" href=\"#modaladdress\" onclick=\"FillBoxNumberAdress('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">contact_mail</i></a>';
+        $btnadress='&nbsp;<a class=\"btn-floating #ffeb3b cyan modal-trigger\" href=\"#modaladdress\" onclick=\"FillBoxAdress('.$id_cl.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">contact_mail</i></a>';
          $table.='{
                   "fullname_cl":"'.$c["fullname_cl"].'",
                   "imagen":"'.$imagen.'",
@@ -179,6 +179,70 @@ if($page=='getData'){
                   "user_cl":"'.$c["user_cl"].'",
                   "pass_cl":"'.$c["pass_cl"].'",
                   "actions":"'.$btnedit.$btnstate.$btnnumber.$btnadress.'"
+                },';    
+     }
+        $table = substr($table,0, strlen($table) - 1);
+        echo '{"data":['.$table.']}';   
+}
+
+$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+if($page=='getDataPhone'){
+    $dat = new DAOClienta();
+         $r=$dat->getDataPhone($_GET['id']);
+         $table="";
+         foreach($r as $c){
+         $btnstate='';
+         $btnedit='';
+         $btnnumber='';
+         $btnadress='';
+         $imagen ='';
+         $id_cl="'".$c["id_cl"]."'";
+         $contac="'".$c["contac"]."'";
+
+
+         // if($c["state_cl"]=="1"){ 
+         // 	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_cl.','.$state_cl.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
+         // }
+         // else if ($c["state_cl"]=="0") {
+         // 	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_cl.','.$state_cl.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
+         // }
+
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxesEdPho('.$id_cl.','.$contac.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">edit</i></a>';
+         $table.='{
+                  "contac":"'.$c["contac"].'",
+                  "actions":"'.$btnedit.'"
+                },';    
+     }
+        $table = substr($table,0, strlen($table) - 1);
+        echo '{"data":['.$table.']}';   
+}
+
+$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+if($page=='getDataAddre'){
+    $dat = new DAOClienta();
+         $r=$dat->getDataAddre($_GET['id']);
+         $table="";
+         foreach($r as $c){
+         $btnstate='';
+         $btnedit='';
+         $btnnumber='';
+         $btnadress='';
+         $imagen ='';
+         $id_cl="'".$c["id_cl"]."'";
+         $addr="'".$c["addr"]."'";
+
+
+         // if($c["state_cl"]=="1"){ 
+         // 	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_cl.','.$state_cl.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
+         // }
+         // else if ($c["state_cl"]=="0") {
+         // 	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_cl.','.$state_cl.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
+         // }
+
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxesEdAdd('.$id_cl.','.$addr.');\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">edit</i></a>';
+         $table.='{
+                  "addr":"'.$c["addr"].'",
+                  "actions":"'.$btnedit.'"
                 },';    
      }
         $table = substr($table,0, strlen($table) - 1);
