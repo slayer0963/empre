@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2020 a las 03:06:30
+-- Tiempo de generación: 27-07-2020 a las 22:43:51
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -31,8 +31,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `address` (
   `id_add` int(11) NOT NULL,
   `id_cl` int(11) DEFAULT NULL,
-  `addr` varchar(500) DEFAULT NULL
+  `contact` varchar(15) DEFAULT NULL,
+  `department` varchar(45) DEFAULT NULL,
+  `city` varchar(45) DEFAULT NULL,
+  `streetdir` varchar(500) DEFAULT NULL,
+  `numberdir` varchar(45) DEFAULT NULL,
+  `reference` varchar(500) DEFAULT NULL,
+  `activestate` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `address`
+--
+
+INSERT INTO `address` (`id_add`, `id_cl`, `contact`, `department`, `city`, `streetdir`, `numberdir`, `reference`, `activestate`, `state`) VALUES
+(1, 3, '(503) 7487-9715', 'San Miguel', 'San Miguel', 'Calle San Salvador', 'Casa #44', '', 1, 1),
+(2, 3, '(503) 7487-9715', 'San Miguel', 'Chinameca', 'Calle Bolivar', 'Casa #5', 'Frente pizza huty', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -61,12 +76,16 @@ INSERT INTO `assignment_details_general` (`id_prices`, `id_color`, `id_material`
 (1, 1, 2, 2, 'noche-cielo-estrellas-y-cometa_3840x2160_xtrafondos.com.jpg', 5, 1, 0.25, 1),
 (2, 1, 1, 1, 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 40, 0, 0, 1),
 (2, 1, 2, 1, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 3, 1, 0.05, 1),
-(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 1, 1, 0.05, 1),
+(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 1, 1, 0.06, 1),
 (3, 2, 1, 1, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 160, 5, 0, 1),
 (3, 3, 2, 2, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 17, 34, 0.25, 1),
 (4, 1, 1, 2, '4x4-desert-dust-golden-hour-1149066.jpg', 97, 23.23, 0, 1),
 (9, 2, 2, 2, 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 23, 23, 0.5, 1),
-(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 25, 5, 0.2, 1);
+(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 25, 5, 0.2, 1),
+(1, 3, 1, 1, '11834734_1143605288989355_8211990350207519370_o.jpg', 1, 0, 0.2, 1),
+(3, 4, 2, 3, '740314_584256098257613_1968960693_o.jpg', 5, 0, 0.33, 1),
+(1, 5, 2, 1, '736277_584256111590945_817041861_o.jpg', 1, 0, 0.2, 1),
+(1, 5, 2, 3, '736277_584256111590945_817041861_o.jpg', 1, 0, 0.31, 1);
 
 -- --------------------------------------------------------
 
@@ -97,7 +116,9 @@ INSERT INTO `assignment_prices_object` (`id_prices`, `id_pro`, `pur_price`, `sal
 (8, 16, 23, 54, 1),
 (9, 17, 23, 34, 1),
 (10, 18, 23, 24, 1),
-(11, 19, 23, 42, 1);
+(11, 19, 23, 42, 1),
+(12, 1, 25.55, 30, 1),
+(13, 8, 5, 6, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +150,9 @@ INSERT INTO `assignment_probus` (`id_assprob`, `id_bus`, `id_pro`) VALUES
 (11, 20, 16),
 (12, 20, 17),
 (13, 20, 18),
-(14, 20, 19);
+(14, 20, 19),
+(15, 1, 8),
+(16, 1, 9);
 
 -- --------------------------------------------------------
 
@@ -206,7 +229,8 @@ CREATE TABLE `clients` (
 
 INSERT INTO `clients` (`id_cl`, `fullname_cl`, `imagen`, `email_cl`, `user_cl`, `pass_cl`, `state_cl`, `idservices`, `services`) VALUES
 (1, 'cliente potencial', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 'cliente@gmail.com', 'client', '1234', 1, '', ''),
-(2, 'COMPRADOR', 'estrellas-en-el-universo-morado_3000x2000_xtrafondos.com.jpg', 'compra@todo.com', 'compra', '123', 1, '', '');
+(2, 'COMPRADOR', 'estrellas-en-el-universo-morado_3000x2000_xtrafondos.com.jpg', 'compra@todo.com', 'compra', '123', 1, '', ''),
+(3, 'Masizo', '10669042_918121591546126_1889247225428879342_o.jpg', 'kmb124@live.com', 'masize', '123', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -241,7 +265,9 @@ INSERT INTO `color` (`id_color`, `code_color`, `name_color`, `state_color`) VALU
 CREATE TABLE `contact` (
   `id_con` int(11) NOT NULL,
   `id_cl` int(11) DEFAULT NULL,
-  `contac` varchar(15) DEFAULT NULL
+  `contac` varchar(15) DEFAULT NULL,
+  `activestate` int(11) DEFAULT NULL,
+  `state` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -304,7 +330,8 @@ INSERT INTO `product` (`id_pro`, `name_pro`, `descr_pro`, `id_cat`, `id_tpro`, `
 (16, 'ssssssss', 'sssssss', 1, 2, 1),
 (17, 'cxxzczxczxc', 'asdasdasdasd', 1, 2, 1),
 (18, 'A2', 'asdasdasd', 1, 2, 1),
-(19, 'vvvvv', 'xxxxxxxx', 2, 2, 1);
+(19, 'vvvvv', 'xxxxxxxx', 2, 2, 1),
+(20, 'Calzones', 'Comodos', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -502,7 +529,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `fullname_user`, `phone_user`, `imagen`, `email_user`, `user_user`, `pass_user`, `id_ustp`, `state_user`, `idservices`, `services`) VALUES
-(1, 'Moises Rivera', '22577777', '736277_584256111590945_817041861_o.jpg', 'moisesrivera796@gmail.com', 'moises796', '123', 1, 0, NULL, NULL),
+(1, 'Moises Rivera', '22577777', '736277_584256111590945_817041861_o.jpg', 'moisesrivera796@gmail.com', 'moises796', '123', 1, 1, NULL, NULL),
 (2, 'Gerardo landos', '(503) 2204-0845', 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 'landos112@gmail.com', 'admin', '123', 1, 1, '', ''),
 (3, 'Gerardo Erazo', '(503) 2222-2222', 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 'landos110@gmail.com', 'user', '123', 2, 1, '', ''),
 (4, 'eeeee', '(503) 2222-2222', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 'asdasd@asdasdsad.com', 'user1', '123', 2, 1, '', '');
@@ -737,19 +764,19 @@ ALTER TABLE `wish_list_details`
 -- AUTO_INCREMENT de la tabla `address`
 --
 ALTER TABLE `address`
-  MODIFY `id_add` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_add` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
-  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_probus`
 --
 ALTER TABLE `assignment_probus`
-  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `business`
@@ -767,7 +794,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `color`
@@ -791,7 +818,7 @@ ALTER TABLE `material`
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `product_rating`
