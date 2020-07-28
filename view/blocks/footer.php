@@ -11,6 +11,8 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/materialize.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/lightbox.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>/js/jquery.maskedinput.js"></script>
+       <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+       <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   <script>
 $(document).ready(function(){
 
