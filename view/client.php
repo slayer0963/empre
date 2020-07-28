@@ -248,6 +248,7 @@
       <form action="" id="frmadde" name="frmadde" class="center-align">
         <div class="row">
         <input type="hidden" name="idadd" id="idadd">
+        
         <div class="input-field col s12 m12 l6 ">
               <select  class="select2 browser-default" id="departmente"  name="departmente" title="Departamento (*)"  style="text-align: center;">
                 <option value="San Miguel">San Miguel</option>

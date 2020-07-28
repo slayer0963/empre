@@ -307,6 +307,7 @@ var EditAddress = (id,contact,department,city,streetdir,numberdir,reference) =>{
       $("#idadd").val(id);
       $("#contacte").val(contact);
 
+
       html2='';
       $('#departmente').find('option').each( function() {
       var $this = $(this);
@@ -438,6 +439,29 @@ var StateChange = (id,estado) =>{
                     
                    } 
             getData();
+            }
+        }); 
+     return false;
+}
+
+
+
+var StateAChange = (id,id_cl,estado) =>{
+
+    var paren = id
+          var dataString = 'id='+id+'&id_cl='+id_cl+'&state='+estado;
+           $.ajax({
+            type: "POST",
+            url: "../../controller/caddress.php?updateData=statechange",
+            data: dataString,
+            success: function(resp) {            
+                    if (resp=="1") {
+                               M.toast({html: "¡Se actualizó a la nueva dirección activa exitosamente!", classes: 'rounded  green'});
+                    }else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                    
+                   } 
+            getDataAddre($('#idcla').val());
             }
         }); 
      return false;

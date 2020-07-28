@@ -30,6 +30,7 @@
 	function updateState(){
 	    $obj=new Address();
 	    $obj->setIdAdd($_POST["id"]);
+	    $obj->setIdCl($_POST["id_cl"]);
 	   	$value = $_POST["state"];
 	    if($value=="1"){
 	    	$obj->setActivestate("0");
@@ -82,7 +83,7 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 \" title=\"Dirección activa\" ><i class=\"material-icons right\">location_on</i></a>';
          }
          else if ($c["activestate"]=="0") {
-         	$btnstate='&nbsp;<a class=\"btn-floating orange lighten-1 \" title=\"Activar dirección\" onclick=\"StateAChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">location_searching</i></a>';
+         	$btnstate='&nbsp;<a class=\"btn-floating orange lighten-1 \" title=\"Activar dirección\" onclick=\"StateAChange('.$id.','.$id_cl.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">location_searching</i></a>';
          }
 
          $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modaledA\" onclick=\"EditAddress('.$id.','.$contact.','.$department.','.$city.','.$streetdir.','.$numberdir.','.$reference.');\" id=\"btnd'.$c["id_add"].'\"><i class=\"material-icons\">edit</i></a>';
