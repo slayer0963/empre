@@ -72,6 +72,7 @@ var optionsgrapbar =(tipo,titulo) =>{
     },
     plotOptions: {
             bar: {
+              horizontal: true,
              columnWidth: '50%',
               endingShape: 'flat'
             }
