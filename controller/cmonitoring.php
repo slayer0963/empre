@@ -20,4 +20,16 @@
 	    echo json_encode($dat->getDatachartthree());
 	}
 
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getDatachartfour'){
+	    $dat=new DAOMonitor();
+	    echo json_encode($dat->getDatachartfour());
+	}
+
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getDatachartfive'){
+	    $dat=new DAOMonitor();
+	    echo json_encode($dat->getDatachartfive());
+	}
+
 ?>

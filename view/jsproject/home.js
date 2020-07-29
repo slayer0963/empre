@@ -33,47 +33,93 @@ chart3.render();
 getDataApex3(chart3);
 setInterval( function(){ getDataApex3(chart3); } , 6000);
 
+var chart4 = new ApexCharts(
+  document.querySelector("#chart4"), 
+  optionsgrapbaragroup()
+  );
+chart4.render();
+getDataApex4(chart4);
+setInterval( function(){ getDataApex4(chart4); } , 6000);
 
 
-
-
+var chart5 = new ApexCharts(
+  document.querySelector("#chart5"), 
+  optionsgrapdonut()
+  );
+chart5.render();
+getDataApex5(chart5);
 });
 
 var optionsgrapbar =(tipo,titulo) =>{
 	var options= {
-  chart: {
-      height: 350,
-      type: tipo,
-      events: {
-            dataPointSelection: function (e, chart, opts) {
-              console.log(opts.dataPointIndex);
-        
+    chart: {
+        height: 350,
+        type: tipo,
+        events: {
+              dataPointSelection: function (e, chart, opts) {
+                console.log(opts.dataPointIndex);
+          
+              }
             }
-          }
-  },
+    },
 
-  dataLabels: {
-      enabled: true,
+    dataLabels: {
+        enabled: true,
 
-  },
-  style: {
-    colors: ['#F44336', '#E91E63', '#9C27B0']
-  },
-  plotOptions: {
-          bar: {
-           columnWidth: '50%',
-            endingShape: 'rounded'
-          }
-        },
-  series: [],
-  title: {
-      text: titulo,
-  },
-  noData: {
-    text: 'Cargando...'
+    },
+    style: {
+      colors: ['#F44336', '#E91E63', '#9C27B0']
+    },
+    plotOptions: {
+            bar: {
+             columnWidth: '50%',
+              endingShape: 'flat'
+            }
+          },
+    series: [],
+    title: {
+        text: titulo,
+    },
+    noData: {
+      text: 'Esperando tener información...'
+    }
   }
+  return options;
 }
-return options;
+
+var optionsgrapbaragroup= () =>{
+  var options = {
+            series: [],
+
+            chart: {
+            type: 'bar',
+            height: 430
+          },
+          plotOptions: {
+            bar: {
+              horizontal: false,
+              dataLabels: {
+                position: 'top',
+              },
+              columnWidth: '50%',
+              endingShape: 'flat',
+            }
+          },
+          dataLabels: {
+            enabled: true,
+            offsetX: -6,
+            style: {
+              fontSize: '12px',
+              colors: ['#fff']
+            }
+          },
+        stroke: {
+          show: true,
+          width: 1,
+          colors: ['#fff']
+        }
+        };
+    return options;
 }
 
 var optionsgrapdonut=()=>{
@@ -85,7 +131,8 @@ var optionsgrapdonut=()=>{
           },
               legend: {
                 position: 'top',
-                horizontalAlign: 'center', 
+                horizontalAlign: 'center',
+                show: false,
               },
 
           responsive: [{
@@ -99,6 +146,9 @@ var optionsgrapdonut=()=>{
           title: {
             text: ""
           },
+            noData: {
+              text: 'Esperando tener información...'
+            },
            plotOptions: {
             pie: {
               donut: {
@@ -116,7 +166,6 @@ var optionsgrapdonut=()=>{
           return options;
 }
 
-
 var optionsgrapline =() =>{
    var options = {
           series: [{
@@ -125,6 +174,9 @@ var optionsgrapline =() =>{
           chart: {
           type: 'line',
           height: 350
+        },
+        noData: {
+          text: 'Esperando tener información...'
         },
         stroke: {
           curve: 'stepline',
@@ -137,7 +189,7 @@ var optionsgrapline =() =>{
           align: 'center'
         }
         };
-return options;
+  return options;
 }
 
 
@@ -177,8 +229,7 @@ var getDataApex2= (chart2) =>{
        		
        		
       }
-    });
-        
+    });        
 };  
 
 var getDataApex3= (chart3) =>{
@@ -192,8 +243,49 @@ var getDataApex3= (chart3) =>{
           data: lbl
         }]);
       }
-    });
-      
+    });     
+};
+
+var getDataApex4= (chart4) =>{
+  
+  $.ajax({
+      url: '../controller/cmonitoring.php?btngetData=getDatachartfour',
+      success: function(datas) {
+        var lbl = eval(datas);
+         chart4.updateSeries([{
+          name: 'Ganado',
+          data: lbl
+        }]);
+        var arrname=[];
+          for (var i = 0; i < lbl.length; i++) {
+            arrname.push(lbl[i].x);
+          }
+         //chart4.updateOptions({labels: arrname});
+         chart4.addXaxisAnnotation({categories: arrname});
+      }
+    });     
+};
+
+var getDataApex5= (chart5) =>{
+  
+ $.ajax({
+      url: '../controller/cmonitoring.php?btngetData=getDatachartfive',
+      success: function(datas) {
+        var lbl = eval(datas);
+          var arr = [];
+          var arrname=[];
+          for (var i = 0; i < lbl.length; i++) {
+            arr.push(parseInt(lbl[i].y));
+            arrname.push(lbl[i].x);
+          }
+
+          chart5.updateSeries(arr);
+          chart5.updateOptions({labels: arrname});
+
+          
+          
+      }
+    });     
 };
 
 
