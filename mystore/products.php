@@ -109,7 +109,7 @@
 								    <i class="large material-icons">format_quote</i>
 								  </a>
 								  <ul>
-								    <!-- <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li> -->
+								     <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li> 
 								    <li><a class="btn-floating blue modal-trigger" href="#addpro"><i class="material-icons">add</i></a></li>
 								  </ul>
 								</div>
@@ -172,6 +172,45 @@
       
     </div>
   </div>
+
+
+
+  <div id="modal2" class="modal modal-fixed-footer product">
+      <div class="modal-content">
+        <h4>Editar producto</h4>
+        <div class="row">
+          <form class="col s12 center-align" name="formproducte" id="formproducte" method="post">
+          <div class="row">
+            <div class="input-field col s12">
+              <input type="hidden" name="id" title="Nombre (*)" id="id">
+              <input type="text" name="namee" title="Nombre (*)" id="namee" style="text-align: center;">
+              
+              <span class="" id="txtnamee">Nombre</span>
+            </div>
+            <div class="input-field col s12">
+              <textarea id="descripe" name="descripe" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="250" style="text-align: center;"></textarea>
+             <span class="" id="txtdescripe">Descripci&oacute;n</span>
+            </div>
+            <div class="input-field col s12">
+                <select  class="select2 browser-default" id="cate" name="cate" title="Categor&iacute;a (*)">
+                </select>
+                <span class="" id="txtcate">Categor&iacute;a</span>
+            </div>
+            <div class="input-field col s12">
+                <select  class="select2 browser-default" id="tpe" name="tpe" title="Tipo de producto (*)">
+                </select>
+                <span class="" id="txttpe">Tipo producto</span>
+            </div>
+          </div>
+          <button type="submit" class=" btn">Editar <i class="material-icons">save</i></button>
+        </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-close  btn-flat">Salir</a>
+        
+      </div>
+    </div>
 
 
 <!-- ] -->

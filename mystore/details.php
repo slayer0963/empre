@@ -422,20 +422,21 @@
 
   <div id="modaledit" class="modal bottom-sheet ">
   <div class="modal-content align-center">
-    <h4 for="name" id="nameproduct"> </h4>
+  	<div class="container">
+    <center><h4 for="name" id="nameproduct"> </h4></center>
 
       <form class="col s12 m12 l6 center-align" id="frmeditpr" name="frmeditpr">
         
             
             
-            <div class="input-field col s12 m12 l6">
+            <div class="input-field col s12 m12 l6 align-right">
             	<i class="material-icons prefix">attach_money</i>
-              <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" > 
+              <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" style="text-align: center;width: 300px;" > <br>
               <span class="" id="txtpcompra">Coste de fabricación</span>
             </div>
             <div class="input-field col s12 m12 l6">
             	<i class="material-icons prefix">attach_money</i>
-              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
+              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" style="text-align: center;width: 300px;"><br>
               <span class="" id="txtpventa">Precio Venta</span>
             </div>
             
@@ -443,6 +444,7 @@
          
         <button  id="editprod" class=" btn">Modificar <i class="material-icons">edit</i></button>
       </form>
+      </div>
   </div>
 </div>
 

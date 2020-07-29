@@ -1,5 +1,40 @@
-
+var contclick=0;
 $(document).ready(function() {
+
+  $("#cate").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#modal2"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+$("#tpe").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    dropdownParent: $("#modal2"),
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
 	var obj =JSON.parse(localStorage.getItem('Store'));
 	if(obj.name!=""){
 		$("#namebusi").html(obj.name);
@@ -40,12 +75,50 @@ $("#tp").select2({
   }
 });
 
-
+$("#btnproedit").click(function(event) {
+    
+    if(contclick==0){
+      $(".editpro").removeClass('hide');
+      M.toast({html: "¡Modo Edición activado!", classes: 'rounded  green'});
+      contclick+=1;
+    }
+    else{
+      $(".editpro").addClass('hide');
+      M.toast({html: "¡Modo Edición desactivado!", classes: 'rounded  black'});
+      contclick=0;
+    }
+    
+  });
 
 
 
 	setComboCat();
 	setComboTp();
+
+  $('#formproducte').submit(function() {
+   if(Validate()==idinpute.length){
+    $.ajax({
+            type: "POST",
+            url: "../controller/cproduct.php?updateData=update", 
+            data: $("#formproducte").serialize(),
+            success: function(resp) {
+                   if(resp==1){
+                    M.toast({html: "¡Se ha modificado el producto exitosamente!", classes: 'rounded  green'});
+                    $('#modal2').modal('close');
+                    mybusii(obj.idbusi);
+                    contclick=0;
+                   }
+                   else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                   } 
+               }
+                
+        });
+    
+  }
+  return false;
+}); 
+
 
 	$('#formproduct').submit(function() {
 
@@ -143,8 +216,30 @@ var Validatep = (type) =>{
 }
 });
 
+var idinpute = ['namee','descripe','cate','tpe'];
+var idinputerrore= ['txtnamee','txtdescripe','txtcate','txttpe'];
+var Validate = () =>{
+  var validate=0, html="", count=0, counte=0;
+  
+   idinpute.forEach(names => {
+       if($("#"+names).val().length > 0){
+        validate+=1;
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('errorinputs');
+         $("#"+idinputerrore[counte]).addClass('successinputs');
+       }
+       else{
+         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+         $("#"+idinputerrore[counte]).removeClass('successinputs');
+         $("#"+idinputerrore[counte]).addClass('errorinputs');
+       }
+        counte++;
+    });
 
+  
 
+    return validate;
+}
 
 function mybusiis(id,name){
 
@@ -182,10 +277,12 @@ function mybusii(id) {
 						      html+='<div class="card ">';
 						        html+='<div class="card-image">';
 						          html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height: 150px;">';
-						          html+='<a class="btn-floating halfway-fab waves-effect waves-light red" onclick="details('+respu[i].id_pro+');"><i class="material-icons">edit</i></a>';
-						        html+='</div>';
+						          html+='<a class="btn-floating halfway-fab waves-effect waves-light red" title="Detalles"  onclick="details('+respu[i].id_pro+');"><i class="material-icons">visibility</i></a>';
+						          
+                    html+='</div>';
 						        html+='<div class="card-content">';
-						          html+='<p>'+respu[i].name_pro+'</p>';
+						          html+='<p>'+respu[i].name_pro+' <a class="btn halfway-fab waves-effect waves-light yellow hide editpro" title="Editar"  onclick="editproduct('+respu[i].id_pro+',\''+respu[i].name_pro+'\',\''+respu[i].descr_pro+'\','+respu[i].id_cat+','+respu[i].id_tpro+');"><i class="material-icons">edit</i></a></p>';
+                     
 						        html+='</div>';
 						      html+='</div>';
 						    html+='</div>';	   
@@ -200,6 +297,51 @@ function mybusii(id) {
             	
             }
             });
+}
+
+var editproduct =(id,name,des,cat,tp) =>{
+   $('#modal2').modal('open');
+    $("#id").val(id);
+    $("#namee").val(name);
+    $("#descripe").val(des);
+    $("#namee").focus();
+    $.ajax({
+        type: "POST",
+            url: "../controller/cproduct.php?btngetData=getDataCategories",
+            }).done(function(resp) {
+      
+               var values = eval(resp);
+               html="";
+               for (var i = 0; i < values.length; i++) {
+                
+                if (cat==values[i][0]) {
+                  html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                }else{
+                  html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                }
+
+               }
+               $("#cate").html(html);
+
+    });
+        $.ajax({
+        type: "POST",
+            url: "../controller/cproduct.php?btngetData=getDataProductType",
+            }).done(function(resp) {
+      
+               var values = eval(resp);
+               html="";
+               for (var i = 0; i < values.length; i++) {
+                
+                if (tp==values[i][0]) {
+                  html+="<option value='"+values[i][0]+"' selected>"+values[i][1]+"</option>"
+                }else{
+                  html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+                }
+
+               }
+               $("#tpe").html(html);
+    });   
 }
 
 

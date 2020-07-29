@@ -90,7 +90,7 @@
 		</div>
 
 		<div class="row animated center-align hide" id="business">
-      <img src="../view/images/logo.jpg" width="250px" height="200px">
+      <img src="../view/images/logo.jpg" width="155px" height="120px">
 			<div class="col s12 m12 l12">
 				<div class="">
 					<div class="row center-align" id="containerbusi">

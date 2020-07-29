@@ -47,12 +47,12 @@ $(document).ready(function() {
 		
 		if(contclick==0){
 			$(".editbusi").removeClass('hide');
-			M.toast({html: "¡Modo Edicion activado!", classes: 'rounded  green'});
+			M.toast({html: "¡Modo Edición activado!", classes: 'rounded  green'});
 			contclick+=1;
 		}
 		else{
 			$(".editbusi").addClass('hide');
-			M.toast({html: "¡Modo Edicion desactivado!", classes: 'rounded  black'});
+			M.toast({html: "¡Modo Edición desactivado!", classes: 'rounded  black'});
 			contclick=0;
 		}
 		
