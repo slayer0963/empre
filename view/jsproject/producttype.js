@@ -1,7 +1,43 @@
 $(document).ready(function(){
 getData();
 
+$("#img").change(function(event) {
+     document.getElementById("imgcontainer").removeAttribute('src');
 
+        $("#vista-previa").html('');
+                var archivos=document.getElementById('file').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+});
+
+$("#imge").change(function(event) {
+     document.getElementById("imgcontainere").removeAttribute('src');
+
+        $("#vista-previae").html('');
+                var archivos=document.getElementById('filee').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+});
 
  
 
@@ -10,11 +46,17 @@ getData();
 $('#formproducttype').submit(function() {
 
   if(Validate(1)==idinput.length){
+    var formData = new FormData(document.getElementById("formproducttype"));
+      formData.append("dato", "valor");
 	$.ajax({
             type: "POST",
             url: "../../controller/cproducttype.php?btnsetData=setData", 
-            data: $("#formproducttype").serialize(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
+              
                    if(resp==1){
                     getData();
                     cleanform();
@@ -37,10 +79,15 @@ $('#formproducttype').submit(function() {
 
 $('#formproducttypee').submit(function() {
    if(Validate(0)==idinpute.length){
+    var formData = new FormData(document.getElementById("formproducttypee"));
+      formData.append("dato", "valor");
     $.ajax({
             type: "POST",
             url: "../../controller/cproducttype.php?updateData=update", 
-            data: $("#formproducttypee").serialize(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
                    if(resp==1){
                     M.toast({html: "¡Se ha modificado el tipo de producto exitosamente!", classes: 'rounded  green'});
@@ -61,10 +108,10 @@ $('#formproducttypee').submit(function() {
 }); 
 });
 
-var idinput = ['producttype'];
-var idinputerror= ['txtproducttype'];
-var idinpute = ['producttypee'];
-var idinputerrore= ['txtproducttypee'];
+var idinput = ['producttype','img'];
+var idinputerror= ['txtproducttype','txtimg'];
+var idinpute = ['producttypee','imge'];
+var idinputerrore= ['txtproducttypee','txtimge'];
 
 var cleanform = () => {
     idinput.forEach(names => {
@@ -127,10 +174,12 @@ idinputerrore.forEach(names => {
 
 
 
-var FillBoxes =(id,name,code) =>{
+var FillBoxes =(id,name,logo) =>{
     $("#id").val(id);
     $("#producttypee").val(name);
-    $("#producttypee").focus();   
+    $("#producttypee").focus();
+    $("#imgcontainere").attr("src",'../imglogos/'+logo);
+    $("#imge").val(logo);    
 }
 
 
@@ -176,6 +225,7 @@ var getData = ()=> {
           "type": "POST"
     },
     "columns": [
+      { "data": "logo" },
       { "data": "name_tpro" },
       { "data": "actions" }
       ],

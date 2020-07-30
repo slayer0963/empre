@@ -31,7 +31,8 @@ include_once "../cn/connection.php";
  	{
  		$c=conectar();
 		$name = $obj->getNameCat();
-		$sql="insert into categories value (0,'$name',1);";
+		$logo = $obj->getLogo();
+		$sql="insert into categories value (0,'$name',1,'$logo');";
 		if (!$c->query($sql)) {
 			print "0";
 		}else{
@@ -47,7 +48,8 @@ include_once "../cn/connection.php";
  		$c=conectar();
  		$id=$obj->getIdCat();
 		$name = $obj->getNameCat();
-		$sql="update categories set name_cat='$name' where id_cat=$id;";
+		$logo = $obj->getLogo();
+		$sql="update categories set name_cat='$name', logo='$logo' where id_cat=$id;";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{

@@ -4,6 +4,27 @@
 	function insert(){
 	    $obj=new ProductType();
 	    $obj->setNameTpro($_POST["producttype"]);
+	    $obj->setLogo($_POST["img"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["file"]["name"];;
+		$nombreTmpArchivo=$_FILES["file"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+
+		if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imglogos/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+		
 	    return $obj;
 	}
 
@@ -12,7 +33,30 @@
 	    $obj=new ProductType();
 	    $obj->setIdTpro($_POST["id"]);
 	 	$obj->setNameTpro($_POST["producttypee"]);
-	   
+	   $obj->setLogo($_POST["imge"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["filee"]["name"];;
+		$nombreTmpArchivo=$_FILES["filee"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+
+		if (file_exists("../view/imglogos/$nombreArchivo")) {
+		    return $obj;
+		} else {
+		    if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imglogos/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+		}
 	    return $obj;
 	}
 
@@ -60,6 +104,7 @@ if($page=='getData'){
          $id="'".$c["id_tpro"]."'";
          $name="'".$c["name_tpro"]."'";
          $state="'".$c["state_tpro"]."'";
+         $logo="'".$c["logo"]."'";
          if($c["state_tpro"]=="1"){ 
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
          }
@@ -67,10 +112,12 @@ if($page=='getData'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id.','.$state.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.');\" id=\"btnd'.$c["id_tpro"].'\"><i class=\"material-icons\">edit</i></a>';
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b yellow modal-trigger\" href=\"#modal2\" onclick=\"FillBoxes('.$id.','.$name.','.$logo.');\" id=\"btnd'.$c["id_tpro"].'\"><i class=\"material-icons\">edit</i></a>';
          
+         $imagen = '<a href=\"../imglogos/'.$c["logo"].'\" data-lightbox=\"image-'.$id.'\" data-title=\"'.$c["name_tpro"].'\"><img src=\"../imglogos/'.$c["logo"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\" responsive-img\"></a>';
          $table.='{
                   "name_tpro":"'.$c["name_tpro"].'",
+                  "logo":"'.$imagen.'",
                   "actions":"'.$btnedit.$btnstate.'"
                 },';    
      }

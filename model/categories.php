@@ -5,6 +5,7 @@ class Categories
 	private $_id_cat;
     private $_name_cat;
 	private $_state_cat;
+    private $_logo;
 
     function __construct()
     {
@@ -50,6 +51,20 @@ class Categories
     public function setStateCat($_state_cat)
     {
         $this->_state_cat = $_state_cat;
+
+        return $this;
+    }
+
+
+    public function getLogo()
+    {
+        return $this->_logo;
+    }
+
+
+    public function setLogo($_logo)
+    {
+        $this->_logo = $_logo;
 
         return $this;
     }

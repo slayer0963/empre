@@ -1,9 +1,10 @@
 
 
 
+<?php session_start() ?>
 
     <?php
-    
+        if(isset($_SESSION["name"])){
     ?>
 
 
@@ -27,7 +28,9 @@
 </div>
 
 
-<?php 
 
-
-?>
+<?php
+    }
+    else{
+      header('location: ../');
+    }?>

@@ -46,22 +46,26 @@
 	<body class="">
 
 		 <div class="" id="contenidomenu">
-			<?php include 'topmenu.php'; ?>
+				<?php include 'topmenu.php'; ?>
 		  </div>
 
-		<div class="row animated slideInDown valign-wrapper" id="menu">
-			<div class="col s12 m12 l12">
-				<div class="container ">
-					<!-- <a id="back" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br><br> -->
-					<div class="row align-center" id="contentmenu">
-						<form action=""></form>
-						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./statistic" id="viewsta">Estadisticas</a></div>
-						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./products" id="viewpro">Productos</a></div>
-						<div class="col s12 m4 l4 center-align men"><button class="btn">Pedidos</button></div>
+		<div class="row animated slideInDown valign-wrapper" id="grap">
 
-					</div>
+			<div class="row">
+				<div class="col">
+					
+				</div>
+				<div class="col">
+					
+				</div>
+				<div class="col">
+					
+				</div>
+				<div class="col">
+					
 				</div>
 			</div>
+
 		</div>
 
 

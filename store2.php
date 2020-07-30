@@ -188,18 +188,6 @@
       <div class="col l6 m6 s12">
         <ul class="collapsible hide-on-med-and-down animated slideInDown">
             <li>
-              <div class="collapsible-header " ><i class="material-icons">arrow_drop_down</i>Todas las Categorias</div>
-              <div class="collapsible-body" >
-                    <div class="row center-align " id="categories"> </div>
-
-              </div>
-              
-            </li>
-          </ul>
-      </div>
-      <div class="col l6 m6 s12">
-        <ul class="collapsible hide-on-med-and-down animated slideInDown">
-            <li>
               <div class="collapsible-header "><i class="material-icons">arrow_drop_down</i>Todos los Tipos</div>
               <div class="collapsible-body" >
                     <div class="row center-align " id="producttype">
@@ -211,6 +199,19 @@
             </li>
           </ul>
       </div>
+      <div class="col l6 m6 s12">
+        <ul class="collapsible hide-on-med-and-down animated slideInDown">
+            <li>
+              <div class="collapsible-header " ><i class="material-icons">arrow_drop_down</i>Todas las Categorias</div>
+              <div class="collapsible-body" >
+                    <div class="row center-align " id="categories"> </div>
+
+              </div>
+              
+            </li>
+          </ul>
+      </div>
+      
         
     
       <div class="animated slideInDown show-on-med-and-down hide-on-large-only center-align">

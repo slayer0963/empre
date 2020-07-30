@@ -177,12 +177,12 @@ var categories = () =>{
                       
                               html+='<div class="col s4 m3 l1 card-panel offset-m1 offset-l1  offset-s1"> ';
                                 html+='<div class="col s12">';
-                                  html+='<img src="https://static.vecteezy.com/system/resources/previews/000/582/138/non_2x/drink-icon-vector-illustration.jpg" style="height:35px; width:45px;" alt="" class="circle "><br>'+values[i][1];
+                                  html+='<img src="view/imglogos/'+values[i][3]+'" style="height:35px; width:45px;" alt="" class="circle "><br>'+values[i][1];
                                 html+='</div>';
                               html+='</div>';
                    
                     html+='</a>';
-                    htmlnor+='<a href="#!'+values[i][0]+'" onClick="businessbycat('+values[i][0]+');" class="col s2"><img src="https://static.vecteezy.com/system/resources/previews/000/582/138/non_2x/drink-icon-vector-illustration.jpg" style="height:35px; width:45px;" alt="" class="circle ">'+values[i][1];;
+                    htmlnor+='<a href="#!'+values[i][0]+'" onClick="businessbycat('+values[i][0]+');" class="col s2"><img src="view/imglogos/'+values[i][3]+'" style="height:35px; width:45px;" alt="" class="circle ">'+values[i][1];
                     htmlnor+='</a>';
 
                }
@@ -258,12 +258,12 @@ var producttype = () =>{
                       
                               html+='<div class="col s4 m3 l1 card-panel offset-m1 offset-l1  offset-s1"> ';
                                 html+='<div class="col s12">';
-                                  html+='<img src="https://static.vecteezy.com/system/resources/previews/000/582/138/non_2x/drink-icon-vector-illustration.jpg" style="height:35px; width:45px;" alt="" class="circle "><br>'+values[i][1];
+                                  html+='<img src="view/imglogos/'+values[i][3]+'" style="height:35px; width:45px;" alt="" class="circle "><br>'+values[i][1];
                                 html+='</div>';
                               html+='</div>';
                    
                     html+='</a>';
-                    htmlnor+='<a href="#!'+values[i][0]+'" onClick="businessbyproductype('+values[i][0]+');" class="col s2"><img src="https://static.vecteezy.com/system/resources/previews/000/582/138/non_2x/drink-icon-vector-illustration.jpg" style="height:35px; width:45px;" alt="" class="circle ">'+values[i][1];;
+                    htmlnor+='<a href="#!'+values[i][0]+'" onClick="businessbyproductype('+values[i][0]+');" class="col s2"><img src="view/imglogos/'+values[i][3]+'" style="height:35px; width:45px;" alt="" class="circle ">'+values[i][1];;
                     htmlnor+='</a>';
                }
                $("#productypem").html(html);

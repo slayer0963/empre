@@ -5,7 +5,7 @@ class ProductType
 	private $_id_tpro;
     private $_name_tpro;
 	private $_state_tpro;
-
+    private $_logo;
     function __construct()
     {
         
@@ -48,6 +48,20 @@ class ProductType
     public function setStateTpro($_state_tpro)
     {
         $this->_state_tpro = $_state_tpro;
+
+        return $this;
+    }
+
+
+    public function getLogo()
+    {
+        return $this->_logo;
+    }
+
+
+    public function setLogo($_logo)
+    {
+        $this->_logo = $_logo;
 
         return $this;
     }

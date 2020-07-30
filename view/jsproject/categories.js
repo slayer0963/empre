@@ -1,13 +1,56 @@
 $(document).ready(function(){
 getData();
 
+$("#img").change(function(event) {
+     document.getElementById("imgcontainer").removeAttribute('src');
+
+        $("#vista-previa").html('');
+                var archivos=document.getElementById('file').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+});
+
+$("#imge").change(function(event) {
+     document.getElementById("imgcontainere").removeAttribute('src');
+
+        $("#vista-previae").html('');
+                var archivos=document.getElementById('filee').files;
+        var navegador=window.URL || window.webkitURL;
+
+        for (var i = 0; i < archivos.length; i++) {
+
+            var size=archivos[i].size;
+            var type=archivos[i].type;
+            var name=archivos[i].name;
+            
+                var objeto_url=navegador.createObjectURL(archivos[i]);
+
+         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+       }
+});
+
 $('#formcat').submit(function() {
 
   if(Validate(1)==idinput.length){ 
+     var formData = new FormData(document.getElementById("formcat"));
+      formData.append("dato", "valor");
 	$.ajax({
             type: "POST",
             url: "../../controller/ccategories.php?btnsetData=setData", 
-            data: $("#formcat").serialize(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
                    if(resp==1){
                     getData();
@@ -31,10 +74,15 @@ $('#formcat').submit(function() {
 
 $('#formcate').submit(function() {
    if(Validate(0)==idinpute.length){
+    var formData = new FormData(document.getElementById("formcate"));
+      formData.append("dato", "valor");
     $.ajax({
             type: "POST",
             url: "../../controller/ccategories.php?updateData=update", 
-            data: $("#formcate").serialize(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
             success: function(resp) {
                    if(resp==1){
                     M.toast({html: "¡Se ha modificado la categoria exitosamente!", classes: 'rounded  green'});
@@ -55,10 +103,10 @@ $('#formcate').submit(function() {
 }); 
 });
 
-var idinput = ['categories'];
-var idinputerror= ['txtcategories'];
-var idinpute = ['categoriese'];
-var idinputerrore= ['txtcategoriese'];
+var idinput = ['categories','img'];
+var idinputerror= ['txtcategories','txtimg'];
+var idinpute = ['categoriese','imge'];
+var idinputerrore= ['txtcategoriese','txtimge'];
 
 var cleanform = () => {
     idinput.forEach(names => {
@@ -121,10 +169,12 @@ idinputerrore.forEach(names => {
 
 
 
-var FillBoxes =(id,name) =>{
+var FillBoxes =(id,name,logo) =>{
     $("#id").val(id);
     $("#categoriese").val(name);
-    $("#categoriese").focus();   
+    $("#categoriese").focus();
+    $("#imgcontainere").attr("src",'../imglogos/'+logo);
+    $("#imge").val(logo); 
 }
 
 
@@ -169,7 +219,8 @@ var getData = ()=> {
       url: "../../controller/ccategories.php?btngetData=getData",//hasta para consultar tenemos un boton imaginario en el controlador  => ($page = isset($_GET['btnConsultar'])?$_GET['btnConsultar']:'';)
           "type": "POST"
     },
-    "columns": [
+    "columns": [    
+      { "data": "logo" },
       { "data": "name_cat" },
       { "data": "actions" }
       ],

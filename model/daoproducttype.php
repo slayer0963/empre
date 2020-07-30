@@ -31,7 +31,8 @@ include_once "../cn/connection.php";
  	{
  		$c=conectar();
 		$name = $obj->getNameTpro();
-		$sql="insert into product_type value (0,'$name',1);";
+		$logo = $obj->getLogo();
+		$sql="insert into product_type value (0,'$name',1,'$logo');";
 		if (!$c->query($sql)) {
 			print "0";
 		}else{
@@ -47,7 +48,8 @@ include_once "../cn/connection.php";
  		$c=conectar();
  		$id=$obj->getIdTpro();
 		$name = $obj->getNameTpro();
-		$sql="update product_type set name_tpro='$name' where id_tpro=$id;";
+		$logo = $obj->getLogo();
+		$sql="update product_type set name_tpro='$name', logo='$logo' where id_tpro=$id;";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{

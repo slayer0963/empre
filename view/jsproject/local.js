@@ -56,3 +56,28 @@ function salir() {
                 }
         });
 }
+
+function saliradmin() {
+  $.ajax({
+                type: "POST",
+                url: "../cn/sessiondestroy.php", 
+                success: function(resp) 
+                {
+                  localStorage.removeItem('client');
+                  localStorage.removeItem('nameper');
+                }
+        });
+}
+
+function salirempre() {
+  $.ajax({
+                type: "POST",
+                url: "../cn/sessiondestroy.php", 
+                success: function(resp) 
+                {
+                  localStorage.removeItem('client');
+                  localStorage.removeItem('nameper');
+                  location.href='../';
+                }
+        });
+}
