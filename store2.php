@@ -157,6 +157,8 @@
             <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
+            <li><a  class="modal-trigger" href="<?php echo SERVERURLB; ?>store/address">Dirección de entrega</a></li>
+        <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="#!" onclick="salir();" class="">Salir</a></li>
@@ -176,6 +178,8 @@
         </li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
+        <li class="divider"></li>
+        <li><a  class="modal-trigger" href="<?php echo SERVERURLB; ?>store/address">Dirección de entrega</a></li>
         <li class="divider"></li>
             <li><a href="#!" class="">Perfil</a></li>
             <li class="divider"></li>
@@ -286,7 +290,7 @@
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat">Ir a carrito</a>
+      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat" style="color:white;">Ir a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
@@ -301,10 +305,14 @@
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="green waves-effect waves-green btn-flat">Enviar todo a carrito</a>
+      <a href="#!" class="green waves-effect waves-green btn-flat" style="color:white;">Enviar todo a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
+
+
+
+
 
 
 

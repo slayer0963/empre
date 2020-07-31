@@ -2,6 +2,8 @@ $(document).ready(function() {
 
 	consultcar(localStorage.getItem('client'));
   consultwish(localStorage.getItem('client'));
+  
+
 	$("#addcar").click(function () {
         
         if(localStorage.getItem('nameper')==null){
@@ -31,6 +33,8 @@ $(document).ready(function() {
 	        });
 	    }
      });
+
+
 	$("#addwish").click(function () {
         
         if(localStorage.getItem('nameper')==null){
@@ -220,3 +224,6 @@ function addcarfromwish(idcliente,pfidprices,pfcolor,pfmaterial,pfsize,pfprices,
 	            }
 	        });
 }
+
+
+

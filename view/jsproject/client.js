@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
 $("#contact").mask("(503) 9999-9999");
-
+$("#contacte").mask("(503) 9999-9999");
 
 
 $("#city").select2({
