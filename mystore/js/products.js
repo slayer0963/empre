@@ -79,11 +79,13 @@ $("#btnproedit").click(function(event) {
     
     if(contclick==0){
       $(".editpro").removeClass('hide');
+      $(".stateprod").removeClass('hide');
       M.toast({html: "¡Modo Edición activado!", classes: 'rounded  green'});
       contclick+=1;
     }
     else{
       $(".editpro").addClass('hide');
+      $(".stateprod").addClass('hide');
       M.toast({html: "¡Modo Edición desactivado!", classes: 'rounded  black'});
       contclick=0;
     }
@@ -110,6 +112,7 @@ $("#btnproedit").click(function(event) {
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                    contclick=0;
                    } 
                }
                 
@@ -278,12 +281,18 @@ function mybusii(id) {
 						        html+='<div class="card-image">';
 						          html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height: 150px;">';
 						          html+='<a class="btn-floating halfway-fab waves-effect waves-light red" title="Detalles"  onclick="details('+respu[i].id_pro+');"><i class="material-icons">visibility</i></a>';
-						          
-                    html+='</div>';
+                    html+='</div>'
 						        html+='<div class="card-content">';
-						          html+='<p>'+respu[i].name_pro+' <a class="btn halfway-fab waves-effect waves-light yellow hide editpro" title="Editar"  onclick="editproduct('+respu[i].id_pro+',\''+respu[i].name_pro+'\',\''+respu[i].descr_pro+'\','+respu[i].id_cat+','+respu[i].id_tpro+');"><i class="material-icons">edit</i></a></p>';
+						          html+='<p>'+respu[i].name_pro+' <a class="btn halfway-fab waves-effect waves-light yellow hide editpro" title="Editar"  onclick="editproduct('+respu[i].id_pro+',\''+respu[i].name_pro+'\',\''+respu[i].descr_pro+'\','+respu[i].id_cat+','+respu[i].id_tpro+');"><i class="material-icons">edit</i></a>';
                      
-						        html+='</div>';
+                      if (respu[i].state_pro=="1") {
+                        html+='<a class="btn halfway-fab waves-effect waves-light green hide stateprod" title="Activo"  onclick="StateChange('+respu[i].id_pro+','+respu[i].state_pro+');" type="submit" name="action"><i class="material-icons">radio_button_checked</i></a>';
+                      }else{
+                        html+='<a class="btn halfway-fab waves-effect waves-light red hide stateprod " title="Deshabilitado" onclick="StateChange('+respu[i].id_pro+','+respu[i].state_pro+');" type="submit" name="action"><i class="material-icons">radio_button_checked</i></a>';
+                      }
+
+
+						        html+='</p></div>';
 						      html+='</div>';
 						    html+='</div>';	   
             	}
@@ -297,6 +306,30 @@ function mybusii(id) {
             	
             }
             });
+}
+
+var StateChange = (id,estado) => {
+
+    var paren = id
+          var dataString = 'id='+id+"&state="+estado;
+           $.ajax({
+            type: "POST",
+            url: "../controller/cproduct.php?updateData=statechange",
+            data: dataString,
+            success: function(resp) {            
+                    if (resp=="1") {
+                               M.toast({html: "¡Se ha modificado el estado exitosamente!", classes: 'rounded  green'});
+                               var obj =JSON.parse(localStorage.getItem('Store'));
+                               mybusii(obj.idbusi);
+                               contclick=0;
+                    }else{
+                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                    contclick=0;
+                   } 
+            getData();
+            }
+        }); 
+     return false;
 }
 
 var editproduct =(id,name,des,cat,tp) =>{

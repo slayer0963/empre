@@ -425,19 +425,25 @@
 						<ul class="collapsible ">
 					    <li class="active">
 					    	
-					      <div class="collapsible-header"><i class="material-icons">filter_drama</i>Color</div>
+					      <div class="collapsible-header"><i class="material-icons">color_lens</i>Color</div>
 					      <div class="row "><br>
 					      <div class="col s12 m12 l12 " id="ccolorsp"></div>
 					      </div>
 					      <hr style="background-color: #E0E5E9;height: 0.01px;border-color: #E0E5E9">
 					    </li>
 					    <li>
-					      <div class="collapsible-header"><i class="material-icons">place</i>Material</div>
-					      <div class="collapsible-header" id="cmaterialsp"></div>
+					      <div class="collapsible-header"><i class="material-icons">build</i>Material</div>
+					      <div class="row "><br>
+					      <div class="col s12 m12 l12" id="cmaterialsp"></div>
+					  	  </div>
+					  	  <hr style="background-color: #E0E5E9;height: 0.01px;border-color: #E0E5E9">
 					    </li>
 					    <li>
-					      <div class="collapsible-header"><i class="material-icons">whatshot</i>Talla</div>
-					      <div class="collapsible-header" id="csizesp"></div>
+					      <div class="collapsible-header"><i class="material-icons">style</i>Talla</div>
+					      <div class="row "><br>
+					      <div class="col s12 m12 l12" id="csizesp"></div>
+					      </div>
+					      <hr style="background-color: #E0E5E9;height: 0.01px;border-color: #E0E5E9">
 					    </li><b>
 					  
 						

@@ -1051,8 +1051,8 @@ function getDataProductD(id,color,material,size) {
                               $("#name_product").val(respu[i].name_pro);
 					$("#id_product").val(id);
                               $("#quantitydeta").html(respu[i].quantity);
-					$("#pricedeta").html("$"+respu[i].price);  
-					$("#discodeta").html(respu[i].discount);   
+					$("#pricedeta").html("$"+parseFloat(respu[i].price).toFixed(2));  
+					$("#discodeta").html(respu[i].discount*100+"%");   
 					$("#imgpro").html(htmlimg);
             	}
             }
