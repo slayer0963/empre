@@ -1,3 +1,7 @@
+
+
+var chart5 = "";
+
 function mybusii(id,name){
 
   var obj = new Object();
@@ -58,6 +62,13 @@ var chart4 = new ApexCharts(
 chart4.render();
 getDataApexfour(chart4,obj.idbusi);
 setInterval( function(){ getDataApexfour(chart4,obj.idbusi); } , 6000);
+
+ chart5 = new ApexCharts(
+  document.querySelector("#chartpro1"),
+    optionsgraplinecurve()
+  );
+
+  chart5.render();
 
 });
 
@@ -381,18 +392,12 @@ var getDataApexrating= (idprices,color,material,size) =>{
 };
 
 var FillStadist= (idbusi,idprices,color,material,size) =>{
-	var chart = new ApexCharts(
-  document.querySelector("#chartpro1"),
-    optionsgraplinecurve()
-  );
 
-  chart.render();
-
-  getDataApexpro1(chart,idbusi,idprices,color,material,size);
+  getDataApexpro1(chart5,idbusi,idprices,color,material,size);
   getDataApexprofit(idbusi,idprices,color,material,size);
   getDataApexsales(idbusi,idprices,color,material,size);
   getDataApexrating(idprices,color,material,size);
-  // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 6000);
+  // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 3000);
 };  
 
 
