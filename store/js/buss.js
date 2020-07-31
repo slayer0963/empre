@@ -655,7 +655,7 @@ function fillboxprofile(id) {
             url: "../controller/cclienta.php?btngetDatacli=getdataprofile", 
             data: dataString,
             success: function(resp) {
-              
+              //alert(resp);
               var respu = eval(resp);
                   for (var i = 0; i < respu.length; i++) {
                     $("#id").val(respu[0].id_cl);

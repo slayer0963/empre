@@ -15,11 +15,8 @@
             <input type="hidden" name="id"  id="id">
 
             <div class="input-fiel col s12">
-             <div class="col s12 align-center">
-              <a class="btn-floating green"><i class="material-icons">contact_phone</i></a>
-      <a class="btn-floating yellow"><i class="material-icons">contact_mail</i></a>
-            </div>
-            <br>
+             <h3>Mi Perfil</h3>
+            
             <div class="file-field input-field col s12">
               <div class="col s8 m6 l6 ">
               <div id="vista-previae">
@@ -126,7 +123,7 @@
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat">Ir a carrito</a>
+      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat" style="color:white;">Ir a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
@@ -141,7 +138,7 @@
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="green waves-effect waves-green btn-flat">Enviar todo a carrito</a>
+      <a href="#!" class="green waves-effect waves-green btn-flat" style="color:white;">Enviar todo a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
