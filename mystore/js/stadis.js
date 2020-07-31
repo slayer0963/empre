@@ -1,4 +1,13 @@
+function mybusii(id,name){
 
+  var obj = new Object();
+
+  obj.idbusi=id;
+  obj.name=name;
+
+  localStorage.setItem('Store',JSON.stringify(obj));
+  location.href="./statistic";
+}
 
 $(document).ready(function() {
   var obj =JSON.parse(localStorage.getItem('Store'));
