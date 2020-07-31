@@ -87,6 +87,8 @@
             <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
+            <li><a  class="modal-trigger" href="<?php echo SERVERURLB; ?>store/address">Dirección de entrega</a></li>
+        <li class="divider"></li>
             <li><a  class="modal-trigger" onclick="fillboxprofile(<?php echo $_SESSION['idus']; ?>);" href="#profiled">Perfil</a></li>
             <li class="divider"></li>
             <li><a href="#!" onclick="salir();" class="">Salir</a></li>
@@ -111,6 +113,8 @@
         </li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
+        <li class="divider"></li>
+        <li><a  class="modal-trigger" href="<?php echo SERVERURLB; ?>store/address">Dirección de entrega</a></li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" onclick="fillboxprofile(<?php echo $_SESSION['idus']; ?>);" href="#profiled">Perfil</a></li>
             <li class="divider"></li>
