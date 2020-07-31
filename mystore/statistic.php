@@ -144,23 +144,33 @@
               
               
               <div class="row">
-                <div class="col s12 m6 l6">
+                <div class="col s12 m4 l4">
                   <div class="card green darken-1">
                     <div class="card-content white-text center-align">
-                      <span class="card-title" ><h2 id="profitpro">$12.2</h2></span>
+                      <span class="card-title" ><h4 id="profitpro">0</h4></span>
                     </div>
                     <div class="card-action white-text center-align">
                       Ganancias totales
                     </div>
                   </div>
                 </div>
-                <div class="col s12 m6 l6">
+                <div class="col s12 m4 l4">
                   <div class="card green darken-1">
                     <div class="card-content white-text center-align">
-                      <span class="card-title" ><h2 id="profitpro">$12.2</h2></span>
+                      <span class="card-title" ><h4 id="salespro">0</h4></span>
                     </div>
                     <div class="card-action white-text center-align">
                       Ventas totales
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m4 l4">
+                  <div class="card green darken-1">
+                    <div class="card-content white-text center-align">
+                      <span class="card-title" ><h4 id="rating">0</h4></span>
+                    </div>
+                    <div class="card-action white-text center-align">
+                      Rating
                     </div>
                   </div>
                 </div>
@@ -168,7 +178,7 @@
             
           </div>
           <div class="col s12 m12 l12 ">
-              Ganancias por dia
+              Ventas por dia
             <div class="" id="chartpro1"></div>
             </div>
           </div>

@@ -57,16 +57,20 @@ function salir() {
         });
 }
 
-function saliradmin() {
+function saliradmin(url) {
+  // alert("asdasdasd");
   $.ajax({
                 type: "POST",
-                url: "../cn/sessiondestroy.php", 
+                url: url, 
                 success: function(resp) 
                 {
+                  
                   localStorage.removeItem('client');
                   localStorage.removeItem('nameper');
+                  location.href='../';
                 }
         });
+  
 }
 
 function salirempre() {

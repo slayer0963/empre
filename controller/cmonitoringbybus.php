@@ -41,6 +41,18 @@
         echo json_encode($dat->getDatachartproprofit($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
     }
 
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatachartprosales'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getDatachartprosales($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatachartprorating'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getDatachartprorating($_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
+    }
+
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getDataproduc'){

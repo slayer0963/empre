@@ -242,7 +242,7 @@ var dataString = 'id='+id;
     	var lbl = eval(datas);
 
 				chart.updateSeries([{
-			    name: 'Ganancias',
+			    name: 'Ganancias $',
 			    data: lbl
 			  }]);
      
@@ -325,7 +325,7 @@ var getDataApexpro1= (chart,idbusi,idprices,color,material,size) =>{
       success: function(datas) {
         var lbl = eval(datas);
           chart.updateSeries([{
-          name: 'Ventas',
+          name: 'Ventas $',
           data: lbl
         }]);
        
@@ -341,7 +341,41 @@ var getDataApexprofit= (idbusi,idprices,color,material,size) =>{
       data: dataString,
       success: function(datas) {
         var lbl = eval(datas);
-        alert(datas);
+        $("#profitpro").html("$"+lbl[0].ganancia);
+      }
+    });        
+};
+
+var getDataApexsales= (idbusi,idprices,color,material,size) =>{
+  var dataString = 'id='+idbusi+'&idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
+  $.ajax({
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDatachartprosales',
+      data: dataString,
+      success: function(datas) {
+        // alert(datas);
+        var lbl = eval(datas);
+        $("#salespro").html("$"+lbl[0].ganancia);
+      }
+    });        
+};
+
+var getDataApexrating= (idprices,color,material,size) =>{
+  var dataString = 'idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
+  $.ajax({
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDatachartprorating',
+      data: dataString,
+      success: function(datas) {
+        //alert(datas);
+        var lbl = eval(datas);
+        if(lbl[0].media==null){
+          $("#rating").html("<i class='material-icons'>stars</i>"+parseFloat(0).toFixed(2));
+        }
+        else{
+          $("#rating").html("<i class='material-icons'>stars</i>"+parseFloat(lbl[0].media).toFixed(2));
+        }
+        
       }
     });        
 };
@@ -356,6 +390,8 @@ var FillStadist= (idbusi,idprices,color,material,size) =>{
 
   getDataApexpro1(chart,idbusi,idprices,color,material,size);
   getDataApexprofit(idbusi,idprices,color,material,size);
+  getDataApexsales(idbusi,idprices,color,material,size);
+  getDataApexrating(idprices,color,material,size);
   // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 6000);
 };  
 

@@ -35,7 +35,7 @@
     <li><a href="<?php echo SERVERURL; ?>client/" class="">Cliente</a></li>
     <li><a class="dropdown-trigger" href="" data-target="dropdown2">Producto<i class="material-icons right">arrow_drop_down</i></a></li>
     <!-- <li><a href="mystore/"  class="">Ver mi negocio</a></li> -->
-    <li><a href="" onclick="saliradmin();"  class="">Salir</a></li>
+    <li><a href="" onclick="saliradmin('<?php echo SERVERURLB; ?>cn/sessiondestroy.php');"  class="">Salir</a></li>
 </ul>
 <ul id="dropdown1" class="dropdown-content indigo lighten-5">
   <li><a href="<?php echo SERVERURL; ?>usertypes/" class="">Tipo de usuario</a></li>
