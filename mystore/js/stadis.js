@@ -204,6 +204,32 @@ var optionsgrapline =() =>{
   return options;
 }
 
+var optionsgraplinecurve =() =>{
+   var options = {
+          series: [{
+          data: []
+        }],
+          chart: {
+          type: 'line',
+          height: 350
+        },
+        noData: {
+          text: 'Esperando tener información...'
+        },
+        stroke: {
+          curve: 'straight',
+        },
+        dataLabels: {
+          enabled: true
+        },
+        title: {
+          text: '',
+          align: 'center'
+        }
+        };
+  return options;
+}
+
 
 
 var getDataApex= (chart,id) =>{
@@ -290,26 +316,47 @@ var getDataApexfour= (chart,id) =>{
     });        
 };
 
-var getDataApexchc= (chart2) =>{
-	
+var getDataApexpro1= (chart,idbusi,idprices,color,material,size) =>{
+  var dataString = 'id='+idbusi+'&idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
   $.ajax({
-      url: '../controller/cmonitoring.php?btngetData=getDatacharttwo',
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDatachartproone',
+      data: dataString,
       success: function(datas) {
-      	var lbl = eval(datas);
-      		var arr = [];
-      		var arrname=[];
-      		for (var i = 0; i < lbl.length; i++) {
-      			arr.push(parseInt(lbl[i].y));
-      			arrname.push(lbl[i].x);
-      		}
-
-       		chart2.updateSeries(arr);
-       		chart2.updateOptions({labels: arrname});
-
-       		
-       		
+        var lbl = eval(datas);
+          chart.updateSeries([{
+          name: 'Ventas',
+          data: lbl
+        }]);
+       
       }
     });        
+};
+
+var getDataApexprofit= (idbusi,idprices,color,material,size) =>{
+  var dataString = 'id='+idbusi+'&idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
+  $.ajax({
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDatachartproprofit',
+      data: dataString,
+      success: function(datas) {
+        var lbl = eval(datas);
+        alert(datas);
+      }
+    });        
+};
+
+var FillStadist= (idbusi,idprices,color,material,size) =>{
+	var chart = new ApexCharts(
+  document.querySelector("#chartpro1"),
+    optionsgraplinecurve()
+  );
+
+  chart.render();
+
+  getDataApexpro1(chart,idbusi,idprices,color,material,size);
+  getDataApexprofit(idbusi,idprices,color,material,size);
+  // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 6000);
 };  
 
 
@@ -318,14 +365,11 @@ var getDataProducts = (bussi)=> {
     "responsive": true,
     "order": [[ 3, "asc" ]],
     "stateSave": true,
-   
     "bDeferRender": true,
     "sPaginationType": "full_numbers",
     "bDestroy": true,
     "paging": true,
     "responsive": true,
-
-
     "ajax": {
           url:"../controller/cmonitoringbybus.php?btngetData=getDataproduc&id="+bussi,
           "type": "GET",

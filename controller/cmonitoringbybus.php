@@ -28,6 +28,19 @@
 	    echo json_encode($dat->getDatacharttwo($_POST['id']));
 	}
 
+    // chart pro
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatachartproone'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getDatachartproone($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatachartproprofit'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getDatachartproprofit($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
+    }
+
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getDataproduc'){
@@ -38,11 +51,15 @@ if($page=='getDataproduc'){
          $btquanti='';
          $btnview='';
          $imagen ='';
-  
+         $id_bus="'".$c["id_bus"]."'";
+         $id_prices="'".$c["id_prices"]."'";
          $name_pro="'".$c["name_pro"]."'";
          $img="'".$c["img"]."'";
+         $id_color="'".$c["id_color"]."'";
          $name_color="'".$c["name_color"]."'";
+         $id_mat="'".$c["id_mat"]."'";
          $name_mat="'".$c["name_mat"]."'";
+         $id_size="'".$c["id_size"]."'";
          $name_size="'".$c["name_size"]."'";
          $number_size="'".$c["number_size"]."'";
          $quantity="'".$c["quantity"]."'";
@@ -50,7 +67,7 @@ if($page=='getDataproduc'){
 
 
 
-         $btnview='&nbsp;<a class=\"btn-floating #ffeb3b blue\" id=\"btnd'.$c["name_pro"].'\"><i class=\"material-icons\">visibility</i></a>';
+         $btnview='&nbsp;<a class=\"btn-floating #ffeb3b blue modal-trigger\"  href=\"#stadisbyproduct\" id=\"btnd'.$c["name_pro"].'\" onclick=\"FillStadist('.$id_bus.','.$id_prices.','.$id_color.','.$id_mat.','.$id_size.');\"><i class=\"material-icons\">visibility</i></a>';
 
         $imagen = '<a href=\"../view/imgdetails/'.$c["img"].'\" data-lightbox=\"image-'.$name_pro.'\" data-title=\"'.$c["name_pro"].'\"><img src=\"../view/imgdetails/'.$c["img"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\"\"></a>';
 

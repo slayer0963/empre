@@ -33,9 +33,11 @@
 		    top: -50px;
 
 			}
-
+      #stadisbyproduct{ margin-top:-3rem; padding: 0; width: 75% !important ; height: 100% !important ;  max-height: 90%;}
       #salesdate { margin-top:-3rem; padding: 0; width: 75% !important ; height: 100% !important ;  max-height: 90%;}
       @media only screen and (max-width : 992px) {
+        #stadisbyproduct{ margin-top:-3rem; padding: 0; width: 100% !important ; height: 90% !important ; max-height: 95%;}
+          }
             #salesdate { margin-top:-3rem; padding: 0; width: 100% !important ; height: 90% !important ; max-height: 95%;}
           }
 	  </style>
@@ -105,7 +107,7 @@
     </div>
 </div>
 </div>
-<div id="salesdate" class="modal">
+    <div id="salesdate" class="modal">
         <div class="modal-content">
           <h4>Ventas realizadas</h4>
           <table id="tbsalesdate" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
@@ -132,6 +134,50 @@
         </div>
       </div>
 
+
+    <div id="stadisbyproduct" class="modal">
+        <div class="modal-content">
+          <h4>Ventas realizadas</h4>
+          <div class="row">
+
+          <div class="col s12 m12 l12 ">
+              
+              
+              <div class="row">
+                <div class="col s12 m6 l6">
+                  <div class="card green darken-1">
+                    <div class="card-content white-text center-align">
+                      <span class="card-title" ><h2 id="profitpro">$12.2</h2></span>
+                    </div>
+                    <div class="card-action white-text center-align">
+                      Ganancias totales
+                    </div>
+                  </div>
+                </div>
+                <div class="col s12 m6 l6">
+                  <div class="card green darken-1">
+                    <div class="card-content white-text center-align">
+                      <span class="card-title" ><h2 id="profitpro">$12.2</h2></span>
+                    </div>
+                    <div class="card-action white-text center-align">
+                      Ventas totales
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+          </div>
+          <div class="col s12 m12 l12 ">
+              Ganancias por dia
+            <div class="" id="chartpro1"></div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+      </div>
 
 
 
