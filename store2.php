@@ -189,6 +189,7 @@
          <?php }?>
     
     <div class="row" id="contentpage" style="z-index: -1;">
+      <div class="container">
       <div class="col l6 m6 s12">
         <ul class="collapsible hide-on-med-and-down animated slideInDown">
             <li>
@@ -225,7 +226,7 @@
           <div class="row center-align" id="productypem"> </div>
       </div>
       <div class="col l12 m12 s12 animated" id="contbusi">
-        <div class="">
+        
           <div class="row " id="business">
 
 

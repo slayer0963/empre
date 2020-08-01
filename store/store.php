@@ -9,7 +9,8 @@
  </style>
  <?php include 'block/menu.php'; ?>
   <title id="title"></title>
-    <div class="row" id="contentpage">
+    <div class="container">
+      <div class="row" id="contentpage">
       <div class="col l3 m10 s10 offset-s1 offset-m1">
          <ul class="collection">
           <li class="collection-item">Rango de precios <br>
@@ -38,6 +39,7 @@
        
         </div>
       </div>
+    </div>
     </div>
     <div class="row" id="none"></div>
 

@@ -37,7 +37,7 @@
       #salesdate { margin-top:-3rem; padding: 0; width: 75% !important ; height: 100% !important ;  max-height: 90%;}
       @media only screen and (max-width : 992px) {
         #stadisbyproduct{ margin-top:-3rem; padding: 0; width: 100% !important ; height: 90% !important ; max-height: 95%;}
-          }
+          
             #salesdate { margin-top:-3rem; padding: 0; width: 100% !important ; height: 90% !important ; max-height: 95%;}
           }
 	  </style>
@@ -82,6 +82,10 @@
   
 
       <div class="col s12 m12 l10 offset-l1 ">
+        <hr>
+        Detalles por Producto
+        <hr>
+        <br>
          <table id="tbproduct" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
            <thead >
         <tr>
@@ -103,6 +107,36 @@
         </tr>
       </tfoot>
          </table>
+        </div>
+      
+        <div class="col s12 m12 l10 offset-l1 center-align">
+          <hr>
+          Comentarios
+          <hr>
+
+
+              <select  class="select2 browser-default" id="pro" name="pro" title="Productos (*)">
+              </select>
+        
+          <br>
+          <table id="tbcoment" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+               <thead >
+            <tr>
+              <th class="text-center"data-priority="1">Usuario</th>
+              <th class="text-center"data-priority="4">Le gustaron</th>
+              <th class="text-center"data-priority="2">Comentario</th>
+              <th class="text-center"  data-priority="3">Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr><th class="text-center"data-priority="1">Usuario</th>
+              <th class="text-center" data-priority="4">Le gustaron</th>
+              <th class="text-center"data-priority="2">Comentario</th>
+              <th class="text-center"  data-priority="3">Acciones</th>
+            </tr>
+          </tfoot>
+             </table>
         </div>
     </div>
 </div>
@@ -126,6 +160,32 @@
           <th class="text-center"data-priority="2">Fecha</th>
           <th class="text-center"  data-priority="3">Acciones</th>
         </tr>
+      </tfoot>
+         </table>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+    </div>
+
+
+        <div id="salesdatesdetails" class="modal">
+        <div class="modal-content">
+          <h6 id="nameclide"></h6>
+          <table id="tbdatesales" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+           <thead >
+        <tr>
+          <th class="text-center"data-priority="1">Producto</th>
+          <th class="text-center"data-priority="4">Detalles</th>
+          <th class="text-center"data-priority="2">Cantidad</th>
+          <th class="text-center"  data-priority="3">Precio</th>
+          <th class="text-center"  data-priority="3">Descuento</th>
+          <th class="text-center"data-priority="4">Total</th>
+        </tr>
+      </thead>
+      <tbody id="bodysales"></tbody>
+      <tfoot id="bodysalesfoot">
+
       </tfoot>
          </table>
         </div>
@@ -177,11 +237,16 @@
               </div>
             
           </div>
-          <div class="col s12 m12 l12 ">
+          <div class="col s12 m12 l6 ">
+              Ganancia por dia
+            <div class="" id="chartpro2"></div>
+            </div>
+          
+          <div class="col s12 m12 l6 ">
               Ventas por dia
             <div class="" id="chartpro1"></div>
             </div>
-          </div>
+      
 
         </div>
         <div class="modal-footer">

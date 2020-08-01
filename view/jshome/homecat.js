@@ -38,7 +38,7 @@ var business = () =>{
                 html+='<div class="col l3 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 100%;"></center>';
+                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
                     html+='</div>';
                     html+='<div class="card-content">';
                      html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
@@ -66,49 +66,7 @@ var business = () =>{
       
 }
 
-var businessbysearch = (search) =>{
-  var html='';
-  var htmlcarru='';
-var dataString = 'search='+search;
-          $.ajax({
-            type: "POST",
-            url: "controller/cbusiness.php?btngetDatas=getHomes",
-            data: dataString,
-            success: function(resp) {
-            var values = eval(resp);        
-             // alert(resp);
-             for (var i = 0; i < values.length; i++) {
-                
-                html+='<div class="col l3 m6 s10 offset-s1">';
-                  html+='<div class="card hoverable">';
-                    html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 100%;"></center>';
-                    html+='</div>';
-                    html+='<div class="card-content">';
-                     html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
-                      html+='<p class="truncate">'+values[i].description+'</p>';
-                    html+='</div>';
-                    html+='<div class="card-action center-align">';
-                      html+='<a href="#!"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
-                    html+='</div>';
-                  html+='</div>';
-                html+='</div>';
-              }                   
-            
 
-             $("#contbusi").addClass('fadeOutLeft');
-            
-            setTimeout(function(){
-              $("#business").html(html);
-              $("#contbusi").removeClass('fadeOutLeft'); 
-              $("#contbusi").addClass('fadeInUp');
-
-            }, 500);
-             
-            } 
-        }); 
-      
-}
 
 
 var businessbycat = (id) =>{
@@ -125,7 +83,7 @@ var businessbycat = (id) =>{
                 html+='<div class="col l3 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 100%;"></center>';
+                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
                     html+='</div>';
                     html+='<div class="card-content">';
                      html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
@@ -207,7 +165,7 @@ var businessbyproductype= (id) =>{
                 html+='<div class="col l3 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 100%;"></center>';
+                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
                     html+='</div>';
                     html+='<div class="card-content">';
                      html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
