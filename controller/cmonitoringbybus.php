@@ -45,8 +45,8 @@
         $idprev=$_POST['idprev'];
         $idus=$_POST['idus'];
         $coment=$_POST['coment'];
-
-        $dat->setDataComent($idprev,$idus,$coment);
+        $idpro=$_POST['idprocoment'];
+        $dat->setDataComent($idprev,$idus,$coment,$idpro);
     }
 
 	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
@@ -209,8 +209,14 @@ if($page=='getDataComent'){
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prev.','.$state_prev.','.$id_pro.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
         $imagen = '<a href=\"../view/imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$c["id_prev"].'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../view/imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\"\"></a>&nbsp;&nbsp;'.$c["fullname_cl"].'';
+
+        if($dat->getreplyvalidate($c["id_prev"])>=1){
+            $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b green modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.','.$id_pro.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
+        }
+        else{
+            $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.','.$id_pro.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
+        }
         
-        $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
 
 
          $table.='{

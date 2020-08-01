@@ -78,14 +78,14 @@ $(document).ready(function() {
               data: $("#frmconst").serialize(),
               success: function(resp) {
 
-                     if(resp==1){
+                     if(resp!=0){
 
                       
                       M.toast({html: "¡Se ha respondido exitosamente!", classes: 'rounded  green'});
                       $('.modal').modal('close');
                       cleanform();
                       cleanbox();
-                      
+                      getComents(resp);
                      }
                      else{
                       M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
@@ -622,7 +622,7 @@ var getDataDetailsSales = (cart)=> {
 
 }
 
-var Replycoment =(idprev, idus, cli,coment,imagen)=>{
+var Replycoment =(idprev, idus, cli,coment,imagen,idpro)=>{
   var html='';
   html+='<div class="chip">';
     html+='<img src="../view/imguser/'+imagen+'" alt="Contact Person">';
@@ -632,7 +632,7 @@ var Replycoment =(idprev, idus, cli,coment,imagen)=>{
   $("#comentper").html(coment);
   $("#idprev").val(idprev);
   $("#idus").val(idus);
-
+  $("#idprocoment").val(idpro);
 
 }
 

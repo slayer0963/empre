@@ -215,6 +215,7 @@
                   <div class="row">
                     <input type="hidden" id="idprev" name="idprev">
                     <input type="hidden" id="idus" name="idus">
+                    <input type="hidden" id="idprocoment" name="idprocoment">
                     <div class="input-field col s12">
                       <textarea id="coment" title="Contestacion (*)" name="coment" class="materialize-textarea" data-length="200"></textarea>
                       <label id="txtcoment" for="coment">Contestación</label>

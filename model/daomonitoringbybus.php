@@ -11,14 +11,14 @@ include_once "../cn/connection.php";
 
  	}
 
-    public function setDataComent($idprev, $idus, $coment)
+    public function setDataComent($idprev, $idus, $coment,$idpro)
     {
         $c=conectar();
         $sql="insert into reply value (0,$idprev,$idus,'$coment',1);";
         if (!$c->query($sql)) {
             print "0";
         }else{
-                echo "1"; 
+                echo $idpro; 
 
              }
         mysqli_close($c);
@@ -37,6 +37,19 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
+
+    public function getreplyvalidate($idcoment)
+    {
+        $c=conectar();
+        $query="select count(state) as state from reply  where id_prev=$idcoment;";
+        $c->set_charset('utf8');
+        $result = $c->query($query);
+        $re = $result->fetch_array();
+        $state=$re["state"];
+
+        return $state;
+    }
+
 	public function getDatasalesDate($idbusi)
  	{
 		$c = conectar();
@@ -49,6 +62,8 @@ include_once "../cn/connection.php";
 		}
 		return $arreglo;
 	}
+
+
 
 	public function getDataDetailsSales($idcart)
  	{
