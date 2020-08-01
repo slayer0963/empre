@@ -608,6 +608,17 @@ function mybusii(id,name){
 	
 }
 
+function mybusiis(id,name){
+
+  var obj = new Object();
+
+  obj.idbusi=id;
+  obj.name=name;
+  localStorage.setItem('Store',JSON.stringify(obj));
+  location.href="./products";
+  
+  
+}
 
 
 
