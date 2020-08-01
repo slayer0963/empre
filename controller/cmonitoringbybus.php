@@ -28,11 +28,38 @@
 	    echo json_encode($dat->getDatacharttwo($_POST['id']));
 	}
 
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getProducts'){
+	    $dat=new DAOMonitoring();
+	    echo json_encode($dat->getProducts($_POST['id']));
+	}
+
+	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
+	if($page=='statechange'){
+	    $dat=new DAOMonitoring();
+	    $state=$_POST['state'];
+	    if($state=="1"){
+	    	$state=0;
+	    }
+	    else{
+	    	$state=1;
+	    }
+	    $dat->updateState($_POST['id'],$state);
+	}
+
+
+
     // chart pro
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
     if($page=='getDatachartproone'){
         $dat=new DAOMonitoring();
         echo json_encode($dat->getDatachartproone($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatachartprotwo'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getDatachartprotwo($_POST['id'],$_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
     }
 
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
@@ -52,17 +79,19 @@
         $dat=new DAOMonitoring();
         echo json_encode($dat->getDatachartprorating($_POST['idprice'],$_POST['color'],$_POST['material'],$_POST['size']));
     }
-
+	/**/
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getDataproduc'){
     $dat = new DAOMonitoring();
          $r=$dat->getDataproduc($_GET['id']);
+
          $table="";
          foreach($r as $c){
          $btquanti='';
          $btnview='';
          $imagen ='';
+
          $id_bus="'".$c["id_bus"]."'";
          $id_prices="'".$c["id_prices"]."'";
          $name_pro="'".$c["name_pro"]."'";
@@ -108,6 +137,13 @@ if($page=='getDataproduc'){
 }
 
 
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+if($page=='getDataDetailsSales'){
+    $dat = new DAOMonitoring();
+          echo json_encode($dat->getDataDetailsSales($_POST['id']));    
+}
+
+
 
 $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getSalesdate'){
@@ -118,8 +154,9 @@ if($page=='getSalesdate'){
          $btnstate='';
          $btnedit='';
          $imagen ='';
- 
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b blue\" id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">dvr</i></a>';
+ 		$id_cart="'".$c["id_shp_c"]."'";
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"Fillsalesdate('.$id_cart.');\"  id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">dvr</i></a>';
+
 
 
          $table.='{
@@ -127,6 +164,42 @@ if($page=='getSalesdate'){
                   "total":"$'.$c["total"].'",
                   "dates":"'.$c["dates"].'",
                   "actions":"'.$btnedit.'"
+                },';    
+     }
+        $table = substr($table,0, strlen($table) - 1);
+        echo '{"data":['.$table.']}';   
+}
+
+
+
+$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+if($page=='getDataComent'){
+    $dat = new DAOMonitoring();
+         $r=$dat->getDataComent($_GET['id']);
+         $table="";
+         foreach($r as $c){
+         $btnstate='';
+         $btnconst='';
+         $imagen ='';
+         $id_prev="'".$c["id_prev"]."'";
+         $id_pro="'".$c["id_pro"]."'";
+         $state_prev="'".$c["state_prev"]."'";
+         if($c["state_prev"]=="1"){ 
+         	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prev.','.$state_prev.','.$id_pro.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
+         }
+         else if ($c["state_prev"]=="0") {
+         	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prev.','.$state_prev.','.$id_pro.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
+         }
+        $imagen = '<a href=\"../view/imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$c["id_prev"].'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../view/imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\"\"></a>&nbsp;&nbsp;'.$c["fullname_cl"].'';
+        
+        $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue\"  id=\"btnd'.$c["id_prev"].'\"><i class=\"material-icons\">navigation</i></a>';
+
+
+         $table.='{
+                  "usuario":"'.$imagen.'",
+                  "valoracion":"'.$c["likes"].'",
+                  "comentario":"'.$c["coment"].'",
+                  "actions":"'.$btnconst.$btnstate.'"
                 },';    
      }
         $table = substr($table,0, strlen($table) - 1);

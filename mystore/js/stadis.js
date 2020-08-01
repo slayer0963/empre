@@ -1,6 +1,7 @@
 
 
 var chart5 = "";
+var chart6= "";
 
 function mybusii(id,name){
 
@@ -14,13 +15,79 @@ function mybusii(id,name){
 }
 
 $(document).ready(function() {
+
+  $('#tbcoment').DataTable( {
+    "responsive": true,
+    "order": [[ 1, "asc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Selecciona un producto primero",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
   var obj =JSON.parse(localStorage.getItem('Store'));
   if(obj.name!=""){
     $("#namebusi").html(obj.name);
     getDataProducts(obj.idbusi);
     getDataSales(obj.idbusi);
-    
+    setCombopro(obj.idbusi);
   }
+
+
+  $("#pro").select2({
+    dropdownAutoWidth: true,
+    width: '100%',
+    language: {
+
+    noResults: function() {
+
+      return "No hay resultado";        
+    },
+    searching: function() {
+
+      return "Buscando..";
+    }
+  }
+});
+
+  $("#pro").change(function(event) {
+    getComents( $("#pro").val());
+  });
 
 var chart = new ApexCharts(
   document.querySelector("#chart1"),
@@ -70,6 +137,13 @@ setInterval( function(){ getDataApexfour(chart4,obj.idbusi); } , 6000);
 
   chart5.render();
 
+  chart6 = new ApexCharts(
+  document.querySelector("#chartpro2"),
+    optionsgraplinecurve()
+  );
+
+  chart6.render();
+
 });
 
 var optionsgrapbar =(tipo,titulo) =>{
@@ -109,6 +183,8 @@ var optionsgrapbar =(tipo,titulo) =>{
   }
   return options;
 }
+
+
 
 var optionsgrapbaragroup= () =>{
   var options = {
@@ -241,7 +317,24 @@ var optionsgraplinecurve =() =>{
   return options;
 }
 
-
+var setCombopro = (id) =>{
+  var html="";
+  var dataString = 'id='+id;
+          $.ajax({
+            type: "POST",
+            url: "../controller/cmonitoringbybus.php?btngetData=getProducts",
+            data: dataString,
+            success: function(resp) {
+            var values = eval(resp);        
+              html+='<option value="0" selected>Seleccione un producto</option>';
+               for (var i = 0; i< values.length; i++) {
+                   html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
+               }
+               $("#pro").html(html);
+            } 
+        }); 
+      
+}
 
 var getDataApex= (chart,id) =>{
 var dataString = 'id='+id;
@@ -344,6 +437,24 @@ var getDataApexpro1= (chart,idbusi,idprices,color,material,size) =>{
     });        
 };
 
+var getDataApexpro2= (chart,idbusi,idprices,color,material,size) =>{
+  var dataString = 'id='+idbusi+'&idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
+  $.ajax({
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDatachartprotwo',
+      data: dataString,
+      success: function(datas) {
+
+        var lbl = eval(datas);
+          chart.updateSeries([{
+          name: 'Ventas $',
+          data: lbl
+        }]);
+       
+      }
+    });        
+};
+
 var getDataApexprofit= (idbusi,idprices,color,material,size) =>{
   var dataString = 'id='+idbusi+'&idprice='+idprices+'&color='+color+'&material='+material+'&size='+size;
   $.ajax({
@@ -394,12 +505,45 @@ var getDataApexrating= (idprices,color,material,size) =>{
 var FillStadist= (idbusi,idprices,color,material,size) =>{
 
   getDataApexpro1(chart5,idbusi,idprices,color,material,size);
+  getDataApexpro2(chart6,idbusi,idprices,color,material,size);
   getDataApexprofit(idbusi,idprices,color,material,size);
   getDataApexsales(idbusi,idprices,color,material,size);
   getDataApexrating(idprices,color,material,size);
   // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 3000);
-};  
+};
 
+var Fillsalesdate =(idcart)=>{
+  getDataDetailsSales(idcart);
+  $("#salesdatesdetails").modal('open');
+}
+
+var getDataDetailsSales = (cart)=> {
+  var dataString = 'id='+cart;
+  var html='', htmltf='', name='',fecha='';
+  $.ajax({
+      type: "POST",
+      url: '../controller/cmonitoringbybus.php?btngetData=getDataDetailsSales',
+      data: dataString,
+      success: function(datas) {
+        let totoalf=0, totalf=0;
+        var lbl = eval(datas);
+         for (var i = 0; i < lbl.length; i++) {
+          name=lbl[i].fullname_cl;
+          fecha=lbl[i].fecha;
+          totoalf=parseFloat(lbl[i].total);
+          totalf+=parseFloat(lbl[i].total);
+          html+='<tr><td>'+lbl[i].name_pro+'</td><td>'+lbl[i].name_color+'<br>'+lbl[i].name_mat+'<br>'+lbl[i].name_size+'-'+lbl[i].number_size+'</td><td>'+lbl[i].quantity+'</td><td>$'+lbl[i].precio+'</td><td>'+parseFloat(lbl[i].descuento)*100+'%</td><td>$'+totoalf.toFixed(2)+'</td></tr>';
+        }
+        $("#bodysales").html(html);
+         htmltf+='<tr><td colspan="5"></td><td>$'+totalf.toFixed(2)+'</td></tr>';
+        $("#bodysalesfoot").html(htmltf);
+        $("#nameclide").html("Detalle de ventas de "+name+" en la fecha "+fecha);
+        
+      }
+    });
+   
+
+}
 
 var getDataProducts = (bussi)=> {
     $('#tbproduct').DataTable( {
@@ -466,6 +610,83 @@ var getDataProducts = (bussi)=> {
 }
 
 
+var getComents = (pro)=> {
+    $('#tbcoment').DataTable( {
+    "responsive": true,
+    "order": [[ 1, "asc" ]],
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+    "ajax": {
+          url:"../controller/cmonitoringbybus.php?btngetData=getDataComent&id="+pro,
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "usuario" },
+      { "data": "valoracion" },
+      { "data": "comentario" },
+      { "data": "actions" }
+      ],
+      "columnDefs": [
+        {"className": "dt-center", "targets": "_all"}
+      ],
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
+
+}
+
+var StateChange = (id,estado,idpro) =>{
+
+          var dataString = 'id='+id+"&state="+estado;
+           $.ajax({
+            type: "POST",
+            url: "../controller/cmonitoringbybus.php?updateData=statechange",
+            data: dataString,
+            success: function(resp) {
+            alert(resp);         
+                    if (resp=="1") {
+                               M.toast({html: "¡El comentario ya no aparecera!", classes: 'rounded  green'});
+                    }else{
+                              M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});  
+                   } 
+            getComents(idpro);
+            }
+        }); 
+     return false;
+}
 
 var getDataSales = (bussi)=> {
     $('#tbsalesdate').DataTable( {

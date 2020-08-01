@@ -181,10 +181,10 @@ function mybusii(id) {
             	var html='';
             	 
             	for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
@@ -237,10 +237,10 @@ function mybusiibyrange(id,range) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
@@ -289,10 +289,10 @@ function mybusiibytype(id,type) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
@@ -341,10 +341,10 @@ function mybusiibytypeandcat(id,type,cat) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:175px;">';
+                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
