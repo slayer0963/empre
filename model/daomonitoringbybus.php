@@ -90,6 +90,19 @@ include_once "../cn/connection.php";
 		return $arreglo;
 	}
 
+    public function getreply($idcoment)
+    {
+        $c = conectar();
+        $sql="select * from reply r inner join users u on u.id_user=r.id_user where r.id_prev=$idcoment;";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
+
 	public function updateState($id,$state)
  	{
  		$c=conectar();

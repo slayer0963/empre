@@ -629,7 +629,7 @@ var Replycoment =(idprev, idus, cli,coment,imagen)=>{
     html+=cli;
   html+='</div>';
   $("#nameclient").html(html);
-  $("#coment").html(coment);
+  $("#comentper").html(coment);
   $("#idprev").val(idprev);
   $("#idus").val(idus);
 

@@ -206,7 +206,7 @@
           <div class="card row">
             <br>
             <div id="nameclient" class="col s12 m12 l12 center-align"></div>
-            <div class="col s12 m12 l12 center-align"><h6 id="comentDFDFD" class="letrasboni"></h6></div>
+            <div class="col s12 m12 l12 center-align"><h6 id="comentper" class="letrasboni"></h6></div>
             <br>
           </div>
 

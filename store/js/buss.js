@@ -475,13 +475,13 @@ function getcoments(id) {
                 var respu = eval(resp);
                 var html='';
                 for (var i = 0; i < respu.length; i++) {
-                  html+='<div class="col s12 m12 s12">';
+                  html+='<div class="col s10 m10 s10 offset-s1 offset-m1 offset-l1">';
               html+='<div class="card   lighten-5" id="card'+respu[i].id_prev+'">';
                 html+='<div class="card-content white-text row">';
                     html+='<div class="col l2 m2 s12 center-align black-text">';
                       html+='<img class="circle" style="height:75px; width:80;"  src="../view/imguser/'+respu[i].img+'" alt="..."><br>'+respu[i].fullname_cl;
                     html+='</div>';
-                    html+='<div class="col l10 m10 s12 black-text">';
+                    html+='<div class="col l10 m10 s12 black-text center-align">';
                   
                       html+=' <h6>'+respu[i].coment+'</h6>';
                    
@@ -511,12 +511,47 @@ function getcoments(id) {
             html+='</div>';                       
         html+='</div>';
         html+='<div class="col s12 m12 s12" id="contestacion'+respu[i].id_prev+'">';
-        html+='</div>';           
+        
+        html+='</div>';
+        getreply(respu[i].id_prev);           
                 }
                 
                 $("#comentinput").html(html);
             }
         });
+}
+
+function getreply(idcoment){
+ 
+  var dataString = 'id='+idcoment;
+  $.ajax({
+            type: "POST",
+            url: "../controller/cmonitoringbybus.php?btngetreply=getreply", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+               var html='';
+                for (var i = 0; i < respu.length; i++) {
+                html+='<div class="col s10 m10 s10 offset-s1 offset-m1 offset-l1">';
+              html+='<div class="card  brown lighten-5" id="card'+respu[i].id_reply+'">';
+                html+='<div class="card-content white-text row">';
+                    html+='<div class="col l2 m2 s12 center-align black-text">Emprendedor<br>';
+                      html+='<img class="circle" style="height:75px; width:80;"  src="../view/imguser/'+respu[i].imagen+'" alt="..."><br>'+respu[i].fullname_user;
+                    html+='</div>';
+                    html+='<div class="col l10 m10 s12 black-text center-align">';
+                  
+                      html+=' <h6 style="margin-top:2rem;">'+respu[i].reply+'</h6>';
+                   
+                    html+='</div>';
+                html+='</div>';
+            html+='</div>';                       
+        html+='</div>';
+              }
+             
+            $("#contestacion"+idcoment+"").html(html);
+            }
+          });
+  
 }
 
 

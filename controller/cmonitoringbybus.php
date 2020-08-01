@@ -10,6 +10,12 @@
 	    echo json_encode($dat->getDatachartone($_POST['id']));
 	}
 
+    $page = isset($_GET['btngetreply'])?$_GET['btngetreply']:'';
+    if($page=='getreply'){
+        $dat=new DAOMonitoring();
+        echo json_encode($dat->getreply($_POST['id']));
+    }
+
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 	if($page=='getDatacharttwo'){
 	    $dat=new DAOMonitoring();
