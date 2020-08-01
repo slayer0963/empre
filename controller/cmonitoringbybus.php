@@ -1,7 +1,7 @@
 <?php 
 
 	require_once "../model/daomonitoringbybus.php";
-
+    session_start();
 
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
@@ -33,6 +33,15 @@
 	    $dat=new DAOMonitoring();
 	    echo json_encode($dat->getProducts($_POST['id']));
 	}
+    $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='setDataComent'){
+        $dat=new DAOMonitoring();
+        $idprev=$_POST['idprev'];
+        $idus=$_POST['idus'];
+        $coment=$_POST['coment'];
+
+        $dat->setDataComent($idprev,$idus,$coment);
+    }
 
 	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
 	if($page=='statechange'){
@@ -183,6 +192,9 @@ if($page=='getDataComent'){
          $imagen ='';
          $id_prev="'".$c["id_prev"]."'";
          $id_pro="'".$c["id_pro"]."'";
+         $fullname_cl="'".$c["fullname_cl"]."'";
+         $coment="'".$c["coment"]."'";
+         $imagene = "'".$c["imagen"]."'";
          $state_prev="'".$c["state_prev"]."'";
          if($c["state_prev"]=="1"){ 
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prev.','.$state_prev.','.$id_pro.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
@@ -192,7 +204,7 @@ if($page=='getDataComent'){
          }
         $imagen = '<a href=\"../view/imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$c["id_prev"].'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../view/imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\"\"></a>&nbsp;&nbsp;'.$c["fullname_cl"].'';
         
-        $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue\"  id=\"btnd'.$c["id_prev"].'\"><i class=\"material-icons\">navigation</i></a>';
+        $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
 
 
          $table.='{

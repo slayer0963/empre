@@ -69,6 +69,83 @@ $(document).ready(function() {
   }
 
 
+
+  $('#frmconst').submit(function() {
+    if(Validate(1)==idinput.length){
+    $.ajax({
+              type: "POST",
+              url: "../controller/cmonitoringbybus.php?btnsetData=setDataComent", 
+              data: $("#frmconst").serialize(),
+              success: function(resp) {
+
+                     if(resp==1){
+
+                      
+                      M.toast({html: "¡Se ha respondido exitosamente!", classes: 'rounded  green'});
+                      $('.modal').modal('close');
+                      cleanform();
+                      cleanbox();
+                      
+                     }
+                     else{
+                      M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                      
+                     }
+                       
+              }   
+                  
+          });
+  }
+    return false;
+  });
+
+var idinput = ['coment'];
+var idinputerror= ['txtcoment'];
+
+
+
+var cleanform = () =>{
+    idinput.forEach(names => {
+        $("#"+names).val("");
+        
+    });
+
+}
+
+
+
+var Validate = (type) =>{
+  var validate=0, html="", count=0, counte=0;
+  if(type==1){
+        idinput.forEach(names => {
+          
+       if($("#"+names).val().length > 0){
+         validate+=1;
+         html="Listo";
+         $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+         $("#"+idinputerror[count]).removeClass('red-text');
+         $("#"+idinputerror[count]).addClass('green-text');
+         
+       }
+       else{
+        //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+        $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+        $("#"+idinputerror[count]).removeClass('green-text');      
+         $("#"+idinputerror[count]).addClass('red-text'); 
+       }
+       count++;
+    });
+  }
+
+    return validate;
+}
+
+var cleanbox=()=>{
+idinputerror.forEach(names => {
+  $("#"+names).removeClass('green-text');      
+});
+}
+
   $("#pro").select2({
     dropdownAutoWidth: true,
     width: '100%',
@@ -544,6 +621,21 @@ var getDataDetailsSales = (cart)=> {
    
 
 }
+
+var Replycoment =(idprev, idus, cli,coment,imagen)=>{
+  var html='';
+  html+='<div class="chip">';
+    html+='<img src="../view/imguser/'+imagen+'" alt="Contact Person">';
+    html+=cli;
+  html+='</div>';
+  $("#nameclient").html(html);
+  $("#coment").html(coment);
+  $("#idprev").val(idprev);
+  $("#idus").val(idus);
+
+
+}
+
 
 var getDataProducts = (bussi)=> {
     $('#tbproduct').DataTable( {

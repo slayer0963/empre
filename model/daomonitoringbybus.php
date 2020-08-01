@@ -11,6 +11,19 @@ include_once "../cn/connection.php";
 
  	}
 
+    public function setDataComent($idprev, $idus, $coment)
+    {
+        $c=conectar();
+        $sql="insert into reply value (0,$idprev,$idus,'$coment',1);";
+        if (!$c->query($sql)) {
+            print "0";
+        }else{
+                echo "1"; 
+
+             }
+        mysqli_close($c);
+    }
+
  	public function getDataproduc($idbusi)
  	{
 		$c = conectar();

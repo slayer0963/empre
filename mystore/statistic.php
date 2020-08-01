@@ -21,7 +21,13 @@
       <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/lightbox.css">
 
 	  <link rel="stylesheet" href="<?php echo SERVERURL; ?>css/select2-materialize.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+ <style>
+   .letrasboni{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 18px;
+   }
+ </style>
 	  <style>
 	  	.men{
 	  		margin-top: 5rem;
@@ -195,6 +201,36 @@
       </div>
 
 
+      <div id="replycoment" class="modal">
+        <div class="modal-content">
+          <div class="card row">
+            <br>
+            <div id="nameclient" class="col s12 m12 l12 center-align"></div>
+            <div class="col s12 m12 l12 center-align"><h6 id="comentDFDFD" class="letrasboni"></h6></div>
+            <br>
+          </div>
+
+               <div class="row">
+                <form class="col s12 center-align" name="frmconst" id="frmconst" method="POST">
+                  <div class="row">
+                    <input type="hidden" id="idprev" name="idprev">
+                    <input type="hidden" id="idus" name="idus">
+                    <div class="input-field col s12">
+                      <textarea id="coment" title="Contestacion (*)" name="coment" class="materialize-textarea" data-length="200"></textarea>
+                      <label id="txtcoment" for="coment">Contestación</label>
+                    </div>
+                  </div>
+                  <input type="submit" class="btn" value="Responder">
+                </form>
+              </div>
+          
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+      </div>
+
+
     <div id="stadisbyproduct" class="modal">
         <div class="modal-content">
           <h4>Ventas realizadas</h4>
@@ -253,8 +289,7 @@
           <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
         </div>
       </div>
-
-
+</div>
 
     </body>
   </html>
@@ -281,7 +316,9 @@
 			 $('.dropdown-trigger').dropdown({constrainWidth: false});
 			  $('.sidenav').sidenav();
         $('.modal').modal();
-
+        
+            $('input#input_text, textarea#textarea2').characterCounter();
+          
 		  });
       </script>
  <?php include 'footer.php'; ?>
