@@ -476,7 +476,7 @@ function getcoments(id) {
                 var html='';
                 for (var i = 0; i < respu.length; i++) {
                   html+='<div class="col s12 m12 s12">';
-              html+='<div class="card  blue lighten-5" id="card'+respu[i].id_prev+'">';
+              html+='<div class="card   lighten-5" id="card'+respu[i].id_prev+'">';
                 html+='<div class="card-content white-text row">';
                     html+='<div class="col l2 m2 s12 center-align black-text">';
                       html+='<img class="circle" style="height:75px; width:80;"  src="../view/imguser/'+respu[i].img+'" alt="..."><br>'+respu[i].fullname_cl;
@@ -510,7 +510,8 @@ function getcoments(id) {
                 html+='</div>';
             html+='</div>';                       
         html+='</div>';
-                    
+        html+='<div class="col s12 m12 s12" id="contestacion'+respu[i].id_prev+'">';
+        html+='</div>';           
                 }
                 
                 $("#comentinput").html(html);

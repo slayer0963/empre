@@ -676,7 +676,7 @@ var StateChange = (id,estado,idpro) =>{
             url: "../controller/cmonitoringbybus.php?updateData=statechange",
             data: dataString,
             success: function(resp) {
-            alert(resp);         
+        
                     if (resp=="1") {
                                M.toast({html: "¡El comentario ya no aparecera!", classes: 'rounded  green'});
                     }else{

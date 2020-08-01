@@ -7,6 +7,13 @@
    #prodetails { margin-top: 5px; width: 100% !important ; height: 95% !important ; } 
   }
  </style>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+ <style>
+   .letrasboni{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 12px;
+   }
+ </style>
  <?php include 'block/menu.php'; ?>
   <title id="title"></title>
     <div class="container">
@@ -95,7 +102,7 @@
                 <div class="card-content white-text row">
                   <input type="hidden" id="idclient" value=" <?php echo $_SESSION["idus"]; ?> ">
                     <div class="col l2 m2 s12 center-align">
-                      <?php  echo (isset($_SESSION['name'])) ? '<img alt="Circle Image" class="circle"  src="../view/imguser/'.$_SESSION['img'].'" style="height:70px; width:80;">' : '<img class="circle" alt="64x64" style="height:70px; width:80;" src="assets/img/placeholder.jpg">'; ?>
+                      <?php  echo (isset($_SESSION['name'])) ? '<img alt="Circle Image" class="circle"  src="../view/imguser/'.$_SESSION['img'].'" style="height:75px; width:80;">' : '<img class="circle" alt="64x64" style="height:70px; width:80;" src="assets/img/placeholder.jpg">'; ?>
                     </div>
                     <div class="col l10 m10 s12">
                       <div class="input-field">
@@ -117,9 +124,11 @@
             </div>
                               
         </div>
-        <div class="comentper col s12 m12 l12" id="comentinput">
-                                
-        </div>
+        
+            
+    </div>
+    <div class="comentper" id="comentinput">
+                  
     </div>
   </div>
   
