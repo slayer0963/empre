@@ -630,7 +630,7 @@ var html="";
             var values = eval(resp);        
               html+='';
                for (var i = 0; i< values.length; i++) {
-                   html+="<option value='"+values[i][2]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
+                   html+="<option value='"+values[i][2]+"-"+values[i][1]+"'><span>"+values[i][1]+"-"+values[i][2]+"</span></option>";
                }
                $("#sizea").html(html);
             } 

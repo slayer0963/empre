@@ -596,7 +596,7 @@ idinputerrorsize.forEach(names => {
 
 
 
-function mybusiis(id,name){
+function mybusii(id,name){
 
 	var obj = new Object();
 
@@ -607,6 +607,9 @@ function mybusiis(id,name){
 	
 	
 }
+
+
+
 
 var idinput = ['fname','quantity'];
 var idinputerror= ['txtfname','txtquantity'];
