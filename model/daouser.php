@@ -74,26 +74,56 @@ include_once "../cn/connection.php";
 			
  		}
  		else{
- 			$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM users WHERE idservices = '$id_service' or email_user ='$email_user'");
+ 			$sentencia = $c->prepare("SELECT count(idservices) as idservices FROM clients WHERE idservices = '$id_service' or email_cl ='$email_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
 			$serviciocont=$res["idservices"];
-			$sentencia = $c->prepare("SELECT fullname_user,id_ustp, imagen, email_user FROM users WHERE idservices = '$id_service' and email_user ='$email_user'");
+			if($serviciocont==0){
+				$sql="insert into clients value (0,'$fullname_user','$imagen','$email_user','','',1,'$id_service','$service');";
+				if (!$c->query($sql)) {
+					print "0".$sql;
+				}else{
+					$sentencia = $c->prepare("SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$email_user' and pass_cl='$pass_user' or user_cl ='$email_user' and pass_cl='$pass_user'");
+					$sentencia->execute();
+					$resultado = $sentencia->get_result();
+					$res = $resultado->fetch_assoc();
+					$nombre=$res["fullname_cl"];
+					$img=$res["imagen"];
+					$email=$res["email_cl"];
+					$id=$res["id_cl"];
+					$tipo=10;
+					$_SESSION["name"]=$nombre;
+					$_SESSION["type"]=$tipo;
+					$_SESSION["img"]=$img;
+					$_SESSION["email"]=$email;
+					$_SESSION["idus"]=$id;
+					$arreglo = array();
+					$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
+					return $serviciocont;
+				}
+			}
+			else{
+			$sentencia = $c->prepare("SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$email_user' and pass_cl='$pass_user' or user_cl ='$email_user' and pass_cl='$pass_user'");
 			$sentencia->execute();
 			$resultado = $sentencia->get_result();
 			$res = $resultado->fetch_assoc();
-			$nombre=$res["fullname_user"];
+			$nombre=$res["fullname_cl"];
 			$img=$res["imagen"];
-			$email=$res["email_user"];
-			$tipo=$res["id_ustp"];
+			$email=$res["email_cl"];
+			$id=$res["id_cl"];
+			$tipo=3;
 			$_SESSION["name"]=$nombre;
 			$_SESSION["type"]=$tipo;
 			$_SESSION["img"]=$img;
 			$_SESSION["email"]=$email;
+			$_SESSION["idus"]=$id;
 			$arreglo = array();
 			$arreglo[] = array('tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img);
-			return $arreglo;
+			return $serviciocont;
+			}
+			
+			
  		}
 		
 		

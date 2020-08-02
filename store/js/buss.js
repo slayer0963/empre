@@ -15,6 +15,9 @@ $(document).ready(function($) {
 
       $("#range").change(function(event) {
         mybusiibyrange(obj.id,$("#range").val());
+        if($("#range").val()==0){
+          mybusii(obj.id);
+        }
         
       });
 
@@ -188,17 +191,17 @@ function mybusii(id) {
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
-                                      html+='<div class="card-content">';
+                                      html+='<div class="card-content center-align">';
                                          html+='<span class="card-title">'+respu[i].name_pro+'</span>';
-                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
-                                                html+='<div class="price">';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
                                                 html+='</div>';  
                                           }
                                           else{
-                                                html+='<div class="price">';
-                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='</div>'; 
                                           }
                                       html+='</div>';
@@ -244,17 +247,17 @@ function mybusiibyrange(id,range) {
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
-                                      html+='<div class="card-content">';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
-                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
-                                                html+='<div class="price">';
+                                      html+='<div class="card-content center-align">';
+                                         html+='<span class="card-title ">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
                                                 html+='</div>';  
                                           }
                                           else{
-                                                html+='<div class="price">';
-                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='</div>'; 
                                           }
                                       html+='</div>';
@@ -296,17 +299,17 @@ function mybusiibytype(id,type) {
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
-                                      html+='<div class="card-content">';
+                                      html+='<div class="card-content center-align">';
                                          html+='<span class="card-title">'+respu[i].name_pro+'</span>';
-                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
-                                                html+='<div class="price">';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
                                                 html+='</div>';  
                                           }
                                           else{
-                                                html+='<div class="price">';
-                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='</div>'; 
                                           }
                                       html+='</div>';
@@ -348,17 +351,17 @@ function mybusiibytypeandcat(id,type,cat) {
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
-                                      html+='<div class="card-content">';
+                                      html+='<div class="card-content center-align">';
                                          html+='<span class="card-title">'+respu[i].name_pro+'</span>';
-                                         if(respu[i].discount!="" || parseFloat(respu[i].sal_price)!=0){
-                                                html+='<div class="price">';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
                                                 html+='</div>';  
                                           }
                                           else{
-                                                html+='<div class="price">';
-                                                html+='<span class="price"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
                                                 html+='</div>'; 
                                           }
                                       html+='</div>';

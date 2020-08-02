@@ -7,8 +7,10 @@
    ?>
     <head>
       <title>Mi negocio</title>
-
-       <meta name="google-signin-client_id" content="606135828680-bfek54p79i4it5ussuoutenuc1p6ing1.apps.googleusercontent.com">
+      <script src="https://apis.google.com/js/platform.js" async defer>
+        {lang:'es'}
+      </script>
+       <meta name="google-signin-client_id" content="606135828680-h6kephp10df7d02ba9vrrp7etjfb220m.apps.googleusercontent.com">
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -254,11 +256,11 @@
       <form  method="post" name="login" id="login">
                                 <div class="form-group">
                                     <label for="contact-name">Correo</label>
-                                    <input type="text" id="email" name="email" class="form-control input-md" placeholder="ejemplo@gmail.com">
+                                    <input type="text" id="email" name="email" required="true" class="form-control input-md" placeholder="ejemplo@gmail.com">
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Contraseña</label>
-                                    <input type="text" id="password" name="password" class="form-control input-md" placeholder="******">
+                                    <input type="text" id="password" required="true" name="password" class="form-control input-md" placeholder="******">
                                 </div>
                                 <center>
                                                                 <button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>
@@ -267,9 +269,10 @@
                                                     
 
                                                 <div>
+
                                                     <div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
 
-                                                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                                                
                                                 </div>
                                                                 
                                                             </center>
@@ -330,8 +333,8 @@
       <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/jquery.maskedinput.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jshome/homecat.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-       <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script>
-        <script type="text/javascript" src="view/jsproject/google.js"></script> -->
+       <!-- <script type="text/javascript" src="view/jsproject/facebook.js"></script> -->
+        <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/google.js"></script>
         <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/local.js"></script>
         <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/addcarh.js"></script>
       <script>
