@@ -504,7 +504,7 @@ function getcoments(id) {
                         }
                         html+='</div>';
                         html+='<div class="col l6 m6 s6 right-align">';
-                         html+='<a href="#pablo" class="btn btn-xs red">';
+                         html+='<a onclick="reactions('+$("#idclient").val().trim()+','+respu[i].id_prev+')" class="btn btn-xs red">';
                                                      html+='<i class="material-icons">favorite</i> '+respu[i].likes+'';
                                                  html+='</a>';
                         html+='</div>';
@@ -620,6 +620,25 @@ function getmaterials(id,color,code,namecolor) {
                         // html+='<a href="#!"   onclick="getsizes('+id+','+respu[i].id_material+','+color+')"><span id="material'+respu[i].id_material+'" class="badge badge-pill badge-secondary" style="background-color:'+code+' ;">'+respu[i].name_mat+'</span></a>&nbsp;';
                   }
                   $("#contmat").html(html);
+            }});
+}
+
+function reactions(id_cl,id_prev) {
+      var dataString = 'id_cl='+id_cl+'&id_prev='+id_prev;
+      var obj = JSON.parse(localStorage.getItem('ProductC'));
+      $.ajax({
+            type: "POST",
+            url: "../controller/cuserhome.php?btnreaction=setreaction", 
+            data: dataString,
+            success: function(resp) {
+                   if (resp==1) {
+
+
+                   M.toast({html: "<i class='small material-icons'>thumb_up</i>", classes: 'rounded  blue'});
+                 }else{
+                  M.toast({html: "<i class='small material-icons'>thumb_down</i>", classes: 'rounded  red'});
+                 }
+                  getcoments(obj.id);
             }});
 }
 

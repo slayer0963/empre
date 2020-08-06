@@ -36,7 +36,7 @@ include_once "../cn/connection.php";
 		$c = conectar();
 
 		$arreglo = array();
-		$sql="SELECT pr.id_prev,pr.coment,pr.likes,cli.fullname_cl,cli.imagen FROM product_reviews pr inner join clients cli on pr.id_cl = cli.id_cl where pr.id_pro=$id and pr.state_prev=1 order by id_prev desc;";
+		$sql="SELECT pr.id_prev,pr.coment,(select count(r.id_prev) from reactions r where r.id_prev=pr.id_prev) as likes,cli.fullname_cl,cli.imagen FROM product_reviews pr inner join clients cli on pr.id_cl = cli.id_cl where pr.id_pro=$id and pr.state_prev=1 order by id_prev desc;";
 		$c->set_charset('utf8');
 		$contador=0;
 		$resultado = $c->query($sql);

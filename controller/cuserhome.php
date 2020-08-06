@@ -51,6 +51,12 @@
 	    echo json_encode($dat->getDatacategories($_POST["id"]));
 	}
 
+	$page = isset($_GET['btnreaction'])?$_GET['btnreaction']:'';
+	if($page=='setreaction'){
+	    $dat=new DAOUserhome();
+	    $dat->setReaction($_POST["id_cl"],$_POST["id_prev"]);
+	}
+
 	$page = isset($_GET['btngetcategoriesbtype'])?$_GET['btngetcategoriesbtype']:'';
 	if($page=='getDatacategoriesbytype'){
 	    $dat=new DAOUserhome();
