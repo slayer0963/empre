@@ -56,6 +56,7 @@ function salir() {
                 {
                   localStorage.removeItem('client');
                   localStorage.removeItem('nameper');
+                  localStorage.removeItem('activemod');
                   location.reload();
                 }
         });

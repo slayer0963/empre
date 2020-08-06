@@ -4,7 +4,7 @@ $(document).ready(function() {
   consultwish(localStorage.getItem('client'));
   
 
-	$("#addcar").click(function () {
+	$("#addcarr").click(function () {
         
         if(localStorage.getItem('nameper')==null){
             
@@ -16,6 +16,7 @@ $(document).ready(function() {
 	            url: "controller/cuserhome.php?btnsetshcar=setshcar", 
 	            data: $("#frmcarpro").serialize(),
 	            success: function(resp) {
+                alert(resp);
 	            	if(resp==1){
 	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
