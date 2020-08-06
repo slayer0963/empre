@@ -32,6 +32,11 @@
 	    
 	}
 
+	$page = isset($_GET['btngetDatauser'])?$_GET['btngetDatauser']:'';
+	if($page=='getdataprofile'){
+	    $dat=new DAOUser();
+		echo json_encode($dat->getdataprofile($_POST['id']));
+	}
 
 	function update(){
 	    $obj=new User();
@@ -68,6 +73,51 @@
 		}
 		
 	    
+	}
+
+
+	function updateprofile(){
+	    $obj=new User();
+	     $obj->setIdUser($_POST["id_profile"]);
+	    $obj->setFullnameUser($_POST["fullnamee"]);
+		$obj->setPhoneUser($_POST["phonee"]);
+		$obj->setImagen($_POST["imgedp"]);
+		$obj->setEmailUser($_POST["emaile"]);
+		$obj->setUserUser($_POST["usere"]);
+		$obj->setPassUser($_POST["passe"]);
+		$formatos=array('.jpg','.png','.gif','.jpeg','.JPG','.PNG','.GIF','.JPEG');
+  		$nombreArchivo=$_FILES["filedp"]["name"];;
+		$nombreTmpArchivo=$_FILES["filedp"]["tmp_name"];
+		$ext=substr($nombreArchivo, strrpos($nombreArchivo, "."));
+		//echo $ext;
+		if (file_exists("../view/imguser/$nombreArchivo")) {
+		    return $obj;
+		} else {
+		    if (in_array($ext, $formatos)) {
+			if (move_uploaded_file($nombreTmpArchivo, "../view/imguser/$nombreArchivo")) {
+				return $obj;
+			}
+			else{
+				
+				return "x";
+			}
+		}
+		else
+		{
+			
+			return "x";
+		}
+		}
+		
+	    
+	}
+
+
+
+	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
+	if($page=='updatepro'){
+	    $dat=new DAOUser();
+	    echo json_encode($dat->updateDatapro(updateprofile()));
 	}
 
 	function updateState(){
