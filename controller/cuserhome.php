@@ -20,6 +20,12 @@
 	    echo json_encode($dat->getProductClient(getidbuss()));
 	}
 
+		$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDataall'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductall());
+	}
+
 
 	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
 	if($page=='getDatacbr'){
