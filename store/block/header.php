@@ -54,13 +54,14 @@
       <style>
         #modalwis{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
         #modalcarshop{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
-        #loginm { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
+        #loginm { padding: 0; width: 25% !important ; height: 60% !important ;  max-height: 72%;}
 
       #profiled{ margin-top: -25px;  padding: 0; width: 60% !important ; height: 90% !important ;  max-height: 90%;}
-          
+          .usuariomodal { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 85%;}
+
 
         @media only screen and (max-width : 992px) {
-           
+           .usuariomodal {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;} 
             #loginm { width: 100% !important ; height: 60% !important ; } 
             #modalcarshop { width: 100% !important ; height: 80% !important ; } 
               #modalwis { width: 100% !important ; height: 80% !important ; }

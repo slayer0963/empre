@@ -54,14 +54,14 @@
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       <style>
-        #loginm { padding: 0; width: 25% !important ; height: 65% !important ;  max-height: 72%;}
+        #loginm { padding: 0; width: 25% !important ; height: 60% !important ;  max-height: 72%;}
 
       
           
 
         @media only screen and (max-width : 992px) {
            
-            #loginm { width: 100% !important ; height: 60% !important ; } 
+            #loginm { width: 100% !important ; height: 65% !important ; } 
              
         }
       </style>
@@ -90,7 +90,7 @@
         </li>
 
         <li style="">
-          <a href="">Registrase</a>
+          <a class=" modal-trigger" href="#register">Registrase</a>
         </li>
       </ul>
     </div>
@@ -142,7 +142,6 @@
 
         <li style="width: 180px;">
           <a class="dropdown-trigger brand-logo right valign-wrapper left hide-on-med-and-down" href="#!" data-target="dropdown1">
-        
             <div class="chip" id="profile" style="color:black;">
           <img src="view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
             <?php echo $_SESSION['name']; ?>
@@ -248,8 +247,6 @@
 
 
 
-
-
 <div id="loginm" class="modal">
     <div class="modal-content">
       <h4>Iniciar sesion</h4>
@@ -262,18 +259,11 @@
                                     <label for="contact-name">Contraseña</label>
                                     <input type="text" id="password" required="true" name="password" class="form-control input-md" placeholder="******">
                                 </div>
+                                <br>
                                 <center>
                                                                 <button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>
                                                                 <br>
-                                 
-                                                    
 
-                                                <div>
-
-                                                    <div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
-
-                                                
-                                                </div>
                                                                 
                                                             </center>
         </form>
@@ -283,6 +273,36 @@
     </div>
   </div>
 
+
+<div id="register" class="modal">
+    <div class="modal-content">
+       <h4>Registrate</h4>
+       <div class="row">
+         <div class="col s12 m6 l6">
+           
+         </div>
+         <div class="col s12 m6 l6">
+              <form  method="post" name="login" id="login">
+                  <div class="form-group">
+                      <label for="contact-name">Correo</label>
+                      <input type="text" id="remail" name="remail" required="true" class="form-control input-md" placeholder="ejemplo@gmail.com">
+                 </div>
+                 <div class="form-group">
+                      <label for="contact-name">Nombre completo</label>
+                      <input type="text" id="remail" name="remail" required="true" class="form-control input-md" placeholder="ejemplo@gmail.com">
+                 </div>
+                 <div class="form-group">
+                      <label for="contact-name">Correo</label>
+                      <input type="text" id="remail" name="remail" required="true" class="form-control input-md" placeholder="ejemplo@gmail.com">
+                 </div>
+              </form>
+         </div>
+       </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
 
  <div id="modalcarshop" class="modal bottom-sheet" >
     <div class="modal-content">
@@ -347,7 +367,9 @@
         $('.collapsible').collapsible();
         $('.modal').modal();
         $('.tap-target').tapTarget();
-        
+
+
+                    
       });
 
         // window.onscroll = function() {

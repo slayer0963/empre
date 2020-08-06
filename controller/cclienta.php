@@ -31,6 +31,8 @@
 	}
 
 
+
+
 	function update(){
 	    $obj=new Client();
 	    $obj->setIdCl($_POST["id"]);
@@ -64,6 +66,19 @@
 		}
 		
 	    
+	}
+
+
+	$page = isset($_GET['updateData'])?$_GET['updateData']:'';
+	if($page=='updatepro'){
+	    $dat=new DAOClienta();
+	    echo json_encode($dat->updateDatapro(update()));
+	}
+
+	$page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+	if($page=='setRegister'){
+	    $dat=new DAOClienta();
+	    echo json_encode($dat->setRegister(insert()));
 	}
 
 	function updateState(){

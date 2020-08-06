@@ -1,7 +1,76 @@
     </body>
   </html>
 
+<div id="register" class="modal usuariomodal ">
+    <div class="modal-content center-align">
+       <h4>Registrate</h4>
 
+      <form class="col s12 center-align" id="frmregister" name="frmregister" method="post">
+        <div class="row">
+        
+           
+
+           <div class="input-fiel col s12">
+             <div class="col s12 align-center">
+              <div id="vista-previa">
+                 <img src="https://image.flaticon.com/icons/png/512/149/149071.png" style="height: 150px; width: 150px;" id="imgcontainer" alt="" class=" responsive-img">
+              </div>
+            </div>
+            <br>
+            <div class="file-field input-field col s12">
+              <div class="btn">
+                <span>Imagen</span>
+                <input type="file" id="file" name="file">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" name="img" title="Imagen (*)" id="img"  type="text">
+              </div>
+            </div>
+            <span class="" id="txtimg"></span>
+            </div>
+
+
+            <div class="form-group col s12 m12 l12">
+              <input type="text" name="fullname" title="Nombre completo (*)" id="fullname">
+              <label for="fullname">Nombre completo</label>
+              <span class="" id="txtfullname"></span>
+            </div>
+
+            
+
+            <div class="form-group col s12 m12 l12">
+
+              <input type="email" name="email" title="Correo electr&oacute;nico (*)" id="emailr">
+              <label for="email">Correo electr&oacute;nico</label>
+              <span class="" id="txtemail"></span>
+            </div>
+            
+            <div class="form-group col s12 m12 l12 ">
+              <input type="text" name="user" title="Usuario (*)" id="user">
+              <label for="user">Usuario</label>
+              <span class="" id="txtuser"></span>
+            </div>
+
+            <div class="form-group col s12 m12 l12">
+              <input type="password" name="pass" title="Contraseña (*)" id="pass">
+              <label for="pass">Contraseña</label>
+              <span class="" id="txtpass"></span>
+            </div>
+
+
+
+
+            
+
+          
+        </div>
+        <button type="submit" class=" btn">Registrarse </button>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+    </div>
+  </div>
 
 
   <div id="profiled" class="modal">
@@ -91,18 +160,13 @@
                                 <div class="form-group">
                                     <label for="contact-name">Contraseña</label>
                                     <input type="text" id="password" name="password" class="form-control input-md" placeholder="******">
-                                </div>
+                                </div><br>
                                 <center>
                                                                 <button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>
                                                                 <br>
+
                                  
                                                     
-
-                                                <div>
-                                                    <div class="g-signin2" data-onsuccess="onSignIn" data-width="250" ></div>
-
-                                                <script src="https://apis.google.com/js/platform.js" async defer></script>
-                                                </div>
                                                                 
                                                             </center>
         </form>

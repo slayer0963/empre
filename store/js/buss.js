@@ -1,6 +1,22 @@
 
 $(document).ready(function($) {
 
+
+  if(localStorage.getItem('modificaperfil')==1){
+    M.toast({html: "¡Tus datos se cambiaron exitosamente!", classes: 'rounded green'});
+    localStorage.setItem('modificaperfil',0)
+  }
+
+  if(localStorage.getItem('newuser')==1){
+    swal({
+        title: "Hola!",
+        text: "Te damos la bienvenida a Tienda Local!",
+        icon: "success",
+        button: "Comenzar",
+      });
+    localStorage.setItem('newuser',0)
+  }
+
       var obj = JSON.parse(localStorage.getItem('Store'));
              //alert(obj.name);
              $("#namebusi").html("<strong>"+obj.name+"</strong>");
@@ -64,92 +80,173 @@ $(document).ready(function($) {
         
         
       });
-      $("#imge").change(function(event) {
-     document.getElementById("imgcontainere").removeAttribute('src');
+      $("#img").change(function(event) {
+                 document.getElementById("imgcontainer").removeAttribute('src');
 
-        $("#vista-previae").html('');
-                var archivos=document.getElementById('filee').files;
-        var navegador=window.URL || window.webkitURL;
+                    $("#vista-previa").html('');
+                            var archivos=document.getElementById('file').files;
+                    var navegador=window.URL || window.webkitURL;
 
-        for (var i = 0; i < archivos.length; i++) {
+                    for (var i = 0; i < archivos.length; i++) {
 
-            var size=archivos[i].size;
-            var type=archivos[i].type;
-            var name=archivos[i].name;
-            
-                var objeto_url=navegador.createObjectURL(archivos[i]);
+                        var size=archivos[i].size;
+                        var type=archivos[i].type;
+                        var name=archivos[i].name;
+                        
+                            var objeto_url=navegador.createObjectURL(archivos[i]);
 
-         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
-       }
-    });
+                     $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+                   }
+                });
+            $("#imge").change(function(event) {
+                 document.getElementById("imgcontainere").removeAttribute('src');
 
-    $('#formclie').submit(function() {
-   if(Validate(0)==idinpute.length){
-    var formData = new FormData(document.getElementById("formclie"));
-            $.ajax({
-            type: "POST",
-            url: "../controller/cclienta.php?updateData=update", 
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            success: function(resp) {
+                    $("#vista-previae").html('');
+                            var archivos=document.getElementById('filee').files;
+                    var navegador=window.URL || window.webkitURL;
 
-                   if(resp==1){
-                    M.toast({html: "¡Se ha modificado al usuario exitosamente!", classes: 'rounded  green'});
-                    $('.modal').modal('close');
-          
-                    cleanbox();
-                   }else if(resp=="x"){
-                    M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                    for (var i = 0; i < archivos.length; i++) {
+
+                        var size=archivos[i].size;
+                        var type=archivos[i].type;
+                        var name=archivos[i].name;
+                        
+                            var objeto_url=navegador.createObjectURL(archivos[i]);
+
+                     $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+                   }
+                });
+
+            $('#frmregister').submit(function() {
+              if(Validate(1)==idinput.length){
+                var formData = new FormData(document.getElementById("frmregister"));
+                  formData.append("dato", "valor");
+                         $.ajax({
+                        type: "POST",
+                        url: "../controller/cclienta.php?btnsetData=setRegister", 
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(resp) {
+                         var datos = eval(resp);
+                               if(datos[0].estado==1){
+                                localStorage.setItem('client',datos[0].id);
+                                localStorage.setItem('nameper',datos[0].nombre);
+                                localStorage.setItem('newuser',1);
+                                location.reload();
+                                 
+                               }else if(resp=="x"){
+                                M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                                
+                               }
+                               else{
+                                M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                                
+                               }
+                                 
+                        }       
+                            
+                    });
+            }
+                return false;
+            });
+
+
+
+            $('#formclie').submit(function() {
+               if(Validate(0)==idinpute.length){
+                var formData = new FormData(document.getElementById("formclie"));
+                        $.ajax({
+                        type: "POST",
+                        url: "../controller/cclienta.php?updateData=updatepro", 
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        success: function(resp) {
+                           var datos = eval(resp);
+                               if(datos[0].estado==1){
+                                localStorage.setItem('client',datos[0].id);
+                                localStorage.setItem('nameper',datos[0].nombre);
+                                localStorage.setItem('modificaperfil',1);
+                                location.reload();
+                      
+                                cleanbox();
+                               }else if(resp=="x"){
+                                M.toast({html: "¡Ocurrió un error al cargar la imagen, favor asegúrese que la imagen posea un formato reconocible ('JPG','GIF','PNG')!", classes: 'rounded deep-orange'});
+                                
+                               }
+                               else{
+                                M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
+                               } 
+                           }
+                            
+                    });
+                
+              }
+              return false;
+            });
+
+
+            var idinpute = ['imge','fullnamee','emaile','usere','passe'];
+            var idinputerrore= ['txtimge','txtfullnamee','txtemaile','txtusere','txtpasse'];
+            var idinput = ['img','fullname','emailr','user','pass'];
+            var idinputerror= ['txtimg','txtfullname','txtemail','txtuser','txtpass'];
+
+            var Validate = (type) =>{
+              var validate=0, html="", count=0, counte=0;
+              if(type==1){
+                    idinput.forEach(names => {
+                      
+                   if($("#"+names).val()!=0){
                     
+                     validate+=1;
+                     html="Listo";
+                     //alert($("#"+names).val());
+                     $("#"+idinputerror[count]).html($("#"+names).attr('title'));
+                     $("#"+idinputerror[count]).removeClass('errorinputs');
+                     $("#"+idinputerror[count]).addClass('successinputs');
+                     
+                   }
+                   else{  
+                    //html="Verificar el campo "+ $("#"+names).attr('title')+"<br>";
+                    $("#"+idinputerror[count]).html($("#"+names).attr('title')); 
+                    $("#"+idinputerror[count]).removeClass('successinputs');      
+                     $("#"+idinputerror[count]).addClass('errorinputs'); 
+                   }
+                   count++;
+                });
+              }
+              else{
+               idinpute.forEach(names => {
+                   if($("#"+names).val()!=0){
+                    validate+=1;
+                     $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+                     $("#"+idinputerrore[counte]).removeClass('errorinputs');
+                     $("#"+idinputerrore[counte]).addClass('successinputs');
                    }
                    else{
-                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste modificar!", classes: 'rounded deep-orange'});
-                   } 
-               }
-                
-        });
-    
-  }
-  return false;
-});
+                     $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
+                     $("#"+idinputerrore[counte]).removeClass('successinputs');
+                     $("#"+idinputerrore[counte]).addClass('errorinputs');
+                   }
+                    counte++;
+                });
 
+              }
 
-var idinpute = ['imge','fullnamee','emaile','usere','passe'];
-var idinputerrore= ['txtimge','txtfullnamee','txtemaile','txtusere','txtpasse'];
+                return validate;
+            }
 
-
-
-
-var Validate = (type) =>{
-  var validate=0, html="", count=0, counte=0;
-  if(type==0){
-   idinpute.forEach(names => {
-       if($("#"+names).val()!=0){
-        validate+=1;
-         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
-         $("#"+idinputerrore[counte]).removeClass('red-text');
-         $("#"+idinputerrore[counte]).addClass('green-text');
-       }
-       else{
-         $("#"+idinputerrore[counte]).html($("#"+names).attr('title')); 
-         $("#"+idinputerrore[counte]).removeClass('green-text');
-         $("#"+idinputerrore[counte]).addClass('red-text');
-       }
-        counte++;
-    });
-
-  }
-
-    return validate;
-}
-
-var cleanbox=()=>{
-idinputerrore.forEach(names => {
-  $("#"+names).removeClass('green-text');      
-});
-}
+            var cleanbox=()=>{
+            idinputerror.forEach(names => {
+              $("#"+names).removeClass('successinputs');      
+            });
+            idinputerrore.forEach(names => {
+              $("#"+names).removeClass('successinputs');      
+            });
+            }
 });
 
 function addcomentario(idcliente,comentario,valoracion) {
@@ -184,7 +281,7 @@ function mybusii(id) {
             	var html='';
             	 
             	for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
                                         html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
@@ -240,7 +337,7 @@ function mybusiibyrange(id,range) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
                                         html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
@@ -292,7 +389,7 @@ function mybusiibytype(id,type) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
                                         html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
@@ -344,7 +441,7 @@ function mybusiibytypeandcat(id,type,cat) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
                                         html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';

@@ -20,7 +20,7 @@
         </li>
 
         <li style="">
-          <a href="">Registrase</a>
+          <a class=" modal-trigger" href="#register">Registrase</a>
         </li>
       </ul>
     </div>
@@ -39,7 +39,7 @@
         <li class="divider"></li>
             <li><a  class=" modal-trigger" href="#loginm">Iniciar</a></li>
             <li class="divider"></li>
-            <li><a href="#!" class="">Registarse</a></li>
+            <li><a class="modal-trigger" href="#register">Registarse</a></li>
       </ul>
 
 

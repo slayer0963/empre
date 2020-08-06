@@ -16,9 +16,9 @@
  </style>
  <?php include 'block/menu.php'; ?>
   <title id="title"></title>
-    <div class="container">
+    <div class="">
       <div class="row" id="contentpage">
-      <div class="col l3 m10 s10 offset-s1 offset-m1">
+      <div class="col l2 m10 s10 offset-s1 offset-m1 ">
          <ul class="collection">
           <li class="collection-item">Rango de precios <br>
             <form action="#">
@@ -41,7 +41,7 @@
           
         </ul>
       </div>
-      <div class="col l9 m10 s10 offset-s1 offset-m1">
+      <div class="col l10 m10 s10 offset-s1 offset-m1">
         <div class="row " id="productstore" style="z-index: -1;">
        
         </div>
