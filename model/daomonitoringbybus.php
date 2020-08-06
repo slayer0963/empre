@@ -95,7 +95,7 @@ include_once "../cn/connection.php";
 	public function getDataComent($idpro)
  	{
 		$c = conectar();
-		$sql="SELECT  pr.id_pro,pr.id_prev,pr.state_prev,cli.fullname_cl,cli.imagen,pr.likes,pr.coment FROM product_reviews pr inner join clients cli on pr.id_cl=cli.id_cl where pr.id_pro=$idpro;";
+		$sql="SELECT  pr.id_pro,pr.id_prev,pr.state_prev,cli.fullname_cl,cli.imagen,(select count(r.id_prev) from reactions r where r.id_prev=pr.id_prev) as likes,pr.coment FROM product_reviews pr inner join clients cli on pr.id_cl=cli.id_cl where pr.id_pro=$idpro;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
