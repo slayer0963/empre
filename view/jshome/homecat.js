@@ -3,7 +3,39 @@ $(document).ready(function(){
               categories();
               business();
               producttype();
+              gettypes();
+              getcategories();
 
+              var obj = JSON.parse(localStorage.getItem('Store'));
+                    $("#range").change(function(event) {
+                        
+                        if($("#range").val()==0){
+                          productbybusiness();
+                        }
+                        else{
+                          mybusiibyrange($("#range").val());
+                        }
+                        
+                      });
+
+      $("#publish").click(function () {
+         if(localStorage.getItem('nameper')==null){
+           $('#loginm').modal('open');
+         }else{
+            if ($("#comentproduc").val()!="") {
+            if($('#rate').swidget().value()>0){
+                 addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
+            }
+            else{
+                M.toast({html: "Verifica si has puntuado, eso nos ayuda demasiado", classes: 'rounded  deep-orange'});
+            }
+        }
+        else{
+              M.toast({html: "Tu comentario esta vacio", classes: 'rounded  red'});
+        }
+           
+         }
+      });
 
           if(localStorage.getItem('activemod')==1){
             $("#modpage").attr('checked',true);
@@ -54,6 +86,66 @@ $(document).ready(function(){
 
 });
 
+
+function gettypes() {
+
+    
+       $.ajax({
+            type: "POST",
+            url: "controller/cproduct.php?btngetData=getDataProductType", 
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" onclick="productbybusiness();" type="radio" checked  />';
+                    html+='<span>Todos</span>';
+                  html+='</label>';
+                html+='</p>';
+              for (var i = 0; i < respu.length; i++) {
+
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group1" onclick="" type="radio"  />';
+                    html+='<span>'+respu[i].name_tpro+'</span>';
+                  html+='</label>';
+                html+='</p>';
+
+              }
+              
+               $("#typeshome").html(html);
+            }
+          });
+}
+
+
+
+function getcategories() {
+
+
+    
+       $.ajax({
+            type: "POST",
+            url: "controller/cproduct.php?btngetData=getDataCategories", 
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+                
+              for (var i = 0; i < respu.length; i++) {
+
+                html+='<p class="animated zoomIn">';
+                  html+='<label>';
+                    html+='<input class="with-gap" name="group2" type="radio" onclick=""  />';
+                    html+='<span>'+respu[i].name_cat+'</span>';
+                  html+='</label>';
+                html+='</p>';
+
+              }
+              
+               $("#categorieshome").html(html);
+            }
+          });
+}
 
 function viewstore(id,nombre, description){
     var obj = new Object();
@@ -108,6 +200,22 @@ var business = () =>{
       
 }
 
+function addcomentario(idcliente,comentario,valoracion) {
+    var obj = JSON.parse(localStorage.getItem('ProductC'));
+    var dataString = 'idcliente='+idcliente+'&idprod='+obj.id+'&comentario='+comentario+'&valoracion='+valoracion;
+    //alert(dataString);
+    $.ajax({
+            type: "POST",
+            url: "controller/cclient.php?btnaddcoment=setcoment", 
+            data: dataString,
+            success: function(resp) {
+                //alert(resp);
+                if(resp!=0){
+                    getcoments(obj.id);
+                }       
+            }
+        });
+}
 
 var productbybusiness = () =>{
     
@@ -161,6 +269,57 @@ var productbybusiness = () =>{
             }
             });
       
+}
+
+function mybusiibyrange(range) {
+    var dataString = 'range='+range;
+    
+       $.ajax({
+            type: "POST",
+            url: "controller/cuserhome.php?btngetpro=getDatacbrhome", 
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content center-align">';
+                                         html+='<span class="card-title ">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<h1>No tenemos productos con estos precios</h1>';
+                 html+='</div>';
+              }
+        
+              $("#productbystore").html(html);
+          
+              
+              
+            }
+            });
 }
 
 function viewproduct(id,name,img,desc){
@@ -415,6 +574,25 @@ function getreply(idcoment){
             }
           });
   
+}
+
+function reactions(id_cl,id_prev) {
+      var dataString = 'id_cl='+id_cl+'&id_prev='+id_prev;
+      var obj = JSON.parse(localStorage.getItem('ProductC'));
+      $.ajax({
+            type: "POST",
+            url: "controller/cuserhome.php?btnreaction=setreaction", 
+            data: dataString,
+            success: function(resp) {
+                   if (resp==1) {
+
+
+                   M.toast({html: "<i class='small material-icons'>thumb_up</i>", classes: 'rounded  blue'});
+                 }else{
+                  M.toast({html: "<i class='small material-icons'>thumb_down</i>", classes: 'rounded  red'});
+                 }
+                  getcoments(obj.id);
+            }});
 }
 
 

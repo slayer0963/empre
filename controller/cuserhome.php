@@ -33,6 +33,12 @@
 	    echo json_encode($dat->getProductClientbyrange($_POST["id"],$_POST["range"]));
 	}
 
+		$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDatacbrhome'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductClientbyrangehome($_POST["range"]));
+	}
+
 	$page = isset($_GET['btngetprotp'])?$_GET['btngetprotp']:'';
 	if($page=='getDatactp'){
 	    $dat=new DAOUserhome();

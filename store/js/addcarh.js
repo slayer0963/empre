@@ -16,7 +16,7 @@ $(document).ready(function() {
 	            url: "controller/cuserhome.php?btnsetshcar=setshcar", 
 	            data: $("#frmcarpro").serialize(),
 	            success: function(resp) {
-                alert(resp);
+                
 	            	if(resp==1){
 	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));

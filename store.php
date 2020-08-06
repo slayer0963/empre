@@ -25,6 +25,20 @@ include_once "cn/connection.php";
   <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/lightbox.css">
 
   <link rel="stylesheet" href="<?php echo SERVERURLB; ?>view/css/select2-materialize.css">
+
+        <style>
+        #modalwis{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
+        #modalcarshop{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
+
+
+
+
+        @media only screen and (max-width : 992px) {
+            #modalcarshop { width: 100% !important ; height: 80% !important ; } 
+              #modalwis { width: 100% !important ; height: 80% !important ; }
+             
+        }
+      </style>
    <style>
    
    #prodetails { padding: 0; margin-top: -40px; width: 80% !important ; height: 95% !important ;  max-height: 100%;}
@@ -274,13 +288,13 @@ include_once "cn/connection.php";
             </form>
           </li>
           <li class="collection-item">Tipos <br>
-            <div id="types">
+            <div id="typeshome">
 
             </div>
           </li>
 
-          <li class="collection-item hide" id="cate">Categorias <br>
-            <div id="categories">
+          <li class="collection-item" id="cate">Categorias <br>
+            <div id="categorieshome">
 
             </div>
           </li>
@@ -605,7 +619,8 @@ include_once "cn/connection.php";
 
 <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/jquery.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>
-
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/dataTables.bootstrap4.min.js"></script>
 <script  type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/dataTables.responsive.js"></script>
 <script  type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/responsive.bootstrap4.js"></script>
@@ -619,9 +634,12 @@ include_once "cn/connection.php";
 <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/google.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/jsproject/local.js"></script>
 <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/addcarh.js"></script>
+
 <script>
+
   var activemod=0;
   $(document).ready(function(){
+    initializeRatings();
 
 
 
@@ -776,6 +794,15 @@ include_once "cn/connection.php";
     return false;
   });
 
+
+      function initializeRatings() {
+        $('#rate').shieldRating({
+            max: 5,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+      }
 
     var idinpute = ['imge','fullnamee','emaile','usere','passe'];
     var idinputerrore= ['txtimge','txtfullnamee','txtemaile','txtusere','txtpasse'];
