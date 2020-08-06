@@ -199,6 +199,42 @@ include_once "../cn/connection.php";
 
 
 
+    /*INSERT REACTION*/
+    public function setReaction($id_cl,$id_prev)
+    {
+        $c=conectar();
+
+        $consulta= "select * from reactions where id_cl=$id_cl and id_prev=$id_prev;";
+        $c->set_charset('utf8');
+        $res1 = $c->query($consulta);
+        $nrow1=$res1->num_rows;
+        //echo $nrow1;
+        if ($nrow1==0) {
+            $sql="insert into reactions values (0,$id_cl,$id_prev);";
+            if (!$c->query($sql)) {
+               // print "0".$sql;
+            }else{
+                    echo "1"; 
+
+                 }
+                 mysqli_close($c);
+        }else{
+            $sql="delete from reactions where id_cl=$id_cl and id_prev=$id_prev;";
+            if (!$c->query($sql)) {
+                //print "0".$sql;
+            }else{
+                    echo "2"; 
+
+                 }
+                 mysqli_close($c);
+        }
+        
+        
+        
+        
+    }
+
+
     /*INSERT BUSI*/
     public function setDataBusi($obj)
     {
