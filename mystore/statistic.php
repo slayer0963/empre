@@ -210,6 +210,14 @@
             <br>
           </div>
 
+          <div class="reply card row hide">
+            <br>
+            <center><b>Contestación:</b></center>
+            <input type="hidden" name="id_reply" id="id_reply">
+            <div class="col s12 m12 l12 center-align"><h6 id="replyuser" class="letrasboni"></h6></div>
+            <br>
+          </div>
+
                <div class="row">
                 <form class="col s12 center-align" name="frmconst" id="frmconst" method="POST">
                   <div class="row">

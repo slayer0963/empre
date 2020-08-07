@@ -626,6 +626,7 @@ var getDataDetailsSales = (cart)=> {
 }
 
 var Replycoment =(idprev, idus, cli,coment,imagen,idpro)=>{
+  $(".reply").addClass('hide'); 
   var html='';
   html+='<div class="chip">';
     html+='<img src="../view/imguser/'+imagen+'" alt="Contact Person">';
@@ -635,8 +636,41 @@ var Replycoment =(idprev, idus, cli,coment,imagen,idpro)=>{
   $("#comentper").html(coment);
   $("#idprev").val(idprev);
   $("#idus").val(idus);
+  $("#idprocoment").val(idpro); 
+
+}
+
+var ReplycomentF =(idprev, idus, cli,coment,imagen,idpro,idreply,reply)=>{
+  $(".reply").removeClass('hide'); 
+  var html='';
+  html+='<div class="chip">';
+    html+='<img src="../view/imguser/'+imagen+'" alt="Contact Person">';
+    html+=cli;
+  html+='</div>';
+  $("#nameclient").html(html);
+  $("#id_reply").val(idreply);
+  $("#replyuser").html(reply+'&nbsp; <a onclick="deleteReply(\''+idreply+'\')" class="btn red" title="Eliminar respuesta"><i class="material-icons">delete_sweep</i></a>');
+  $("#comentper").html(coment);
+  $("#idprev").val(idprev);
+  $("#idus").val(idus);
   $("#idprocoment").val(idpro);
 
+
+}
+
+var deleteReply = (id) =>{
+  var html="";
+  var dataString = 'id='+id;
+          $.ajax({
+            type: "POST",
+            url: "../controller/cmonitoringbybus.php?btnsetData=deleteReply",
+            data: dataString,
+            success: function(resp) {
+              $('.modal').modal('close');
+            getComents( $("#pro").val());
+            } 
+        }); 
+      
 }
 
 

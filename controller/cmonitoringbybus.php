@@ -62,7 +62,12 @@
 	    $dat->updateState($_POST['id'],$state);
 	}
 
-
+    $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='deleteReply'){
+        $dat=new DAOMonitoring();
+        $id=$_POST['id'];
+        $dat->deleteReply($id);
+    }
 
     // chart pro
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
@@ -201,6 +206,8 @@ if($page=='getDataComent'){
          $fullname_cl="'".$c["fullname_cl"]."'";
          $coment="'".$c["coment"]."'";
          $imagene = "'".$c["imagen"]."'";
+         $reply = "'".$c["reply"]."'";
+         $id_reply = "'".$c["id_reply"]."'";
          $state_prev="'".$c["state_prev"]."'";
          if($c["state_prev"]=="1"){ 
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_prev.','.$state_prev.','.$id_pro.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
@@ -211,7 +218,7 @@ if($page=='getDataComent'){
         $imagen = '<a href=\"../view/imguser/'.$c["imagen"].'\" data-lightbox=\"image-'.$c["id_prev"].'\" data-title=\"'.$c["fullname_cl"].'\"><img src=\"../view/imguser/'.$c["imagen"].'\" style=\"height: 20px; width: 20px;\" id=\"\"  class=\"\"></a>&nbsp;&nbsp;'.$c["fullname_cl"].'';
 
         if($dat->getreplyvalidate($c["id_prev"])>=1){
-            $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b green modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.','.$id_pro.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
+            $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b green modal-trigger\" onclick=\"ReplycomentF('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.','.$id_pro.','.$id_reply.','.$reply.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';
         }
         else{
             $btnconst='&nbsp;<a class=\"btn-floating #ffeb3b blue modal-trigger\" onclick=\"Replycoment('.$id_prev.','.$_SESSION["idus"].','.$fullname_cl.','.$coment.','.$imagene.','.$id_pro.');\"   id=\"btnd'.$c["id_prev"].'\" href=\"#replycoment\"><i class=\"material-icons\">navigation</i></a>';

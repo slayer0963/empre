@@ -29,10 +29,24 @@ include_once "../cn/connection.php";
 
                  }
             mysqli_close($c);
-            
+
         }
 
         
+    }
+
+    public function deleteReply($id)
+    {
+        $c=conectar();
+       
+        $sql="delete from reply where id_reply=$id;";
+        if (!$c->query($sql)) {
+            print "0".$sql;
+        }else{
+                echo "1"; 
+
+             }
+        mysqli_close($c);
     }
 
  	public function getDataproduc($idbusi)
@@ -106,7 +120,7 @@ include_once "../cn/connection.php";
 	public function getDataComent($idpro)
  	{
 		$c = conectar();
-		$sql="SELECT  pr.id_pro,pr.id_prev,pr.state_prev,cli.fullname_cl,cli.imagen,(select count(r.id_prev) from reactions r where r.id_prev=pr.id_prev) as likes,pr.coment FROM product_reviews pr inner join clients cli on pr.id_cl=cli.id_cl where pr.id_pro=$idpro;";
+		$sql="SELECT distinct rp.reply, rp.id_reply, pr.id_pro,pr.id_prev,pr.state_prev,cli.fullname_cl,cli.imagen,(select count(r.id_prev) from reactions r where r.id_prev=pr.id_prev) as likes,pr.coment FROM product_reviews pr inner join clients cli on pr.id_cl=cli.id_cl left join reply rp on rp.id_prev=pr.id_prev where pr.id_pro=$idpro;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
