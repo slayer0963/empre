@@ -67,8 +67,8 @@
 								    <i class="large material-icons">format_quote</i>
 								  </a>
 								  <ul>
-								     <li><a class="btn-floating yellow" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li> 
-								    <li><a class="btn-floating blue modal-trigger" href="#addpro"><i class="material-icons">add</i></a></li>
+								     <li><a class="btn-floating yellow tooltipped" data-position="left" data-tooltip="Modo edici&oacute;n" href="#" id="btnproedit"><i class="material-icons">mode_edit</i></a></li> 
+								    <li><a class="btn-floating blue modal-trigger tooltipped" data-position="left" data-tooltip="Agregar producto" href="#addpro"><i class="material-icons">add</i></a></li>
 								  </ul>
 								</div>
 		</div>

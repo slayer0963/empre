@@ -72,8 +72,8 @@
   </head>
 	<body class="valign-wrapper">
 		<div class="row  center-align hide" id="text">
-			<div class="container justify-text">
-				<h3 class="white-text animated  bounceIn" id="texto">Hola, bienvenido <?php echo $_SESSION['name']; ?>, aquí podrás ver estadisticas, tus negocios y productos.</h3>
+			<div class="container justify-text ">
+				<h3 class="black-text animated  bounceIn " id="texto">Hola, bienvenido <?php echo $_SESSION['name']; ?>, aquí podrás ver estadisticas, tus negocios y productos.</h3>
 				<div class="preloader-wrapper big active">
 			    <div class="spinner-layer spinner-green-only">
 			      <div class="circle-clipper left">
@@ -150,8 +150,9 @@
 								    <i class="large material-icons">format_quote</i>
 								  </a>
 								  <ul>
-								    <li><a class="btn-floating yellow" href="#" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
-								    <li><a class="btn-floating blue modal-trigger" href="#addbusi"><i class="material-icons">add</i></a></li>
+                    <li><a class="btn-floating red tooltipped" data-position="left" data-tooltip="Salir" href="#!" onclick="salirempre();" ><i class="material-icons">close</i></a></li>
+								    <li><a class="btn-floating yellow tooltipped" data-position="left" data-tooltip="Modo edici&oacute;n" href="#!" id="btnmedit"><i class="material-icons">mode_edit</i></a></li>
+								    <li><a class="btn-floating blue modal-trigger tooltipped" data-position="left" data-tooltip="Agregar negocio" href="#addbusi"><i class="material-icons">add</i></a></li>
 								  </ul>
 								</div>
 		</div>

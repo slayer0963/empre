@@ -90,7 +90,7 @@
 
 			 $('.dropdown-trigger').dropdown({constrainWidth: false});
 			  $('.sidenav').sidenav();
-
+        $('.modal').modal();
 
 		  });
       </script>

@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 
 
-function mybusiis(id,name){
+function mybusii(id,name){
 
 	var obj = new Object();
 

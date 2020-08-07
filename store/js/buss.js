@@ -30,9 +30,12 @@ $(document).ready(function($) {
       // alert(obj.id);
 
       $("#range").change(function(event) {
-        mybusiibyrange(obj.id,$("#range").val());
+        
         if($("#range").val()==0){
           mybusii(obj.id);
+        }
+        else{
+          mybusiibyrange(obj.id,$("#range").val());
         }
         
       });
@@ -53,11 +56,11 @@ $(document).ready(function($) {
                  addcomentario($("#idclient").val(),$("#comentproduc").val(),$('#rate').swidget().value())
             }
             else{
-                alert("verifica si has putuando el producto esto nos sirve para mejorar como negocio");
+                 M.toast({html: "Verifica si has puntuado, eso nos ayuda demasiado", classes: 'rounded  deep-orange'});
             }
         }
         else{
-              alert("tu comentatio esta vacio");
+              M.toast({html: "Tu comentario esta vacio", classes: 'rounded  red'});
         }
            
          }

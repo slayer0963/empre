@@ -1,3 +1,16 @@
+		  	
+<style type="text/css">
+        #profiled { padding: 0; margin-top:-2rem; width: 50% !important ; height: 100% !important ;  max-height: 85%;}
+
+
+        @media only screen and (max-width : 992px) {
+            #profiled { width: 100% !important ;  height: 100% !important ;  max-height: 85%;}
+           
+        }
+</style>
+
+
+
 		  	<nav class="teal "  >
 		    <div class="nav-wrapper">
 		    	<a class=" left valign-wrapper animated  heartBeat slower" style="font-family: 'Shadows Into Light', cursive; margin-left: 3rem; font-size: 25px;" id="namebusi"></a>
@@ -32,7 +45,7 @@
 							}
 				?>
 				<li class="divider"></li>
-			  <li><a href="#!">Perfil</a></li>
+			  <li><a class="modal-trigger" href="#profiled" onclick="fillboxprofile(<?php echo $_SESSION['idus']; ?>);">Perfil</a></li>
 			  <li class="divider"></li>
 			  <li><a href="#!" onclick="salirempre();">Salir</a></li>
 			</ul>

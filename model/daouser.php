@@ -13,6 +13,58 @@ include_once "../cn/connection.php";
 
  	}
 
+ 	public function updateDatapro($obj)
+ 	{	
+ 		if($obj=="x"){
+ 			echo "x";
+ 		}else{
+ 		$c=conectar();
+ 		$_id_user=$obj->getIdUser();
+		$_fullname_user=$obj->getFullnameUser();
+		$_phone_user=$obj->getPhoneUser();
+		$_imagen=$obj->getImagen();
+		$_email_user=$obj->getEmailUser();
+		$_user_user=$obj->getUserUser();
+		$_pass_user=$obj->getPassUser();
+		
+			$sql="update users set fullname_user='$_fullname_user',phone_user='$_phone_user',imagen='$_imagen',email_user='$_email_user',user_user='$_user_user',pass_user='$_pass_user' where id_user=$_id_user;";
+		if (!$c->query($sql)) {
+			print "0".$sql;
+		}else{
+			    $sentencia = $c->prepare("SELECT id_user, fullname_user, imagen, email_user FROM users WHERE email_user ='$_email_user' and pass_user='$_pass_user' or user_user ='$_email_user' and pass_user='$_pass_user'");
+					$sentencia->execute();
+					$resultado = $sentencia->get_result();
+					$res = $resultado->fetch_assoc();
+					$nombre=$res["fullname_user"];
+					$img=$res["imagen"];
+					$email=$res["email_user"];
+					$tipo=3;
+					$id=$res["id_user"];
+					$_SESSION["name"]=$nombre;
+					$_SESSION["type"]=$tipo;
+					$_SESSION["img"]=$img;
+					$_SESSION["email"]=$email;
+					$_SESSION["idus"]=$id;
+					$arreglo = array();
+					$arreglo[] = array('id' =>$id,'tipo' =>$tipo,'nombre' =>$nombre,'imagen' =>$img,'estado'=>1);
+					return $arreglo;
+		     }
+		mysqli_close($c);
+		}
+ 	}
+
+ 	public function getdataprofile($id)
+ 	{
+ 		$c = conectar();
+		$sql="select * from users where id_user=$id;";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;		
+	}
 
  	public function loginService($obj)
  	{
