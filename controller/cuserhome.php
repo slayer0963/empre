@@ -20,10 +20,22 @@
 	    echo json_encode($dat->getProductClient(getidbuss()));
 	}
 
-		$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
 	if($page=='getDataall'){
 	    $dat=new DAOUserhome();
 	    echo json_encode($dat->getProductall());
+	}
+
+	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDataalltype'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductalltype($_POST['type']));
+	}
+
+	$page = isset($_GET['btngetpro'])?$_GET['btngetpro']:'';
+	if($page=='getDataallcat'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getProductallcat($_POST['cat']));
 	}
 
 

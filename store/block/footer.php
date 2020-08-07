@@ -183,11 +183,11 @@
 
       </ul>
         <ul class="collection right-align">
-          <li  class="collection-item"><h6 id="totalshop" class="price-new">0</h6></li>
+          <li  class="collection-item carocult"><h6 id="totalshop" class="price-new">0</h6></li>
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat" style="color:white;">Ir a carrito</a>
+      <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php" class="green waves-effect waves-green btn-flat carocult" style="color:white;">Ir a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
@@ -198,11 +198,11 @@
 
       </ul>
         <ul class="collection right-align">
-          <li  class="collection-item"><h6 id="totalwish" class="price-new">0</h6></li>
+          <li  class="collection-item wiocult"><h6 id="totalwish" class="price-new">0</h6></li>
         </ul>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="green waves-effect waves-green btn-flat" style="color:white;">Enviar todo a carrito</a>
+      <a href="#!" class="green waves-effect waves-green btn-flat wiocult" style="color:white;">Enviar todo a carrito</a>
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
     </div>
   </div>
