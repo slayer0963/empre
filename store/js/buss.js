@@ -259,9 +259,11 @@ function addcomentario(idcliente,comentario,valoracion) {
             data: dataString,
             success: function(resp) {
                 //alert(resp);
-                if(resp!=0){
+                if(resp==1){
                     getcoments(obj.id);
-                }       
+                } else if (resp==2) {
+                   M.toast({html: "¡Usted no posee permiso para comentar en este producto!", classes: 'rounded deep-orange'});
+                }      
             }
         });
 }

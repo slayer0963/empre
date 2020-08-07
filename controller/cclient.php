@@ -8,7 +8,7 @@
 	$page = isset($_GET['btnaddcoment'])?$_GET['btnaddcoment']:'';
 	if($page=='setcoment'){
 	    $dat=new DAOClient();
-	    echo json_encode($dat->setComent($_POST['idcliente'],$_POST['idprod'],$_POST['comentario'],$_POST['valoracion']));
+	    $dat->setComent($_POST['idcliente'],$_POST['idprod'],$_POST['comentario'],$_POST['valoracion']);
 	}
 
 
