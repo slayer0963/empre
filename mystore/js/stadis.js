@@ -77,19 +77,22 @@ $(document).ready(function() {
               url: "../controller/cmonitoringbybus.php?btnsetData=setDataComent", 
               data: $("#frmconst").serialize(),
               success: function(resp) {
-
-                     if(resp!=0){
-
+                    //alert(resp);
+                     if (resp==0) {
                       
+
+                      M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
+                      
+                    }else if (resp=="y") {
+                      M.toast({html: "¡Ud. ya respondió a este comentario anteriormente!", classes: 'rounded  orange'});
+                      
+                    }
+                     else{
                       M.toast({html: "¡Se ha respondido exitosamente!", classes: 'rounded  green'});
                       $('.modal').modal('close');
                       cleanform();
                       cleanbox();
                       getComents(resp);
-                     }
-                     else{
-                      M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
-                      
                      }
                        
               }   

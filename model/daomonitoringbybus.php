@@ -14,14 +14,25 @@ include_once "../cn/connection.php";
     public function setDataComent($idprev, $idus, $coment,$idpro)
     {
         $c=conectar();
-        $sql="insert into reply value (0,$idprev,$idus,'$coment',1);";
-        if (!$c->query($sql)) {
-            print "0";
+        $consulta= "select * from reply where id_prev=$idprev and id_user=$idus";
+        $c->set_charset('utf8');
+        $res1 = $c->query($consulta);
+        $nrow1=$res1->num_rows;
+        if ($nrow1>0) {
+            echo "y";
         }else{
-                echo $idpro; 
+            $sql="insert into reply value (0,$idprev,$idus,'$coment',1);";
+            if (!$c->query($sql)) {
+                print "0";
+            }else{
+                    echo $idpro; 
 
-             }
-        mysqli_close($c);
+                 }
+            mysqli_close($c);
+            
+        }
+
+        
     }
 
  	public function getDataproduc($idbusi)
