@@ -144,8 +144,21 @@ function consultcar(id){
 					    html+='</li> ';
 					    total+=parseFloat(respu[i].precio);
                 }
+
+                if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="../empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Carrito vacio</h3>';
+                 html+='</div>';
+                 $('.carocult').addClass('hide');
+                 $("#cartcli").html(html);
+                }
+                else{
+                  $('.carocult').removeClass('hide');
+                  $("#cartcli").html(html);
+                }
                 
-                $("#cartcli").html(html);
+                
                 $(".numbercar").html(cont);
                 $("#totalshop").html("Total: $"+total);
             }
@@ -188,8 +201,19 @@ function consultwish(id){
 					    html+='</li> ';
 					    total+=parseFloat(totdes);
                 }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="../empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Lista vacia</h3>';
+                 html+='</div>';
+                 $('.wiocult').addClass('hide');
+                 $("#wishcli").html(html);
+                }
+                else{
+                  $('.wiocult').removeClass('hide');
+                  $("#wishcli").html(html);
+                }
                 
-                $("#wishcli").html(html);
                 //$(".numbercar").html(cont);
                 $("#totalwish").html("Total: $"+total);
             }

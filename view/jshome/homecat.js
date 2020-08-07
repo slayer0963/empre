@@ -1,3 +1,5 @@
+
+var activemod=0,activemodm=0;
 $(document).ready(function(){
 
               categories();
@@ -51,6 +53,8 @@ $(document).ready(function(){
               categories();
               business();
               producttype();
+               gettypes();
+              getcategories();
           }
 
           $("#modpage").change(function(event) {
@@ -83,6 +87,37 @@ $(document).ready(function(){
 
 
 
+          $("#modpagem").change(function(event) {
+            
+            if(activemodm==0){
+              
+              localStorage.setItem('activemod',1);
+              activemodm++;
+              $("#contbusi").removeClass('fadeInUp');
+              $("#contbusi").addClass('fadeOutLeft');
+              $(".typescont").addClass('hide');
+              $("#business").addClass('hide');
+               $("#container").removeClass('container');
+              $("#contprod").removeClass('hide');
+              productbybusiness();
+            }
+            else{
+              
+              localStorage.setItem('activemod',0)
+              activemodm=0;
+              $("#container").addClass('container');
+              $("#contprod").addClass('hide');
+              $("#contbusi").removeClass('fadeOutLeft');
+              $("#contbusi").addClass('fadeInUp');
+              $(".typescont").removeClass('hide');
+              $("#business").removeClass('hide');
+              
+            }
+          });
+          
+
+
+
 
 });
 
@@ -106,7 +141,7 @@ function gettypes() {
 
                 html+='<p class="animated zoomIn">';
                   html+='<label>';
-                    html+='<input class="with-gap" name="group1" onclick="" type="radio"  />';
+                    html+='<input class="with-gap" name="group1" onclick="productbybusinesstype('+respu[i].id_tpro+');" type="radio"  />';
                     html+='<span>'+respu[i].name_tpro+'</span>';
                   html+='</label>';
                 html+='</p>';
@@ -135,7 +170,7 @@ function getcategories() {
 
                 html+='<p class="animated zoomIn">';
                   html+='<label>';
-                    html+='<input class="with-gap" name="group2" type="radio" onclick=""  />';
+                    html+='<input class="with-gap" name="group1" type="radio" onclick="productbybusinesscat('+respu[i].id_cat+');"  />';
                     html+='<span>'+respu[i].name_cat+'</span>';
                   html+='</label>';
                 html+='</p>';
@@ -262,6 +297,115 @@ var productbybusiness = () =>{
                 html+='<h3 style="margin-top:0px;">Por el momento estamos tratando de comenzar dentro de poco traeremos algo interesante para ti</h3>';
                  html+='</div>';
                  $("#none").html(html);
+              }
+              else{
+                $("#productbystore").html(html);
+              }
+            }
+            });
+      
+}
+
+var productbybusinesstype = (type) =>{
+     var dataString = 'type='+type;
+       $.ajax({
+            type: "POST",
+            url: "controller/cuserhome.php?btngetpro=getDataalltype",
+            data: dataString,
+            success: function(resp) {
+          
+              var respu = eval(resp);
+              
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content center-align">';
+                                          html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
+                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momento no tenemos este tipo de producto</h3>';
+                 html+='</div>';
+                 $("#productbystore").html(html);
+              }
+              else{
+                $("#productbystore").html(html);
+              }
+            }
+            });
+      
+}
+
+
+var productbybusinesscat = (cat) =>{
+     var dataString = 'cat='+cat;
+       $.ajax({
+            type: "POST",
+            url: "controller/cuserhome.php?btngetpro=getDataallcat",
+            data: dataString,
+            success: function(resp) {
+          
+              var respu = eval(resp);
+              
+              var html='';
+               
+              for (var i = 0; i < respu.length; i++) {
+                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                    html+='<div class="card hoverable">';
+                                      html+='<div class="card-image">';
+                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                       
+                                       html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
+                                      html+='</div>';
+                                      html+='<div class="card-content center-align">';
+                                          html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
+                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='<span class="price price-new"> &#36;'+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*parseFloat(respu[i].discount))).toFixed(2)+'</span>';
+                                                html+='</div>';  
+                                          }
+                                          else{
+                                                html+='<div class="price center-align">';
+                                                html+='<span class="price price-new"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
+                                                html+='</div>'; 
+                                          }
+                                      html+='</div>';
+                                    html+='</div>';
+                                  html+='</div>';
+                              
+              }
+              if(respu.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momento no tenemos productos en esta categoria</h3>';
+                 html+='</div>';
+                 $("#productbystore").html(html);
               }
               else{
                 $("#productbystore").html(html);
@@ -622,6 +766,17 @@ var businessbycat = (id) =>{
                   html+='</div>';
                 html+='</div>';       
              }
+
+             if(values.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momento no tenemos negocios en esta categoria</h3>';
+                 html+='</div>';
+                 $("#business").html(html);
+              }
+              else{
+                $("#business").html(html);
+              }
             
             $("#contbusi").addClass('fadeOutLeft');
             
@@ -704,7 +859,16 @@ var businessbyproductype= (id) =>{
                   html+='</div>';
                 html+='</div>';       
              }
-            
+            if(values.length==0){
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momento no tenemos ningun negocio en este tipo de producto</h3>';
+                 html+='</div>';
+                 $("#business").html(html);
+              }
+              else{
+                $("#business").html(html);
+              }
             $("#contbusi").addClass('fadeOutLeft');
             
             setTimeout(function(){
