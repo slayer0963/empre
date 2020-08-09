@@ -38,6 +38,7 @@
           .aprices { padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 72%;}
           #modaladdress { margin-top:-3rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
           #modalnumber { margin-top:-3rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
+          .eventmodal { margin-top:-3rem; padding: 0; width: 40% !important ; height: 100% !important ;  max-height: 90%;}
           .container{
             margin-top: 2rem;
             padding-left: 0;
@@ -77,6 +78,7 @@
             .aprices { padding: 0; width: 100% !important ; height: 80% !important ;  max-height: 72%;}
             #modaladdress { margin-top:-3rem; padding: 0; width: 100% !important ; height: 100% !important ;  max-height: 90%;}
             #modalnumber { margin-top:-3rem; padding: 0; width: 100% !important ; height: 100% !important ;  max-height: 90%;}
+            .eventmodal { margin-top:-3rem; padding: 0; width: 100% !important ; height: 100% !important ;  max-height: 90%;}
           }
           .tb{
             margin-top: 2rem;

@@ -26,6 +26,7 @@ $(document).ready(function(){
     $('#descrip').characterCounter();
     $('.collapsible').collapsible();
     $('.tabs').tabs();
+    $('.datepicker').datepicker({container: 'body',format: 'yyyy-mm-dd'});
 });
   </script>
 
