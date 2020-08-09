@@ -159,8 +159,14 @@ include_once "../cn/connection.php";
         if (!$c->query($sql)) {
             print "0".$sql;
         }else{
-                echo "1"; 
 
+                 $sql="insert into delivery values(0,$idc,0)";
+                if (!$c->query($sql)) {
+                    print "0".$sql;
+                }else{
+                        echo "1"; 
+
+                     }
              }
         mysqli_close($c);
         

@@ -643,7 +643,7 @@ include_once "cn/connection.php";
 
      if(localStorage.getItem('transac')==1){
     
-    swal(localStorage.getItem('nameper'), '¡Transacción completada exitosamente!\nTu pedido será entrega en un estimado de 24H. gracias :)', "success")
+    swal(localStorage.getItem('nameper'), '¡Transacción completada exitosamente!\nTu pedido será entregado en un estimado de 24H. gracias :)', "success")
 
     localStorage.setItem('transac',0)
   }

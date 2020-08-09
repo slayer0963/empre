@@ -7,7 +7,7 @@ $(document).ready(function() {
     consultcar(localStorage.getItem('client'));
 
 
-    $("#endedpur").click(function () {
+    /*$("#endedpur").click(function () {
 
         for (var i = 0; i < parseInt($("#totval").val()); i++) {
                 var idp=$("#id_prices"+i).val();
@@ -41,7 +41,7 @@ $(document).ready(function() {
         
 
         
-     });
+     });*/
 
 
 
