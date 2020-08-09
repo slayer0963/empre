@@ -590,7 +590,7 @@ include_once "cn/connection.php";
     </ul>
   </div>
   <div class="modal-footer">
-    <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails.php"  class="green waves-effect waves-green btn-flat carocult" style="color:white;">Ir a carrito</a>
+    <a href="<?php echo SERVERURLB; ?>store/shoppingcardetails"  class="green waves-effect waves-green btn-flat carocult" style="color:white;">Ir a carrito</a>
     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Seguir comprando</a>
   </div>
 </div>
@@ -641,7 +641,12 @@ include_once "cn/connection.php";
   $(document).ready(function(){
     initializeRatings();
 
+     if(localStorage.getItem('transac')==1){
+    
+    swal(localStorage.getItem('nameper'), '¡Transacción completada exitosamente!\nTu pedido será entrega en un estimado de 24H. gracias :)', "success")
 
+    localStorage.setItem('transac',0)
+  }
 
 
     if(localStorage.getItem('modificaperfil')==1){

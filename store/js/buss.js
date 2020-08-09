@@ -7,6 +7,8 @@ $(document).ready(function($) {
     localStorage.setItem('modificaperfil',0)
   }
 
+ 
+
   if(localStorage.getItem('newuser')==1){
     swal({
         title: "Hola!",

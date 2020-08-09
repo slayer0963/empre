@@ -85,12 +85,13 @@ function consultcar(id){
                           html+='<a href="javascript:void(0)" title="Descontar" class="btn red waves-effect waves-red" style="color:white" onClick="menos('+i+','+String("'"+respu[i].id_shp_c_d+"'")+','+String("'"+respu[i].precio+"'")+','+String("'"+respu.length+"'")+');"><i class="tiny material-icons">exposure_neg_1</i></a><br><br></div>';
 					      html+='<div class="col s12 m12 l1 center-align">Precio <label class="price-new right-align">$'+parseFloat(respu[i].precio).toFixed(2)+'</label><br><br></div><div class="col s12 m12 l2 center-align">Sub total<br><label class="price-new">$</label><label id="totalf'+i+'" class="right-align price-new">'+parseFloat(respu[i].precio).toFixed(2)+'</label></div></div>';
 					    html+='</li> ';
-					    total+=parseFloat(respu[i].precio);
+					    total+=(parseFloat(respu[i].precio)*respu[i].quantity);
                 }
                 
                 $("#cartcli").html(html);
                 $(".numbercar").html(cont);
                 $("#totalshop").html("Total: $"+parseFloat(total).toFixed(2));
+                $("#totalpaypal").val(parseFloat(total).toFixed(2));
             }
         });
 }
@@ -161,7 +162,7 @@ function mas(i, id_shp_c_d,tm,price,n){
         }
         
         $("#totalshop").html("Total: $"+subtotal.toFixed(2));
-      
+        $("#totalpaypal").val(parseFloat(subtotal).toFixed(2));
     }
 
 
