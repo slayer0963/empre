@@ -5,7 +5,7 @@ $(document).ready(function() {
              //$("#namebusi").html(obj.name);
              //$(".namebusi").html("Regresar");
     consultcar(localStorage.getItem('client'));
-
+    validateDirection(localStorage.getItem('client'));
 
     /*$("#endedpur").click(function () {
 
@@ -164,6 +164,31 @@ function mas(i, id_shp_c_d,tm,price,n){
         $("#totalshop").html("Total: $"+subtotal.toFixed(2));
         $("#totalpaypal").val(parseFloat(subtotal).toFixed(2));
     }
+
+    function validateDirection(idcl){
+              
+                     $.ajax({
+                          type: "POST",
+                          url: "../controller/cclient.php?btnvalidate=getDirection&idcliente="+idcl, 
+                      success: function(resp2) {
+                        //alert(resp2);
+                        if(resp2==0){
+                          
+
+                          $("#ppt").addClass('hide'); 
+                          $("#ppf").removeClass('hide'); 
+                        }else if (resp2==1){
+                          
+
+                          $("#ppt").removeClass('hide'); 
+                          $("#ppf").addClass('hide'); 
+                        }
+                     
+                      }   
+                
+                 });              
+            
+          }  
 
 
     function modificarCantidad(id_shp_c_d,numero){

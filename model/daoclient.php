@@ -12,6 +12,23 @@ include_once "../cn/connection.php";
 
  	}
 
+ 	
+ 	public function getValidateDirection($cliente)
+ 	{
+		$c = conectar();
+		$consulta= "select * from address where id_cl=$cliente";
+        $c->set_charset('utf8');
+        $res1 = $c->query($consulta);
+        $nrow1=$res1->num_rows;
+
+        if ($nrow1>0) {
+        	
+			echo "1";
+		}else{
+			echo "0";
+		}
+	}
+
  	public function setComent($cliente,$producto,$comentario,$valoracion)
  	{
 		$c = conectar();
