@@ -84,10 +84,18 @@ include_once "../cn/connection.php";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{
-			    $sentencia = $c->prepare("SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$_email_user' and pass_cl='$_pass_user' or user_cl ='$_email_user' and pass_cl='$_pass_user'");
-					$sentencia->execute();
-					$resultado = $sentencia->get_result();
-					$res = $resultado->fetch_assoc();
+			    $query= "SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$_email_user' and pass_cl='$_pass_user' or user_cl ='$_email_user' and pass_cl='$_pass_user'";
+	                $c->set_charset('utf8');
+	                $result = $c->query($query);
+	                $res = $result->fetch_array();
+
+
+
+					$query= "SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$_email_user' and pass_cl='$_pass_user' or user_cl ='$_email_user' and pass_cl='$_pass_user'";
+	                $c->set_charset('utf8');
+	                $result = $c->query($query);
+	                $res = $result->fetch_array();
+	               
 					$nombre=$res["fullname_cl"];
 					$img=$res["imagen"];
 					$email=$res["email_cl"];
@@ -172,10 +180,21 @@ include_once "../cn/connection.php";
 		if (!$c->query($sql)) {
 			print "0".$sql;
 		}else{
-			    $sentencia = $c->prepare("SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$_email_user' and pass_cl='$_pass_user' or user_cl ='$_email_user' and pass_cl='$_pass_user'");
-					$sentencia->execute();
-					$resultado = $sentencia->get_result();
-					$res = $resultado->fetch_assoc();
+			    
+
+
+
+
+
+					$query= "SELECT id_cl, fullname_cl, imagen, email_cl FROM clients WHERE email_cl ='$_email_user' and pass_cl='$_pass_user' or user_cl ='$_email_user' and pass_cl='$_pass_user'";
+	                $c->set_charset('utf8');
+	                $result = $c->query($query);
+	                $res = $result->fetch_array();
+	               
+
+
+
+
 					$nombre=$res["fullname_cl"];
 					$img=$res["imagen"];
 					$email=$res["email_cl"];

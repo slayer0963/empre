@@ -96,10 +96,15 @@
 					<div class="row center-align" id="containerbusi">
 						<?php 
 							$c = conectar();
-							$sentencia = $c->prepare("select count(*) nbus from business b inner join users u on b.id_user=u.id_user where u.id_user=".$_SESSION["idus"].";");
-								$sentencia->execute();
-								$resultado = $sentencia->get_result();
-								$resp = $resultado->fetch_assoc();
+							
+
+
+                $query= "select count(*) nbus from business b inner join users u on b.id_user=u.id_user where u.id_user=".$_SESSION["idus"].";";
+                  $c->set_charset('utf8');
+                  $result = $c->query($query);
+                  $resp = $result->fetch_array();
+
+
 								$number=$resp["nbus"];
 								if($number==0){
 									$vacio=1;
