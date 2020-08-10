@@ -126,6 +126,9 @@ if($page=='getData'){
          if($c["state_event"]=="1"){ 
          	$btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_event.','.$state_event.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
          }
+         else if ($c["state_event"]=="2") {
+         	$btnstate='&nbsp;<a class=\"btn-floating blue lighten-1 waves-effect\"  type=\"submit\" name=\"action\"><i class=\"material-icons right\">present_to_all</i></a>';
+         }
          else if ($c["state_event"]=="0") {
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  onclick=\"StateChange('.$id_event.','.$state_event.');\" type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
