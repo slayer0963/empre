@@ -58,7 +58,7 @@
 
       #profiled{ margin-top: -25px;  padding: 0; width: 60% !important ; height: 90% !important ;  max-height: 90%;}
           .usuariomodal { padding: 0; width: 30% !important ; height: 100% !important ;  max-height: 85%;}
-
+          #modalevents{ margin-top: -2rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
 
         @media only screen and (max-width : 992px) {
            .usuariomodal {padding: 0; width: 100% !important ; height: 80% !important ; max-height: 85%;} 
@@ -66,6 +66,7 @@
             #modalcarshop { width: 100% !important ; height: 80% !important ; } 
               #modalwis { width: 100% !important ; height: 80% !important ; }
               #profiled{ width: 100% !important ; height: 80% !important ; }
+              #modalevents {padding: 0; width: 100% !important ; height: 95% !important ; max-height: 85%;} 
         }
       </style>
   </head>

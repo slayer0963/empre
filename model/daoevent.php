@@ -13,6 +13,47 @@ include_once "../cn/connection.php";
 
  	}
 
+ 	public function getEventT($fecha)
+ 	{
+		$c = conectar();
+		$consulta="select id_event, DATE_FORMAT(str_to_date(finishdate, '%Y-%m-%d'),'%Y-%m-%d') as finishdate from events_d where releasedate >= '$fecha' and state_event=1;";
+        $c->set_charset('utf8');
+        $res = $c->query($consulta);
+        $arreglo = array();
+        $timestampb="";
+        $timestamps = "";
+        $sql2="";
+		while($re = $res->fetch_array()){
+			$timestampb = strtotime($re['finishdate']);
+			$timestamps = strtotime($fecha);
+
+			if($timestamps > $timestampb)
+			{
+				$sql="update events_d set state_event=2 where id_event=".$re['id_event'].";";
+				if (!$c->query($sql)) {
+					print "0";
+				}
+				else
+				{
+					echo "1"; 
+				}
+			}
+			else
+			{
+				$sql2="select  name_e, img, details, DATE_FORMAT(str_to_date(releasedate, '%Y-%m-%d'),'%d-%m-%Y') as releasedate,DATE_FORMAT(str_to_date(finishdate, '%Y-%m-%d'),'%d-%m-%Y') as finishdate from events_d where id_event=".$re['id_event'].";";
+				$c->set_charset('utf8');
+				$res2 = $c->query($sql2);
+				while($re2 = $res2->fetch_array()){
+					$arreglo[]=$re2;
+				}
+			}
+
+		}
+		
+
+		return $arreglo;
+	}
+
  	public function getData()
  	{
 		$c = conectar();

@@ -29,14 +29,14 @@ include_once "cn/connection.php";
         <style>
         #modalwis{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
         #modalcarshop{ width: 100% !important ; height: 65% !important ;  max-height: 100%;}
-
+        #modalevents{ margin-top: -2rem; padding: 0; width: 60% !important ; height: 100% !important ;  max-height: 90%;}
 
 
 
         @media only screen and (max-width : 992px) {
             #modalcarshop { width: 100% !important ; height: 80% !important ; } 
               #modalwis { width: 100% !important ; height: 80% !important ; }
-             
+             #modalevents {padding: 0; width: 100% !important ; height: 95% !important ; max-height: 85%;}  
         }
       </style>
    <style>
@@ -150,7 +150,7 @@ include_once "cn/connection.php";
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
         <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge hide-on-large-only numbercar"></span>
+        <span class="new badge hide-on-large-only numbercar" data-badge-caption="nuevo"></span>
         <a  class="hide-on-large-only right brand-logo" style="margin-right: 5rem;"  href="#!">
           <div class="switch">
             <label>
@@ -178,7 +178,7 @@ include_once "cn/connection.php";
           </li>
           <li>
            <a  class=" brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons" >shopping_cart </i></a>
-           <span class="new badge numbercar"></span>
+           <span class="new badge numbercar" data-badge-caption="nuevo"></span>
          </li>
 
          <li style="width: 180px;">
@@ -195,7 +195,8 @@ include_once "cn/connection.php";
     </div>
 
     <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
-
+      <li class="divider"></li>
+      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevos"></span></a></li>
       <li class="divider"></li>
       <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
       <li class="divider"></li>
@@ -212,12 +213,18 @@ include_once "cn/connection.php";
 
 
 <ul class="sidenav" id="mobile-demo" style="">
-  <li>
-    <div class="chip" style="width: 100%;">
-      <img src="view/imguser/<?php echo $_SESSION['img']; ?>" alt="Contact Person">
-      <?php echo $_SESSION['name']; ?>
-    </div>
-  </li>
+<li>
+          <div class="user-view">
+          <div class="background">
+            <img src="https://www.pintoresmadridprofesionales.com/wp-content/uploads/2016/02/Pintores-Madrid-profesionales-20.jpg">
+          </div>
+          <a href="#user"><img class="circle" src="<?php echo SERVERURL.'imguser/'.$_SESSION["img"]; ?>"></a>
+          <a href="#name"><span class="white-text name"><?php echo $_SESSION["name"]; ?></span></a>
+          <a href="#email"><span class="white-text email"><?php echo $_SESSION["email"]; ?></span></a>
+        </div>
+        </li>
+  <li class="divider"></li>
+      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevos"></span></a></li>
   <li class="divider"></li>
   <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
   <li class="divider"></li>
@@ -503,6 +510,21 @@ include_once "cn/connection.php";
 </div>
 </div>
 
+
+
+<div id="modalevents" class="modal">
+  <div class="modal-content center-align">
+    <h4>Eventos</h4>
+      <div class="row">
+        <div class="col s12 m12 l12" id="container-event">
+          
+        </div>
+      </div>
+    </div>
+<div class="modal-footer">
+  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+</div>
+</div>
 
 
 <div id="profiled" class="modal">

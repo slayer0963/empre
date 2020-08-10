@@ -207,6 +207,20 @@
     </div>
   </div>
 
+  <div id="modalevents" class="modal">
+  <div class="modal-content center-align">
+    <h4>Eventos</h4>
+      <div class="row">
+        <div class="col s12 m12 l12" id="container-event">
+          
+        </div>
+      </div>
+    </div>
+<div class="modal-footer">
+  <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+</div>
+</div>
+
       
       <script type="text/javascript" src="<?php echo SERVERURLB; ?>view/js/jquery.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>

@@ -1,7 +1,8 @@
 
+
 var activemod=0,activemodm=0;
 $(document).ready(function(){
-
+              fechaevent();
               categories();
               business();
               producttype();
@@ -121,6 +122,53 @@ $(document).ready(function(){
 
 });
 
+
+function fechaevent() {
+  var date = new Date();
+      var mes='';
+    if ((date.getMonth()+1)<= 9) {
+      mes='0'+(date.getMonth()+1);
+    }
+    else{
+        mes=(date.getMonth()+1);
+    }
+    getevents(date.getFullYear()+'-'+mes+'-'+date.getDate()); 
+}
+
+function getevents(fecha) {
+  var dataString = 'fecha='+fecha;
+  var contevent=0;
+  var html='';
+  // alert(fecha);
+         $.ajax({
+            type: "POST",
+            url: "controller/cevent.php?btngetevent=getEventT",
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+                  for (var i = 0; i < respu.length; i++) {
+                    contevent++;
+                 html+='<div class="card row">';
+                   html+='<div class=" col s12 m6 l6 center-align">';
+                     html+='<br><img src="view/imgevents/'+respu[i].img+'" style="width: 100%; height:200px;"><br>';
+                   html+='</div>';
+                   html+='<div class="col s12 m6 l6 center-align">';
+               
+                      html+='<p><h6>'+respu[i].name_e+'</h6></p>';
+                      html+='<blockquote><p style="font-style: italic;">'+respu[i].details+'</p></blockquote>';
+                      html+='<p>Inicia '+respu[i].releasedate+' y finaliza '+respu[i].finishdate+'</p>';
+                    
+
+                   html+='</div>';
+                    html+='<div class=" col s12 m12 l12 center-align">&nbsp;';
+                     html+='</div>';
+                 html+='</div>';
+               }
+               $("#container-event").html(html);
+               $(".eventsnum").html(contevent);
+            }
+          });
+}
 
 function gettypes() {
 

@@ -3,8 +3,6 @@ $(document).ready(function(){
 getData();
 
 
-$("#dateini").val(date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate());
-$("#dateini").datepicker({minDate: new Date(date.getFullYear(),(date.getMonth()+1),4)});
 
 
 

@@ -98,6 +98,12 @@
 	    $dat->updateState(updateState());
 	}
 
+	$page = isset($_GET['btngetevent'])?$_GET['btngetevent']:'';
+	if($page=='getEventT'){
+	    $dat=new DAOEvent();
+	    echo json_encode($dat->getEventT($_POST['fecha']));
+	}
+
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getData'){

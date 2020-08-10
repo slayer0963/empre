@@ -58,14 +58,14 @@
       <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
       
         <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge hide-on-large-only numbercar"></span>
+        <span class="new badge hide-on-large-only numbercar" data-badge-caption="nuevo"></span>
       
 
       
       <ul class="right hide-on-med-and-down">
         <li>
           <a  class=" brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons" >shopping_cart </i></a>
-        <span class="new badge numbercar"></span>
+        <span class="new badge numbercar" data-badge-caption="nuevo"></span>
         </li>
 
         <li style="width: 180px;">
@@ -83,7 +83,8 @@
     </div>
 
           <ul id="dropdown1" class="dropdown-content  center-align" style="overflow:visible" >
-            
+             <li class="divider"></li>
+      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevos"></span></a></li>
             <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
             <li class="divider"></li>
@@ -111,6 +112,8 @@
           <a href="./" ><span class="namebusi white-text"><?php echo $_SESSION["email"]; ?></span></a>
         </div>
         </li>
+         <li class="divider"></li>
+      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevos"></span></a></li>
         <li class="divider"></li>
             <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
         <li class="divider"></li>
