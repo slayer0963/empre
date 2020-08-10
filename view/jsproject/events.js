@@ -237,7 +237,7 @@ var StateChange = (id,estado) =>{
           var dataString = 'id='+id+"&state="+estado;
            $.ajax({
             type: "POST",
-            url: "../../controller/ccolor.php?updateData=statechange",
+            url: "../../controller/cevent.php?updateData=statechange",
             data: dataString,
             success: function(resp) {            
             //alert(resp);

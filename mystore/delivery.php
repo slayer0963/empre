@@ -52,7 +52,26 @@
 		<div class="row animated slideInDown valign-wrapper" >
 			<div class="col s12 m12 l12">
 				<div class="container ">
-
+          <br>
+          <table id="tbdelivery" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+                 <thead >
+              <tr>
+                <th class="text-center" data-priority="1">N° Pedido</th>
+                <th class="text-center" data-priority="2">Cliente</th>
+                <th class="text-center" data-priority="4">Fecha de venta</th>
+                <th class="text-center"   data-priority="3">Estado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <th class="text-center" data-priority="1">N° Pedido</th>
+                <th class="text-center" data-priority="2">Cliente</th>
+                <th class="text-center" data-priority="4">Fecha de venta</th>
+                <th class="text-center"  data-priority="3">Estado</th>
+              </tr>
+            </tfoot>
+         </table>
 				</div>
 			</div>
 		</div>
@@ -63,7 +82,28 @@
     </body>
   </html>
 
+        <div id="deliverylist" class="modal">
+        <div class="modal-content">
+          <h6 id="nameclide"></h6>
+          <table id="tbdatesales" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+           <thead >
+        <tr>
+          <th class="text-center"data-priority="">Producto</th>
+          \<th class="text-center"data-priority="1">Imagen</th>
+          <th class="text-center"data-priority="3">Detalles</th>
+          <th class="text-center"data-priority="2">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="bodysales"></tbody>
+      <tfoot id="bodysalesfoot">
 
+      </tfoot>
+         </table>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+      </div>
 
   		
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.js"></script>
@@ -77,7 +117,7 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/lightbox.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.maskedinput.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-      <script src="<?php echo SERVERURLB; ?>mystore/js/menu.js">></script>
+      <script src="<?php echo SERVERURLB; ?>mystore/js/delivery.js">></script>
       <script>
       	$(document).ready(function(){
 

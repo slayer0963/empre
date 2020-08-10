@@ -160,7 +160,7 @@ if($page=='getDataproduc'){
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getDataDetailsSales'){
     $dat = new DAOMonitoring();
-          echo json_encode($dat->getDataDetailsSales($_POST['id']));    
+          echo json_encode($dat->getDataDetailsSales($_POST['id'],$_POST['idbus']));    
 }
 
 
@@ -175,7 +175,8 @@ if($page=='getSalesdate'){
          $btnedit='';
          $imagen ='';
  		$id_cart="'".$c["id_shp_c"]."'";
-         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"Fillsalesdate('.$id_cart.');\"  id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">dvr</i></a>';
+        $id_bus="'".$c["id_bus"]."'";
+         $btnedit='&nbsp;<a class=\"btn-floating #ffeb3b blue\" onclick=\"Fillsalesdate('.$id_cart.','.$id_bus.');\"  id=\"btnd'.$c["id_cl"].'\"><i class=\"material-icons\">dvr</i></a>';
 
 
 

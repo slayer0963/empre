@@ -22,7 +22,7 @@ include_once "../cn/connection.php";
             and adg.id_size=scd.id_size 
             inner join assignment_prices_object apo on apo.id_prices = adg.id_prices
             inner join assignment_probus probus on probus.id_pro=apo.id_pro
-            inner join business bu on bu.id_bus=probus.id_bus where cart.state=1  group by bu.id_bus order by ganancia desc limit 5;";
+            inner join business bu on bu.id_bus=probus.id_bus inner join delivery del on del.id_shop_c=cart.id_shp_c where del.status_delivery=1  group by bu.id_bus order by ganancia desc limit 5;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -44,7 +44,7 @@ include_once "../cn/connection.php";
             inner join assignment_probus probus on probus.id_pro=apo.id_pro
             inner join product pro on pro.id_pro=probus.id_pro
             inner join product_type pt on pt.id_tpro=pro.id_tpro 
-            inner join business bu on bu.id_bus=probus.id_bus where cart.state=1  group by pt.id_tpro";
+            inner join business bu on bu.id_bus=probus.id_bus inner join delivery del on del.id_shop_c=cart.id_shp_c where del.status_delivery=1  group by pt.id_tpro";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -66,7 +66,7 @@ include_once "../cn/connection.php";
             inner join assignment_probus probus on probus.id_pro=apo.id_pro
             inner join product pro on pro.id_pro=probus.id_pro
             inner join product_type pt on pt.id_tpro=pro.id_tpro 
-            inner join business bu on bu.id_bus=probus.id_bus where cart.state=1  group by dates;";
+            inner join business bu on bu.id_bus=probus.id_bus inner join delivery del on del.id_shop_c=cart.id_shp_c where del.status_delivery=1  group by dates;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -79,7 +79,7 @@ include_once "../cn/connection.php";
     public function getDatachartfour()
     {
         $c = conectar();
-        $sql="select pro.name_pro,bu.name_bus, CONVERT(SUM((scd.quantity*scd.precio))-SUM(scd.quantity*apo.pur_price), DECIMAL(15,2)) as cantidad, date_format(cart.datesold,'%Y-%m-%d') as dates from shopping_cart_details scd inner join shopping_cart cart on cart.id_shp_c=scd.id_shp_c inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join assignment_prices_object apo on apo.id_prices = adg.id_prices inner join assignment_probus probus on probus.id_pro=apo.id_pro inner join product pro on pro.id_pro=probus.id_pro inner join product_type pt on pt.id_tpro=pro.id_tpro inner join business bu on bu.id_bus=probus.id_bus where cart.state=1 group by pro.id_pro order by cantidad desc;";
+        $sql="select pro.name_pro,bu.name_bus, CONVERT(SUM((scd.quantity*scd.precio))-SUM(scd.quantity*apo.pur_price), DECIMAL(15,2)) as cantidad, date_format(cart.datesold,'%Y-%m-%d') as dates from shopping_cart_details scd inner join shopping_cart cart on cart.id_shp_c=scd.id_shp_c inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join assignment_prices_object apo on apo.id_prices = adg.id_prices inner join assignment_probus probus on probus.id_pro=apo.id_pro inner join product pro on pro.id_pro=probus.id_pro inner join product_type pt on pt.id_tpro=pro.id_tpro inner join business bu on bu.id_bus=probus.id_bus inner join delivery del on del.id_shop_c=cart.id_shp_c where del.status_delivery=1 group by pro.id_pro order by cantidad desc;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -93,7 +93,7 @@ include_once "../cn/connection.php";
     {
         $c = conectar();
         $sql="select SUM(scd.quantity) as cantidad, cat.name_cat, CONVERT(SUM(scd.quantity*scd.precio), DECIMAL(15,2)) as money from shopping_cart_details scd inner join shopping_cart cart on cart.id_shp_c=scd.id_shp_c
-            inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join assignment_prices_object apo on apo.id_prices = adg.id_prices inner join assignment_probus probus on probus.id_pro=apo.id_pro inner join product pro on pro.id_pro=probus.id_pro inner join categories cat on cat.id_cat=pro.id_cat inner join business bu on bu.id_bus=probus.id_bus where cart.state=1  group by cat.id_cat;";
+            inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join assignment_prices_object apo on apo.id_prices = adg.id_prices inner join assignment_probus probus on probus.id_pro=apo.id_pro inner join product pro on pro.id_pro=probus.id_pro inner join categories cat on cat.id_cat=pro.id_cat inner join business bu on bu.id_bus=probus.id_bus inner join delivery del on del.id_shop_c=cart.id_shp_c where del.status_delivery=1  group by cat.id_cat;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();

@@ -592,13 +592,13 @@ var FillStadist= (idbusi,idprices,color,material,size) =>{
   // setInterval( function(){ getDataApexpro1(chart,idbusi,idprices,color,material,size); } , 3000);
 };
 
-var Fillsalesdate =(idcart)=>{
-  getDataDetailsSales(idcart);
+var Fillsalesdate =(idcart,idbus)=>{
+  getDataDetailsSales(idcart,idbus);
   $("#salesdatesdetails").modal('open');
 }
 
-var getDataDetailsSales = (cart)=> {
-  var dataString = 'id='+cart;
+var getDataDetailsSales = (cart,bus)=> {
+  var dataString = 'id='+cart+'&idbus='+bus;
   var html='', htmltf='', name='',fecha='';
   $.ajax({
       type: "POST",

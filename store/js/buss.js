@@ -841,15 +841,23 @@ function getDataProductD(id,color,material,size,namecolor) {
                               $("#quantity").html(respu[i].quantity);
                               $("#pdet").html(respu[i].name_pro+" color "+namecolor+" "+respu[i].descr_pro);
                               $("#discount").val(respu[i].discount);
-                              if(respu[i].discount==0||respu[i].discount==""){
-                                    $("#pricepro").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
-                                    $("#priceprosindes").html("");
-                        $("#pfprices").val((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
-                              }
-                              else{
-                                    $("#priceprosindes").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
-                                    $("#pricepro").html("$"+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)));
-                        $("#pfprices").val(((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)))
+                              if(respu[i].quantity<1){
+                                $("#pricepro").html("");
+                                $(".btnact").addClass('hide');
+                                $("#priceprosindes").html("Agotado");
+
+                              } else{
+                                  $(".btnact").removeClass('hide');
+                                  if(respu[i].discount==0||respu[i].discount==""){
+                                        $("#pricepro").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2));
+                                        $("#priceprosindes").html("");
+                                        $("#pfprices").val((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2));
+                                  }
+                                  else{
+                                        $("#priceprosindes").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2));
+                                        $("#pricepro").html("$"+((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)).toFixed(2));
+                                         $("#pfprices").val(((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))-((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice))*respu[i].discount)).toFixed(2));
+                                  }
                               }
                               // $("#discodeta").html(respu[i].discount);
                                $("#imginitial").attr({
