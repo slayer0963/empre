@@ -17,17 +17,17 @@ $(document).ready(function() {
 	            success: function(resp) {
                 
 	            	if(resp==1){
-	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
+	            		M.toast({html: 'Producto agregado al carrito', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya esta en el carrito!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
                   
-	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes prueba en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -48,16 +48,16 @@ $(document).ready(function() {
 	            success: function(resp) {
 	            	// alert(resp);
 	            	if(resp==1){
-	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
+	            		M.toast({html: '¡Producto agregado en mi lista de deseos!', classes: 'rounded green'});
  						consultwish(localStorage.getItem('client'));
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en la lista de deseos !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya se encuentra en la lista de deseos!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
-	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes intenta en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }

@@ -837,13 +837,14 @@ function getDataProductD(id,color,material,size,namecolor) {
                     $("#pfcolor").val(color);
                     $("#pfmaterial").val(material);
                     $("#pfsize").val(size);
-
+                    $("#priceprosindes").html("");
                               $("#quantity").html(respu[i].quantity);
                               $("#pdet").html(respu[i].name_pro+" color "+namecolor+" "+respu[i].descr_pro);
                               $("#discount").val(respu[i].discount);
                               if(respu[i].discount==0||respu[i].discount==""){
                                     $("#pricepro").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
-                        $("#pfprices").val((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)))
+                                    $("#priceprosindes").html("");
+                        $("#pfprices").val((parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));
                               }
                               else{
                                     $("#priceprosindes").html("$"+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)));

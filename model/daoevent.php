@@ -16,7 +16,7 @@ include_once "../cn/connection.php";
  	public function getEventT($fecha)
  	{
 		$c = conectar();
-		$consulta="select id_event, DATE_FORMAT(str_to_date(finishdate, '%Y-%m-%d'),'%Y-%m-%d') as finishdate from events_d where releasedate >= '$fecha' and state_event=1;";
+		$consulta="select id_event, DATE_FORMAT(str_to_date(finishdate, '%Y-%m-%d'),'%Y-%m-%d') as finishdate from events_d where  state_event=1;";
         $c->set_charset('utf8');
         $res = $c->query($consulta);
         $arreglo = array();
