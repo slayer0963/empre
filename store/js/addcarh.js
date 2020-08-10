@@ -23,11 +23,11 @@ $(document).ready(function() {
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya está en el carrito!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
-	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes intentalo en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -55,11 +55,11 @@ $(document).ready(function() {
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en la lista de deseos !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya está en la lista de deseos!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
-	            		M.toast({html: 'Estamos teniendo inconvenientes prueba en otro momento !', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes intentalo en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -126,24 +126,28 @@ function consultcar(id){
                 var cont=0, total=0;
                 for (var i = 0; i < respu.length; i++) {
                 	cont++;
-                	    html+='<li class="collection-item"><div class="row"><div class="col s12 m12 l4 center-align">';
-					      html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:100px; width:100;" ></div>';
-					      html+='<div class="col s12 m12 l4 center-align"><h5>'+respu[i].name_pro+'</h5>';
-					      html+='<p>';
-					      html+='<div class="chip chips-initial" >';
+                	    html+='<li class="collection-item"><div class="row"><div class="col s12 m12 l1 center-align"><a href="#!" style="margin-top:2rem;" class="btn red" title="Remover"  onClick="deletecar('+String("'"+respu[i].id_shp_c_d+"'")+');"><i class="material-icons">remove_shopping_cart</i></a>  <br><br></div> <div class="col s12 m12 l2 center-align">';
+                html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:100px; width:100;" ></div>';
+                html+='<div class="col s12 m12 l3 center-align"><h5>'+respu[i].name_pro+'</h5>';
+                
+                html+='<div class="chip chips-initial" >';
                             html+=respu[i].name_color;
                           html+='</div>';
                           html+='<div class="chip chips-initial" >';
                             html+=respu[i].name_mat;
                           html+='</div>';
-					       html+='<div class="chip chips-initial" >';
+                 html+='<div class="chip chips-initial" >';
                             html+=respu[i].number_size+'-'+respu[i].name_size;
-                          html+='</div><br>';
-					         html+='<span class="price-new">$'+respu[i].precio+'</span>';
-					      html+='</p></div>';
-					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" class="btn red" onClick="deletecar('+respu[i].id_shp_c_d+');"><i class="material-icons">remove_shopping_cart</i></a></div></div>';
-					    html+='</li> ';
-					    total+=parseFloat(respu[i].precio);
+                          html+='</div><br><br>';
+                 
+                html+='</div><div class="col s12 m12 l3 center-align stockec"><b>Stock: </b><i>'+ respu[i].tquantity+'</i><br>';
+                          
+                          html+='<b>Cantidad: </b><label style="font-size:17px;font-weight: bold;" id="cantidad'+i+'">'+ respu[i].quantity+'</label>&nbsp;&nbsp;';
+                          html+='<br><br></div>';
+                html+='<div class="col s12 m12 l1 center-align">Precio<br><label class="price-new right-align">$'+parseFloat(respu[i].precio).toFixed(2)+'</label><br><br></div><div class="col s12 m12 l2 center-align">Sub total<br><label class="price-new">$</label><label id="totalf'+i+'" class="right-align price-new">'+parseFloat(respu[i].precio*respu[i].quantity).toFixed(2)+'</label></div></div>';
+              html+='</li> ';
+              total+=(parseFloat(respu[i].precio)*respu[i].quantity);
+					    
                 }
                 
                 if(respu.length==0){
@@ -159,7 +163,7 @@ function consultcar(id){
                   $("#cartcli").html(html);
                 }
                 $(".numbercar").html(cont);
-                $("#totalshop").html("Total: $"+total);
+                $("#totalshop").html("Total: $"+parseFloat(total).toFixed(2));
             }
         });
 }
@@ -214,7 +218,7 @@ function consultwish(id){
                   $("#wishcli").html(html);
                 }
                 //$(".numbercar").html(cont);
-                $("#totalwish").html("Total: $"+total);
+                $("#totalwish").html("Total: $"+parseFloat(total).toFixed(2));
             }
         });
 }
@@ -237,7 +241,7 @@ function addcarfromwish(idcliente,pfidprices,pfcolor,pfmaterial,pfsize,pfprices,
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya está en el carrito!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
