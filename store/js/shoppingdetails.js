@@ -5,8 +5,8 @@ $(document).ready(function() {
              //$("#namebusi").html(obj.name);
              //$(".namebusi").html("Regresar");
     consultcar(localStorage.getItem('client'));
-
-
+    validateDirection(localStorage.getItem('client'));
+    fechaevent();
     /*$("#endedpur").click(function () {
 
         for (var i = 0; i < parseInt($("#totval").val()); i++) {
@@ -47,6 +47,75 @@ $(document).ready(function() {
 
     
 });
+
+function fechaevent() {
+  var date = new Date();
+      var mes='';
+    if ((date.getMonth()+1)<= 9) {
+      mes='0'+(date.getMonth()+1);
+    }
+    else{
+        mes=(date.getMonth()+1);
+    }
+    getevents(date.getFullYear()+'-'+mes+'-'+date.getDate()); 
+}
+
+function getevents(fecha) {
+  var dataString = 'fecha='+fecha;
+  var contevent=0;
+  var html='';
+  // alert(fecha);
+         $.ajax({
+            type: "POST",
+            url: "../controller/cevent.php?btngetevent=getEventT",
+            data: dataString,
+            success: function(resp) {
+              var respu = eval(resp);
+                  for (var i = 0; i < respu.length; i++) {
+                    contevent++;
+                 html+='<div class="card row">';
+                   html+='<div class=" col s12 m6 l6 center-align">';
+                     html+='<br><img src="../view/imgevents/'+respu[i].img+'" style="width: 100%; height:200px;"><br>';
+                   html+='</div>';
+                   html+='<div class="col s12 m6 l6 center-align">';
+               
+                      html+='<p><h6>'+respu[i].name_e+'</h6></p>';
+                      html+='<blockquote><p style="font-style: italic;">'+respu[i].details+'</p></blockquote>';
+                      html+='<p>Inicia '+respu[i].releasedate+' y finaliza '+respu[i].finishdate+'</p>';
+                    
+
+                   html+='</div>';
+                    html+='<div class=" col s12 m12 l12 center-align">&nbsp;';
+                     html+='</div>';
+                 html+='</div>';
+               }
+               $("#container-event").html(html);
+               $(".eventsnum").html(contevent);
+            }
+          });
+}
+
+function fillboxprofile(id) {
+  var dataString = 'id='+id;
+      $.ajax({
+            type: "POST",
+            url: "../controller/cclienta.php?btngetDatacli=getdataprofile", 
+            data: dataString,
+            success: function(resp) {
+              //alert(resp);
+              var respu = eval(resp);
+                  for (var i = 0; i < respu.length; i++) {
+                    $("#id").val(respu[0].id_cl);
+                    $("#fullnamee").val(respu[0].fullname_cl);
+                    $("#imgcontainere").attr("src",'../view/imguser/'+respu[0].imagen);
+                    $("#imge").val(respu[0].imagen);
+                    $("#emaile").val(respu[0].email_cl);
+                    $("#usere").val(respu[0].user_cl);
+                    $("#passe").val(respu[0].pass_cl);
+                  }
+            }
+          });
+}v
 
 
 function consultcar(id){
@@ -164,6 +233,31 @@ function mas(i, id_shp_c_d,tm,price,n){
         $("#totalshop").html("Total: $"+subtotal.toFixed(2));
         $("#totalpaypal").val(parseFloat(subtotal).toFixed(2));
     }
+
+    function validateDirection(idcl){
+              
+                     $.ajax({
+                          type: "POST",
+                          url: "../controller/cclient.php?btnvalidate=getDirection&idcliente="+idcl, 
+                      success: function(resp2) {
+                        //alert(resp2);
+                        if(resp2==0){
+                          
+
+                          $("#ppt").addClass('hide'); 
+                          $("#ppf").removeClass('hide'); 
+                        }else if (resp2==1){
+                          
+
+                          $("#ppt").removeClass('hide'); 
+                          $("#ppf").addClass('hide'); 
+                        }
+                     
+                      }   
+                
+                 });              
+            
+          }  
 
 
     function modificarCantidad(id_shp_c_d,numero){

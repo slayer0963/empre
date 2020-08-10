@@ -34,7 +34,7 @@
     <div class="row">
       <div  class="col s12 m8 l9"></div>
       <input type="hidden" name="totalpaypal" id="totalpaypal">
-    <div  class="col s12 m4 l3  paypal">
+    <div  class="col s12 m4 l3  paypal " id="ppt">
                             <!--<a href=ecom_checkout.html class="btn btn-block btn-danger">Checkout</a>-->
                             <script src="https://www.paypal.com/sdk/js?client-id=AZaoGKM56ExTS87wuwpleQSmtD2DNdwYMOa-7H1z17KuGQBS4ZognvHWLUQeZj0n5eycINB6f6za3zcH&currency=USD"></script>
 
@@ -100,7 +100,18 @@
                               }).render('.paypal');
                             </script>
 
-                        </div></div>
+                        </div>
+
+
+
+                        <div class="col s12 m12 l12 hide right-align" id="ppf" >
+                          <button class="btn orange" onclick="M.toast({html: '¡Por favor agregue una dirección de entrega antes de realizar la compra!', completeCallback: function(){location.href='./address'}})">FINALIZAR COMPRA</button>
+                        </div>
+
+
+
+
+                      </div>
     </div>
     <br>
   </div>

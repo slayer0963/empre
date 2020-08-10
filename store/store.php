@@ -109,7 +109,7 @@
                     <div class="col l10 m10 s12">
                       <div class="input-field">
                       <textarea id="comentproduc" name="comentproduc" class="materialize-textarea" data-length="120"></textarea>
-                      <label for="comentproduc">Textarea</label>
+                      <label for="comentproduc">Comentario</label>
                     </div>
                     </div>
                     <div class="col l12 m12 s12 black-text">

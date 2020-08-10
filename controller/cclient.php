@@ -2,7 +2,11 @@
 	require_once "../model/daoclient.php";
 
 
-
+	$page = isset($_GET['btnvalidate'])?$_GET['btnvalidate']:'';
+	if($page=='getDirection'){
+	    $dat=new DAOClient();
+	    $dat->getValidateDirection($_REQUEST['idcliente']);
+	}
 
 
 	$page = isset($_GET['btnaddcoment'])?$_GET['btnaddcoment']:'';
