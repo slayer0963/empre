@@ -71,6 +71,18 @@ function salir() {
         });
 }
 
+function salirmoto() {
+  $.ajax({
+                type: "POST",
+                url: "cn/sessiondestroy.php", 
+                success: function(resp) 
+                {
+                  localStorage.removeItem('motoper');
+                  location.reload();
+                }
+        });
+}
+
 function saliradmin(url) {
   // alert("asdasdasd");
   $.ajax({
