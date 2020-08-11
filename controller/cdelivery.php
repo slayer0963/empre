@@ -29,11 +29,29 @@ require_once "../model/daodelivery.php";
         $dat->setDelivery($_POST['idus'],$_POST['ide']);
     }
 
+        $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='setDeliveryE'){
+        $dat=new DAODelivery();
+        $dat->setDeliveryE($_POST['idus'],$_POST['ide']);
+    }
+
+            $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='setDeliveryFF'){
+        $dat=new DAODelivery();
+        $dat->setDeliveryFF($_POST['idus'],$_POST['ide']);
+    }
+
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 	if($page=='getDataDetailsSales'){
 	    $dat = new DAODelivery();
-	    echo json_encode($dat->getDataDetailsSales($_POST['idus'],$_POST['idbus']));    
+	    echo json_encode($dat->getDataDetailsSales($_POST['id'],$_POST['idbus']));    
 	}
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDataDetailsSalesR'){
+        $dat = new DAODelivery();
+        echo json_encode($dat->getDataDetailsSalesR($_POST['id']));    
+    }
 
 
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';

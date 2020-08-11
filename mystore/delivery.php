@@ -89,7 +89,7 @@
            <thead >
         <tr>
           <th class="text-center"data-priority="">Producto</th>
-          \<th class="text-center"data-priority="1">Imagen</th>
+          <th class="text-center"data-priority="1">Imagen</th>
           <th class="text-center"data-priority="3">Detalles</th>
           <th class="text-center"data-priority="2">Cantidad</th>
         </tr>
