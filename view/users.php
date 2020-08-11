@@ -7,27 +7,27 @@
                     <table id="tbusers" class="table table-striped table-bordered table-hover text-center " cellspacing="0" width="100%">
                             <thead >
                             <tr>
-                              <th style="text-align: center;">Nombre</th>
-                              <th style="text-align: center;">Teléfono</th>
-                              <th style="text-align: center;">Imagen</th>
-                              <th style="text-align: center;">Correo</th>
-                              <th style="text-align: center;">Usuario</th>
-                              <th style="text-align: center;">Contraseña</th>
-                              <th style="text-align: center;">Tipo de usuario</th>
-                              <th style="text-align: center;">Acciones</th>
+                              <th style="text-align: center;" data-priority="1">Nombre</th>
+                              <th style="text-align: center;" data-priority="2">Teléfono</th>
+                              <th style="text-align: center;" data-priority="3">Imagen</th>
+                              <th style="text-align: center;" data-priority="4">Correo</th>
+                              <th style="text-align: center;" data-priority="6">Usuario</th>
+                              <th style="text-align: center;" data-priority="7">Contraseña</th>
+                              <th style="text-align: center;" data-priority="8">Tipo de usuario</th>
+                              <th style="text-align: center;" data-priority="5">Acciones</th>
                             </tr>
                             </thead>
                             <tbody></tbody>
                              <tfoot>
                             <tr>
-                              <th style="text-align: center;">Nombre</th>
-                              <th style="text-align: center;">Teléfono</th>
-                              <th style="text-align: center;">Imagen</th>
-                              <th style="text-align: center;">Correo</th>
-                              <th style="text-align: center;">Usuario</th>
-                              <th style="text-align: center;">Contraseña</th>
-                              <th style="text-align: center;">Tipo de usuario</th>
-                              <th style="text-align: center;">Acciones</th>
+                              <th style="text-align: center;" data-priority="1">Nombre</th>
+                              <th style="text-align: center;" data-priority="2">Teléfono</th>
+                              <th style="text-align: center;" data-priority="3">Imagen</th>
+                              <th style="text-align: center;" data-priority="4">Correo</th>
+                              <th style="text-align: center;" data-priority="6">Usuario</th>
+                              <th style="text-align: center;" data-priority="7">Contraseña</th>
+                              <th style="text-align: center;" data-priority="8">Tipo de usuario</th>
+                              <th style="text-align: center;" data-priority="5">Acciones</th>
                             </tr>
                             </tfoot>
                         </table>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="input-field col s12 m12 l6">
-              <input type="text" name="pass" title="Contraseña (*)" id="pass">
+              <input type="password" name="pass" title="Contraseña (*)" id="pass">
               <label for="pass">Contraseña</label>
               <span class="" id="txtpass"></span>
             </div>
@@ -179,7 +179,7 @@
             </div>
 
             <div class="input-field col s12 m12 l6 ">
-              <input type="text" name="passe" title="Contraseña" id="passe" style="text-align: center;">
+              <input type="password" name="passe" title="Contraseña" id="passe" style="text-align: center;">
               <span class="" id="txtpasse">Contraseña</span>
             </div>
             

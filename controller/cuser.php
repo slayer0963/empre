@@ -232,7 +232,7 @@ if($page=='getData'){
                   "imagen":"'.$imagen.'",
                   "email_user":"'.$c["email_user"].'",
                   "user_user":"'.$c["user_user"].'",
-                  "pass_user":"'.$c["pass_user"].'",
+                  "pass_user":"'.md5($c["pass_user"]).'",
                   "id_ustp":"'.$c["id_ustp"].'",
                   "actions":"'.$btnedit.$btnstate.'"
                 },';    

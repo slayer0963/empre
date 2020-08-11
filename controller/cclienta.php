@@ -192,7 +192,7 @@ if($page=='getData'){
                   "imagen":"'.$imagen.'",
                   "email_cl":"'.$c["email_cl"].'",
                   "user_cl":"'.$c["user_cl"].'",
-                  "pass_cl":"'.$c["pass_cl"].'",
+                  "pass_cl":"'.md5($c["pass_cl"]).'",
                   "actions":"'.$btnedit.$btnstate.$btnnumber.$btnadress.'"
                 },';    
      }

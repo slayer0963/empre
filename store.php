@@ -425,7 +425,7 @@ include_once "cn/connection.php";
       </div>
       <div class="form-group">
         <label for="contact-name">Contraseña</label>
-        <input type="text" id="password" required="true" name="password" class="form-control input-md" placeholder="******">
+        <input type="password" id="password" required="true" name="password" class="form-control input-md" placeholder="******">
       </div>
       <br>
       <center>
