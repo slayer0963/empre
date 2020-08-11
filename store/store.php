@@ -86,7 +86,7 @@
             <h6>Descripción</h6>
             <h6 id="pdet"></h6></li>
           </ul>
-          <form method="POST" id="frmcarpro" name="frmcarpro" >
+          <form method="POST" id="frmcarpro" name="frmcarpro" class="hide">
             <input type="text" id="idcliet" name="idcliet" value="<?php echo $valor = isset($_SESSION["idus"])?$_SESSION["idus"]:'';?>">
             <input type="text" id="pfidprod" name="pfidprod">
             <input type="text" id="pfidprices" name="pfidprices">
