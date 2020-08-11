@@ -20,7 +20,7 @@ function getdata() {
             	for (var i = 0; i < respu.length; i++) {
   
 
-				html+='<div  class="col s12 m6 l6 center-align animated slideInDown ">';
+				html+='<div  class="col s12 m6 l4 center-align animated slideInDown ">';
 									html+='<div class="card"><br>';
 	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
 	   									 if(respu[i].status_delivery==0){
@@ -31,9 +31,10 @@ function getdata() {
 	   									 html+='<div class="card-content">';
 	   									 html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].fullname_cl+'</span>';
 	   									   html+=''+respu[i].datesold+'<br>';
-	   									   html+='Calle:'+respu[i].department+'<br>';
-	   									   html+='Calle:'+respu[i].streetdir+'<br>';
-	   									   html+='Referencia:'+respu[i].reference+'';
+	   									   html+='Departamento:'+respu[i].department+'<br>';
+	   									   html+='Calle:'+respu[i].streetdir+'<br> N°'+respu[i].numberdir+'<br>';
+	   									   html+='Referencia:'+respu[i].reference+'<br>';
+	   									   html+='Contacto:'+respu[i].contact+'';
 	   									   html+='<p><br><a class="btn modal-trigger"  href="#deliverylist"  onclick="viewdelivery('+respu[i].id_shop_c+');">Ver pedido</a>&nbsp;';
 	    									html+='</div>';
 	  									html+='</div>';
@@ -66,7 +67,7 @@ function getdataProcess(idus) {
             		for (var i = 0; i < respu.length; i++) {
   
 
-				html+='<div  class="col s12 m6 l6 center-align animated slideInDown ">';
+				html+='<div  class="col s12 m6 l4 center-align animated slideInDown ">';
 									html+='<div class="card"><br>';
 	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
 	   									 if(respu[i].status_delivery==2){
@@ -77,6 +78,10 @@ function getdataProcess(idus) {
 	   									 html+='<div class="card-content">';
 	   									 html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].fullname_cl+'</span>';
 	   									   html+=''+respu[i].datesold+'';
+	   									    html+='Departamento:'+respu[i].department+'<br>';
+	   									   html+='Calle:'+respu[i].streetdir+'<br> N°'+respu[i].numberdir+'<br>';
+	   									   html+='Referencia:'+respu[i].reference+'<br>';
+	   									   html+='Contacto:'+respu[i].contact+'';
 	   									   html+='<br><br><a  class="btn modal-trigger" href="#deliverylist" onclick="viewdelivery('+respu[i].id_shop_c+');">Ver pedido</a><br>&nbsp;';
 	    									html+='</div>';
 	  									html+='</div>';
