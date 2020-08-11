@@ -99,7 +99,7 @@ include_once "../cn/connection.php";
     public function getwish($id)
     {
         $c = conectar();
-        $sql="SELECT scd.id_w_l_d,wis.id_cl, pro.name_pro, apo.id_prices, adg.img,m.id_mat, c.id_color, s.id_size, apo.sal_price,adg.discount, c.name_color,m.name_mat,s.name_size,s.number_size FROM wish_list_details scd inner join assignment_prices_object apo on scd.id_prices=apo.id_prices inner join color c on scd.id_color=c.id_color inner join material m on scd.id_mat=m.id_mat inner join sizes s on scd.id_size=s.id_size inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join product pro on pro.id_pro=apo.id_pro inner join wish_list wis on wis.id_w_l=scd.id_w_l where wis.id_cl=$id;";
+        $sql="SELECT scd.id_w_l_d,wis.id_cl, pro.name_pro, apo.id_prices, adg.img,m.id_mat, c.id_color, s.id_size, (apo.sal_price+adg.extraprice) as sal_price,adg.discount, c.name_color,m.name_mat,s.name_size,s.number_size FROM wish_list_details scd inner join assignment_prices_object apo on scd.id_prices=apo.id_prices inner join color c on scd.id_color=c.id_color inner join material m on scd.id_mat=m.id_mat inner join sizes s on scd.id_size=s.id_size inner join assignment_details_general adg on adg.id_prices=scd.id_prices and adg.id_color=scd.id_color and adg.id_material=scd.id_mat and adg.id_size=scd.id_size inner join product pro on pro.id_pro=apo.id_pro inner join wish_list wis on wis.id_w_l=scd.id_w_l where wis.id_cl=$id;";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();

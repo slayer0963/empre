@@ -17,17 +17,17 @@ $(document).ready(function() {
 	            success: function(resp) {
                 
 	            	if(resp==1){
-	            		M.toast({html: 'Producto agregado al carrito', classes: 'rounded green'});
+	            		M.toast({html: '¡Producto agregado al carrito!', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: '¡El producto ya esta en el carrito!', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya se encuentra en el carrito!', classes: 'rounded orange'});
  						
 	            	}
 	            	else{
                   
-	            		M.toast({html: '¡Estamos teniendo inconvenientes prueba en otro momento!', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes, inténtalo en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -57,7 +57,7 @@ $(document).ready(function() {
  						
 	            	}
 	            	else{
-	            		M.toast({html: '¡Estamos teniendo inconvenientes intenta en otro momento!', classes: 'rounded orange'});
+	            		M.toast({html: '¡Estamos teniendo inconvenientes, inténtalo en otro momento!', classes: 'rounded orange'});
 	            	}
 
 	            }
@@ -78,7 +78,7 @@ function deletecar(id_shp_c_d){
                           M.toast({html: "¡El producto se eliminó correctamente del carrito!", classes: 'rounded  green'});
                           consultcar(localStorage.getItem('client'));
                         }else if (resp2==0){
-                          M.toast({html: "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", classes: 'rounded deep-orange'});
+                          M.toast({html: "¡Hubo un problema al eliminar el producto del carrito, inténtalo más tarde!", classes: 'rounded deep-orange'});
 
                           
                         }
@@ -100,7 +100,7 @@ function deletewish(id_detalle_wish){
                           M.toast({html: "¡El producto se eliminó correctamente de la lista!", classes: 'rounded  green'});
                           consultwish(localStorage.getItem('client'));
                         }else if (resp2==0){
-                          M.toast({html: "¡Hubo un problema al eliminar el prodcuto del carrito, intentalo más tarde!", classes: 'rounded deep-orange'});
+                          M.toast({html: "¡Hubo un problema al eliminar el producto del carrito, inténtalo más tarde!", classes: 'rounded deep-orange'});
 
                           
                         }
@@ -197,10 +197,16 @@ function consultwish(id){
 					       html+='<div class="chip chips-initial" >';
                             html+=respu[i].number_size+'-'+respu[i].name_size;
                           html+='</div><br>';
-                          	 html+='<span class="price-old">$'+respu[i].sal_price+'</span>&nbsp;&nbsp;';
-					         html+='<span class="price-new">$'+totdes+'</span><br><span class="price-new">'+decuento+'%</span>';
+                          if (decuento>0) {
+                          	html+='<span class="price-old">$'+ parseFloat(respu[i].sal_price).toFixed(2)+'</span>&nbsp;&nbsp;';
+					         html+='<span class="price-new">$'+parseFloat(totdes).toFixed(2)+'</span><br><span class="price-new">'+decuento+'%</span>';
+                          }else{
+
+					         html+='<span class="price-new">$'+parseFloat(totdes).toFixed(2)+'</span><br><span class="price-new">'+decuento+'%</span>';
+                          }
+                          	 
 					      html+='</p></div>';
-					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" onClick="addcarfromwish('+respu[i].id_cl+','+respu[i].id_prices+','+respu[i].id_color+','+respu[i].id_mat+','+respu[i].id_size+','+totdes+','+respu[i].discount+','+respu[i].id_w_l_d+');" class="btn green"><i class="material-icons">add_shopping_cart</i></a>&nbsp;<a href="#!" style="margin-top:2rem;" class="btn red" onClick="deletewish('+respu[i].id_w_l_d+');"><i class="material-icons">delete</i></a></div></div>';
+					      html+='<div class="col s12 m12 l4 center-align"><a href="#!" style="margin-top:2rem;" title="Agregar al carrito" onClick="addcarfromwish('+respu[i].id_cl+','+respu[i].id_prices+','+respu[i].id_color+','+respu[i].id_mat+','+respu[i].id_size+','+totdes+','+respu[i].discount+','+respu[i].id_w_l_d+');" class="btn green"><i class="material-icons">add_shopping_cart</i></a>&nbsp;<a href="#!" style="margin-top:2rem;" class="btn red" title="Remover de mi lista de deseos" onClick="deletewish('+respu[i].id_w_l_d+');"><i class="material-icons">delete</i></a></div></div>';
 					    html+='</li> ';
 					    total+=parseFloat(totdes);
                 }
@@ -218,7 +224,7 @@ function consultwish(id){
                 }
                 
                 //$(".numbercar").html(cont);
-                $("#totalwish").html("Total: $"+total);
+                $("#totalwish").html("Total: $"+parseFloat(total).toFixed(2));
             }
         });
 }
@@ -231,7 +237,7 @@ function addcarfromwish(idcliente,pfidprices,pfcolor,pfmaterial,pfsize,pfprices,
 	            success: function(resp) {
 	            	if(resp==1){
 	            		// alert(resp);
-	            		M.toast({html: 'Producto agregado', classes: 'rounded green'});
+	            		M.toast({html: '¡Producto agregado!', classes: 'rounded green'});
  						consultcar(localStorage.getItem('client'));
  						$.ajax({
                           type: "POST",
@@ -242,7 +248,7 @@ function addcarfromwish(idcliente,pfidprices,pfcolor,pfmaterial,pfsize,pfprices,
 	            		//getDataProductD($("#pfidprod").val(),$("#pfcolor").val(),$("#pfmaterial").val(),$("#pfsize").val());
 	            	}
 	            	else if(resp ==3){
-	            		M.toast({html: 'El producto ya esta en el carrito !', classes: 'rounded orange'});
+	            		M.toast({html: '¡El producto ya se encuentra en el carrito!', classes: 'rounded orange'});
 	            		//deletewish(idwish);
 	            		// $.ajax({
                //            type: "POST",
