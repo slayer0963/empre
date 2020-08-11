@@ -27,10 +27,19 @@ $(document).ready(function($) {
                   else if(datos[0].tipo == 2){
                    location.href="http://localhost/empre/mystore/";
                   }
-                  else if(datos[0].tipo == 3){
+                  else if(datos[0].tipo == 4){
                     localStorage.setItem('client',datos[0].id);
                     localStorage.setItem('nameper',datos[0].nombre);
                     location.reload();
+                  }
+                  else if(datos[0].tipo == 3){
+                    var obj = new Object();
+                     obj.id = datos[0].id;
+                     obj.name  = datos[0].nombre;
+                     obj.img  = datos[0].imagen;
+                     var jsonString= JSON.stringify(obj);
+                    localStorage.setItem('motoper',jsonString);
+                    location.href="http://localhost/empre/deliveries/";
                   }
                  else{
                   M.toast({html: 'Verifique su usuario o contraseña!', classes: 'rounded red'});

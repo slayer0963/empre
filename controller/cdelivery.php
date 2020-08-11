@@ -22,11 +22,31 @@ require_once "../model/daodelivery.php";
 	    $dat->updateState(updateState());
 	}
 
-$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+
+    $page = isset($_GET['btnsetData'])?$_GET['btnsetData']:'';
+    if($page=='setDelivery'){
+        $dat=new DAODelivery();
+        $dat->setDelivery($_POST['idus'],$_POST['ide']);
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 	if($page=='getDataDetailsSales'){
 	    $dat = new DAODelivery();
-	    echo json_encode($dat->getDataDetailsSales($_POST['id'],$_POST['idbus']));    
+	    echo json_encode($dat->getDataDetailsSales($_POST['idus'],$_POST['idbus']));    
 	}
+
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDeliveriesD'){
+        $dat = new DAODelivery();
+        echo json_encode($dat->getDeliveriesD());    
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDeliveriesUs'){
+        $dat = new DAODelivery();
+        echo json_encode($dat->getDeliveriesUs($_POST['idus']));    
+    }
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 if($page=='getDatadely'){

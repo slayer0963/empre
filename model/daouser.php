@@ -105,7 +105,7 @@ include_once "../cn/connection.php";
 			$nombre=$res["fullname_cl"];
 			$img=$res["imagen"];
 			$email=$res["email_cl"];
-			$tipo=3;
+			$tipo=4;
 			$id=$res["id_cl"];
 			$_SESSION["name"]=$nombre;
 			$_SESSION["type"]=$tipo;
