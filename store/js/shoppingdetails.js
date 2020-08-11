@@ -115,7 +115,7 @@ function fillboxprofile(id) {
                   }
             }
           });
-}v
+}
 
 
 function consultcar(id){

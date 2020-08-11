@@ -92,11 +92,11 @@
 		<div class="row animated center-align" id="business">
       <img src="../view/images/logo.jpg" width="155px" height="120px">
 			<div class="col s12 m12 l12">
-			     <h5>Pedidos Disponibles</h5>
+			     <h5 id="txtdispo">Pedidos Disponibles</h5>
 					<div class="row" id="containerpedidos">
 	
 					</div>
-          <h5>Pedidos Activos</h5>
+          <h5 id="txtactive">Pedidos Activos</h5>
           <div class="row" id="containerpedidosproce">
   
           </div>
@@ -105,9 +105,40 @@
 
 		</div>
 
+      <div class="fixed-action-btn">
+                  <a class="btn-floating btn red" id="addbusiness" href="#">
+                    <i class="large material-icons">format_quote</i>
+                  </a>
+                  <ul>
+                    <li><a class="btn-floating red tooltipped" data-position="left" data-tooltip="Salir" href="#!" onclick="salirempre();" ><i class="material-icons">close</i></a></li>
+                    
+                  </ul>
+                </div>
+    </div>
 
 
+        <div id="deliverylist" class="modal">
+        <div class="modal-content">
+          <h6 id="nameclide"></h6>
+          <table id="tbdatesales" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+           <thead >
+        <tr>
+          <th class="text-center"data-priority="">Producto</th>
+          <th class="text-center"data-priority="1">Imagen</th>
+          <th class="text-center"data-priority="3">Detalles</th>
+          <th class="text-center"data-priority="2">Cantidad</th>
+        </tr>
+      </thead>
+      <tbody id="bodysales"></tbody>
+      <tfoot id="bodysalesfoot">
 
+      </tfoot>
+         </table>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+      </div>
 
     </body>
   </html>
@@ -157,7 +188,7 @@
 			 $('.collapsible').collapsible();
 			 $('#descrip').characterCounter();
 			 $(".dropdown-trigger").dropdown();
-
+        $('.tooltipped').tooltip();
 
 
 		  });
