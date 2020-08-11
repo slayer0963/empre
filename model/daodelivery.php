@@ -29,7 +29,7 @@ include_once "../cn/connection.php";
 	public function getDeliveriesD()
  	{
 		$c = conectar();
-		$sql="select d.id_delivery, cli.fullname_cl, cli.imagen, s.datesold, d.status_delivery, apro.id_bus,d.id_shop_c from delivery d inner join shopping_cart s on d.id_shop_c=s.id_shp_c inner join clients cli on cli.id_cl=s.id_cl inner join address ad on ad.id_cl = cli.id_cl inner join shopping_cart_details sd on s.id_shp_c=sd.id_shp_c inner join assignment_prices_object apo on apo.id_prices=sd.id_prices  inner join product pro on apo.id_pro=pro.id_pro inner join color c on c.id_color=sd.id_color inner join material m on m.id_mat = sd.id_mat inner join sizes si on si.id_size=sd.id_size inner join assignment_probus apro on apro.id_pro=apo.id_pro where d.status_delivery<>1 and d.status_delivery<>2 and d.status_delivery<>3 order by s.datesold desc; ";
+		$sql="select d.id_delivery, cli.fullname_cl, cli.imagen, s.datesold, d.status_delivery, apro.id_bus,d.id_shop_c from delivery d inner join shopping_cart s on d.id_shop_c=s.id_shp_c inner join clients cli on cli.id_cl=s.id_cl inner join address ad on ad.id_cl = cli.id_cl inner join shopping_cart_details sd on s.id_shp_c=sd.id_shp_c inner join assignment_prices_object apo on apo.id_prices=sd.id_prices  inner join product pro on apo.id_pro=pro.id_pro inner join color c on c.id_color=sd.id_color inner join material m on m.id_mat = sd.id_mat inner join sizes si on si.id_size=sd.id_size inner join assignment_probus apro on apro.id_pro=apo.id_pro where d.status_delivery<>1 and d.status_delivery<>2  order by s.datesold desc; ";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
@@ -42,7 +42,7 @@ include_once "../cn/connection.php";
 	public function getDeliveriesUs($idus)
  	{
 		$c = conectar();
-		$sql="select d.id_delivery, cli.fullname_cl, s.datesold, d.status_delivery, apro.id_bus,d.id_shop_c from delivery d 
+		$sql="select d.id_delivery, cli.fullname_cl, cli.imagen, s.datesold, d.status_delivery, apro.id_bus,d.id_shop_c from delivery d 
 				inner join shopping_cart s on d.id_shop_c=s.id_shp_c
 				inner join clients cli on cli.id_cl=s.id_cl
 				inner join shopping_cart_details sd on s.id_shp_c=sd.id_shp_c
