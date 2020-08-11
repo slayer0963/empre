@@ -136,7 +136,7 @@
          </table>
         </div>
         <div class="modal-footer">
-          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="salirmoto();">Salir</a>
         </div>
       </div>
 
@@ -158,6 +158,7 @@
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.maskedinput.js"></script>
       <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
       <script src="<?php echo SERVERURLB; ?>deliveries/js/delivery.js">></script>
+      <script src="<?php echo SERVERURLB; ?>view/jsproject/local.js">></script>
       <script>
       	$(document).ready(function(){
 		    $('.sidenav').sidenav();
