@@ -137,8 +137,8 @@
             </div>
             <div class="input-field col s12">
             <textarea id="descripe" name="descripe" class="materialize-textarea" title="Descripci&oacute;n (*)" data-length="150"></textarea>
-            <label for="descripe">Descripci&oacute;n</label>
-            <span class="" id="txtdescripe"></span>
+            
+            <span class="" id="txtdescripe">Descripci&oacute;n</span>
           </div>
             
           </div>

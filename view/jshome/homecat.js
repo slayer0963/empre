@@ -146,6 +146,7 @@ function getevents(fecha) {
             data: dataString,
             success: function(resp) {
               var respu = eval(resp);
+              if(respu.length!=0){
                   for (var i = 0; i < respu.length; i++) {
                     contevent++;
                  html+='<div class="card row">';
@@ -166,6 +167,15 @@ function getevents(fecha) {
                }
                $("#container-event").html(html);
                $(".eventsnum").html(contevent);
+             }
+             else{
+                html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
+                html+='<img src="https://media2.giphy.com/media/If0TFnUk0jRQrW2jgm/giphy.gif" style="height:350px; width:350px;"/>'
+                html+='<h3 style="margin-top:0px;">Por el momemento no hay ningun evento programado</h3>';
+                 html+='</div>';
+              $("#container-event").html(html);
+              $(".eventsnum").html(contevent);
+             }
             }
           });
 }

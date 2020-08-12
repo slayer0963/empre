@@ -164,7 +164,7 @@ include_once "../cn/connection.php";
 	public function getDataU()
  	{
 		$c = conectar();
-		$sql="select id_user, fullname_user, imagen from users;";
+		$sql="select id_user, fullname_user, imagen from users where id_ustp=2;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();

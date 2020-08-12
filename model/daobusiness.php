@@ -16,7 +16,7 @@ include_once "../cn/connection.php";
  	public function getDataUser()
  	{
 		$c = conectar();
-		$sql="select * from users;";
+		$sql="select * from users where id_ustp=2;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
