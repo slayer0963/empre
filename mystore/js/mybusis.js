@@ -18,7 +18,7 @@ $(document).ready(function() {
 	            
 	                var objeto_url=navegador.createObjectURL(archivos[i]);
 
-	         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+	         $("#vista-previa").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="responsive-img">');
 	       }
 	});
 
