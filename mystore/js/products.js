@@ -163,16 +163,18 @@ $("#btnproedit").click(function(event) {
 		            url: "../controller/cuserhome.php?btnsetDataproduct=setDataproduct", 
 		            data: $("#formproduct").serialize(),
 		            success: function(resp) {
+                       //alert(resp);
                        if(resp==1){
 
 		                    //getData();
-		                     M.toast({html: "¡Se ha agregado el producto exitosamente!", classes: 'rounded  green'});
+		                     M.toast({html: "¡Se ha agregado el producto exitosamente!", classes: 'rounded  green', completeCallback: function(){location.href="./productsnc";}});
 		                   		$('.modal').modal('close');
 		                    cleanformp();
 		                    cleanboxp();
 		                   
-		                   }
-		                   else{
+		                   }else if (resp==2) {
+                         M.toast({html: "¡El producto ingresado ya existe dentro del inventario de este negocio!", classes: 'rounded deep-orange'});
+                       }else{
 		                    M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
 		                    
 		                   }

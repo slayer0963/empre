@@ -18,6 +18,25 @@ include_once "../cn/connection.php";
  		$c=conectar();
  		$bus = $obj->getIdBus();
 		$pro = $obj->getIdPro();
+
+
+		$query= "select name_pro from product where id_pro=$pro";
+        $c->set_charset('utf8');
+        $result = $c->query($query);
+        $re = $result->fetch_array();
+        $name_pro=$re["name_pro"];
+
+
+
+		$consulta= "select * from product p inner join assignment_probus b on b.id_pro=p.id_pro where p.name_pro='$name_pro' and b.id_bus=$bus";
+        $c->set_charset('utf8');
+        $res1 = $c->query($consulta);
+        $nrow1=$res1->num_rows;
+        if ($nrow1>0) {
+        	    echo "2";
+        }else {
+
+
 		$sql="insert into assignment_probus value (0,$bus,$pro);";
 		if (!$c->query($sql)) {
 			print "0";
@@ -25,6 +44,7 @@ include_once "../cn/connection.php";
 			    echo "1"; 
 
 		     }
+		 }
 		mysqli_close($c);
  	}
 

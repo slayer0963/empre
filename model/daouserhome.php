@@ -547,6 +547,19 @@ include_once "../cn/connection.php";
         $_id_tpro = $obj->getIdTpro();
         $purprice = $obj->getPurPrice();
         $salprice = $obj->getSalPrice();
+
+
+        $consulta= "select * from product p inner join assignment_probus b on b.id_pro=p.id_pro where p.name_pro='$_name_pro' and b.id_bus=$_idbus";
+        $c->set_charset('utf8');
+        $res1 = $c->query($consulta);
+        $nrow1=$res1->num_rows;
+        if ($nrow1>0) {
+            echo "2";
+        }else {
+            
+        
+
+
         $sql="insert into product value (0,'$_name_pro','$_descr_pro',$_id_cat,$_id_tpro,1);";
         if (!$c->query($sql)) {
             print "0";
@@ -569,6 +582,8 @@ include_once "../cn/connection.php";
                 }
 
              }
+        }
+
         mysqli_close($c);
     }
 

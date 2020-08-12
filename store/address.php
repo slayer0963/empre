@@ -23,14 +23,14 @@
         <div class="row">
         <input type="hidden" name="idcla" id="idcla">
         <div class="input-field col s12 m12 l6 ">
-              <select  class="select2 browser-default" id="department"  name="department" title="Departamento (*)"  style="text-align: center;">
+              <select  class="select2 browser-default" id="department" required="true" name="department" title="Departamento (*)"  style="text-align: center;">
                 <option value="">Seleccione departamento</option>
                 <option value="San Miguel">San Miguel</option>
               </select>
               
         </div>
         <div class="input-field col s12 m12 l6 ">
-              <select  class="select2 browser-default" id="city"  name="city" title="Ciudad (*)"  style="text-align: center;">
+              <select  class="select2 browser-default" id="city" required="true" name="city" title="Ciudad (*)"  style="text-align: center;">
                 <option value="">Seleccione ciudad</option>
                 <option value="Carolina"> Carolina</option>
                 <option value="Chapeltique"> Chapeltique</option>
@@ -56,17 +56,17 @@
               
         </div>
         <div class="input-field col s12 m12 l6 ">
-              <input type="text" name="streetdir" title="Colonia/Calle o Avenida (*)" id="streetdir" style="text-align: center;">
+              <input type="text" name="streetdir" required="true" title="Colonia/Calle o Avenida (*)" id="streetdir" style="text-align: center;">
               <label for="streetdir">Colonia/Calle o Avenida</label>
               <span class="" id="txtstreetdir"></span>
         </div>
         <div class="input-field col s12 m12 l6 ">
-              <input type="text" name="numberdir" title="# Casa, Edificio, Nivel o Apartamento (*)" id="numberdir" style="text-align: center;">
+              <input type="text" name="numberdir" required="true" title="# Casa, Edificio, Nivel o Apartamento (*)" id="numberdir" style="text-align: center;">
               <label for="numberdir"># Casa, Edificio, Nivel o Apartamento</label>
               <span class="" id="txtnumberdir"></span>
         </div>
         <div class="input-field col s12 m12 l6 ">
-              <input type="text" name="contact" title="Teléfono de contacto (*)" id="contact" style="text-align: center;">
+              <input type="text" name="contact" required="true" title="Teléfono de contacto (*)" id="contact" style="text-align: center;">
               <label for="contact">Teléfono de contacto</label>
               <span class="" id="txtcontact"></span>
         </div>

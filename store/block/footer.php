@@ -159,7 +159,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="contact-name">Contraseña</label>
-                                    <input type="text" id="password" name="password" class="form-control input-md" placeholder="******">
+                                    <input type="password" id="password" name="password" class="form-control input-md" placeholder="******">
                                 </div><br>
                                 <center>
                                                                 <button class="btn btn-primary" style="width: 250px; margin-bottom: 1rem; height: 35px;" type="submit" name="ingresarl" id="ingresarl">Inicia con nosotros</button>

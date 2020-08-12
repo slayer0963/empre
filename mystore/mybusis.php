@@ -70,7 +70,7 @@
 
       </style>
   </head>
-	<body class="valign-wrapper">
+	<body >
 		<div class="row  center-align hide" id="text">
 			<div class="container justify-text ">
 				<h3 class="black-text animated  bounceIn " id="texto">Hola, bienvenido <?php echo $_SESSION['name']; ?>, aquí podrás ver estadisticas, tus negocios y productos.</h3>

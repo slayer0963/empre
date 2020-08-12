@@ -87,6 +87,7 @@ $('#formassig').submit(function() {
             url: "../../controller/cproductassigment.php?btnsetData=setData", 
             data: $("#formassig").serialize(),
             success: function(resp) {
+              //alert(resp);
                    if(resp==1){
                    getData();
                     getDataA();
@@ -94,8 +95,9 @@ $('#formassig').submit(function() {
                     M.toast({html: "¡Se ha agregado el producto exitosamente!", classes: 'rounded  green'});
                     $('.modal').modal('close');
                      
-                   }
-                   else{
+                   }else if (resp==2) {
+                      M.toast({html: "¡El producto ingresado ya existe dentro del inventario de ese negocio!", classes: 'rounded deep-orange'});
+                   }else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});
                     
                    }

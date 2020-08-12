@@ -153,7 +153,7 @@ function consultcar(id){
                 if(respu.length==0){
                 html+='<div class="col s12 m12 l12 animated zoomIn center-align">';
                 html+='<img src="empty-box.png" style="width: 150px; height: 150px; margin-top: 4rem;"/>'
-                html+='<h3 style="margin-top:0px;">Carrito vacio</h3>';
+                html+='<h3 style="margin-top:0px;">Carrito vacío</h3>';
                  html+='</div>';
                  $('.carocult').addClass('hide');
                  $("#cartcli").html(html);
