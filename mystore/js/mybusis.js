@@ -37,7 +37,7 @@ $(document).ready(function() {
 	            
 	                var objeto_url=navegador.createObjectURL(archivos[i]);
 
-	         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainer" alt="" style="height: 150px; width: 150px;" class="circle responsive-img">');
+	         $("#vista-previae").append('<img src="'+objeto_url+'" id="imgcontainere" alt="" style="height: 150px; width: 150px;" class=" responsive-img">');
 	       }
 	});
 
@@ -210,7 +210,7 @@ var Validate = (type) =>{
 });
 
 function fillboxbusi(id,name,pic,descrip){
-	//alert(id+"----"+name+"----"+pic+"------"+contclick);
+	
 
 	$("#imge").val(pic);
 	$("#imgcontainere").attr("src","../view/imgbusiness/"+pic);
