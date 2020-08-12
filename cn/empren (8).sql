@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-08-2020 a las 01:37:04
+-- Tiempo de generación: 12-08-2020 a las 21:24:21
 -- Versión del servidor: 10.1.33-MariaDB
 -- Versión de PHP: 7.2.6
 
@@ -46,9 +46,8 @@ CREATE TABLE `address` (
 --
 
 INSERT INTO `address` (`id_add`, `id_cl`, `contact`, `department`, `city`, `streetdir`, `numberdir`, `reference`, `activestate`, `state`) VALUES
-(1, 3, '(503) 7487-9715', 'San Miguel', 'San Miguel', 'Calle San Salvador', 'Casa #44', '', 0, 1),
-(2, 3, '(503) 7487-9715', 'San Miguel', 'Chinameca', 'Calle Bolivar', 'Casa #5', 'Frente pizza huty', 1, 1),
-(3, 1, '(503) 7487-9715', 'San Miguel', 'Chapeltique', 'Calle cobales', 'Casa #4', 'Frente pizza hut', 1, 1);
+(4, 1, '(503) 7852-3666', 'San Miguel', 'Nuevo Edén de San Juan', 'Calle la avenida', 'Casa #45', '', 1, 1),
+(5, 2, '(503) 7777-7777', 'San Miguel', 'San Antonio', 'Calle Barcelona', 'Casa #10', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -73,20 +72,12 @@ CREATE TABLE `assignment_details_general` (
 --
 
 INSERT INTO `assignment_details_general` (`id_prices`, `id_color`, `id_material`, `id_size`, `img`, `quantity`, `extraprice`, `discount`, `state`) VALUES
-(1, 1, 2, 1, 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 0, 2, 0.25, 1),
-(1, 1, 2, 2, 'Sch_VentasEqComputo en Pivot4J.JPG', 5, 1, 0, 1),
-(2, 1, 1, 1, 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 80, 0, 0, 1),
-(2, 1, 2, 1, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 99, 1, 0, 1),
-(2, 2, 1, 1, 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 100, 1, 0, 1),
-(3, 2, 1, 1, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 61, 5, 0, 1),
-(3, 3, 2, 2, 'gasadalur-islas-feroe_2560x1600_xtrafondos.com.jpg', 13, 34, 0.25, 1),
-(4, 1, 1, 2, '4x4-desert-dust-golden-hour-1149066.jpg', 36, 23.23, 0, 1),
-(9, 2, 2, 2, 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 0, 23, 0.5, 1),
-(3, 3, 4, 4, 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 25, 5, 0.2, 1),
-(1, 3, 1, 1, '11834734_1143605288989355_8211990350207519370_o.jpg', 0, 0, 0.2, 1),
-(3, 4, 2, 3, '740314_584256098257613_1968960693_o.jpg', 4, 0, 0.33, 1),
-(1, 5, 2, 1, '736277_584256111590945_817041861_o.jpg', 0, 0, 0.2, 1),
-(1, 5, 2, 3, '736277_584256111590945_817041861_o.jpg', 1, 0, 0.31, 1);
+(1, 2, 7, 1, 'jlim.jpg', 24, 0, 0, 1),
+(1, 1, 6, 1, 'jman.jpg', 49, 0.05, 0.1, 1),
+(2, 2, 8, 2, 'sandalia.jpg', 39, 0, 0, 1),
+(2, 2, 8, 3, 'sandalia.jpg', 50, 1, 0.1, 1),
+(3, 3, 8, 3, 'zapa.jpg', 50, 0, 0, 1),
+(3, 3, 8, 2, 'zapa.jpg', 50, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -107,19 +98,9 @@ CREATE TABLE `assignment_prices_object` (
 --
 
 INSERT INTO `assignment_prices_object` (`id_prices`, `id_pro`, `pur_price`, `sal_price`, `state_prices_pro`) VALUES
-(1, 2, 2, 3, 1),
-(2, 4, 25, 30, 1),
-(3, 3, 5, 10, 1),
-(4, 7, 23, 23, 1),
-(5, 13, 23, 23, 1),
-(6, 14, 23, 12, 1),
-(7, 15, 23, 23, 1),
-(8, 16, 23, 54, 1),
-(9, 17, 23, 34, 1),
-(10, 18, 23, 24, 1),
-(11, 19, 23, 42, 1),
-(12, 1, 25.55, 30, 1),
-(13, 8, 5, 6, 1);
+(1, 1, 3.25, 4.75, 1),
+(2, 2, 5, 6, 1),
+(3, 3, 5, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -139,21 +120,8 @@ CREATE TABLE `assignment_probus` (
 
 INSERT INTO `assignment_probus` (`id_assprob`, `id_bus`, `id_pro`) VALUES
 (1, 1, 1),
-(2, 2, 2),
-(3, 3, 4),
-(4, 3, 3),
-(5, 4, 5),
-(6, 4, 6),
-(7, 20, 7),
-(8, 20, 13),
-(9, 20, 14),
-(10, 20, 15),
-(11, 20, 16),
-(12, 20, 17),
-(13, 20, 18),
-(14, 20, 19),
-(15, 1, 8),
-(16, 1, 9);
+(2, 1, 2),
+(3, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -175,16 +143,8 @@ CREATE TABLE `business` (
 --
 
 INSERT INTO `business` (`id_bus`, `name_bus`, `pic_logo_bus`, `id_user`, `state_bus`, `description`) VALUES
-(1, 'SERTRACEN', 'tarjeta.jpg', 1, 1, 'asdasdasdasd'),
-(2, 'Tipicos', 'noucamp.JPG', 1, 1, 'adsasdasd'),
-(3, 'LARIBE', 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf 234sqdasd'),
-(4, 'MMMM', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 2, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf 234sqdasd'),
-(20, 'RIOT3', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfsdfdsf'),
-(21, 'Fornite', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfasdasd asdasdasd'),
-(22, 'Warzone', '4x4-desert-dust-golden-hour-1149066.jpg', 3, 1, 'war'),
-(23, 'Activision', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 3, 1, 'dfsfdsfsdfsd dsfsdfsd sdfsdfdsfasdasd asdasdasd'),
-(24, 'wwwww', 'planeta-en-el-espacio_3840x2160_xtrafondos.com.jpg', 3, 1, 'sadasdasd asdasdasdsad'),
-(25, 'larive v2 ds', 'noche-cielo-estrellas-y-cometa_3840x2160_xtrafondos.com.jpg', 4, 1, 'LARIVE ASDASD 123');
+(1, 'Avanti', 'avanti.jpg', 3, 1, 'Negocio de artesanias hechas a mano.'),
+(2, 'Ketzali', '22519685_2023803721172794_2848162057012285927_o.jpg', 3, 1, 'Negocio de zapatos para damas.');
 
 -- --------------------------------------------------------
 
@@ -204,9 +164,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id_cat`, `name_cat`, `state_cat`, `logo`) VALUES
-(1, 'Calzado', 1, 'shos.PNG'),
-(2, 'Bisuteria', 1, 'limpieza.PNG'),
-(3, 'KKKK', 1, 'ring.PNG');
+(1, 'Belleza y Cuidado Personal', 1, '88081.png'),
+(2, 'Calzado', 1, 'calzado.png');
 
 -- --------------------------------------------------------
 
@@ -231,9 +190,8 @@ CREATE TABLE `clients` (
 --
 
 INSERT INTO `clients` (`id_cl`, `fullname_cl`, `imagen`, `email_cl`, `user_cl`, `pass_cl`, `state_cl`, `idservices`, `services`) VALUES
-(1, 'cliente potencial', 'tierra-desde-el-espacio_3840x2160_xtrafondos.com.jpg', 'cliente@gmail.com', 'client', '1234', 1, '', ''),
-(2, 'COMPRADOR', 'estrellas-en-el-universo-morado_3000x2000_xtrafondos.com.jpg', 'compra@todo.com', 'compra', '123', 1, '', ''),
-(3, 'Masizo', '10669042_918121591546126_1889247225428879342_o.jpg', 'kmb124@live.com', 'masize', '123', 1, '', '');
+(1, 'Omar Angulo', 'omar.jpg', 'omar@gmail.com', 'donomar', '123', 1, '', ''),
+(2, 'Messi', '735750_584256041590952_1552352536_o.jpg', 'messi@gmail.com', 'messi', '123', 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -253,11 +211,9 @@ CREATE TABLE `color` (
 --
 
 INSERT INTO `color` (`id_color`, `code_color`, `name_color`, `state_color`) VALUES
-(1, '#2a8d5f', 'Verde', 0),
-(2, '#17159e', 'Azul', 1),
-(3, '#0d0d0d', 'Negro', 1),
-(4, '#ffd500', 'Amarillo', 1),
-(5, '#f50000', 'rojo', 1);
+(1, '#e5b224', 'Naranja', 1),
+(2, '#15bf12', 'Verde', 1),
+(3, '#444aa2', 'Azul', 1);
 
 -- --------------------------------------------------------
 
@@ -290,11 +246,9 @@ CREATE TABLE `delivery` (
 --
 
 INSERT INTO `delivery` (`id_delivery`, `id_shop_c`, `status_delivery`) VALUES
-(1, 41, 0),
-(2, 42, 0),
-(3, 44, 0),
-(4, 45, 0),
-(5, 46, 0);
+(1, 1, 1),
+(2, 2, 1),
+(3, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -306,8 +260,18 @@ CREATE TABLE `deliveryus` (
   `id_delyus` int(11) NOT NULL,
   `id_user` int(11) DEFAULT NULL,
   `id_delivery` int(11) DEFAULT NULL,
+  `date` varchar(45) DEFAULT NULL,
   `state` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `deliveryus`
+--
+
+INSERT INTO `deliveryus` (`id_delyus`, `id_user`, `id_delivery`, `date`, `state`) VALUES
+(2, 5, 2, '2020-08-12 12:18:17', 2),
+(4, 5, 1, '2020-08-12 12:54:48', 2),
+(5, 5, 3, '2020-08-12 12:58:40', 1);
 
 -- --------------------------------------------------------
 
@@ -330,10 +294,7 @@ CREATE TABLE `events_d` (
 --
 
 INSERT INTO `events_d` (`id_event`, `name_e`, `img`, `details`, `releasedate`, `finishdate`, `state_event`) VALUES
-(1, 'Casa de kevin', 'hugo.jpg', 'Las margaritas', '2020-08-01', '2020-08-12', 1),
-(2, 'El tuncp', 'derecho.jpg', 'Playiviris', '2020-08-04', '2020-08-13', 1),
-(3, 'El amatal', 'derecho.jpg', 'xddd', '2020-08-10', '2020-08-10', 2),
-(4, 'loloo', '11834734_1143605288989355_8211990350207519370_o.jpg', 'xdd', '2020-08-05', '2020-08-09', 2);
+(1, 'Cancha de Fepade', 'fepade.jpg', 'Feria de emprendedores anual, cancha fepade.', '2020-08-12', '2020-08-14', 1);
 
 -- --------------------------------------------------------
 
@@ -355,7 +316,11 @@ INSERT INTO `material` (`id_mat`, `name_mat`, `state_mat`) VALUES
 (1, 'Cuero', 1),
 (2, 'Madera', 1),
 (3, 'asdasdasd', 1),
-(4, 'Plastico', 1);
+(4, 'Plastico', 1),
+(5, 'sinteticp', 1),
+(6, 'Mandarina', 1),
+(7, 'Limon', 1),
+(8, 'Croche', 1);
 
 -- --------------------------------------------------------
 
@@ -377,26 +342,9 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id_pro`, `name_pro`, `descr_pro`, `id_cat`, `id_tpro`, `state_pro`) VALUES
-(1, 'Zapatos', 'Buen zapato de gran calidad', 1, 1, 1),
-(2, 'Pastelitos', 'Deliciosos', 2, 2, 1),
-(3, 'Cadenas', 'Bonitas buena calidad', 2, 1, 1),
-(4, 'Juego de aritos', 'Totalmente hechos a mano', 2, 1, 1),
-(5, 'asdasdasd2323', 'asdsadasdsad', 1, 1, 1),
-(6, 'adasdasd2444', 'asdasdasdsa', 1, 2, 1),
-(7, 'sadas32323', 'asdasd', 1, 1, 1),
-(8, 'LLLLLL', 'sdsadasd', 1, 2, 1),
-(9, 'asdasd', 'asdasdas', 1, 1, 1),
-(10, 'asdasd', 'asdasdas', 1, 1, 1),
-(11, 'asdasd', 'asdasdas', 1, 1, 1),
-(12, 'asdasd', 'asdasdas', 1, 1, 1),
-(13, 'asdasdasd', 'asdasdasdsa', 2, 2, 1),
-(14, 'mmmmmm', 'aaaaaaaaa', 1, 2, 1),
-(15, 'kkkkk', 'sdaasdasdasd', 1, 2, 1),
-(16, 'ssssssss', 'sssssss', 1, 2, 1),
-(17, 'cxxzczxczxc', 'asdasdasdasd', 1, 2, 1),
-(18, 'A2', 'asdasdasd', 1, 2, 1),
-(19, 'vvvvv', 'xxxxxxxx', 2, 2, 1),
-(20, 'Calzones', 'Comodos', 2, 1, 1);
+(1, 'Jabon', 'Contiene propiedades astringentes y limpiadoras que penetran profundamente, limpiando el rostro y la piel de toda impureza.', 1, 1, 1),
+(2, 'Sandalia', 'Hecho a mano gran calidad', 2, 1, 1),
+(3, 'Zapato', 'Hecho a mano', 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -416,30 +364,7 @@ CREATE TABLE `product_rating` (
 --
 
 INSERT INTO `product_rating` (`id_prra`, `id_cl`, `id_pro`, `rating`) VALUES
-(1, 1, 4, 4.5),
-(2, 1, 4, 2),
-(3, 1, 4, 1.7),
-(4, 2, 4, 4.8),
-(5, 2, 4, 0.4),
-(6, 2, 4, 0.5),
-(7, 2, 4, 1.9),
-(8, 1, 3, 4.1),
-(9, 1, 3, 2.4),
-(10, 1, 17, 5),
-(11, 1, 3, 2.1),
-(12, 1, 3, 4.8),
-(13, 1, 3, 4.8),
-(14, 1, 3, 2.8),
-(15, 1, 3, 1.8),
-(16, 2, 3, 2.6),
-(17, 2, 3, 4.9),
-(18, 2, 3, 4.5),
-(19, 2, 3, 3.9),
-(20, 2, 3, 0.8),
-(21, 2, 3, 2.5),
-(22, 2, 3, 3.7),
-(23, 2, 3, 3.2),
-(24, 1, 7, 3.7);
+(1, 1, 2, 4.4);
 
 -- --------------------------------------------------------
 
@@ -461,30 +386,7 @@ CREATE TABLE `product_reviews` (
 --
 
 INSERT INTO `product_reviews` (`id_prev`, `id_cl`, `id_pro`, `coment`, `likes`, `state_prev`) VALUES
-(1, 1, 4, 'asdasdasdasdasd', 0, 1),
-(2, 1, 4, 'COMA MIERDA GRAN CULERO', 0, 1),
-(3, 1, 4, 'COMA MIERDA', 0, 1),
-(4, 2, 4, 'QUE WUEN PRODUCTO', 0, 0),
-(5, 2, 4, 'VALE VERGA QUE ASCO', 0, 0),
-(6, 2, 4, 'asdasdsadsadsadasd', 0, 0),
-(7, 2, 4, 'dsadsadasdasdasd', 0, 0),
-(8, 1, 3, 'asdasdsad', 0, 1),
-(9, 1, 3, 'Fuck you man', 0, 0),
-(10, 1, 17, 'Buen producto', 0, 1),
-(11, 1, 3, 'kojlkjlj', 0, 1),
-(12, 1, 3, 'Nice', 0, 1),
-(13, 1, 3, 'Nice', 0, 1),
-(14, 1, 3, 'GOOD', 0, 1),
-(15, 1, 3, 'Very nice', 0, 1),
-(16, 2, 3, 'Me gusto xd', 0, 1),
-(17, 2, 3, 'Wooow', 0, 1),
-(18, 2, 3, 'quiero xd', 0, 1),
-(19, 2, 3, 'yy', 0, 1),
-(20, 2, 3, 'cd', 0, 1),
-(21, 2, 3, 'xd', 0, 1),
-(22, 2, 3, 'hola', 0, 1),
-(23, 2, 3, 'fuula', 0, 1),
-(24, 1, 7, 'Hola', 0, 1);
+(1, 1, 2, 'Buen producto', 0, 1);
 
 -- --------------------------------------------------------
 
@@ -504,9 +406,8 @@ CREATE TABLE `product_type` (
 --
 
 INSERT INTO `product_type` (`id_tpro`, `name_tpro`, `state_tpro`, `logo`) VALUES
-(1, 'Objeto', 1, 'obj.PNG'),
-(2, 'Comida', 1, 'comida.PNG'),
-(3, 'xzzzzz', 1, 'shos.PNG');
+(1, 'Producto', 1, 'prod.png'),
+(2, 'Servicio', 1, 'service.png');
 
 -- --------------------------------------------------------
 
@@ -525,18 +426,7 @@ CREATE TABLE `reactions` (
 --
 
 INSERT INTO `reactions` (`id_reaction`, `id_cl`, `id_prev`) VALUES
-(1, 3, 2),
-(27, 2, 2),
-(37, 1, 1),
-(42, 1, 3),
-(44, 1, 8),
-(47, 2, 3),
-(48, 3, 8),
-(50, 1, 10),
-(51, 1, 24),
-(52, 1, 23),
-(57, 2, 23),
-(58, 2, 19);
+(2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -557,17 +447,7 @@ CREATE TABLE `reply` (
 --
 
 INSERT INTO `reply` (`id_reply`, `id_prev`, `id_user`, `reply`, `state`) VALUES
-(1, 8, 3, 'OK ESTA BIEN', 1),
-(2, 9, 3, 'Gracias', 1),
-(3, 1, 3, 'asdasdasdasdasd', 1),
-(6, 1, 3, 'Lo sentimos no le podemos ayudar por el momemto si tiene algun reclamo puede ir a disputa', 1),
-(7, 2, 3, 'Hola como estas amigo', 1),
-(8, 3, 3, 'sASasASAs', 1),
-(10, 2, 3, 'XD', 1),
-(11, 10, 3, 'Graxias', 1),
-(12, 23, 3, 'xd', 1),
-(17, 11, 3, 'BUENO', 1),
-(18, 7, 3, 'XD', 1);
+(1, 1, 3, 'Muchas gracias por tu comentario', 1);
 
 -- --------------------------------------------------------
 
@@ -588,47 +468,9 @@ CREATE TABLE `shopping_cart` (
 --
 
 INSERT INTO `shopping_cart` (`id_shp_c`, `id_cl`, `total_amount`, `state`, `datesold`) VALUES
-(6, 1, 0, 1, '2020-07-25 15:40:27'),
-(7, 1, 0, 1, '2020-07-25 15:43:08'),
-(8, 1, 0, 1, '2020-07-25 15:47:39'),
-(9, 1, 0, 1, '2020-07-25 15:49:16'),
-(10, 1, 0, 1, '2020-07-25 15:52:48'),
-(11, 1, 0, 1, '2020-07-25 15:53:24'),
-(12, 1, 0, 1, '2020-07-25 15:54:35'),
-(13, 1, 0, 1, '2020-07-25 15:58:51'),
-(14, 1, 0, 1, '2020-07-25 16:00:33'),
-(15, 1, 0, 1, '2020-07-25 16:02:04'),
-(16, 1, 0, 1, '2020-07-25 16:05:50'),
-(17, 1, 0, 1, '2020-07-27 19:01:28'),
-(18, 1, 0, 1, '2020-07-27 19:44:27'),
-(19, 1, 0, 1, '2020-07-27 19:45:34'),
-(20, 1, 0, 1, '2020-07-27 19:46:52'),
-(21, 1, 0, 1, '2020-07-27 19:47:54'),
-(22, 1, 0, 1, '2020-07-27 19:54:34'),
-(23, 1, 0, 1, '2020-07-27 20:51:07'),
-(24, 1, 0, 1, '2020-07-27 20:51:43'),
-(25, 1, 0, 1, '2020-07-28 00:07:54'),
-(26, 1, 0, 1, '2020-07-28 00:15:02'),
-(27, 1, 0, 1, '2020-07-28 00:16:02'),
-(28, 1, 0, 1, '2020-07-28 12:13:27'),
-(29, 1, 0, 1, '2020-07-28 12:13:55'),
-(30, 2, 0, 1, '2020-07-30 20:19:43'),
-(31, 1, 0, 1, '2020-07-31 12:23:16'),
-(32, 1, 0, 1, '2020-08-09 13:24:59'),
-(33, 1, 0, 1, '2020-08-09 13:26:43'),
-(34, 1, 0, 1, '2020-08-09 13:47:00'),
-(35, 1, 0, 1, '2020-08-09 13:53:56'),
-(36, 1, 0, 1, '2020-08-09 13:55:25'),
-(37, 1, 0, 1, '2020-08-09 14:00:17'),
-(38, 1, 0, 1, '2020-08-09 14:02:07'),
-(39, 1, 0, 1, '2020-08-09 14:11:12'),
-(40, 1, 0, 1, '2020-08-09 14:12:22'),
-(41, 1, 0, 1, '2020-08-09 17:32:29'),
-(42, 1, 0, 1, '2020-08-11 14:21:46'),
-(43, 2, 0, 0, NULL),
-(44, 1, 0, 1, '2020-08-11 14:32:02'),
-(45, 1, 0, 1, '2020-08-11 14:35:29'),
-(46, 1, 0, 1, '2020-08-11 14:38:16');
+(1, 1, 0, 1, '2020-08-12 12:13:46'),
+(2, 2, 0, 1, '2020-08-12 12:17:56'),
+(3, 1, 0, 1, '2020-08-12 12:48:16');
 
 -- --------------------------------------------------------
 
@@ -653,63 +495,9 @@ CREATE TABLE `shopping_cart_details` (
 --
 
 INSERT INTO `shopping_cart_details` (`id_shp_c_d`, `id_shp_c`, `id_prices`, `id_color`, `id_mat`, `id_size`, `quantity`, `precio`, `descuento`) VALUES
-(19, 6, 3, 3, 2, 2, 2, 33, 0.25),
-(20, 6, 2, 1, 1, 1, 5, 30, 0),
-(21, 6, 2, 2, 1, 1, 1, 29.45, 0.05),
-(22, 7, 3, 3, 2, 2, 1, 33, 0.25),
-(23, 7, 3, 2, 1, 1, 1, 15, 0),
-(24, 8, 3, 2, 1, 1, 1, 15, 0),
-(25, 9, 3, 2, 1, 1, 1, 15, 0),
-(26, 10, 3, 2, 1, 1, 1, 15, 0),
-(27, 11, 3, 2, 1, 1, 1, 15, 0),
-(28, 12, 3, 2, 1, 1, 1, 15, 0),
-(29, 13, 3, 2, 1, 1, 1, 15, 0),
-(30, 14, 3, 2, 1, 1, 1, 15, 0),
-(31, 15, 3, 2, 1, 1, 1, 15, 0),
-(32, 16, 3, 2, 1, 1, 1, 15, 0),
-(33, 17, 4, 1, 1, 2, 1, 46.23, 0),
-(34, 17, 9, 2, 2, 2, 1, 28.5, 0.5),
-(35, 17, 1, 1, 2, 1, 1, 3.75, 0.25),
-(36, 17, 1, 3, 1, 1, 1, 2.4, 0.2),
-(37, 18, 4, 1, 1, 2, 9, 46.23, 0),
-(38, 19, 4, 1, 1, 2, 11, 46.23, 0),
-(39, 20, 4, 1, 1, 2, 5, 46.23, 0),
-(40, 21, 3, 2, 1, 1, 20, 15, 0),
-(45, 22, 1, 1, 2, 1, 11, 3.75, 0.25),
-(46, 23, 2, 1, 1, 1, 20, 30, 0),
-(47, 24, 3, 3, 2, 2, 4, 33, 0.25),
-(49, 25, 9, 2, 2, 2, 21, 28.5, 0.5),
-(50, 26, 4, 1, 1, 2, 17, 46.23, 0),
-(51, 27, 4, 1, 1, 2, 1, 46.23, 0),
-(52, 28, 2, 1, 1, 1, 20, 30, 0),
-(53, 29, 3, 2, 1, 1, 40, 15, 0),
-(55, 30, 3, 2, 1, 1, 28, 15, 0),
-(56, 31, 2, 1, 1, 1, 16, 30, 0),
-(61, 32, 4, 1, 1, 2, 1, 46.23, 0),
-(62, 32, 9, 2, 2, 2, 1, 28.5, 0.5),
-(63, 32, 2, 1, 1, 1, 1, 30, 0),
-(64, 33, 3, 2, 1, 1, 1, 15, 0),
-(65, 34, 3, 2, 1, 1, 6, 15, 0),
-(67, 35, 4, 1, 1, 2, 2, 46.23, 0),
-(68, 36, 4, 1, 1, 2, 2, 46.23, 0),
-(69, 37, 4, 1, 1, 2, 3, 46.23, 0),
-(70, 38, 4, 1, 1, 2, 2, 46.23, 0),
-(71, 39, 4, 1, 1, 2, 1, 46.23, 0),
-(72, 40, 4, 1, 1, 2, 1, 46.23, 0),
-(73, 41, 4, 1, 1, 2, 1, 46.23, 0),
-(80, 42, 2, 1, 1, 1, 2, 30, 0),
-(81, 42, 4, 1, 1, 2, 2, 46.23, 0),
-(88, 43, 3, 2, 1, 1, 4, 15, 0),
-(90, 43, 9, 2, 2, 2, 1, 17, 0.5),
-(91, 42, 3, 2, 1, 1, 1, 15, 0),
-(92, 42, 1, 5, 2, 1, 1, 2.4, 0.2),
-(93, 42, 2, 1, 2, 1, 1, 31, 0),
-(94, 44, 4, 1, 1, 2, 1, 46.23, 0),
-(95, 44, 2, 1, 1, 1, 1, 30, 0),
-(96, 45, 4, 1, 1, 2, 1, 46.23, 0),
-(97, 45, 3, 2, 1, 1, 1, 15, 0),
-(98, 45, 3, 4, 2, 3, 1, 6.7, 0.33),
-(99, 46, 3, 2, 1, 1, 2, 15, 0);
+(1, 1, 1, 1, 6, 1, 1, 4.32, 0.1),
+(2, 2, 1, 2, 7, 1, 1, 4.75, 0),
+(3, 3, 2, 2, 8, 2, 1, 6, 0);
 
 -- --------------------------------------------------------
 
@@ -729,10 +517,9 @@ CREATE TABLE `sizes` (
 --
 
 INSERT INTO `sizes` (`id_size`, `number_size`, `name_size`, `state_size`) VALUES
-(1, 40, 'L', 1),
-(2, 42, 'XL', 1),
-(3, 23, 'XL', 1),
-(4, 8, 'M', 1);
+(1, 0, 'Ninguno(a)', 1),
+(2, 40, 'USA', 1),
+(3, 42, 'UK', 1);
 
 -- --------------------------------------------------------
 
@@ -762,7 +549,8 @@ INSERT INTO `users` (`id_user`, `fullname_user`, `phone_user`, `imagen`, `email_
 (1, 'Moises Rivera', '22577777', '736277_584256111590945_817041861_o.jpg', 'moisesrivera796@gmail.com', 'moises796', '123', 1, 1, NULL, NULL),
 (2, 'Gerardo landos', '(503) 2204-0845', 'planeta-tierra-con-destello-de-luz_7251x4018_xtrafondos.com.jpg', 'landos112@gmail.com', 'admin', '123', 1, 1, '', ''),
 (3, 'Gerardo Erazo', '(503) 2222-2222', 'mar-bajo-niebla_5472x3648_xtrafondos.com.jpg', 'landos110@gmail.com', 'user', '123', 2, 1, '', ''),
-(4, 'eeeee', '(503) 2222-2222', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 'asdasd@asdasdsad.com', 'user1', '123', 2, 1, '', '');
+(4, 'eeeee', '(503) 2222-2222', 'ballena-en-el-oceano_3838x2160_xtrafondos.com.jpg', 'asdasd@asdasdsad.com', 'user1', '123', 2, 1, '', ''),
+(5, 'Hugo', '(503) 7487-9715', 'hugo.jpg', 'hugo@gmail.com', 'hugo', '123', 3, 1, '', '');
 
 -- --------------------------------------------------------
 
@@ -782,7 +570,8 @@ CREATE TABLE `user_type` (
 
 INSERT INTO `user_type` (`id_ustp`, `name_ustp`, `state_ustp`) VALUES
 (1, 'Administrador', 1),
-(2, 'Usuario', 1);
+(2, 'Usuario', 1),
+(3, 'Repartidor', 1);
 
 -- --------------------------------------------------------
 
@@ -824,9 +613,8 @@ CREATE TABLE `wish_list_details` (
 --
 
 INSERT INTO `wish_list_details` (`id_w_l_d`, `id_w_l`, `id_prices`, `id_color`, `id_mat`, `id_size`) VALUES
-(8, 1, 3, 2, 1, 1),
-(9, 1, 2, 1, 1, 1),
-(10, 1, 1, 5, 2, 1);
+(2, 1, 1, 1, 6, 1),
+(3, 2, 1, 2, 7, 1);
 
 --
 -- Índices para tablas volcadas
@@ -1030,43 +818,43 @@ ALTER TABLE `wish_list_details`
 -- AUTO_INCREMENT de la tabla `address`
 --
 ALTER TABLE `address`
-  MODIFY `id_add` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_add` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_prices_object`
 --
 ALTER TABLE `assignment_prices_object`
-  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_prices` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `assignment_probus`
 --
 ALTER TABLE `assignment_probus`
-  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_assprob` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `business`
 --
 ALTER TABLE `business`
-  MODIFY `id_bus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_bus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cl` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `color`
 --
 ALTER TABLE `color`
-  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_color` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `contact`
@@ -1078,91 +866,91 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT de la tabla `delivery`
 --
 ALTER TABLE `delivery`
-  MODIFY `id_delivery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_delivery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `deliveryus`
 --
 ALTER TABLE `deliveryus`
-  MODIFY `id_delyus` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_delyus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `events_d`
 --
 ALTER TABLE `events_d`
-  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_event` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `material`
 --
 ALTER TABLE `material`
-  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_mat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `product`
 --
 ALTER TABLE `product`
-  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `product_rating`
 --
 ALTER TABLE `product_rating`
-  MODIFY `id_prra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_prra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `product_reviews`
 --
 ALTER TABLE `product_reviews`
-  MODIFY `id_prev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_prev` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `product_type`
 --
 ALTER TABLE `product_type`
-  MODIFY `id_tpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_tpro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `reactions`
 --
 ALTER TABLE `reactions`
-  MODIFY `id_reaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `id_reaction` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `reply`
 --
 ALTER TABLE `reply`
-  MODIFY `id_reply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_reply` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `shopping_cart`
 --
 ALTER TABLE `shopping_cart`
-  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id_shp_c` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `shopping_cart_details`
 --
 ALTER TABLE `shopping_cart_details`
-  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
+  MODIFY `id_shp_c_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `sizes`
 --
 ALTER TABLE `sizes`
-  MODIFY `id_size` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_size` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ustp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `wish_list`
@@ -1174,7 +962,7 @@ ALTER TABLE `wish_list`
 -- AUTO_INCREMENT de la tabla `wish_list_details`
 --
 ALTER TABLE `wish_list_details`
-  MODIFY `id_w_l_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_w_l_d` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Restricciones para tablas volcadas
