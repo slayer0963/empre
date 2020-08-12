@@ -150,7 +150,7 @@ include_once "cn/connection.php";
         <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
         <a  class="hide-on-large-only right brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons">shopping_cart </i></a>
-        <span class="new badge hide-on-large-only numbercar" data-badge-caption="nuevo"></span>
+        <span class="new badge hide-on-large-only numbercar" data-badge-caption="nuevo(s)"></span>
         <a  class="hide-on-large-only right brand-logo" style="margin-right: 5rem;"  href="#!">
           <div class="switch">
             <label>
@@ -178,7 +178,7 @@ include_once "cn/connection.php";
           </li>
           <li>
            <a  class=" brand-logo modal-trigger" href="#modalcarshop"><i class="material-icons" >shopping_cart </i></a>
-           <span class="new badge numbercar" data-badge-caption="nuevo"></span>
+           <span class="new badge numbercar" data-badge-caption="nuevo(s)"></span>
          </li>
 
          <li style="width: 180px;">
@@ -224,7 +224,7 @@ include_once "cn/connection.php";
         </div>
         </li>
   <li class="divider"></li>
-      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevos"></span></a></li>
+      <li><a  class="modal-trigger" href="#modalevents" onclick="fechaevent();">Eventos <span class="new badge eventsnum blue" data-badge-caption="nuevo(s)"></span></a></li>
   <li class="divider"></li>
   <li><a  class="modal-trigger" href="#modalwis">Lista de deseos</a></li>
   <li class="divider"></li>

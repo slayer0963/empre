@@ -112,6 +112,12 @@
 	    $dat=new DAOUserhome();
 	    echo json_encode($dat->getBusiness(getidus()));
 	}
+	$page = isset($_GET['btngetbusines'])?$_GET['btngetbusines']:'';
+	if($page=='getDatabb'){
+	    $dat=new DAOUserhome();
+	    echo json_encode($dat->getBusinessP($_POST["id"],$_POST["bus"]));
+	}
+
 
 	function insert(){
 	    $obj=new Business();

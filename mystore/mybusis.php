@@ -111,10 +111,10 @@
 								}
 								else{
 									$sql="select b.id_bus,b.name_bus, b.pic_logo_bus, b.description , 
-                  (select sum(scd.quantity) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
+                  (select count(*) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
                   inner join shopping_cart_details scd on scd.id_prices=apo.id_prices inner join delivery d on d.id_shop_c=scd.id_shp_c
                   inner join shopping_cart sc on sc.id_shp_c=scd.id_shp_c where d.status_delivery=0 and sc.state=1 and ap.id_bus=b.id_bus) as pedidosactivos,
-                  (select sum(scd.quantity) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
+                  (select count(*) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
                   inner join shopping_cart_details scd on scd.id_prices=apo.id_prices inner join delivery d on d.id_shop_c=scd.id_shp_c
                   inner join shopping_cart sc on sc.id_shp_c=scd.id_shp_c where d.status_delivery=2 and sc.state=1 and ap.id_bus=b.id_bus) as pedidosenproceso
                   from business b inner join users u on b.id_user=u.id_user where u.id_user=".$_SESSION["idus"].";";
@@ -138,8 +138,11 @@
 	   									 <div class="card-reveal">
 	      									<span class="card-title grey-text text-darken-4"><?php echo $re['name_bus']; ?><i class="material-icons right">close</i></span>
 	      									<div class="collection">
-	      									<p><a href="#!" class="collection-item"><span class="new badge blue"><?php echo $re['pedidosactivos']; ?></span>Pedidos</a></p>
+	      									<p><a href="#!" class="collection-item"><span class="new badge blue" data-badge-caption="nuevo(s)"><?php echo $re['pedidosactivos']; ?></span>Pedidos</a></p>
 	      									</div>
+                          <div class="collection">
+                          <p><a href="#!" class="collection-item"><span class="new badge blue" data-badge-caption="nuevo(s)"><?php echo $re['pedidosenproceso']; ?></span>Pedidos en proceso</a></p>
+                          </div>
 	    									</div>
 	  								</div>
 								</div>

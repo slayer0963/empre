@@ -251,9 +251,11 @@ function getdata(id) {
 	    									html+='</div>';
 	   									 html+='<div class="card-reveal">';
 	      									html+='<span class="card-title grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">close</i></span>';
-	      									html+='<div class="collection">';
-	      									html+='<p><a href="#!" class="collection-item"><span class="new badge blue">4</span>Pedidos</a></p>';
-	      									html+='</div>';
+	      									html+='<div class="collection"><p><a href="#!" class="collection-item"><span class="new badge blue" data-badge-caption="nuevo(s)">'+respu[i].pedidosactivos+'</span>Pedidos</a></p></div>';
+                          
+	      									html+='<div class="collection"><p><a href="#!" class="collection-item"><span class="new badge blue" data-badge-caption="nuevo(s)">'+respu[i].pedidosenproceso+'</span>Pedidos en proceso</a></p></div>';
+
+	      									
 	    									html+='</div>';
 	  									html+='</div>';
 								html+='</div>';
