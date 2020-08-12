@@ -3,6 +3,7 @@ $(document).ready(function() {
       // alert(obj.id);
 	getdata();
 	getdataProcess(obj.id);
+	getDatadelyhisto(obj.id);
 });
 
 function getdata() {
@@ -39,6 +40,7 @@ function getdata() {
 	    									html+='</div>';
 	  									html+='</div>';
 								html+='</div>';
+								
 							}
             	$("#containerpedidos").html(html);
             }
@@ -77,7 +79,7 @@ function getdataProcess(idus) {
 	   									 html+='</div>';
 	   									 html+='<div class="card-content">';
 	   									 html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].fullname_cl+'</span>';
-	   									   html+=''+respu[i].datesold+'';
+	   									   html+=''+respu[i].datesold+'<br>';
 	   									    html+='Departamento:'+respu[i].department+'<br>';
 	   									   html+='Calle:'+respu[i].streetdir+'<br> N°'+respu[i].numberdir+'<br>';
 	   									   html+='Referencia:'+respu[i].reference+'<br>';
@@ -85,6 +87,7 @@ function getdataProcess(idus) {
 	   									   html+='<br><br><a  class="btn modal-trigger" href="#deliverylist" onclick="viewdelivery('+respu[i].id_shop_c+');">Ver pedido</a><br>&nbsp;';
 	    									html+='</div>';
 	  									html+='</div>';
+								html+='</div>';
 								html+='</div>';
 							}
             	$("#containerpedidosproce").html(html);
@@ -152,6 +155,7 @@ function deliveryp(deli,idus) {
 		            	if(resp==1){
 		            		getdata();
 							getdataProcess(idus);
+							getDatadelyhisto(idus);
 							M.toast({html: 'Pedido finalizado gracias!', classes: 'rounded green'});
 		            	}
 		            	
@@ -163,7 +167,6 @@ function deliveryp(deli,idus) {
 }
 
 function viewdelivery(idcar){
-
   var dataString = 'id='+idcar;
   var html='', htmltf='', name='',fecha='';
   $.ajax({
@@ -188,5 +191,61 @@ function viewdelivery(idcar){
     });
    
 
+
+}
+
+
+var getDatadelyhisto = (iduser)=> {
+    $('#tbdelivery').DataTable( {
+    "responsive": true,
+    "stateSave": true,
+    "bDeferRender": true,
+    "sPaginationType": "full_numbers",
+    "bDestroy": true,
+    "paging": true,
+    "responsive": true,
+    "ajax": {
+          url:"../controller/cdelivery.php?btngetData=getDatadelyhisto&id="+iduser,
+          "type": "GET",
+    },
+    "columns": [
+      { "data": "id_delivery" },
+      { "data": "fullname_cl" },
+      { "data": "date" },
+      { "data": "actions" }
+      ],
+
+      "lengthMenu": [[5, 10, 25, -1], [5, 10, 25, "Todos"]],
+    "oLanguage": {
+            "sProcessing":     "Procesando...",
+
+        "sLengthMenu": 'Mostrar <select>'+
+            '<option value="5">5</option>'+
+            '<option value="10">10</option>'+
+            '<option value="25">25</option>'+
+            '<option value="-1">Todos</option>'+
+            '</select> registros',
+        "sZeroRecords":    "No se encontraron resultados",
+        "sEmptyTable":     "Ningún dato disponible en esta tabla",
+        "sInfo":           "Mostrando del (_START_ al _END_) de  _TOTAL_ registros",
+        "sInfoEmpty":      "Mostrando del 0 al 0 de un total de 0 registros",
+        "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+        "sInfoPostFix":    "",
+        "sSearch":         "Filtrar:",
+        "sUrl":            "",
+        "sInfoThousands":  ",",
+        "sLoadingRecords": "Por favor espere - cargando...",
+        "oPaginate": {
+            "sFirst":    "Primero",
+            "sLast":     "Último",
+            "sNext":     ">",
+            "sPrevious": "<"
+        },
+        "oAria": {
+            "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+            "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+        }
+        }
+  });
 
 }
