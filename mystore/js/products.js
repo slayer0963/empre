@@ -1,6 +1,39 @@
 var contclick=0;
 $(document).ready(function() {
 
+
+
+$('#pventa').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+$('#pcompra').keyup(function(event) {
+  // skip for arrow keys
+  if(event.which >= 37 && event.which <= 40){
+    event.preventDefault();
+  }
+
+  $(this).val(function(index, value) {
+    return value
+      .replace(/\D/g, "")
+      .replace(/([0-9])([0-9]{2})$/, '$1.$2')  
+      .replace(/\B(?=(\d{3})+(?!\d)\.?)/g, ",")
+    ;
+  });
+});
+
+  
   $("#cate").select2({
     dropdownAutoWidth: true,
     width: '100%',
@@ -124,14 +157,13 @@ $("#btnproedit").click(function(event) {
 
 
 	$('#formproduct').submit(function() {
-
 		  if(Validatep(1)==idinputp.length){ 
 			$.ajax({
 		            type: "POST",
 		            url: "../controller/cuserhome.php?btnsetDataproduct=setDataproduct", 
 		            data: $("#formproduct").serialize(),
 		            success: function(resp) {
-		                   if(resp==1){
+                       if(resp==1){
 
 		                    //getData();
 		                     M.toast({html: "¡Se ha agregado el producto exitosamente!", classes: 'rounded  green'});
@@ -386,7 +418,7 @@ var setComboCat = () =>{
             url: "../controller/cproduct.php?btngetData=getDataCategories",
             success: function(resp) {
             var values = eval(resp);        
-              html+='<option value="0" selected>Seleccione una categoria</option>';
+              html+='<option value="0" selected>Seleccione una categoría</option>';
                for (var i = 0; i< values.length; i++) {
                    html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
                }
@@ -424,11 +456,11 @@ function validateproduct(id) {
             	var res = eval(resp);
             	if(res.length>0){
             		
-            		swal("Tiene algunos productos pendientes de ingreso por lo tanto no apareceran en la tienda", {
+            		swal("Tiene algunos productos pendientes de ingreso por lo tanto no aparecerán en la tienda.", {
 					  buttons: {
 					    cancel: "No en este momento",
 					    catch: {
-					      text: "Ver productos!",
+					      text: "¡Ver productos!",
 					      value: "catch",
 					    },
 					    

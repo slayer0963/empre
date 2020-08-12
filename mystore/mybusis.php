@@ -179,7 +179,7 @@
 
 <!-- modal add busi -->
 
- <div id="addbusi" class="modal animated slideInRight grey darken-4 businessmodal" style="color:white;">
+ <div id="addbusi" class="modal animated slideInRight  businessmodal" >
         <div class="modal-content">
       <h4>Negocio</h4>
       <div class="row">
@@ -227,7 +227,7 @@
       </form>
       </div>
     </div>
-          <div class="modal-footer grey darken-4">
+          <div class="modal-footer ">
         <a href="#!" class="modal-close  btn-flat">Salir</a>
         
       </div>
@@ -235,7 +235,7 @@
 
 
 
- <div id="editbusi" class="modal animated slideInLeft grey darken-4 businessmodal" style="color:white;">
+ <div id="editbusi" class="modal animated slideInLeft  businessmodal" >
         <div class="modal-content">
       <h4>Negocio</h4>
       <div class="row">
@@ -281,7 +281,7 @@
       </form>
       </div>
     </div>
-          <div class="modal-footer grey darken-4">
+          <div class="modal-footer ">
         <a href="#!" class="modal-close  btn-flat">Salir</a>
         
       </div>

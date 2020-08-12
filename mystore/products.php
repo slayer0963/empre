@@ -101,11 +101,13 @@
             <span class="" id="txtdescrip"></span>
           </div>
           <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix">attach_money</i>
               <input id="pcompra" name="pcompra" title="Precio Compra (*)" type="text" >
               <label for="pcompra">Precio de compra</label>
               <span class="" id="txtpcompra"></span>
             </div>
           <div class="input-field col s12 m12 l12">
+              <i class="material-icons prefix">attach_money</i>
               <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" >
               <label for="pventa" id="">Precio de venta</label>
               <span class="" id="txtpventa"></span>

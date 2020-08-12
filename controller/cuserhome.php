@@ -290,11 +290,6 @@
 	    return $obj;
 	}
 
-	$page = isset($_GET['btnsetDataproduct'])?$_GET['btnsetDataproduct']:'';
-	if($page=='setDataproduct'){
-	    $dat=new DAOUserhome();
-	    $dat->setDataproduct(insertproduct());
-	}
 
 
 	$page = isset($_GET['btnsetDataproduct'])?$_GET['btnsetDataproduct']:'';

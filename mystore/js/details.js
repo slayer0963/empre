@@ -441,11 +441,11 @@ $('#formsize').submit(function() {
                    if(resp==1){
                    setComboSize();
                     $('.modal').modal('close');
-                    cleanform();
+                    cleanformsize();
                     
                     M.toast({html: "¡Se ha agregado el tamaño exitosamente!", classes: 'rounded  green'});
                    
-                     cleanbox();
+                     cleanboxsize();
                    }
                    else{
                     M.toast({html: "¡Algo ha ido mal, revisa la información que deseaste ingresar!", classes: 'rounded deep-orange'});

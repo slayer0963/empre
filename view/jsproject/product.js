@@ -247,7 +247,7 @@ var setComboCat = (val) =>{
             url: "../../controller/cproduct.php?btngetData=getDataCategories",
             success: function(resp) {
             var values = eval(resp);        
-              html+='<option value="0" selected>Seleccione una categoria</option>';
+              html+='<option value="0" selected>Seleccione una categoría</option>';
                for (var i = 0; i< values.length; i++) {
                    html+="<option value='"+values[i][0]+"'>"+values[i][1]+"</option>"
                }

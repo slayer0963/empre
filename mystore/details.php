@@ -389,12 +389,12 @@
             
             <div class="input-field col s12 m12 l6 align-right">
             	<i class="material-icons prefix">attach_money</i>
-              <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" style="text-align: center;width: 300px;" > <br>
+              <input id="pcompra" name="pcompra" title="Coste de fabricación (*)" type="text" style="text-align: center;" > <br>
               <span class="" id="txtpcompra">Coste de fabricación</span>
             </div>
             <div class="input-field col s12 m12 l6">
             	<i class="material-icons prefix">attach_money</i>
-              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" style="text-align: center;width: 300px;"><br>
+              <input id="pventa" name="pventa" title="Precio Venta (*)" type="text" style="text-align: center;"><br>
               <span class="" id="txtpventa">Precio Venta</span>
             </div>
             
