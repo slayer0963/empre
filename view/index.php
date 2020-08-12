@@ -6,7 +6,7 @@
 
     <?php
     
-    if(isset($_SESSION["name"])){
+    if(isset($_SESSION["name"]) && $_SESSION["type"]==1){
     require 'blocks/header.php';
     require 'blocks/menu.php'; ?>
 

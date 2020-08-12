@@ -2,7 +2,14 @@
 
 
     <?php
-  //require 'headerlogin.php';?>
+    session_start();
+    echo isset($_SESSION["type"]);
+        if(isset($_SESSION["type"])==1||isset($_SESSION["type"])==2||isset($_SESSION["type"])==3){
+              session_destroy();
+        }
+
+
+  ?>
 
 
 

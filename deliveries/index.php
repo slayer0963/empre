@@ -4,7 +4,7 @@
 <?php session_start() ?>
 
     <?php
-        if(isset($_SESSION["name"])){
+        if(isset($_SESSION["name"]) && $_SESSION["type"]==3){
     ?>
 
 

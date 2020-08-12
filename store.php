@@ -1,7 +1,7 @@
 <html>
 
 <?php
-session_start();
+
 include 'php/config.php';
 include_once "cn/connection.php";
 ?>
