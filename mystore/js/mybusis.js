@@ -237,7 +237,7 @@ function getdata(id) {
 				html+='<div  class="col s12 m6 l3 center-align animated slideInDown ">';
 									html+='<div class="card">';
 	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
-	   									   html+='<img class="activator" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 150px; width: 100%;">';
+	   									   html+='<center><img class="activator" src="../view/imgbusiness/'+respu[i].pic_logo_bus+'" style="height: 170px; width: 75%;"></center>';
 	   									 html+='</div>';
 	   									 html+='<div class="card-content">';
 	   									   html+='<span class="card-title activator grey-text text-darken-4">'+respu[i].name_bus+'<i class="material-icons right">more_vert</i></span>';
