@@ -139,7 +139,7 @@ $('#frmpricesa').submit(function() {
             contentType: false,
             processData: false,
             success: function(resp) {
-             alert(resp);
+            // alert(resp);
                    if(resp==1){
                     M.toast({html: "¡Se agregó el detalle exitosamente!", classes: 'rounded  green'});
                     $('#modaladdproduct').modal('close');
