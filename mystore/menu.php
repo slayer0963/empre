@@ -48,16 +48,16 @@
 		 <div class="" id="contenidomenu">
 			<?php include 'topmenu.php'; ?>
 		  </div>
-
+<input type="hidden" name="us" id="us" value="<?php echo $_SESSION["idus"]; ?>">
 		<div class="row animated slideInDown valign-wrapper" id="menu">
 			<div class="col s12 m12 l12">
 				<div class="container ">
 					<!-- <a id="back" class="btn-floating blu"><i class="material-icons">keyboard_backspace</i></a><br><br> -->
 					<div class="row align-center" id="contentmenu">
 						<form action=""></form>
-						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./statistic" id="viewsta">Estadisticas</a></div>
+						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./statistic" id="viewsta">Estadísticas</a></div>
 						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./products" id="viewpro">Productos</a></div>
-						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./delivery">Pedidos <span style="margin-top: .4rem" class="new badge eventsnum red" data-badge-caption="nuevos">0</span></a></div>
+						<div class="col s12 m4 l4 center-align men"><a class="btn" href="./delivery">Pedidos <span style="margin-top: .4rem" class="new badge eventsnum red" data-badge-caption="nuevo(s)"><span id="val">0</span></span></a></div>
 
 					</div>
 				</div>

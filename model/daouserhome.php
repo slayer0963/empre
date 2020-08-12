@@ -19,7 +19,14 @@ include_once "../cn/connection.php";
     {
         $c = conectar();
         $id=$obj->getIdUser();
-        $sql="select * from business b inner join users u on b.id_user=u.id_user where u.id_user=$id";
+        $sql="select b.id_bus,b.name_bus, b.pic_logo_bus, b.description , 
+        (select count(*) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
+        inner join shopping_cart_details scd on scd.id_prices=apo.id_prices inner join delivery d on d.id_shop_c=scd.id_shp_c
+        inner join shopping_cart sc on sc.id_shp_c=scd.id_shp_c where d.status_delivery=0 and sc.state=1 and ap.id_bus=b.id_bus) as pedidosactivos,
+        (select count(*) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
+        inner join shopping_cart_details scd on scd.id_prices=apo.id_prices inner join delivery d on d.id_shop_c=scd.id_shp_c
+        inner join shopping_cart sc on sc.id_shp_c=scd.id_shp_c where d.status_delivery=2 and sc.state=1 and ap.id_bus=b.id_bus) as pedidosenproceso
+        from business b inner join users u on b.id_user=u.id_user where u.id_user=$id";
         $c->set_charset('utf8');
         $res = $c->query($sql); 
         $arreglo = array();
@@ -29,6 +36,22 @@ include_once "../cn/connection.php";
         return $arreglo;
     }
 
+    public function getBusinessP($id,$bus)
+    {
+        $c = conectar();
+        
+        $sql="select (select count(*) as pedidos from assignment_probus ap inner join assignment_prices_object apo on apo.id_pro=ap.id_pro
+        inner join shopping_cart_details scd on scd.id_prices=apo.id_prices inner join delivery d on d.id_shop_c=scd.id_shp_c
+        inner join shopping_cart sc on sc.id_shp_c=scd.id_shp_c where d.status_delivery=0 and sc.state=1 and ap.id_bus=b.id_bus) as pedidosactivos
+        from business b inner join users u on b.id_user=u.id_user where u.id_user=$id and b.id_bus=$bus";
+        $c->set_charset('utf8');
+        $res = $c->query($sql); 
+        $arreglo = array();
+        while($re = $res->fetch_array()){
+            $arreglo[]=$re;
+        }
+        return $arreglo;
+    }
 
     public function getDatatype($id)
     {
