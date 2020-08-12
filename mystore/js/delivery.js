@@ -31,6 +31,24 @@ var StateChange = (id,estado) =>{
      return false;
 }
 
+var getDetailsUs= (iddeli) =>{
+  var dataString = 'id='+iddeli;
+    $.ajax({
+      type: "POST",
+      url: '../controller/cdelivery.php?btngetData=getDetailsUs',
+      data: dataString,
+      success: function(resp) {
+        var values = eval(resp);
+        $("#nameuserd").html(values[0].fullname_user);
+        $("#imguserd").attr("src",'../view/imguser/'+values[0].imagen);
+        $("#contactuserd").html("Numero de contacto: "+values[0].phone_user);
+        $("#emailuserd").html("Correo electronico: "+values[0].email_user);  
+   
+      }
+    });
+}
+
+
 var getDelivery =(idcart,idbus)=>{
   getDataDeliveryList(idcart,idbus);
   
@@ -117,3 +135,6 @@ var getDataDely = (bussi)=> {
   });
 
 }
+
+
+

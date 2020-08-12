@@ -61,6 +61,12 @@ require_once "../model/daodelivery.php";
     }
 
     $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDetailsUs'){
+        $dat = new DAODelivery();
+        echo json_encode($dat->getDetailsUs($_POST['id']));    
+    }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
     if($page=='getDeliveriesUs'){
         $dat = new DAODelivery();
         echo json_encode($dat->getDeliveriesUs($_POST['idus']));    
@@ -93,6 +99,9 @@ if($page=='getDatadely'){
          else if ($c["status_delivery"]=="0") {
          	$btnstate='&nbsp;<a class=\"btn-floating red lighten-1 waves-effect waves-red\"  type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_unchecked</i></a>';
          }
+         else if($c["status_delivery"]=="2"){
+            $btnstate='&nbsp;<a class=\"btn-floating purple darken-3 lighten-1 modal-trigger pulse\" href=\"#infodeli\"  type=\"submit\" name=\"action\" onclick=\"getDetailsUs('.$id_delivery.');\" ><i class=\"material-icons right\">radio_button_unchecked</i></a>';
+         }
 
          $table.='{
                   "id_delivery":"'.$c["id_delivery"].'",
@@ -104,6 +113,42 @@ if($page=='getDatadely'){
         $table = substr($table,0, strlen($table) - 1);
         echo '{"data":['.$table.']}';   
 }
+
+    $page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+    if($page=='getDatadelyhisto'){
+        $dat = new DAODelivery();
+             $r=$dat->getDataHistory($_GET['id']);
+
+             $table="";
+             foreach($r as $c){
+             $btnstate='';
+             $btnview='';
+             $imagen ='';
+
+             $id_delivery="'".$c["id_delivery"]."'";
+             $fullname_cl="'".$c["fullname_cl"]."'";
+             $datesold="'".$c["date"]."'";
+             $status_delivery="'".$c["state"]."'";
+             $id_shop_c="'".$c["id_shop_c"]."'";
+
+
+             if($c["state"]=="1"){ 
+                $btnstate='&nbsp;<a class=\"btn-floating light-green lighten-1\"   type=\"submit\" name=\"action\"><i class=\"material-icons right\">radio_button_checked</i></a>';
+             }
+             else if($c["state"]=="2"){
+                $btnstate='&nbsp;<a class=\"btn green lighten-1 modal-trigger\" href=\"#deliverylist\"  type=\"submit\" name=\"action\" onclick=\"viewdelivery('.$id_shop_c.');\" >Entregado</a>';
+             }
+
+             $table.='{
+                      "id_delivery":"'.$c["id_delivery"].'",
+                      "fullname_cl":"'.$c["fullname_cl"].'",
+                      "date":"'.$c["date"].'",
+                      "actions":"'.$btnstate.'"
+                    },';    
+         }
+            $table = substr($table,0, strlen($table) - 1);
+            echo '{"data":['.$table.']}';   
+    }
 
 
  ?>

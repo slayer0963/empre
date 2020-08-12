@@ -70,25 +70,8 @@
 
       </style>
   </head>
-	<body class="valign-wrapper">
-		<div class="row  center-align hide" id="text">
-			<div class="container justify-text ">
-				<h3 class="black-text animated  bounceIn " id="texto">Hola, bienvenido <?php echo $_SESSION['name']; ?>, aquí podrás ver estadisticas, tus negocios y productos.</h3>
-				<div class="preloader-wrapper big active">
-			    <div class="spinner-layer spinner-green-only">
-			      <div class="circle-clipper left">
-			        <div class="circle"></div>
-			      </div><div class="gap-patch">
-			        <div class="circle"></div>
-			      </div><div class="circle-clipper right">
-			        <div class="circle"></div>
-			      </div>
-			    </div>
-			  </div>
-			</div>
-			
-		</div>
-
+	<body >
+    <div class="container">
 		<div class="row animated center-align" id="business">
       <img src="../view/images/logo.jpg" width="155px" height="120px">
 			<div class="col s12 m12 l12">
@@ -110,12 +93,13 @@
                     <i class="large material-icons">format_quote</i>
                   </a>
                   <ul>
+                    <li><a class="btn-floating blue tooltipped modal-trigger" data-position="left" data-tooltip="Historial" href="#historyde" onclick="" ><i class="material-icons">history</i></a></li>
                     <li><a class="btn-floating red tooltipped" data-position="left" data-tooltip="Salir" href="#!" onclick="salirempre();" ><i class="material-icons">close</i></a></li>
                     
                   </ul>
                 </div>
     </div>
-
+</div>
 
         <div id="deliverylist" class="modal">
         <div class="modal-content">
@@ -134,6 +118,35 @@
 
       </tfoot>
          </table>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="salirmoto();">Salir</a>
+        </div>
+      </div>
+
+
+      <div id="historyde" class="modal">
+        <div class="modal-content">
+          <table id="tbdelivery" class="table table-striped table-bordered table-hover text-center "  cellspacing="0" width="100%">
+                 <thead >
+              <tr>
+                <th class="text-center" data-priority="1">N° Pedido</th>
+                <th class="text-center" data-priority="2">Cliente</th>
+                <th class="text-center" data-priority="4">Fecha de entrega</th>
+                <th class="text-center"   data-priority="3">Estado</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+              <tr>
+                <th class="text-center" data-priority="1">N° Pedido</th>
+                <th class="text-center" data-priority="2">Cliente</th>
+                <th class="text-center" data-priority="4">Fecha de Entrega</th>
+                <th class="text-center"  data-priority="3">Estado</th>
+              </tr>
+            </tfoot>
+         </table>
+
         </div>
         <div class="modal-footer">
           <a href="#!" class="modal-close waves-effect waves-green btn-flat" onclick="salirmoto();">Salir</a>

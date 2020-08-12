@@ -105,6 +105,26 @@
         </div>
       </div>
 
+
+    <div id="infodeli" class="modal">
+        <div class="modal-content">
+              <div class="row">
+                <div class="col s12 m12 l12 center-align">
+
+
+                  <img src="" id="imguserd" name="imguserd" style="width: 150px; height: 150px;"><br>
+                  <h5 id="nameuserd"></h5>
+                  <h6 id="">Hola yo sere el encargado de llevar tu paquete</h6>
+                  <h6 id="contactuserd"></h6>
+                  <h6 id="emailuserd"></h6>
+                </div>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-close waves-effect waves-green btn-flat">Salir</a>
+        </div>
+      </div>
+
   		
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.js"></script>
       <script type="text/javascript" src="<?php echo SERVERURL; ?>js/jquery.dataTables.js"></script>
