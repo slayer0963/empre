@@ -92,7 +92,7 @@
           <div class="input-field col s12">
 			
             <input type="text" name="namep" title="Nombre (*)" id="namep">
-            <label for="name">Nombre</label>
+            <label for="namep">Nombre</label>
             <span class="" id="txtnamep"></span>
           </div>
           <div class="input-field col s12">
