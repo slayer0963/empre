@@ -127,7 +127,7 @@
 								<div  class="col s12 m6 l3 center-align animated slideInDown ">
 									<div class="card">
 	   									 <div class="card-image waves-effect waves-block waves-light">
-	   									   <img class="activator" src="<?php echo SERVERURL.'imgbusiness/'.$re['pic_logo_bus'] ?>" style="height: 170px; width: 100%;">
+	   									   <center><img class="activator" src="<?php echo SERVERURL.'imgbusiness/'.$re['pic_logo_bus'] ?>" style="height: 170px; width: 75%;"></center>
 	   									 </div>
 	   									 <div class="card-content">
 	   									   <span class="card-title activator grey-text text-darken-4"><?php echo $re['name_bus']; ?><i class="material-icons right">more_vert</i></span>
