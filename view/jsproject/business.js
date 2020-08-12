@@ -226,7 +226,7 @@ idinputerrore.forEach(names => {
 
 
 
-var FillBoxes =(id,name,imagen,usuario) =>{
+var FillBoxes =(id,name,imagen,usuario,state,descrip) =>{
     $("#id").val(id);
     $("#namee").val(name);
     $("#imge").val(imagen);
@@ -250,7 +250,7 @@ var FillBoxes =(id,name,imagen,usuario) =>{
                }
                $("#usere").html(html);
             });
-    
+    $("#descripe").val(descrip);
 }
 
 
