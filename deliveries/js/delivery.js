@@ -23,7 +23,8 @@ function getdata() {
 
 				html+='<div  class="col s12 m6 l4 center-align animated slideInDown ">';
 									html+='<div class="card"><br>';
-	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
+	   									 html+='<div class="card-image waves-effect waves-block waves-light center-align">';
+	   									 html+='<center><img src="../view/imguser/'+respu[i].imagen+'" style="width: 150px; height: 155px;"></center><br>';
 	   									 if(respu[i].status_delivery==0){
 	   									 	html+='<a class="waves-effect waves-light btn green" onclick="activDeli('+obj.id+','+respu[i].id_delivery+')">Activo</a>'
 	   									 }
@@ -72,6 +73,7 @@ function getdataProcess(idus) {
 				html+='<div  class="col s12 m6 l4 center-align animated slideInDown ">';
 									html+='<div class="card"><br>';
 	   									 html+='<div class="card-image waves-effect waves-block waves-light">';
+	   									 html+='<center><img src="../view/imguser/'+respu[i].imagen+'" style="width: 150px; height: 155px;"></center><br>';
 	   									 if(respu[i].status_delivery==2){
 	   									 	html+='<a class="waves-effect waves-light btn yellow " onclick="deliveryp('+respu[i].id_delivery+','+obj.id+');">En Proceso</a>'
 	   									 }
