@@ -262,17 +262,30 @@ var business = () =>{
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
                 
-                html+='<div class="col l3 m6 s10 offset-s1">';
+                html+='<div class="col l4 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
+                      html+='<br><center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 80%;"></center>';
                     html+='</div>';
-                    html+='<div class="card-content">';
-                     html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
-                      html+='<p class="truncate">'+values[i].description+'</p>';
+                    html+='<div class="card-content  center-align">';
+                    // html+='<form><p class="clasificacion">';
+                    //     html+='<input id="radio1'+values[i].id_bus+'" id_bus type="radio" name="estrellas" value="5">';
+                    //     html+='<label for="radio1'+values[i].id_bus+'">★</label>';
+                    //    html+='<input id="radio2'+values[i].id_bus+'" type="radio" name="estrellas" value="4">';
+                    //     html+='<label for="radio2'+values[i].id_bus+'">★</label>';
+                    //     html+='<input id="radio3'+values[i].id_bus+'" type="radio" name="estrellas" value="3">';
+                    //     html+='<label for="radio3'+values[i].id_bus+'">★</label>';
+                    //      html+='<input id="radio4'+values[i].id_bus+'" type="radio" name="estrellas" value="2">';
+                    //     html+='<label for="radio4'+values[i].id_bus+'">★</label>';
+                    //     html+='<input id="radio5'+values[i].id_bus+'" type="radio"  name="estrellas" value="1">';
+                    //     html+='<label for="radio5'+values[i].id_bus+'">★</label>';
+                    // html+='</p></form><p id="valoracionte'+values[i].id_bus+'"><p>';
+                    //                         getvaloration(values[i].id_bus);
+                     html+='<h4 class="card-title" style="margin-top:-1rem; font-size: 25px; font-weight: bold;">'+values[i].name_bus+'</h4>';
+                      html+='<p class="truncate" style="font-style:oblique;">'+values[i].description+'</p>';
                     html+='</div>';
                     html+='<div class="card-action center-align">';
-                      html+='<a href="#!"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
+                      html+='<a href="#!" class="btn"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
                     html+='</div>';
                   html+='</div>';
                 html+='</div>';
@@ -291,6 +304,41 @@ var business = () =>{
             } 
         }); 
       
+}
+
+var getvaloration = (idbus) =>{
+  var dataString = 'idbus='+idbus;
+    //alert(dataString);
+    $.ajax({
+            type: "POST",
+            url: "controller/cbusiness.php?btngetData=getrating", 
+            data: dataString,
+            success: function(resp) {
+              
+              var values = eval(resp);
+              var rating = parseInt(values[0].rating);
+              console.log(rating);
+              $("#valoracionte"+idbus+"").html(String(rating)); 
+                      if(rating==5){
+                        $('#radio1'+idbus+"'").attr('checked');
+                      }
+                      else if(rating==4){
+                        $('#radio1'+idbus+"'").attr('checked');
+                      }
+                      else if(rating==3){
+                        $('#radio1'+idbus+"'").attr('checked');
+                      }
+                      else if(rating==2){
+                       $('#radio1'+idbus+"'").attr('checked');
+                      }
+                      else if(rating==1){
+                        $('#radio1'+idbus+"'").attr('checked');
+                      }
+
+
+            }
+        });
+
 }
 
 function addcomentario(idcliente,comentario,valoracion) {
@@ -324,16 +372,16 @@ var productbybusiness = () =>{
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="view/imgdetails/'+respu[i].img+'" style="height:175px; width: 80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                          html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                          html+='<span class="rigth-align" >'+respu[i].name_bus+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -379,16 +427,16 @@ var productbybusinesstype = (type) =>{
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="view/imgdetails/'+respu[i].img+'" style="height:175px; width: 80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
                                           html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -434,16 +482,16 @@ var productbybusinesscat = (cat) =>{
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="view/imgdetails/'+respu[i].img+'" style="height: 175px; width: 80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
                                           html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -487,15 +535,16 @@ function mybusiibyrange(range) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="view/imgdetails/'+respu[i].img+'" style="height: 175px; width: 80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                         html+='<span class="card-title ">'+respu[i].name_pro+'</span>';
+                                      html+='<span class="rigth-align">'+respu[i].name_bus+'</span>';
+                                         html+='<span class="card-title " style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -639,7 +688,7 @@ function getsizes(id,material,color,namecolor) {
                         if(i==0){
                               getDataProductD(id,color,material,respu[i].id_size,namecolor);
                         }
-                         html+='<a href="#!" class="col l2 m4 s4" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+','+String("'"+namecolor+"'")+');">';
+                         html+='<a href="#!" class="col l4 m6 s6" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+','+String("'"+namecolor+"'")+');">';
                         html+='<div class="chip" >';
                             html+=respu[i].number_size+'-'+respu[i].name_size;
                           html+='</div></a>';
@@ -822,17 +871,17 @@ var businessbycat = (id) =>{
             var values = eval(resp);        
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
-                html+='<div class="col l3 m6 s10 offset-s1">';
+                html+='<div class="col l4 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
+                      html+='<br><center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 80%;"></center>';
                     html+='</div>';
-                    html+='<div class="card-content">';
-                     html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
-                      html+='<p class="truncate">'+values[i].description+'</p>';
+                    html+='<div class="card-content center-align">';
+                     html+='<h4 class="card-title" style="margin-top:-1rem; font-size: 25px; font-weight: bold;">'+values[i].name_bus+'</h4>';
+                      html+='<p class="truncate" style="font-style:oblique;">'+values[i].description+'</p>';
                     html+='</div>';
                     html+='<div class="card-action center-align">';
-                      html+='<a href="#!"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
+                      html+='<a href="#!" class="btn" onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
                     html+='</div>';
                   html+='</div>';
                 html+='</div>';       
@@ -915,17 +964,17 @@ var businessbyproductype= (id) =>{
             var values = eval(resp);        
              // alert(resp);
              for (var i = 0; i < values.length; i++) {
-                html+='<div class="col l3 m6 s10 offset-s1">';
+                html+='<div class="col l4 m6 s10 offset-s1">';
                   html+='<div class="card hoverable">';
                     html+='<div class="card-image">';
-                      html+='<center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 135px; width: 100%;"></center>';
+                      html+='<br><center><img src="view/imgbusiness/'+values[i].pic_logo_bus+'" style="height: 175px; width: 80%;"></center>';
                     html+='</div>';
-                    html+='<div class="card-content">';
-                     html+='<h4 class="card-title" style="margin-top:-1rem;">'+values[i].name_bus+'</h4>';
-                      html+='<p class="truncate">'+values[i].description+'</p>';
+                    html+='<div class="card-content center-align">';
+                     html+='<h4 class="card-title" style="margin-top:-1rem; font-size: 25px; font-weight: bold;">'+values[i].name_bus+'</h4>';
+                      html+='<p class="truncate" style="font-style:oblique;">'+values[i].description+'</p>';
                     html+='</div>';
                     html+='<div class="card-action center-align">';
-                      html+='<a href="#!"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
+                      html+='<a href="#!" class="btn"  onclick="viewstore('+values[i].id_bus+','+String("'"+values[i].name_bus+"'")+','+String("'"+values[i].description+"'")+')">ver productos</a>';
                     html+='</div>';
                   html+='</div>';
                 html+='</div>';       

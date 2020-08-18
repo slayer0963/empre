@@ -348,15 +348,15 @@ function mybusii(id) {
             	var html='';
             	 
             	for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="../view/imgdetails/'+respu[i].img+'" style="height:175px; width:80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -404,15 +404,15 @@ function mybusiibyrange(id,range) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="../view/imgdetails/'+respu[i].img+'" style="height:175px; width:80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                         html+='<span class="card-title ">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title " style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -456,15 +456,15 @@ function mybusiibytype(id,type) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="../view/imgdetails/'+respu[i].img+'" style="height:175px; width:80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -508,15 +508,15 @@ function mybusiibytypeandcat(id,type,cat) {
               var html='';
                
               for (var i = 0; i < respu.length; i++) {
-                                  html+='<div class="col s12 m4 l3 animated zoomIn">';
+                                  html+='<div class="col s12 m6 l4 animated zoomIn">';
                                     html+='<div class="card hoverable">';
                                       html+='<div class="card-image">';
-                                        html+='<img src="../view/imgdetails/'+respu[i].img+'" style="height:125px;">';
+                                        html+='<br><center><img src="../view/imgdetails/'+respu[i].img+'" style="height:175px; width:80%;"></center>';
                                        
                                        html+='<a class="btn-floating halfway-fab waves-effect waves-light modal-trigger" href="#prodetails" onclick="viewproduct('+respu[i].id_pro+','+String("'"+respu[i].name_pro+"'")+','+String("'"+respu[i].img+"'")+','+String("'"+respu[i].descr_pro+"'")+')"><i class="material-icons">reorder</i></a>';
                                       html+='</div>';
                                       html+='<div class="card-content center-align">';
-                                         html+='<span class="card-title">'+respu[i].name_pro+'</span>';
+                                         html+='<span class="card-title" style="font-size: 25px; font-weight: bold;">'+respu[i].name_pro+'</span>';
                                          if(respu[i].discount!="" && parseFloat(respu[i].discount)!=0){
                                                 html+='<div class="price center-align">';
                                                 html+='<span class="price price-old"> &#36;'+(parseFloat(respu[i].sal_price)+parseFloat(respu[i].extraprice)).toFixed(2)+'</span>';
@@ -820,7 +820,7 @@ function getsizes(id,material,color,namecolor) {
                         if(i==0){
                               getDataProductD(id,color,material,respu[i].id_size,namecolor);
                         }
-                         html+='<a href="#!" class="col l2 m4 s4" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+','+String("'"+namecolor+"'")+');">';
+                         html+='<a href="#!" class="col col l4 m6 s6" onclick="getDataProductD('+id+','+color+','+material+','+respu[i].id_size+','+String("'"+namecolor+"'")+');">';
                         html+='<div class="chip" >';
                             html+=respu[i].number_size+'-'+respu[i].name_size;
                           html+='</div></a>';

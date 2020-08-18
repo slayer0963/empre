@@ -67,6 +67,9 @@ include_once "cn/connection.php";
       opacity: 0.5;
       font-size: 20px;
     }
+
+
+
   </style>
 
   <link rel="icon" type="image/gif" href="https://image.flaticon.com/icons/png/512/57/57003.png">
@@ -327,8 +330,8 @@ include_once "cn/connection.php";
 
  <div id="prodetails" class="modal animated bounceInDown">
     <div class="modal-content row">
-        <div class="col s12 m12 l12 center-align" ><h5 id="producttittle"></h5></div>
-         <div class="col s12 m6 l4 center-align">
+        <div class="col s12 m12 l12 center-align" ><h5 id="producttittle" style="font-size: 25px; font-weight: bold;"></h5></div>
+         <div class="col s12 m5 l4 center-align">
           <img id="imginitial" src="" height="250px;" width="250px">
           <ul class="collection with-header">
           <li class="collection-item center-align">Precio <br><span id="priceprosindes" class="price-old"></span>&nbsp;&nbsp;<span class="price-new" id="pricepro"></span><br>
@@ -339,7 +342,7 @@ include_once "cn/connection.php";
 
            </ul>
         </div>
-        <div class="col s12 m6 l8">
+        <div class="col s12 m7 l8">
           <ul class="collection with-header">
             <li class="collection-item">
               <h6>Colores</h6>
@@ -358,8 +361,8 @@ include_once "cn/connection.php";
                 
               </div>
             
-            <h6>Descripción</h6>
-            <h6 id="pdet"></h6></li>
+            <h6>Descripción:</h6>
+            <h6 id="pdet" style="font-style:oblique; text-align: justify; text-justify: inter-word;"></h6></li>
           </ul>
           <form method="POST" id="frmcarpro" name="frmcarpro" class="hide">
             <input type="text" id="idcliet" name="idcliet" value="<?php echo $valor = isset($_SESSION["idus"])?$_SESSION["idus"]:'';?>">
@@ -390,7 +393,7 @@ include_once "cn/connection.php";
                     <div class="col l12 m12 s12 black-text">
                       <div class="row">
                         <div class="col l6 m6 s6 ">
-                          <span class="">VALORACIÓN:&nbsp;&nbsp;<div class="rating" id="rate"></div></span>
+                          <span class="" style="font-style:oblique;">VALORACIÓN:&nbsp;&nbsp;<div class="rating" id="rate"></div></span>
                         </div>
                         <div class="col l6 m6 s6"> <button class="btn" id="publish">Comentar</button> </div>
                       </div>

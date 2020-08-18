@@ -52,7 +52,7 @@
 
  <div id="prodetails" class="modal animated bounceInDown">
     <div class="modal-content row">
-        <div class="col s12 m12 l12 center-align" ><h5 id="producttittle"></h5></div>
+        <div class="col s12 m12 l12 center-align" ><h5 id="producttittle" style="font-size: 25px; font-weight: bold;"></h5></div>
          <div class="col s12 m6 l4 center-align">
           <img id="imginitial" src="" height="250px;" width="250px">
           <ul class="collection with-header">
@@ -84,7 +84,7 @@
               </div>
             
             <h6>Descripción</h6>
-            <h6 id="pdet"></h6></li>
+            <h6 id="pdet" style="font-style:oblique; text-align: justify; text-justify: inter-word;"></h6></li>
           </ul>
           <form method="POST" id="frmcarpro" name="frmcarpro" class="hide">
             <input type="text" id="idcliet" name="idcliet" value="<?php echo $valor = isset($_SESSION["idus"])?$_SESSION["idus"]:'';?>">
@@ -115,7 +115,7 @@
                     <div class="col l12 m12 s12 black-text">
                       <div class="row">
                         <div class="col l6 m6 s6 ">
-                          <span class="">VALORACIÓN:&nbsp;&nbsp;<div class="rating" id="rate"></div></span>
+                          <span class="" style="font-style:oblique;">VALORACIÓN:&nbsp;&nbsp;<div class="rating" id="rate"></div></span>
                         </div>
                         <div class="col l6 m6 s6"> <button class="btn" id="publish">Comentar</button> </div>
                       </div>

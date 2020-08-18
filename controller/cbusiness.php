@@ -109,6 +109,12 @@
 	}
 
 	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
+	if($page=='getrating'){
+	    $dat=new DAOBusiness();
+	    echo json_encode($dat->getrating($_POST['idbus']));
+	}
+
+	$page = isset($_GET['btngetData'])?$_GET['btngetData']:'';
 	if($page=='getHomebycat'){
 	    $dat=new DAOBusiness();
 	    echo json_encode($dat->getHomebycat($_POST['id']));

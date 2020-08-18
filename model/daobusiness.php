@@ -29,7 +29,20 @@ include_once "../cn/connection.php";
 	public function getDataHome()
  	{
 		$c = conectar();
-		$sql="select * from business;";
+		$sql="select * from business";
+		$c->set_charset('utf8');
+		$res = $c->query($sql);	
+		$arreglo = array();
+		while($re = $res->fetch_array()){
+			$arreglo[]=$re;
+		}
+		return $arreglo;
+	}
+
+	public function getrating($id)
+ 	{
+		$c = conectar();
+		$sql="select bu.id_bus, (sum(prora.rating)/count(prora.rating)) as rating from business bu inner join assignment_probus apb on bu.id_bus=apb.id_bus inner join product_rating prora on apb.id_pro=prora.id_pro where bu.id_bus=$id;";
 		$c->set_charset('utf8');
 		$res = $c->query($sql);	
 		$arreglo = array();
