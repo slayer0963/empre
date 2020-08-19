@@ -1,0 +1,79 @@
+[19-Aug-2020 00:58:14 UTC] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/rj6d1ag3x8ic/public_html/model/daoclient.php on line 38
+[19-Aug-2020 00:58:15 UTC] PHP Notice:  Trying to get property 'num_rows' of non-object in /home/rj6d1ag3x8ic/public_html/model/daoclient.php on line 38
+[19-Aug-2020 03:25:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:339
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(20): DAOUserhome->getProductClient(Object(Userhome))
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 339
+[19-Aug-2020 03:25:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:67
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(69): DAOUserhome->getDatatype('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 67
+[19-Aug-2020 03:26:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:339
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(20): DAOUserhome->getProductClient(Object(Userhome))
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 339
+[19-Aug-2020 03:26:38 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:67
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(69): DAOUserhome->getDatatype('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 67
+[19-Aug-2020 03:35:40 UTC] PHP Notice:  Undefined index: email in /home/rj6d1ag3x8ic/public_html/controller/cuser.php on line 175
+[19-Aug-2020 03:35:40 UTC] PHP Notice:  Undefined index: password in /home/rj6d1ag3x8ic/public_html/controller/cuser.php on line 176
+[19-Aug-2020 03:35:51 UTC] PHP Notice:  Undefined index: email in /home/rj6d1ag3x8ic/public_html/controller/cuser.php on line 175
+[19-Aug-2020 03:35:51 UTC] PHP Notice:  Undefined index: password in /home/rj6d1ag3x8ic/public_html/controller/cuser.php on line 176
+[19-Aug-2020 04:37:20 UTC] PHP Warning:  move_uploaded_file(./view/imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png): failed to open stream: No such file or directory in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:37:20 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phprUdZqP' to './view/imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png' in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:42:42 UTC] PHP Warning:  move_uploaded_file(./view/imgbusiness/88081.png): failed to open stream: No such file or directory in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:42:42 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpaPnQDI' to './view/imgbusiness/88081.png' in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:44:09 UTC] PHP Warning:  move_uploaded_file(./imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png): failed to open stream: No such file or directory in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:44:09 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/phpx286t7' to './imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png' in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 16
+[19-Aug-2020 04:48:33 UTC] PHP Warning:  move_uploaded_file(../imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png): failed to open stream: No such file or directory in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 49
+[19-Aug-2020 04:48:33 UTC] PHP Warning:  move_uploaded_file(): Unable to move '/tmp/php1TvDPc' to '../imgbusiness/191-1914243_comida-png-iconos-de-cocina-png-clipart.png' in /home/rj6d1ag3x8ic/public_html/controller/cbusiness.php on line 49
+[19-Aug-2020 04:57:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50
+[19-Aug-2020 04:59:49 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50
+[19-Aug-2020 05:01:09 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50
+[19-Aug-2020 05:24:46 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(118): DAOUserhome->getBusinessP('undefined', '4')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 50
+[19-Aug-2020 05:31:02 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(118): DAOUserhome->getBusinessP('undefined', '1')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 50
+[19-Aug-2020 06:27:59 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50
+[19-Aug-2020 06:30:01 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50
+[19-Aug-2020 06:48:35 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/cuserhome.php(118): DAOUserhome->getBusinessP('undefined', '1')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daouserhome.php on line 50
+[19-Aug-2020 06:53:48 UTC] PHP Fatal error:  Uncaught Error: Call to a member function fetch_array() on boolean in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php:50
+Stack trace:
+#0 /home/rj6d1ag3x8ic/public_html/controller/caproduct.php(16): DAOAproduct->getDataB('undefined')
+#1 {main}
+  thrown in /home/rj6d1ag3x8ic/public_html/model/daoaproduct.php on line 50

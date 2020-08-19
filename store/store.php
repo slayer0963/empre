@@ -1,0 +1,162 @@
+
+ <?php include 'block/header.php'; ?>
+ <style>
+   
+   #prodetails { padding: 0; margin-top: -40px; width: 80% !important ; height: 95% !important ;  max-height: 100%;}
+ @media only screen and (max-width : 992px) {
+   #prodetails { margin-top: 5px; width: 100% !important ; height: 95% !important ; } 
+  }
+ </style>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+ <style>
+   .letrasboni{
+    font-family: 'Patrick Hand', cursive;
+    font-size: 12px;
+   }
+ </style>
+ <?php include 'block/menu.php'; ?>
+  <title id="title"></title>
+    <div class="">
+      <div class="row" id="contentpage">
+      <div class="col l3 m10 s10 offset-s1 offset-m1 ">
+         <ul class="collection">
+          <li class="collection-item">Rango de precios <br>
+            <form action="#">
+              <p class="range-field">
+                <input type="range" id="range" min="0" max="100" value="1" />
+              </p>
+            </form>
+          </li>
+          <li class="collection-item">Tipos <br>
+            <div id="types">
+              
+            </div>
+          </li>
+
+          <li class="collection-item hide" id="cate">Categorias <br>
+            <div id="categories">
+              
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+      <div class="col l8 m10 s10 offset-s1 offset-m1">
+        <div class="row " id="productstore" style="z-index: -1;">
+       
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row" id="none"></div>
+
+ <div id="prodetails" class="modal animated bounceInDown">
+    <div class="modal-content row">
+        <div class="col s12 m12 l12 center-align" ><h5 id="producttittle" style="font-size: 25px; font-weight: bold;"></h5></div>
+         <div class="col s12 m6 l4 center-align">
+          <img id="imginitial" src="" height="250px;" width="250px">
+          <ul class="collection with-header">
+          <li class="collection-item center-align">Precio <br><span id="priceprosindes" class="price-old"></span>&nbsp;&nbsp;<span class="price-new" id="pricepro"></span><br>
+            <div class="btnact">
+            <a class="btn-floating btn-sm waves-effect waves-light green" id="addcarr"><i class="material-icons">add_shopping_cart</i></a>&nbsp;<a class="btn-floating btn-sm waves-effect waves-light red" id="addwish"><i class="material-icons">shopping_basket</i></a>
+          </div>
+          </li>
+
+           </ul>
+        </div>
+        <div class="col s12 m6 l8">
+          <ul class="collection with-header">
+            <li class="collection-item">
+              <h6>Colores</h6>
+              <div class="row" id="colors">
+
+              </div>
+        
+   
+              <h6>Materiales</h6>
+              <div class="row" id="contmat">
+                
+              </div>
+
+              <h6>Tallas</h6>
+              <div class="row" id="contsize">
+                
+              </div>
+            
+            <h6>Descripción</h6>
+            <h6 id="pdet" style="font-style:oblique; text-align: justify; text-justify: inter-word;"></h6></li>
+          </ul>
+          <form method="POST" id="frmcarpro" name="frmcarpro" class="hide">
+            <input type="text" id="idcliet" name="idcliet" value="<?php echo $valor = isset($_SESSION["idus"])?$_SESSION["idus"]:'';?>">
+            <input type="text" id="pfidprod" name="pfidprod">
+            <input type="text" id="pfidprices" name="pfidprices">
+            <input type="text" id="pfcolor" name="pfcolor">
+            <input type="text" id="pfmaterial" name="pfmaterial">
+            <input type="text" id="pfsize" name="pfsize">
+            <input type="text" id="pfprices" name="pfprices">
+            <input type="text" id="discount" name="discount">
+          </form>
+        </div>
+       
+        <div class="col s12 m12 l12" >
+            <div class="col s12 m12 s12">
+              <div class="card white">
+                <div class="card-content white-text row">
+                  <input type="hidden" id="idclient" value=" <?php echo $_SESSION["idus"]; ?> ">
+                    <div class="col l2 m2 s12 center-align">
+                      <?php  echo (isset($_SESSION['name'])) ? '<img alt="Circle Image" class="circle"  src="../view/imguser/'.$_SESSION['img'].'" style="height:75px; width:80;">' : '<img class="circle" alt="64x64" style="height:70px; width:80;" src="assets/img/placeholder.jpg">'; ?>
+                    </div>
+                    <div class="col l10 m10 s12">
+                      <div class="input-field">
+                      <textarea id="comentproduc" name="comentproduc" class="materialize-textarea" data-length="120"></textarea>
+                      <label for="comentproduc">Comentario</label>
+                    </div>
+                    </div>
+                    <div class="col l12 m12 s12 black-text">
+                      <div class="row">
+                        <div class="col l6 m6 s6 ">
+                          <span class="" style="font-style:oblique;">VALORACIÓN:&nbsp;&nbsp;<div class="rating" id="rate"></div></span>
+                        </div>
+                        <div class="col l6 m6 s6"> <button class="btn" id="publish">Comentar</button> </div>
+                      </div>
+                    </div>
+
+                  
+                </div>
+            </div>
+                              
+        </div>
+        
+            
+    </div>
+    <div class="comentper" id="comentinput">
+                  
+    </div>
+  </div>
+  
+  </div>
+ 
+ <?php include 'block/footer.php'; ?>
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+  <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+        <script type="text/javascript" src="<?php echo SERVERURLB; ?>store/js/buss.js"></script>
+        <!-- <script type="text/javascript" src="<?php //echo SERVERURLB; ?>store/js/addcar.js"></script> -->
+
+<script>
+  $(document).ready(function() {
+    initializeRatings();
+      // $('#rate').swidget().value(4);
+  });
+    function initializeRatings() {
+        $('#rate').shieldRating({
+            max: 5,
+            step: 0.1,
+            value: 0,
+            markPreset: false
+        });
+      }
+</script>
+
+
+
+
